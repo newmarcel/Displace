@@ -1,0 +1,15 @@
+//
+//  Configuration.xcconfig
+//  Displace
+//
+//  Created by Marcel Dierkes on 29.12.20.
+//  Copyright (c) 2020 Marcel Dierkes. All rights reserved.
+//
+
+MACOSX_DEPLOYMENT_TARGET = 11.0
+PRODUCT_BUNDLE_IDENTIFIER = info.marcel-dierkes.Displace
+
+MARKETING_VERSION = 0.1.0
+CURRENT_PROJECT_VERSION = 1010000
+
+DPL_COPYRIGHT_TEXT = Copyright © 2021 Marcel Dierkes. All rights reserved.
