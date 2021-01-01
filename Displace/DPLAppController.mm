@@ -26,21 +26,7 @@
         self.displays = DPLDisplay.allDisplays;
         [self configureMenuController];
         [self configureStatusItem];
-        
-        {
-            auto shortcut = [SRShortcut shortcutWithKeyEquivalent:@"⌃⌥⌘↑"];
-            auto action = [SRShortcutAction shortcutActionWithShortcut:shortcut actionHandler:^BOOL(SRShortcutAction *action) {
-                NSLog(@"Yeah");
-                if(auto dpl = self.displays.firstObject)
-                {
-                    dpl.currentDisplayMode = dpl.nextDisplayMode;
-                    [dpl applyCurrentDisplayMode];
-                }
-                return YES;
-            }];
-            [SRGlobalShortcutMonitor.sharedMonitor addAction:action
-                                                 forKeyEvent:SRKeyEventTypeDown];
-        }
+        [self configureGlobalShortcuts];
     }
     return self;
 }
@@ -69,6 +55,36 @@
     statusItem.menu = self.menuController.menu;
     
     self.systemStatusItem = statusItem;
+}
+
+- (void)configureGlobalShortcuts
+{
+    auto preferences = DPLPreferences.sharedPreferences;
+    auto monitor = SRGlobalShortcutMonitor.sharedMonitor;
+    
+    auto increaseShortcut = preferences.increaseResolutionShortcut;
+    auto increaseAction = [SRShortcutAction shortcutActionWithShortcut:increaseShortcut actionHandler:^BOOL(SRShortcutAction *action) {
+        NSLog(@"Up");
+        if(auto dpl = self.displays.firstObject)
+        {
+            dpl.currentDisplayMode = dpl.nextDisplayMode;
+            [dpl applyCurrentDisplayMode];
+        }
+        return YES;
+    }];
+    [monitor addAction:increaseAction forKeyEvent:SRKeyEventTypeUp];
+    
+    auto decreaseShortcut = preferences.decreaseResolutionShortcut;
+    auto decreaseAction = [SRShortcutAction shortcutActionWithShortcut:decreaseShortcut actionHandler:^BOOL(SRShortcutAction *action) {
+        NSLog(@"Down");
+        if(auto dpl = self.displays.firstObject)
+        {
+            dpl.currentDisplayMode = dpl.previousDisplayMode;
+            [dpl applyCurrentDisplayMode];
+        }
+        return YES;
+    }];
+    [monitor addAction:decreaseAction forKeyEvent:SRKeyEventTypeUp];
 }
 
 #pragma mark - DPLMenuControllerDataSource
@@ -108,6 +124,24 @@
     return displayMode.localizedName;
 }
 
+- (void)keyEquivalentForIncrease:(NSString **)key modifierFlags:(NSEventModifierFlags *)flags
+{
+    auto preferences = DPLPreferences.sharedPreferences;
+    auto shortcut = preferences.increaseResolutionShortcut;
+    
+    *key = [SRKeyEquivalentTransformer.sharedTransformer transformedValue:shortcut];
+    *flags = shortcut.modifierFlags;
+}
+
+- (void)keyEquivalentForDecrease:(NSString **)key modifierFlags:(NSEventModifierFlags *)flags
+{
+    auto preferences = DPLPreferences.sharedPreferences;
+    auto shortcut = preferences.decreaseResolutionShortcut;
+    
+    *key = [SRKeyEquivalentTransformer.sharedTransformer transformedValue:shortcut];
+    *flags = shortcut.modifierFlags;
+}
+
 #pragma mark - DPLMenuControllerDelegate
 
 - (void)menuControllerShouldShowPreferences:(DPLMenuController *)controller
@@ -131,6 +165,28 @@
     [display applyCurrentDisplayMode];
     
     [self.menuController reloadMenu];
+}
+
+- (void)menuControllerShouldIncreaseResolution:(DPLMenuController *)controller
+{
+#warning TODO: Get current display
+    auto display = self.displays.firstObject;
+    if(auto next = display.nextDisplayMode)
+    {
+        display.currentDisplayMode = next;
+        [display applyCurrentDisplayMode];
+    }
+}
+
+- (void)menuControllerShouldDecreaseResolution:(DPLMenuController *)controller
+{
+#warning TODO: Get current display
+    auto display = self.displays.firstObject;
+    if(auto previous = display.previousDisplayMode)
+    {
+        display.currentDisplayMode = previous;
+        [display applyCurrentDisplayMode];
+    }
 }
 
 #pragma mark - NSApplicationDelegate

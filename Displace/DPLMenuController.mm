@@ -62,6 +62,7 @@
         [menu addItem:item];
     }
     
+    [self addControlItemsToMenu:menu];
     [self addTrailingStandardItemsToMenu:menu];
 }
 
@@ -97,6 +98,54 @@
     item.submenu = menu;
 }
 
+- (void)addControlItemsToMenu:(NSMenu *)menu
+{
+    NSParameterAssert(menu);
+    
+    auto dataSource = self.dataSource;
+    
+    NSString *increaseKeyEquivalent;
+    NSEventModifierFlags increaseFlags = 0;
+    if([dataSource respondsToSelector:@selector(keyEquivalentForIncrease:modifierFlags:)])
+    {
+        [dataSource keyEquivalentForIncrease:&increaseKeyEquivalent
+                               modifierFlags:&increaseFlags];
+    }
+    else
+    {
+        return;
+    }
+    
+    NSString *decreaseKeyEquivalent;
+    NSEventModifierFlags decreaseFlags = 0;
+    if([dataSource respondsToSelector:@selector(keyEquivalentForDecrease:modifierFlags:)])
+    {
+        [dataSource keyEquivalentForDecrease:&decreaseKeyEquivalent
+                               modifierFlags:&decreaseFlags];
+    }
+    else
+    {
+        return;
+    }
+    
+    // If the data source is satisfied, begin with a separator
+    [menu addItem:NSMenuItem.separatorItem];
+    
+    auto increaseItem = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"Increase Resolution", @"Increase Resolution")
+                                                   action:@selector(increaseResolution:)
+                                            keyEquivalent:increaseKeyEquivalent];
+    increaseItem.target = self;
+    increaseItem.keyEquivalentModifierMask = increaseFlags;
+    [menu addItem:increaseItem];
+    
+    auto decreaseItem = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"Decrease Resolution", @"Decrease Resolution")
+                                                   action:@selector(decreaseResolution:)
+                                            keyEquivalent:decreaseKeyEquivalent];
+    decreaseItem.target = self;
+    decreaseItem.keyEquivalentModifierMask = decreaseFlags;
+    [menu addItem:decreaseItem];
+}
+
 - (void)addTrailingStandardItemsToMenu:(NSMenu *)menu
 {
     NSParameterAssert(menu);
@@ -118,7 +167,9 @@
     [menu addItem:quitItem];
 }
 
-- (IBAction)showPreferences:(nullable id)sender
+#pragma mark - Actions
+
+- (void)showPreferences:(nullable id)sender
 {
     auto delegate = self.delegate;
     if([delegate respondsToSelector:@selector(menuControllerShouldShowPreferences:)])
@@ -127,7 +178,7 @@
     }
 }
 
-- (IBAction)terminate:(id)sender
+- (void)terminate:(nullable id)sender
 {
     auto delegate = self.delegate;
     if([delegate respondsToSelector:@selector(menuControllerShouldTerminate:)])
@@ -136,13 +187,31 @@
     }
 }
 
-- (IBAction)selectDisplayMode:(nullable NSMenuItem *)sender
+- (void)selectDisplayMode:(nullable NSMenuItem *)sender
 {
     auto delegate = self.delegate;
     if([delegate respondsToSelector:@selector(menuController:didSelectDisplayModeAtIndexPath:)])
     {
         auto indexPath = static_cast<NSIndexPath *>(sender.representedObject);
         [delegate menuController:self didSelectDisplayModeAtIndexPath:indexPath];
+    }
+}
+
+- (void)increaseResolution:(nullable NSMenuItem *)sender
+{
+    auto delegate = self.delegate;
+    if([delegate respondsToSelector:@selector(menuControllerShouldIncreaseResolution:)])
+    {
+        [delegate menuControllerShouldIncreaseResolution:self];
+    }
+}
+
+- (void)decreaseResolution:(nullable NSMenuItem *)sender
+{
+    auto delegate = self.delegate;
+    if([delegate respondsToSelector:@selector(menuControllerShouldDecreaseResolution:)])
+    {
+        [delegate menuControllerShouldDecreaseResolution:self];
     }
 }
 

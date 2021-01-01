@@ -27,6 +27,12 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSInteger)numberOfDisplayModesForDisplayAtIndex:(NSInteger)displayIndex;
 - (NSInteger)currentDisplayModeIndexForDisplayAtIndex:(NSInteger)displayIndex; // or -1 if that fails
 - (NSString *)titleForDisplayModeAtIndexPath:(NSIndexPath *)indexPath;
+
+- (void)keyEquivalentForIncrease:(NSString *_Nonnull *_Nonnull)key
+                   modifierFlags:(NSEventModifierFlags *_Nonnull)flags;
+- (void)keyEquivalentForDecrease:(NSString *_Nonnull *_Nonnull)key
+                   modifierFlags:(NSEventModifierFlags *_Nonnull)flags;
+
 @end
 
 @protocol DPLMenuControllerDelegate <NSObject>
@@ -34,6 +40,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)menuControllerShouldShowPreferences:(DPLMenuController *)controller;
 - (void)menuControllerShouldTerminate:(DPLMenuController *)controller;
 - (void)menuController:(DPLMenuController *)controller didSelectDisplayModeAtIndexPath:(NSIndexPath *)indexPath;
+- (void)menuControllerShouldIncreaseResolution:(DPLMenuController *)controller;
+- (void)menuControllerShouldDecreaseResolution:(DPLMenuController *)controller;
+
 @end
 
 NS_ASSUME_NONNULL_END
