@@ -10,6 +10,8 @@
 
 @interface DPLGeneralPreferencesViewController ()
 @property (nonatomic) NSUserDefaultsController *defaultsController;
+@property (nonatomic) SRShortcut *increaseShortcut;
+@property (nonatomic) SRShortcut *decreaseShortcut;
 @end
 
 @implementation DPLGeneralPreferencesViewController
@@ -43,6 +45,44 @@
                                        toObject:self.defaultsController
                                     withKeyPath:keyPath
                                         options:nil];
+    
+    [self.increaseRecorderControl bind:NSValueBinding
+                              toObject:self
+                           withKeyPath:@"increaseShortcut"
+                               options:nil];
+    [self.decreaseRecorderControl bind:NSValueBinding
+                              toObject:self
+                           withKeyPath:@"decreaseShortcut"
+                               options:nil];
+}
+
+#pragma mark - Shortcuts
+
+- (SRShortcut *)increaseShortcut
+{
+    return DPLPreferences.sharedPreferences.increaseResolutionShortcut;
+}
+
+- (void)setIncreaseShortcut:(SRShortcut *)increaseShortcut
+{
+    [self willChangeValueForKey:@"increaseShortcut"];
+    DPLPreferences.sharedPreferences.increaseResolutionShortcut = increaseShortcut;
+    [self didChangeValueForKey:@"increaseShortcut"];
+}
+
+- (SRShortcut *)decreaseShortcut
+{
+    auto preferences = DPLPreferences.sharedPreferences;
+    return preferences.decreaseResolutionShortcut;
+}
+
+- (void)setDecreaseShortcut:(SRShortcut *)decreaseShortcut
+{
+    auto preferences = DPLPreferences.sharedPreferences;
+    
+    [self willChangeValueForKey:@"decreaseShortcut"];
+    preferences.decreaseResolutionShortcut = decreaseShortcut;
+    [self didChangeValueForKey:@"decreaseShortcut"];
 }
 
 @end

@@ -85,8 +85,7 @@ constexpr NSUserInterfaceItemIdentifier ImageCell = @"imageCell";
     
     if([tableColumn.identifier isEqualToString:DPL::Column::Resolution])
     {
-        auto cell = [tableView makeViewWithIdentifier:DPL::Column::Cell
-                                                owner:self];
+        auto cell = [tableView makeViewWithIdentifier:DPL::Column::Cell owner:self];
         auto textField = static_cast<NSTextField *>(cell.subviews.firstObject);
         textField.stringValue = displayMode.localizedNameWithoutAttributes;
         textField.font = [NSFont monospacedDigitSystemFontOfSize:textField.font.pointSize
@@ -95,8 +94,7 @@ constexpr NSUserInterfaceItemIdentifier ImageCell = @"imageCell";
     }
     else if([tableColumn.identifier isEqualToString:DPL::Column::IsCurrent])
     {
-        auto cell = [tableView makeViewWithIdentifier:DPL::Column::ImageCell
-                                                owner:self];
+        auto cell = [tableView makeViewWithIdentifier:DPL::Column::ImageCell owner:self];
         auto imageView = static_cast<NSImageView *>(cell.subviews.firstObject);
         auto checkImage = [NSImage imageWithSystemSymbolName:@"checkmark.circle"
                                     accessibilityDescription:nil];
@@ -109,8 +107,7 @@ constexpr NSUserInterfaceItemIdentifier ImageCell = @"imageCell";
     }
     else if([tableColumn.identifier isEqualToString:DPL::Column::IsRetina])
     {
-        auto cell = [tableView makeViewWithIdentifier:DPL::Column::ImageCell
-                                                owner:self];
+        auto cell = [tableView makeViewWithIdentifier:DPL::Column::ImageCell owner:self];
         auto imageView = static_cast<NSImageView *>(cell.subviews.firstObject);
         auto retinaImage = [NSImage imageWithSystemSymbolName:@"eye"
                                      accessibilityDescription:nil];
