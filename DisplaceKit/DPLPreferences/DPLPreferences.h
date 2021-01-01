@@ -10,6 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+FOUNDATION_EXPORT NSString * const DPLLaunchAtLoginEnabledDefaultsKey;
 FOUNDATION_EXPORT NSString * const DPLNonRetinaDisplayModesEnabledDefaultsKey;
 FOUNDATION_EXPORT NSString * const DPLIncreaseResolutionShortcutDefaultsKey;
 FOUNDATION_EXPORT NSString * const DPLDecreaseResolutionShortcutDefaultsKey;

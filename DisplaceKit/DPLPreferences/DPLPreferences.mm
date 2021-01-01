@@ -9,16 +9,10 @@
 #import "DPLAppGroup.h"
 #import <ShortcutRecorder/ShortcutRecorder.h>
 
-namespace DPL::Preferences::Key
-{
-constexpr auto LaunchAtLoginEnabled = @"info.marcel-dierkes.Displace.LaunchAtLoginEnabled";
-}
-
+NSString * const DPLLaunchAtLoginEnabledDefaultsKey = @"info.marcel-dierkes.Displace.LaunchAtLoginEnabled";
 NSString * const DPLNonRetinaDisplayModesEnabledDefaultsKey = @"info.marcel-dierkes.Displace.NonRetinaDisplayModesEnabled";
 NSString * const DPLIncreaseResolutionShortcutDefaultsKey = @"info.marcel-dierkes.Displace.IncreaseResolutionShortcut";
 NSString * const DPLDecreaseResolutionShortcutDefaultsKey =  @"info.marcel-dierkes.Displace.DecreaseResolutionShortcut";
-
-using namespace DPL::Preferences;
 
 @interface DPLPreferences ()
 @property (nonatomic, readwrite) id<DPLDefaultsProvider> defaults;
@@ -57,12 +51,12 @@ using namespace DPL::Preferences;
 
 - (BOOL)isLaunchAtLoginEnabled
 {
-    return [self.defaults boolForKey:Key::LaunchAtLoginEnabled];
+    return [self.defaults boolForKey:DPLLaunchAtLoginEnabledDefaultsKey];
 }
 
 - (void)setLaunchAtLoginEnabled:(BOOL)enabled
 {
-    [self.defaults setBool:enabled forKey:Key::LaunchAtLoginEnabled];
+    [self.defaults setBool:enabled forKey:DPLLaunchAtLoginEnabledDefaultsKey];
 }
 
 - (BOOL)isNonRetinaDisplayModesEnabled
