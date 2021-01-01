@@ -27,10 +27,6 @@
         [self configureMenuController];
         [self configureStatusItem];
         
-        [self.displays enumerateObjectsUsingBlock:^(DPLDisplay *obj, NSUInteger, BOOL *) {
-            NSLog(@"%@", obj);
-        }];
-        
         {
             auto shortcut = [SRShortcut shortcutWithKeyEquivalent:@"⌃⌥⌘↑"];
             auto action = [SRShortcutAction shortcutActionWithShortcut:shortcut actionHandler:^BOOL(SRShortcutAction *action) {
