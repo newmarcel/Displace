@@ -47,6 +47,24 @@ constexpr NSUserInterfaceItemIdentifier ImageCell = @"imageCell";
     [self.tableView reloadData];
 }
 
+- (IBAction)setSelectedAsCurrentDisplayResolution:(nullable id)sender
+{
+    NSInteger selectedRow = self.tableView.clickedRow;
+    if([sender isKindOfClass:[NSButton class]])
+    {
+        selectedRow = self.tableView.selectedRow;
+    }
+    
+    if(selectedRow < 0) { return; }
+    
+    auto display = self.display;
+    auto displayMode = display.displayModes[selectedRow];
+    display.currentDisplayMode = displayMode;
+    [display applyCurrentDisplayMode];
+    
+    [self.tableView reloadData];
+}
+
 #pragma mark - NSTableViewDataSource
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView

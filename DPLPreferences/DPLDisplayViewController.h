@@ -13,6 +13,9 @@ NS_ASSUME_NONNULL_BEGIN
 @interface DPLDisplayViewController : NSViewController <NSTableViewDataSource, NSTableViewDelegate>
 @property (class, nonatomic, readonly) NSStoryboardSceneIdentifier identifier;
 @property (weak, nonatomic, nullable) IBOutlet NSTableView *tableView;
+
+- (IBAction)setSelectedAsCurrentDisplayResolution:(nullable id)sender;
+
 @end
 
 NS_ASSUME_NONNULL_END
