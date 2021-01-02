@@ -19,6 +19,7 @@
 		DA6E0F93259A592A001316A1 /* DPLGeneralPreferencesViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = DA6E0F92259A592A001316A1 /* DPLGeneralPreferencesViewController.mm */; };
 		DA7945A32598E17C00368E9A /* DPLPreferencesWindowController.mm in Sources */ = {isa = PBXBuildFile; fileRef = DA7945A22598E17C00368E9A /* DPLPreferencesWindowController.mm */; };
 		DA8784B9259CBE8A00A50897 /* ShortcutRecorder in Frameworks */ = {isa = PBXBuildFile; productRef = DA8784B8259CBE8A00A50897 /* ShortcutRecorder */; };
+		DA87E90D25A076C800784FB5 /* DPLShortcutMonitor.mm in Sources */ = {isa = PBXBuildFile; fileRef = DA87E90C25A076C800784FB5 /* DPLShortcutMonitor.mm */; };
 		DAAF0542259789F300ED206F /* DisplaceKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAAF0539259789F300ED206F /* DisplaceKit.framework */; };
 		DAAF0549259789F300ED206F /* DisplaceKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DAAF0548259789F300ED206F /* DisplaceKitTests.m */; };
 		DAAF054B259789F300ED206F /* DisplaceKit.h in Headers */ = {isa = PBXBuildFile; fileRef = DAAF053B259789F300ED206F /* DisplaceKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -129,6 +130,8 @@
 		DA6E0F92259A592A001316A1 /* DPLGeneralPreferencesViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = DPLGeneralPreferencesViewController.mm; sourceTree = "<group>"; };
 		DA7945A12598E17C00368E9A /* DPLPreferencesWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DPLPreferencesWindowController.h; sourceTree = "<group>"; };
 		DA7945A22598E17C00368E9A /* DPLPreferencesWindowController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = DPLPreferencesWindowController.mm; sourceTree = "<group>"; };
+		DA87E90B25A076C800784FB5 /* DPLShortcutMonitor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DPLShortcutMonitor.h; sourceTree = "<group>"; };
+		DA87E90C25A076C800784FB5 /* DPLShortcutMonitor.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = DPLShortcutMonitor.mm; sourceTree = "<group>"; };
 		DAAF0539259789F300ED206F /* DisplaceKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DisplaceKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAAF053B259789F300ED206F /* DisplaceKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DisplaceKit.h; sourceTree = "<group>"; };
 		DAAF053C259789F300ED206F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -337,6 +340,8 @@
 				DAFD864D258D3712004EB800 /* DPLAppController.mm */,
 				DAB11480258E85FB008C2BE8 /* DPLMenuController.h */,
 				DAB11481258E85FB008C2BE8 /* DPLMenuController.mm */,
+				DA87E90B25A076C800784FB5 /* DPLShortcutMonitor.h */,
+				DA87E90C25A076C800784FB5 /* DPLShortcutMonitor.mm */,
 				DAC91F5C2532F6B200A08DE0 /* Assets.xcassets */,
 				DAAF059825978FBC00ED206F /* Other… */,
 			);
@@ -583,6 +588,7 @@
 				DAC91F632532F6B200A08DE0 /* main.m in Sources */,
 				DAFD864E258D3712004EB800 /* DPLAppController.mm in Sources */,
 				DAB11482258E85FB008C2BE8 /* DPLMenuController.mm in Sources */,
+				DA87E90D25A076C800784FB5 /* DPLShortcutMonitor.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

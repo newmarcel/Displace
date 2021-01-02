@@ -7,13 +7,15 @@
 
 #import "DPLAppController.h"
 #import <DisplaceKit/DisplaceKit.h>
-#import "DPLMenuController.h"
 #import <ShortcutRecorder/ShortcutRecorder.h>
+#import "DPLMenuController.h"
+#import "DPLShortcutMonitor.h"
 
-@interface DPLAppController () <DPLMenuControllerDataSource, DPLMenuControllerDelegate>
+@interface DPLAppController () <DPLMenuControllerDataSource, DPLMenuControllerDelegate, DPLShortcutMonitorDelegate>
 @property (nonatomic) NSArray<DPLDisplay *> *displays;
-@property (nonatomic) DPLMenuController *menuController;
 @property (nonatomic, readwrite) NSStatusItem *systemStatusItem;
+@property (nonatomic) DPLMenuController *menuController;
+@property (nonatomic) DPLShortcutMonitor *shortcutMonitor;
 @end
 
 @implementation DPLAppController
@@ -24,9 +26,10 @@
     if (self)
     {
         self.displays = DPLDisplay.allDisplays;
+        
         [self configureMenuController];
         [self configureStatusItem];
-        [self configureGlobalShortcuts];
+        [self configureShortcutMonitor];
     }
     return self;
 }
@@ -57,34 +60,16 @@
     self.systemStatusItem = statusItem;
 }
 
-- (void)configureGlobalShortcuts
+- (void)configureShortcutMonitor
 {
     auto preferences = DPLPreferences.sharedPreferences;
-    auto monitor = SRGlobalShortcutMonitor.sharedMonitor;
+    auto monitor = [DPLShortcutMonitor new];
+    monitor.delegate = self;
+    monitor.increaseResolutionShortcut = preferences.increaseResolutionShortcut;
+    monitor.decreaseResolutionShortcut = preferences.decreaseResolutionShortcut;
+    self.shortcutMonitor = monitor;
     
-    auto increaseShortcut = preferences.increaseResolutionShortcut;
-    auto increaseAction = [SRShortcutAction shortcutActionWithShortcut:increaseShortcut actionHandler:^BOOL(SRShortcutAction *action) {
-        NSLog(@"Up");
-        if(auto dpl = self.displays.firstObject)
-        {
-            dpl.currentDisplayMode = dpl.nextDisplayMode;
-            [dpl applyCurrentDisplayMode];
-        }
-        return YES;
-    }];
-    [monitor addAction:increaseAction forKeyEvent:SRKeyEventTypeUp];
-    
-    auto decreaseShortcut = preferences.decreaseResolutionShortcut;
-    auto decreaseAction = [SRShortcutAction shortcutActionWithShortcut:decreaseShortcut actionHandler:^BOOL(SRShortcutAction *action) {
-        NSLog(@"Down");
-        if(auto dpl = self.displays.firstObject)
-        {
-            dpl.currentDisplayMode = dpl.previousDisplayMode;
-            [dpl applyCurrentDisplayMode];
-        }
-        return YES;
-    }];
-    [monitor addAction:decreaseAction forKeyEvent:SRKeyEventTypeUp];
+    [monitor startMonitoring];
 }
 
 #pragma mark - DPLMenuControllerDataSource
@@ -181,6 +166,30 @@
 }
 
 - (void)menuControllerShouldDecreaseResolution:(DPLMenuController *)controller
+{
+#warning TODO: Get current display
+    auto display = self.displays.firstObject;
+    if(auto previous = display.previousDisplayMode)
+    {
+        display.currentDisplayMode = previous;
+        [display applyCurrentDisplayMode];
+    }
+}
+
+#pragma mark - DPLShortcutMonitorDelegate
+
+- (void)shortcutMonitorShouldIncreaseResolution:(DPLShortcutMonitor *)monitor
+{
+#warning TODO: Get current display
+    auto display = self.displays.firstObject;
+    if(auto next = display.nextDisplayMode)
+    {
+        display.currentDisplayMode = next;
+        [display applyCurrentDisplayMode];
+    }
+}
+
+- (void)shortcutMonitorShouldDecreaseResolution:(DPLShortcutMonitor *)monitor
 {
 #warning TODO: Get current display
     auto display = self.displays.firstObject;
