@@ -127,19 +127,21 @@
 - (void)keyEquivalentForIncrease:(NSString **)key modifierFlags:(NSEventModifierFlags *)flags
 {
     auto preferences = DPLPreferences.sharedPreferences;
-    auto shortcut = preferences.increaseResolutionShortcut;
-    
-    *key = [SRKeyEquivalentTransformer.sharedTransformer transformedValue:shortcut];
-    *flags = shortcut.modifierFlags;
+    if(auto shortcut = preferences.increaseResolutionShortcut)
+    {
+        *key = [SRKeyEquivalentTransformer.sharedTransformer transformedValue:shortcut];
+        *flags = shortcut.modifierFlags;
+    }
 }
 
 - (void)keyEquivalentForDecrease:(NSString **)key modifierFlags:(NSEventModifierFlags *)flags
 {
     auto preferences = DPLPreferences.sharedPreferences;
-    auto shortcut = preferences.decreaseResolutionShortcut;
-    
-    *key = [SRKeyEquivalentTransformer.sharedTransformer transformedValue:shortcut];
-    *flags = shortcut.modifierFlags;
+    if(auto shortcut = preferences.decreaseResolutionShortcut)
+    {
+        *key = [SRKeyEquivalentTransformer.sharedTransformer transformedValue:shortcut];
+        *flags = shortcut.modifierFlags;
+    }
 }
 
 #pragma mark - DPLMenuControllerDelegate

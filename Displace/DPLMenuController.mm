@@ -111,10 +111,6 @@
         [dataSource keyEquivalentForIncrease:&increaseKeyEquivalent
                                modifierFlags:&increaseFlags];
     }
-    else
-    {
-        return;
-    }
     
     NSString *decreaseKeyEquivalent;
     NSEventModifierFlags decreaseFlags = 0;
@@ -123,26 +119,28 @@
         [dataSource keyEquivalentForDecrease:&decreaseKeyEquivalent
                                modifierFlags:&decreaseFlags];
     }
-    else
-    {
-        return;
-    }
     
     // If the data source is satisfied, begin with a separator
     [menu addItem:NSMenuItem.separatorItem];
     
     auto increaseItem = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"Increase Resolution", @"Increase Resolution")
                                                    action:@selector(increaseResolution:)
-                                            keyEquivalent:increaseKeyEquivalent];
+                                            keyEquivalent:increaseKeyEquivalent ?: @""];
     increaseItem.target = self;
-    increaseItem.keyEquivalentModifierMask = increaseFlags;
+    if(increaseKeyEquivalent != nil)
+    {
+        increaseItem.keyEquivalentModifierMask = increaseFlags;
+    }
     [menu addItem:increaseItem];
     
     auto decreaseItem = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"Decrease Resolution", @"Decrease Resolution")
                                                    action:@selector(decreaseResolution:)
-                                            keyEquivalent:decreaseKeyEquivalent];
+                                            keyEquivalent:decreaseKeyEquivalent ?: @""];
     decreaseItem.target = self;
-    decreaseItem.keyEquivalentModifierMask = decreaseFlags;
+    if(decreaseKeyEquivalent != nil)
+    {
+        decreaseItem.keyEquivalentModifierMask = decreaseFlags;
+    }
     [menu addItem:decreaseItem];
 }
 
