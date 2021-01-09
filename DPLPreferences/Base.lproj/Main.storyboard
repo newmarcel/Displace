@@ -1027,6 +1027,9 @@
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="allowsEscapeToCancelRecording" value="YES"/>
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="allowsDeleteToClearShortcutAndEndRecording" value="YES"/>
                                             </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <outlet property="delegate" destination="tUh-M8-Vvv" id="I0o-Y1-Sdn"/>
+                                            </connections>
                                         </customView>
                                     </gridCell>
                                     <gridCell row="fdg-fm-yiy" column="z7z-y8-6ek" id="FiB-uV-gyG">
@@ -1050,6 +1053,9 @@
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="allowsEscapeToCancelRecording" value="YES"/>
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="allowsDeleteToClearShortcutAndEndRecording" value="YES"/>
                                             </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <outlet property="delegate" destination="tUh-M8-Vvv" id="J1m-MD-MoC"/>
+                                            </connections>
                                         </customView>
                                     </gridCell>
                                 </gridCells>

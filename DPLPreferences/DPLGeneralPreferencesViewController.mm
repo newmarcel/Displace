@@ -8,7 +8,7 @@
 #import "DPLGeneralPreferencesViewController.h"
 #import <ShortcutRecorder/ShortcutRecorder.h>
 
-@interface DPLGeneralPreferencesViewController ()
+@interface DPLGeneralPreferencesViewController () <SRRecorderControlDelegate>
 @property (nonatomic) NSUserDefaultsController *defaultsController;
 @property (nonatomic) SRShortcut *increaseShortcut;
 @property (nonatomic) SRShortcut *decreaseShortcut;
@@ -65,9 +65,19 @@
 
 - (void)setIncreaseShortcut:(SRShortcut *)increaseShortcut
 {
+    auto preferences = DPLPreferences.sharedPreferences;
+    
     [self willChangeValueForKey:@"increaseShortcut"];
-    DPLPreferences.sharedPreferences.increaseResolutionShortcut = increaseShortcut;
+    preferences.increaseResolutionShortcut = increaseShortcut;
     [self didChangeValueForKey:@"increaseShortcut"];
+    
+    DPLDistributedNotificationPostNotification(DPLShortcutDidChangeNotification);
+    
+    
+    if(increaseShortcut && [increaseShortcut isEqualToShortcut:self.decreaseShortcut])
+    {
+        self.decreaseShortcut = nil;
+    }
 }
 
 - (SRShortcut *)decreaseShortcut
@@ -83,6 +93,26 @@
     [self willChangeValueForKey:@"decreaseShortcut"];
     preferences.decreaseResolutionShortcut = decreaseShortcut;
     [self didChangeValueForKey:@"decreaseShortcut"];
+    
+    DPLDistributedNotificationPostNotification(DPLShortcutDidChangeNotification);
+    
+    if(decreaseShortcut && [decreaseShortcut isEqualToShortcut:self.increaseShortcut])
+    {
+        self.increaseShortcut = nil;
+    }
+}
+
+#pragma mark - SRRecorderControlDelegate
+
+- (BOOL)recorderControlShouldBeginRecording:(SRRecorderControl *)aControl
+{
+    DPLDistributedNotificationPostNotification(DPLShortcutWillEditNotification);
+    return YES;
+}
+
+- (void)recorderControlDidEndRecording:(SRRecorderControl *)aControl
+{
+    DPLDistributedNotificationPostNotification(DPLShortcutDidEditNotification);
 }
 
 @end

@@ -62,11 +62,8 @@
 
 - (void)configureShortcutMonitor
 {
-    auto preferences = DPLPreferences.sharedPreferences;
     auto monitor = [DPLShortcutMonitor new];
     monitor.delegate = self;
-    monitor.increaseResolutionShortcut = preferences.increaseResolutionShortcut;
-    monitor.decreaseResolutionShortcut = preferences.decreaseResolutionShortcut;
     self.shortcutMonitor = monitor;
     
     [monitor startMonitoring];
@@ -198,6 +195,18 @@
         display.currentDisplayMode = previous;
         [display applyCurrentDisplayMode];
     }
+}
+
+- (SRShortcut *)keyboardShortcutForIncreaseResolution
+{
+    auto preferences = DPLPreferences.sharedPreferences;
+    return preferences.increaseResolutionShortcut;
+}
+
+- (SRShortcut *)keyboardShortcutForDecreaseResolution
+{
+    auto preferences = DPLPreferences.sharedPreferences;
+    return preferences.decreaseResolutionShortcut;
 }
 
 #pragma mark - NSApplicationDelegate

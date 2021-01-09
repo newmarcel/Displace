@@ -14,8 +14,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DPLShortcutMonitor : NSObject
 @property (weak, nonatomic, nullable) id<DPLShortcutMonitorDelegate> delegate;
-@property (nonatomic, nullable) SRShortcut *increaseResolutionShortcut;
-@property (nonatomic, nullable) SRShortcut *decreaseResolutionShortcut;
 
 - (void)startMonitoring;
 - (void)stopMonitoring;
@@ -26,6 +24,10 @@ NS_ASSUME_NONNULL_BEGIN
 @optional
 - (void)shortcutMonitorShouldIncreaseResolution:(DPLShortcutMonitor *)monitor;
 - (void)shortcutMonitorShouldDecreaseResolution:(DPLShortcutMonitor *)monitor;
+
+- (nullable SRShortcut *)keyboardShortcutForIncreaseResolution;
+- (nullable SRShortcut *)keyboardShortcutForDecreaseResolution;
+
 @end
 
 NS_ASSUME_NONNULL_END
