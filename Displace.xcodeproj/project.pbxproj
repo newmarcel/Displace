@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DA09719625AA449500B12CB4 /* DPLDistributedNotification.h in Headers */ = {isa = PBXBuildFile; fileRef = DA09719425AA449500B12CB4 /* DPLDistributedNotification.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DA09719725AA449500B12CB4 /* DPLDistributedNotification.mm in Sources */ = {isa = PBXBuildFile; fileRef = DA09719525AA449500B12CB4 /* DPLDistributedNotification.mm */; };
+		DA09719625AA449500B12CB4 /* DPLNotificationCenter.h in Headers */ = {isa = PBXBuildFile; fileRef = DA09719425AA449500B12CB4 /* DPLNotificationCenter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DA09719725AA449500B12CB4 /* DPLNotificationCenter.mm in Sources */ = {isa = PBXBuildFile; fileRef = DA09719525AA449500B12CB4 /* DPLNotificationCenter.mm */; };
 		DA0DE9FA2597BB6E00FCFE43 /* NSURL+DPLPreferences.h in Headers */ = {isa = PBXBuildFile; fileRef = DA0DE9F82597BB6E00FCFE43 /* NSURL+DPLPreferences.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DA0DE9FB2597BB6E00FCFE43 /* NSURL+DPLPreferences.mm in Sources */ = {isa = PBXBuildFile; fileRef = DA0DE9F92597BB6E00FCFE43 /* NSURL+DPLPreferences.mm */; };
 		DA2ECE6A259A1800009542DB /* DPLDisplayViewModel.mm in Sources */ = {isa = PBXBuildFile; fileRef = DA2ECE69259A1800009542DB /* DPLDisplayViewModel.mm */; };
@@ -115,8 +115,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		DA09719425AA449500B12CB4 /* DPLDistributedNotification.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DPLDistributedNotification.h; sourceTree = "<group>"; };
-		DA09719525AA449500B12CB4 /* DPLDistributedNotification.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = DPLDistributedNotification.mm; sourceTree = "<group>"; };
+		DA09719425AA449500B12CB4 /* DPLNotificationCenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DPLNotificationCenter.h; sourceTree = "<group>"; };
+		DA09719525AA449500B12CB4 /* DPLNotificationCenter.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = DPLNotificationCenter.mm; sourceTree = "<group>"; };
 		DA0DE9F82597BB6E00FCFE43 /* NSURL+DPLPreferences.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSURL+DPLPreferences.h"; sourceTree = "<group>"; };
 		DA0DE9F92597BB6E00FCFE43 /* NSURL+DPLPreferences.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = "NSURL+DPLPreferences.mm"; sourceTree = "<group>"; };
 		DA2ECE68259A1800009542DB /* DPLDisplayViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DPLDisplayViewModel.h; sourceTree = "<group>"; };
@@ -222,13 +222,13 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		DA0971A425AA472500B12CB4 /* DPLDistributedNotification */ = {
+		DA0971A425AA472500B12CB4 /* DPLNotificationCenter */ = {
 			isa = PBXGroup;
 			children = (
-				DA09719425AA449500B12CB4 /* DPLDistributedNotification.h */,
-				DA09719525AA449500B12CB4 /* DPLDistributedNotification.mm */,
+				DA09719425AA449500B12CB4 /* DPLNotificationCenter.h */,
+				DA09719525AA449500B12CB4 /* DPLNotificationCenter.mm */,
 			);
-			path = DPLDistributedNotification;
+			path = DPLNotificationCenter;
 			sourceTree = "<group>";
 		};
 		DA643AD72532FAE800F0A49A /* Frameworks */ = {
@@ -260,7 +260,7 @@
 				DAAF055E25978AB000ED206F /* DPLDisplayMode */,
 				DAAF056125978AB000ED206F /* DPLAppGroup */,
 				DAAF055A25978AB000ED206F /* DPLPreferences */,
-				DA0971A425AA472500B12CB4 /* DPLDistributedNotification */,
+				DA0971A425AA472500B12CB4 /* DPLNotificationCenter */,
 			);
 			path = DisplaceKit;
 			sourceTree = "<group>";
@@ -397,7 +397,7 @@
 				DA0DE9FA2597BB6E00FCFE43 /* NSURL+DPLPreferences.h in Headers */,
 				DAAF056825978AB000ED206F /* DPLPreferences.h in Headers */,
 				DAAF056F25978AB000ED206F /* DPLDisplay.h in Headers */,
-				DA09719625AA449500B12CB4 /* DPLDistributedNotification.h in Headers */,
+				DA09719625AA449500B12CB4 /* DPLNotificationCenter.h in Headers */,
 				DAAF054B259789F300ED206F /* DisplaceKit.h in Headers */,
 				DA3DC72C2598907F00275021 /* NSWorkspace+DPLPreferences.h in Headers */,
 			);
@@ -580,7 +580,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA0DE9FB2597BB6E00FCFE43 /* NSURL+DPLPreferences.mm in Sources */,
-				DA09719725AA449500B12CB4 /* DPLDistributedNotification.mm in Sources */,
+				DA09719725AA449500B12CB4 /* DPLNotificationCenter.mm in Sources */,
 				DAAF056C25978AB000ED206F /* DPLAppGroup.mm in Sources */,
 				DA3DC72B2598907F00275021 /* NSWorkspace+DPLPreferences.mm in Sources */,
 				DAAF056A25978AB000ED206F /* DPLDisplayMode.mm in Sources */,

@@ -71,7 +71,8 @@
     preferences.increaseResolutionShortcut = increaseShortcut;
     [self didChangeValueForKey:@"increaseShortcut"];
     
-    DPLDistributedNotificationPostNotification(DPLShortcutDidChangeNotification);
+    auto center = DPLNotificationCenter.defaultCenter;
+    [center postNotification:DPLShortcutDidChangeNotification];
     
     
     if(increaseShortcut && [increaseShortcut isEqualToShortcut:self.decreaseShortcut])
@@ -94,7 +95,8 @@
     preferences.decreaseResolutionShortcut = decreaseShortcut;
     [self didChangeValueForKey:@"decreaseShortcut"];
     
-    DPLDistributedNotificationPostNotification(DPLShortcutDidChangeNotification);
+    auto center = DPLNotificationCenter.defaultCenter;
+    [center postNotification:DPLShortcutDidChangeNotification];
     
     if(decreaseShortcut && [decreaseShortcut isEqualToShortcut:self.increaseShortcut])
     {
@@ -106,13 +108,15 @@
 
 - (BOOL)recorderControlShouldBeginRecording:(SRRecorderControl *)aControl
 {
-    DPLDistributedNotificationPostNotification(DPLShortcutWillEditNotification);
+    auto center = DPLNotificationCenter.defaultCenter;
+    [center postNotification:DPLShortcutWillEditNotification];
     return YES;
 }
 
 - (void)recorderControlDidEndRecording:(SRRecorderControl *)aControl
 {
-    DPLDistributedNotificationPostNotification(DPLShortcutDidEditNotification);
+    auto center = DPLNotificationCenter.defaultCenter;
+    [center postNotification:DPLShortcutDidEditNotification];
 }
 
 @end

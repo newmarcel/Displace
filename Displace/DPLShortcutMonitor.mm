@@ -33,22 +33,21 @@
 
 - (void)registerNotifications
 {
-    DPLDistributedNotificationAddObserver(self,
-                                          @selector(keyboardShortcutsDidChange:),
-                                          DPLShortcutDidChangeNotification);
-    DPLDistributedNotificationAddObserver(self,
-                                          @selector(keyboardShortcutsWillEdit:),
-                                          DPLShortcutWillEditNotification);
-    DPLDistributedNotificationAddObserver(self,
-                                          @selector(keyboardShortcutsDidEdit:),
-                                          DPLShortcutDidEditNotification);
+    auto center = DPLNotificationCenter.defaultCenter;
+    [center addObserver:self selector:@selector(keyboardShortcutsDidChange:)
+                   name:DPLShortcutDidChangeNotification];
+    [center addObserver:self selector:@selector(keyboardShortcutsWillEdit:)
+                   name:DPLShortcutWillEditNotification];
+    [center addObserver:self selector:@selector(keyboardShortcutsDidEdit:)
+                   name:DPLShortcutDidEditNotification];
 }
 
 - (void)unregisterNotifications
 {
-    DPLDistributedNotificationRemoveObserver(self, DPLShortcutDidChangeNotification);
-    DPLDistributedNotificationRemoveObserver(self, DPLShortcutWillEditNotification);
-    DPLDistributedNotificationRemoveObserver(self, DPLShortcutDidEditNotification);
+    auto center = DPLNotificationCenter.defaultCenter;
+    [center removeObserver:self name:DPLShortcutDidChangeNotification];
+    [center removeObserver:self name:DPLShortcutWillEditNotification];
+    [center removeObserver:self name:DPLShortcutDidEditNotification];
 }
 
 - (void)keyboardShortcutsDidChange:(nullable NSNotification *)notification
