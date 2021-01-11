@@ -992,11 +992,11 @@
             <objects>
                 <viewController storyboardIdentifier="ShortcutsViewController" id="tUh-M8-Vvv" customClass="DPLGeneralPreferencesViewController" sceneMemberID="viewController">
                     <view key="view" id="YuL-J5-alJ">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="305"/>
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="366"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <gridView xPlacement="fill" yPlacement="fill" rowAlignment="firstBaseline" rowSpacing="12" columnSpacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="sat-0J-gEt">
-                                <rect key="frame" x="85" y="111" width="281" height="98"/>
+                                <rect key="frame" x="85" y="172" width="281" height="98"/>
                                 <rows>
                                     <gridRow id="hs7-21-M79"/>
                                     <gridRow id="fdg-fm-yiy"/>
@@ -1061,7 +1061,7 @@
                                 </gridCells>
                             </gridView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xQD-bJ-Fkp">
-                                <rect key="frame" x="18" y="217" width="133" height="16"/>
+                                <rect key="frame" x="18" y="278" width="133" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Keyboard Shortcuts" id="68q-86-3aR">
                                     <font key="font" textStyle="headline" name=".SFNS-Bold"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1069,10 +1069,10 @@
                                 </textFieldCell>
                             </textField>
                             <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="XN2-TS-G6a">
-                                <rect key="frame" x="20" y="88" width="410" height="5"/>
+                                <rect key="frame" x="20" y="149" width="410" height="5"/>
                             </box>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="SUX-nj-hVP">
-                                <rect key="frame" x="18" y="32" width="414" height="14"/>
+                                <rect key="frame" x="18" y="93" width="414" height="14"/>
                                 <textFieldCell key="cell" selectable="YES" title="Filters the list of display resolutions to only contain Retina display resolutions." id="o7o-81-RXT">
                                     <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
@@ -1080,16 +1080,31 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hHl-SZ-Fd3">
-                                <rect key="frame" x="18" y="53" width="412" height="18"/>
+                                <rect key="frame" x="18" y="114" width="412" height="18"/>
                                 <buttonCell key="cell" type="check" title="Show Non-Retina Display Resolutions" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="v6e-0Q-hSn">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
+                            <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="izk-bR-Uk9">
+                                <rect key="frame" x="20" y="70" width="410" height="5"/>
+                            </box>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="QV9-9P-3Pb">
+                                <rect key="frame" x="190" y="25" width="247" height="32"/>
+                                <buttonCell key="cell" type="push" title="Save Current Display Configuration" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="WXK-0R-A4B">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="saveConfiguration:" target="tUh-M8-Vvv" id="fZO-MX-xp8"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="xQD-bJ-Fkp" firstAttribute="leading" secondItem="YuL-J5-alJ" secondAttribute="leading" constant="20" symbolic="YES" id="1BL-bh-Fhw"/>
+                            <constraint firstItem="QV9-9P-3Pb" firstAttribute="trailing" secondItem="Lg4-sb-IlU" secondAttribute="trailing" id="6DX-vq-45s"/>
                             <constraint firstAttribute="trailing" secondItem="XN2-TS-G6a" secondAttribute="trailing" constant="20" symbolic="YES" id="6qV-4I-nsE"/>
+                            <constraint firstItem="izk-bR-Uk9" firstAttribute="leading" secondItem="YuL-J5-alJ" secondAttribute="leading" constant="20" symbolic="YES" id="8cU-hL-Woi"/>
                             <constraint firstItem="Lg4-sb-IlU" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="SUX-nj-hVP" secondAttribute="bottom" id="Ekt-td-7iU"/>
                             <constraint firstItem="Lg4-sb-IlU" firstAttribute="leading" relation="lessThanOrEqual" secondItem="sat-0J-gEt" secondAttribute="leading" id="Fxl-p1-Zrp"/>
                             <constraint firstItem="SUX-nj-hVP" firstAttribute="top" secondItem="hHl-SZ-Fd3" secondAttribute="bottom" constant="8" symbolic="YES" id="GAS-U7-bhY"/>
@@ -1097,12 +1112,17 @@
                             <constraint firstItem="hHl-SZ-Fd3" firstAttribute="top" secondItem="XN2-TS-G6a" secondAttribute="bottom" constant="20" id="RAf-Pf-uS9"/>
                             <constraint firstItem="Lg4-sb-IlU" firstAttribute="trailing" secondItem="hHl-SZ-Fd3" secondAttribute="trailing" id="SLh-uQ-fcN"/>
                             <constraint firstItem="sat-0J-gEt" firstAttribute="top" secondItem="xQD-bJ-Fkp" secondAttribute="bottom" constant="8" symbolic="YES" id="YMB-Rz-Dlk"/>
+                            <constraint firstItem="Lg4-sb-IlU" firstAttribute="leading" relation="lessThanOrEqual" secondItem="QV9-9P-3Pb" secondAttribute="leading" id="YYe-CM-u70"/>
                             <constraint firstItem="SUX-nj-hVP" firstAttribute="trailing" secondItem="Lg4-sb-IlU" secondAttribute="trailing" id="fsW-FV-NPm"/>
                             <constraint firstItem="Lg4-sb-IlU" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="sat-0J-gEt" secondAttribute="trailing" id="gni-0e-vwV"/>
+                            <constraint firstAttribute="trailing" secondItem="izk-bR-Uk9" secondAttribute="trailing" constant="20" symbolic="YES" id="j8a-65-XbP"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="xQD-bJ-Fkp" secondAttribute="trailing" constant="20" symbolic="YES" id="mLJ-bu-BTP"/>
                             <constraint firstItem="XN2-TS-G6a" firstAttribute="top" secondItem="sat-0J-gEt" secondAttribute="bottom" constant="20" id="oyi-SZ-QMk"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="QV9-9P-3Pb" secondAttribute="bottom" constant="20" id="sLn-4D-dOG"/>
                             <constraint firstItem="SUX-nj-hVP" firstAttribute="leading" secondItem="Lg4-sb-IlU" secondAttribute="leading" id="tOa-9L-yCH"/>
+                            <constraint firstItem="QV9-9P-3Pb" firstAttribute="top" secondItem="izk-bR-Uk9" secondAttribute="bottom" constant="20" id="uim-8g-e3G"/>
                             <constraint firstItem="xQD-bJ-Fkp" firstAttribute="top" secondItem="Lg4-sb-IlU" secondAttribute="top" id="xFz-Jl-rFE"/>
+                            <constraint firstItem="izk-bR-Uk9" firstAttribute="top" secondItem="SUX-nj-hVP" secondAttribute="bottom" constant="20" id="xX6-uY-XmW"/>
                             <constraint firstItem="XN2-TS-G6a" firstAttribute="leading" secondItem="YuL-J5-alJ" secondAttribute="leading" constant="20" symbolic="YES" id="zH0-7z-qx7"/>
                             <constraint firstItem="hHl-SZ-Fd3" firstAttribute="leading" secondItem="Lg4-sb-IlU" secondAttribute="leading" id="zp9-za-5zg"/>
                         </constraints>
@@ -1117,7 +1137,7 @@
                 </viewController>
                 <customObject id="LqD-mD-8s2" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="848" y="1383"/>
+            <point key="canvasLocation" x="848" y="1418"/>
         </scene>
     </scenes>
     <resources>

@@ -56,6 +56,13 @@
                                options:nil];
 }
 
+#pragma mark - Save Configuration
+
+- (IBAction)saveConfiguration:(id)sender
+{
+    NSLog(@"Save configuration…");
+}
+
 #pragma mark - Shortcuts
 
 - (SRShortcut *)increaseShortcut
