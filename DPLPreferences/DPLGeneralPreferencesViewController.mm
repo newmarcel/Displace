@@ -60,7 +60,27 @@
 
 - (IBAction)saveConfiguration:(id)sender
 {
-    NSLog(@"Save configuration…");
+    auto window = self.view.window;
+    auto savePanel = NSSavePanel.savePanel;
+    savePanel.nameFieldStringValue = [self proposedFileName];
+    savePanel.extensionHidden = NO;
+    
+    [savePanel beginSheetModalForWindow:window completionHandler:^(NSModalResponse result) {
+        auto fileURL = savePanel.URL;
+        if(result == NSModalResponseOK)
+        {
+            NSLog(@"Saving to %@", fileURL);
+        }
+    }];
+}
+
+- (NSString *)proposedFileName
+{
+    auto now = [NSDate date];
+    auto dateString = [NSDateFormatter localizedStringFromDate:now
+                                                     dateStyle:NSDateFormatterShortStyle
+                                                     timeStyle:NSDateFormatterNoStyle];
+    return [NSString stringWithFormat:@"Display Configuration %@.txt", dateString];
 }
 
 #pragma mark - Shortcuts
