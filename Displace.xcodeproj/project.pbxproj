@@ -47,6 +47,8 @@
 		DAD660902597B112007E8969 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DAD6608F2597B112007E8969 /* main.m */; };
 		DAD660AB2597B1A1007E8969 /* Displace Preferences.app in Embed Preferences */ = {isa = PBXBuildFile; fileRef = DAD660812597B110007E8969 /* Displace Preferences.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		DAD660BB2597B2C3007E8969 /* DisplaceKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAAF0539259789F300ED206F /* DisplaceKit.framework */; };
+		DADDAEF025B2E19000DD1FEF /* NSScreen+DPLDisplay.h in Headers */ = {isa = PBXBuildFile; fileRef = DADDAEEE25B2E19000DD1FEF /* NSScreen+DPLDisplay.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DADDAEF125B2E19000DD1FEF /* NSScreen+DPLDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = DADDAEEF25B2E19000DD1FEF /* NSScreen+DPLDisplay.m */; };
 		DAEED157259DF1FA0011CEFF /* ShortcutRecorder in Frameworks */ = {isa = PBXBuildFile; productRef = DAEED156259DF1FA0011CEFF /* ShortcutRecorder */; };
 		DAFD864E258D3712004EB800 /* DPLAppController.mm in Sources */ = {isa = PBXBuildFile; fileRef = DAFD864D258D3712004EB800 /* DPLAppController.mm */; };
 /* End PBXBuildFile section */
@@ -168,6 +170,8 @@
 		DAD6608E2597B112007E8969 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DAD6608F2597B112007E8969 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		DAD660912597B112007E8969 /* DPLPreferences.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DPLPreferences.entitlements; sourceTree = "<group>"; };
+		DADDAEEE25B2E19000DD1FEF /* NSScreen+DPLDisplay.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSScreen+DPLDisplay.h"; sourceTree = "<group>"; };
+		DADDAEEF25B2E19000DD1FEF /* NSScreen+DPLDisplay.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSScreen+DPLDisplay.m"; sourceTree = "<group>"; };
 		DAFD864C258D3712004EB800 /* DPLAppController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DPLAppController.h; sourceTree = "<group>"; };
 		DAFD864D258D3712004EB800 /* DPLAppController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = DPLAppController.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -308,6 +312,7 @@
 			children = (
 				DAAF056625978AB000ED206F /* DPLDisplay.h */,
 				DAAF056525978AB000ED206F /* DPLDisplay.mm */,
+				DADDAEFB25B2E1DC00DD1FEF /* Extensions */,
 			);
 			path = DPLDisplay;
 			sourceTree = "<group>";
@@ -384,6 +389,15 @@
 			path = DPLPreferences;
 			sourceTree = "<group>";
 		};
+		DADDAEFB25B2E1DC00DD1FEF /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				DADDAEEE25B2E19000DD1FEF /* NSScreen+DPLDisplay.h */,
+				DADDAEEF25B2E19000DD1FEF /* NSScreen+DPLDisplay.m */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -391,6 +405,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DADDAEF025B2E19000DD1FEF /* NSScreen+DPLDisplay.h in Headers */,
 				DAAF056725978AB000ED206F /* DPLDefaultsProvider.h in Headers */,
 				DAAF056B25978AB000ED206F /* DPLDisplayMode.h in Headers */,
 				DAAF056D25978AB000ED206F /* DPLAppGroup.h in Headers */,
@@ -580,6 +595,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA0DE9FB2597BB6E00FCFE43 /* NSURL+DPLPreferences.mm in Sources */,
+				DADDAEF125B2E19000DD1FEF /* NSScreen+DPLDisplay.m in Sources */,
 				DA09719725AA449500B12CB4 /* DPLNotificationCenter.mm in Sources */,
 				DAAF056C25978AB000ED206F /* DPLAppGroup.mm in Sources */,
 				DA3DC72B2598907F00275021 /* NSWorkspace+DPLPreferences.mm in Sources */,

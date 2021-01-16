@@ -43,7 +43,7 @@ constexpr NSUserInterfaceItemIdentifier DataCell = @"DataCell";
 - (void)configureDisplays
 {
     auto displays = [NSMutableArray<DPLDisplayViewModel *> new];
-    for(DPLDisplay *displayObject in DPLDisplay.allDisplays)
+    for(DPLDisplay *displayObject in [DPLDisplay allDisplaysWithInformationFromScreens:NSScreen.screens])
     {
         [displays addObject:[[DPLDisplayViewModel alloc] initWithDisplay:displayObject]];
     }

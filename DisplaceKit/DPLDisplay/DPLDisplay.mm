@@ -24,6 +24,7 @@ static NSString *BoolToString(BOOL value) { return (value == YES) ? @"YES" : @"N
 @property (nonatomic, getter=isOnline, readwrite) BOOL online;
 @property (nonatomic, getter=isBuiltIn, readwrite) BOOL builtIn;
 @property (nonatomic, readwrite) NSArray<DPLDisplayMode *> *displayModes;
+@property (copy, nonatomic, readwrite) NSString *localizedName;
 @end
 
 @implementation DPLDisplay
@@ -58,6 +59,9 @@ static NSString *BoolToString(BOOL value) { return (value == YES) ? @"YES" : @"N
         BOOL isBuiltIn = CGDisplayIsBuiltin(display);
         size_t width = CGDisplayPixelsWide(display);
         size_t height = CGDisplayPixelsWide(display);
+        
+        // TODO: Metal Device Info
+        // CGDirectDisplayCopyCurrentMetalDevice(…)
         
         auto displayModes = [NSMutableArray<DPLDisplayMode *> new];
         auto options = @{
@@ -200,6 +204,8 @@ static NSString *BoolToString(BOOL value) { return (value == YES) ? @"YES" : @"N
 
 - (NSString *)localizedName
 {
+    if(_localizedName != nil) { return _localizedName; }
+    
     if([self isBuiltIn])
     {
         return NSLocalizedString(@"Internal Display", @"Internal Display");
