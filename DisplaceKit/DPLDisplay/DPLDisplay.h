@@ -7,6 +7,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreGraphics/CoreGraphics.h>
+#import <AppKit/NSScreen.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -29,6 +30,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, nullable, readonly) DPLDisplayMode *previousDisplayMode;
 
 @property (copy, nonatomic, readonly) NSString *localizedName;
+
++ (NSArray<DPLDisplay *> *)allDisplaysUsingInformationFromScreens:(nullable NSArray<NSScreen *> *)screens;
 
 + (instancetype)new NS_UNAVAILABLE;
 - (instancetype)init NS_UNAVAILABLE;

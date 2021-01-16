@@ -8,6 +8,7 @@
 #import "DPLDisplay.h"
 #import "DPLDisplayMode.h"
 #import "DPLPreferences.h"
+#import "NSScreen+DPLDisplay.h"
 
 namespace DPL::Display
 {
@@ -30,6 +31,11 @@ static NSString *BoolToString(BOOL value) { return (value == YES) ? @"YES" : @"N
 @implementation DPLDisplay
 
 + (NSArray<DPLDisplay *> *)allDisplays
+{
+    return [self allDisplaysUsingInformationFromScreens:NSScreen.screens];
+}
+
++ (NSArray<DPLDisplay *> *)allDisplaysUsingInformationFromScreens:(NSArray<NSScreen *> *)screens
 {
     using namespace DPL::Display;
     
@@ -104,6 +110,15 @@ static NSString *BoolToString(BOOL value) { return (value == YES) ? @"YES" : @"N
                                                         displayModes:[displayModes copy]
                                                   currentDisplayMode:currentDisplayMode];
         [displays addObject:displayInstance];
+        
+        // Enhance the display instance with NSScreen information
+        for(NSScreen *screen in screens)
+        {
+            if(screen.dpl_displayID == displayID)
+            {
+                displayInstance.localizedName = screen.localizedName;
+            }
+        }
     }
 
 

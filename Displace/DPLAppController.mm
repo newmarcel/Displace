@@ -25,7 +25,7 @@
     self = [super init];
     if (self)
     {
-        self.displays = [DPLDisplay allDisplaysWithInformationFromScreens:NSScreen.screens];
+        self.displays = DPLDisplay.allDisplays;
         
         [self configureMenuController];
         [self configureStatusItem];

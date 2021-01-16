@@ -6,7 +6,7 @@
 //
 
 #import "NSScreen+DPLDisplay.h"
-const NSDeviceDescriptionKey DPLScreenNumberKey = @"NSScreenNumber";
+static const NSDeviceDescriptionKey DPLScreenNumberKey = @"NSScreenNumber";
 
 @implementation NSScreen (DPLDisplay)
 
@@ -15,33 +15,6 @@ const NSDeviceDescriptionKey DPLScreenNumberKey = @"NSScreenNumber";
     NSDictionary<NSDeviceDescriptionKey, id> *deviceDescription = self.deviceDescription;
     NSNumber *screenNumber = (NSNumber *)deviceDescription[DPLScreenNumberKey];
     return (CGDirectDisplayID)screenNumber.integerValue;
-}
-
-@end
-
-@interface DPLDisplay (LocalizedName)
-@property (copy, nonatomic, readwrite) NSString *localizedName;
-@end
-
-@implementation DPLDisplay (NSScreen)
-
-+ (NSArray<DPLDisplay *> *)allDisplaysWithInformationFromScreens:(NSArray<NSScreen *> *)screens
-{
-    NSArray<DPLDisplay *> *allDisplays = [self allDisplays];
-    if(screens == nil) { return allDisplays; }
-    
-    for(DPLDisplay *display in allDisplays)
-    {
-        for(NSScreen *screen in screens)
-        {
-            if(screen.dpl_displayID == display.displayID)
-            {
-                display.localizedName = screen.localizedName;
-            }
-        }
-    }
-    
-    return allDisplays;
 }
 
 @end

@@ -15,8 +15,4 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) CGDirectDisplayID dpl_displayID;
 @end
 
-@interface DPLDisplay (NSScreen)
-+ (NSArray<DPLDisplay *> *)allDisplaysWithInformationFromScreens:(nullable NSArray<NSScreen *> *)screens;
-@end
-
 NS_ASSUME_NONNULL_END
