@@ -256,6 +256,11 @@ static NSString *BoolToString(BOOL value) { return (value == YES) ? @"YES" : @"N
     return string;
 }
 
+- (NSString *)debugDescription
+{
+    return self.description;
+}
+
 #pragma mark - Equatable
 
 - (BOOL)isEqualToDisplay:(DPLDisplay *)display

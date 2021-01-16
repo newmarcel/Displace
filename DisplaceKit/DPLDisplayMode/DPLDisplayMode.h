@@ -22,6 +22,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (copy, nonatomic, readonly) NSString *localizedName;
 @property (copy, nonatomic, readonly) NSString *localizedNameWithoutAttributes;
 
+@property (readonly, copy) NSString *debugDescription;
+
 + (instancetype)new NS_UNAVAILABLE;
 - (instancetype)init NS_UNAVAILABLE;
 

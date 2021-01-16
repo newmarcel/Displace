@@ -65,11 +65,22 @@
     savePanel.nameFieldStringValue = [self proposedFileName];
     savePanel.extensionHidden = NO;
     
+    auto strings = static_cast<NSArray<NSString *> *>([DPLDisplay.allDisplays valueForKeyPath:@"debugDescription"]);
+    auto outputString = [strings componentsJoinedByString:@"\n"];
+    auto data = [outputString dataUsingEncoding:NSUTF8StringEncoding];
+    
     [savePanel beginSheetModalForWindow:window completionHandler:^(NSModalResponse result) {
         auto fileURL = savePanel.URL;
         if(result == NSModalResponseOK)
         {
             NSLog(@"Saving to %@", fileURL);
+            
+            NSError *error;
+            [data writeToURL:fileURL options:NSDataWritingAtomic error:&error];
+            if(error != nil)
+            {
+                NSLog(@"Failed to write file %@", error.userInfo);
+            }
         }
     }];
 }

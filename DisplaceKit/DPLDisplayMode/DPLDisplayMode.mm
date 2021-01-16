@@ -102,6 +102,11 @@
     return string;
 }
 
+- (NSString *)debugDescription
+{
+    return self.description;
+}
+
 #pragma mark - Equatable
 
 - (BOOL)isEqualToDisplayMode:(DPLDisplayMode *)displayMode

@@ -31,6 +31,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (copy, nonatomic, readonly) NSString *localizedName;
 
+@property (readonly, copy) NSString *debugDescription;
+
 + (NSArray<DPLDisplay *> *)allDisplaysUsingInformationFromScreens:(nullable NSArray<NSScreen *> *)screens;
 
 + (instancetype)new NS_UNAVAILABLE;
