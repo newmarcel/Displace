@@ -9,6 +9,7 @@
 #import "DPLDisplayMode.h"
 #import "DPLPreferences.h"
 #import "NSScreen+DPLDisplay.h"
+#import <Metal/Metal.h>
 
 namespace DPL::Display
 {
@@ -66,8 +67,7 @@ static NSString *BoolToString(BOOL value) { return (value == YES) ? @"YES" : @"N
         size_t width = CGDisplayPixelsWide(display);
         size_t height = CGDisplayPixelsHigh(display);
         
-        // TODO: Metal Device Info
-        // CGDirectDisplayCopyCurrentMetalDevice(…)
+        [self readPropertiesFromMetalDeviceForDisplayID:display];
         
         auto displayModes = [NSMutableArray<DPLDisplayMode *> new];
         auto options = @{
@@ -120,9 +120,19 @@ static NSString *BoolToString(BOOL value) { return (value == YES) ? @"YES" : @"N
             }
         }
     }
-
-
+    
     return [displays copy];
+}
+
++ (void)readPropertiesFromMetalDeviceForDisplayID:(CGDirectDisplayID)displayID
+{
+    id<MTLDevice> metalDevice = CGDirectDisplayCopyCurrentMetalDevice(displayID);
+    auto vendorDeviceName = metalDevice.name;
+    BOOL discrete = ![metalDevice isLowPower];
+    BOOL removable = [metalDevice isRemovable];
+    auto lo = metalDevice.location;
+    
+    NSLog(@"Metal: %@", metalDevice);
 }
 
 #pragma mark - Life Cycle
