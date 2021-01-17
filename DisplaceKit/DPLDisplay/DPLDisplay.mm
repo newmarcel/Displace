@@ -64,7 +64,7 @@ static NSString *BoolToString(BOOL value) { return (value == YES) ? @"YES" : @"N
         BOOL isOnline = CGDisplayIsOnline(display);
         BOOL isBuiltIn = CGDisplayIsBuiltin(display);
         size_t width = CGDisplayPixelsWide(display);
-        size_t height = CGDisplayPixelsWide(display);
+        size_t height = CGDisplayPixelsHigh(display);
         
         // TODO: Metal Device Info
         // CGDirectDisplayCopyCurrentMetalDevice(…)
