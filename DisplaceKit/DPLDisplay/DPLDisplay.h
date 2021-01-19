@@ -12,6 +12,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @class DPLDisplayMode;
+@class DPLGraphicsDevice;
 
 @interface DPLDisplay : NSObject
 @property (class, copy, nonatomic, readonly) NSArray<DPLDisplay *> *allDisplays;
@@ -29,6 +30,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, nullable, readonly) DPLDisplayMode *nextDisplayMode;
 @property (nonatomic, nullable, readonly) DPLDisplayMode *previousDisplayMode;
 
+@property (nonatomic, readonly) DPLGraphicsDevice *graphicsDevice;
+
 @property (copy, nonatomic, readonly) NSString *localizedName;
 
 @property (readonly, copy) NSString *debugDescription;
@@ -45,7 +48,8 @@ NS_ASSUME_NONNULL_BEGIN
                            online:(BOOL)online
                           builtIn:(BOOL)builtIn
                      displayModes:(NSArray<DPLDisplayMode *> *)displayModes
-               currentDisplayMode:(nullable DPLDisplayMode *)currentDisplayMode NS_DESIGNATED_INITIALIZER;
+               currentDisplayMode:(nullable DPLDisplayMode *)currentDisplayMode
+                   graphicsDevice:(DPLGraphicsDevice *)graphicsDevice NS_DESIGNATED_INITIALIZER;
 
 - (BOOL)isEqualToDisplay:(DPLDisplay *)display;
 

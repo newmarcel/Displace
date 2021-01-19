@@ -7,6 +7,7 @@
 
 #import "DPLDisplay.h"
 #import "DPLDisplayMode.h"
+#import "DPLGraphicsDevice.h"
 #import "DPLPreferences.h"
 #import "NSScreen+DPLDisplay.h"
 #import <Metal/Metal.h>
@@ -26,6 +27,7 @@ static NSString *BoolToString(BOOL value) { return (value == YES) ? @"YES" : @"N
 @property (nonatomic, getter=isOnline, readwrite) BOOL online;
 @property (nonatomic, getter=isBuiltIn, readwrite) BOOL builtIn;
 @property (nonatomic, readwrite) NSArray<DPLDisplayMode *> *displayModes;
+@property (nonatomic, readwrite) DPLGraphicsDevice *graphicsDevice;
 @property (copy, nonatomic, readwrite) NSString *localizedName;
 @end
 
@@ -67,7 +69,8 @@ static NSString *BoolToString(BOOL value) { return (value == YES) ? @"YES" : @"N
         size_t width = CGDisplayPixelsWide(display);
         size_t height = CGDisplayPixelsHigh(display);
         
-        [self readPropertiesFromMetalDeviceForDisplayID:display];
+        id<MTLDevice> metalDevice = CGDirectDisplayCopyCurrentMetalDevice(displayID);
+        auto graphicsDevice = [[DPLGraphicsDevice alloc] initWithMetalDevice:metalDevice];
         
         auto displayModes = [NSMutableArray<DPLDisplayMode *> new];
         auto options = @{
@@ -108,7 +111,8 @@ static NSString *BoolToString(BOOL value) { return (value == YES) ? @"YES" : @"N
                                                               online:isOnline
                                                              builtIn:isBuiltIn
                                                         displayModes:[displayModes copy]
-                                                  currentDisplayMode:currentDisplayMode];
+                                                  currentDisplayMode:currentDisplayMode
+                                                      graphicsDevice:graphicsDevice];
         [displays addObject:displayInstance];
         
         // Enhance the display instance with NSScreen information
@@ -124,21 +128,13 @@ static NSString *BoolToString(BOOL value) { return (value == YES) ? @"YES" : @"N
     return [displays copy];
 }
 
-+ (void)readPropertiesFromMetalDeviceForDisplayID:(CGDirectDisplayID)displayID
-{
-    id<MTLDevice> metalDevice = CGDirectDisplayCopyCurrentMetalDevice(displayID);
-    auto vendorDeviceName = metalDevice.name;
-    BOOL discrete = ![metalDevice isLowPower];
-    BOOL removable = [metalDevice isRemovable];
-    auto lo = metalDevice.location;
-    
-    NSLog(@"Metal: %@", metalDevice);
-}
-
 #pragma mark - Life Cycle
 
-- (instancetype)initWithDisplayID:(CGDirectDisplayID)displayID width:(NSInteger)width height:(NSInteger)height main:(BOOL)main online:(BOOL)online builtIn:(BOOL)builtIn displayModes:(NSArray<DPLDisplayMode *> *)displayModes currentDisplayMode:(DPLDisplayMode *)currentDisplayMode
+- (instancetype)initWithDisplayID:(CGDirectDisplayID)displayID width:(NSInteger)width height:(NSInteger)height main:(BOOL)main online:(BOOL)online builtIn:(BOOL)builtIn displayModes:(NSArray<DPLDisplayMode *> *)displayModes currentDisplayMode:(DPLDisplayMode *)currentDisplayMode graphicsDevice:(DPLGraphicsDevice *)graphicsDevice
 {
+    NSParameterAssert(displayModes);
+    NSParameterAssert(graphicsDevice);
+    
     self = [super init];
     if(self)
     {
@@ -150,6 +146,7 @@ static NSString *BoolToString(BOOL value) { return (value == YES) ? @"YES" : @"N
         self.builtIn = builtIn;
         self.displayModes = displayModes;
         self.currentDisplayMode = currentDisplayMode;
+        self.graphicsDevice = graphicsDevice;
     }
     return self;
 }
@@ -262,6 +259,7 @@ static NSString *BoolToString(BOOL value) { return (value == YES) ? @"YES" : @"N
             [string appendString:@" (current)"];
         }
     }
+    [string appendFormat:@"\n  Graphics Device:\n%@", self.graphicsDevice];
     
     return string;
 }
