@@ -939,6 +939,7 @@
                                                 </tableColumn>
                                             </tableColumns>
                                             <connections>
+                                                <action trigger="doubleAction" selector="setSelectedAsCurrentDisplayResolution:" target="q8C-S1-5LX" id="YUQ-vD-fyl"/>
                                                 <outlet property="dataSource" destination="q8C-S1-5LX" id="vIj-Cx-UCC"/>
                                                 <outlet property="delegate" destination="q8C-S1-5LX" id="63O-XV-0jX"/>
                                                 <outlet property="menu" destination="cPG-5v-mch" id="rvs-pZ-W7D"/>
