@@ -41,6 +41,7 @@
 		DAAF056E25978AB000ED206F /* DPLDisplay.mm in Sources */ = {isa = PBXBuildFile; fileRef = DAAF056525978AB000ED206F /* DPLDisplay.mm */; };
 		DAAF056F25978AB000ED206F /* DPLDisplay.h in Headers */ = {isa = PBXBuildFile; fileRef = DAAF056625978AB000ED206F /* DPLDisplay.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DAAF057925978B4600ED206F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAAF057825978B4600ED206F /* CoreGraphics.framework */; };
+		DAAFAF2C259F30E100EAC889 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAAFAF2B259F30E100EAC889 /* ServiceManagement.framework */; };
 		DAB11482258E85FB008C2BE8 /* DPLMenuController.mm in Sources */ = {isa = PBXBuildFile; fileRef = DAB11481258E85FB008C2BE8 /* DPLMenuController.mm */; };
 		DAC91F5D2532F6B200A08DE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAC91F5C2532F6B200A08DE0 /* Assets.xcassets */; };
 		DAC91F602532F6B200A08DE0 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAC91F5E2532F6B200A08DE0 /* MainMenu.xib */; };
@@ -160,6 +161,7 @@
 		DAAF056525978AB000ED206F /* DPLDisplay.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DPLDisplay.mm; sourceTree = "<group>"; };
 		DAAF056625978AB000ED206F /* DPLDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPLDisplay.h; sourceTree = "<group>"; };
 		DAAF057825978B4600ED206F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		DAAFAF2B259F30E100EAC889 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		DAB11480258E85FB008C2BE8 /* DPLMenuController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DPLMenuController.h; sourceTree = "<group>"; };
 		DAB11481258E85FB008C2BE8 /* DPLMenuController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = DPLMenuController.mm; sourceTree = "<group>"; };
 		DAC91F562532F6B200A08DE0 /* Displace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Displace.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -190,6 +192,7 @@
 				DA3DC734259890DC00275021 /* Cocoa.framework in Frameworks */,
 				DA8784B9259CBE8A00A50897 /* ShortcutRecorder in Frameworks */,
 				DA4F4E0325B3872F00F82E1D /* Metal.framework in Frameworks */,
+				DAAFAF2C259F30E100EAC889 /* ServiceManagement.framework in Frameworks */,
 				DAEED157259DF1FA0011CEFF /* ShortcutRecorder in Frameworks */,
 				DAAF057925978B4600ED206F /* CoreGraphics.framework in Frameworks */,
 			);
@@ -255,6 +258,7 @@
 			isa = PBXGroup;
 			children = (
 				DA4F4E0225B3872F00F82E1D /* Metal.framework */,
+				DAAFAF2B259F30E100EAC889 /* ServiceManagement.framework */,
 				DA3DC733259890DC00275021 /* Cocoa.framework */,
 				DAAF057825978B4600ED206F /* CoreGraphics.framework */,
 			);

@@ -8,11 +8,13 @@
 #import "DPLPreferences.h"
 #import "DPLAppGroup.h"
 #import <ShortcutRecorder/ShortcutRecorder.h>
+#import <ServiceManagement/ServiceManagement.h>
 
 NSString * const DPLLaunchAtLoginEnabledDefaultsKey = @"info.marcel-dierkes.Displace.LaunchAtLoginEnabled";
 NSString * const DPLNonRetinaDisplayModesEnabledDefaultsKey = @"info.marcel-dierkes.Displace.NonRetinaDisplayModesEnabled";
 NSString * const DPLIncreaseResolutionShortcutDefaultsKey = @"info.marcel-dierkes.Displace.IncreaseResolutionShortcut";
 NSString * const DPLDecreaseResolutionShortcutDefaultsKey =  @"info.marcel-dierkes.Displace.DecreaseResolutionShortcut";
+static NSString * const DPLLoginHelperBundleIdentifier = @"info.marcel-dierkes.Displace.LoginHelper";
 
 @interface DPLPreferences ()
 @property (nonatomic, readwrite) id<DPLDefaultsProvider> defaults;
@@ -47,7 +49,14 @@ NSString * const DPLDecreaseResolutionShortcutDefaultsKey =  @"info.marcel-dierk
     return self;
 }
 
-#pragma mark - Properties
+#pragma mark - Launch at Login
+
+- (BOOL)setLoginHelperEnabled:(BOOL)loginHelperEnabled
+{
+    auto identifier = (__bridge CFStringRef)DPLLoginHelperBundleIdentifier;
+    auto enabled = static_cast<Boolean>(loginHelperEnabled);
+    return static_cast<BOOL>(SMLoginItemSetEnabled(identifier, enabled));
+}
 
 - (BOOL)isLaunchAtLoginEnabled
 {
@@ -56,8 +65,18 @@ NSString * const DPLDecreaseResolutionShortcutDefaultsKey =  @"info.marcel-dierk
 
 - (void)setLaunchAtLoginEnabled:(BOOL)enabled
 {
-    [self.defaults setBool:enabled forKey:DPLLaunchAtLoginEnabledDefaultsKey];
+    BOOL success = [self setLoginHelperEnabled:enabled];
+    if(success == YES)
+    {
+        [self.defaults setBool:enabled forKey:DPLLaunchAtLoginEnabledDefaultsKey];
+    }
+    else
+    {
+        NSLog(@"Failed to enable Login Helper.");
+    }
 }
+
+#pragma mark - Non-Retina Display Modes Enabled
 
 - (BOOL)isNonRetinaDisplayModesEnabled
 {
