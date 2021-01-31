@@ -261,9 +261,41 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		DA9266A325C6A1C9008D774A /* DPLDisplaysViewController */ = {
+			isa = PBXGroup;
+			children = (
+				DA7945A12598E17C00368E9A /* DPLPreferencesWindowController.h */,
+				DA7945A22598E17C00368E9A /* DPLPreferencesWindowController.mm */,
+				DA5D27612598E6BA000416F4 /* DPLDisplaysViewController.h */,
+				DA5D27622598E6BA000416F4 /* DPLDisplaysViewController.mm */,
+				DA2ECE68259A1800009542DB /* DPLDisplayViewModel.h */,
+				DA2ECE69259A1800009542DB /* DPLDisplayViewModel.mm */,
+			);
+			path = DPLDisplaysViewController;
+			sourceTree = "<group>";
+		};
+		DA9266A425C6A1E7008D774A /* DPLDisplayViewController */ = {
+			isa = PBXGroup;
+			children = (
+				DA6E0F8B259A591D001316A1 /* DPLDisplayViewController.h */,
+				DA6E0F8C259A591D001316A1 /* DPLDisplayViewController.mm */,
+			);
+			path = DPLDisplayViewController;
+			sourceTree = "<group>";
+		};
+		DA9266A825C6A1EE008D774A /* DPLGeneralPreferencesViewController */ = {
+			isa = PBXGroup;
+			children = (
+				DA6E0F91259A592A001316A1 /* DPLGeneralPreferencesViewController.h */,
+				DA6E0F92259A592A001316A1 /* DPLGeneralPreferencesViewController.mm */,
+			);
+			path = DPLGeneralPreferencesViewController;
+			sourceTree = "<group>";
+		};
 		DAAA87A52597D7D000399006 /* Other… */ = {
 			isa = PBXGroup;
 			children = (
+				DAD660892597B112007E8969 /* Assets.xcassets */,
 				DAD6608E2597B112007E8969 /* Info.plist */,
 				DA3DC73B2598972F00275021 /* InfoPlist.strings */,
 				DAD6608F2597B112007E8969 /* main.m */,
@@ -391,17 +423,9 @@
 				DAD660832597B110007E8969 /* DPLAppDelegate.h */,
 				DAD660842597B110007E8969 /* DPLAppDelegate.m */,
 				DAD6608B2597B112007E8969 /* Main.storyboard */,
-				DA7945A12598E17C00368E9A /* DPLPreferencesWindowController.h */,
-				DA7945A22598E17C00368E9A /* DPLPreferencesWindowController.mm */,
-				DA5D27612598E6BA000416F4 /* DPLDisplaysViewController.h */,
-				DA5D27622598E6BA000416F4 /* DPLDisplaysViewController.mm */,
-				DA6E0F8B259A591D001316A1 /* DPLDisplayViewController.h */,
-				DA6E0F8C259A591D001316A1 /* DPLDisplayViewController.mm */,
-				DA6E0F91259A592A001316A1 /* DPLGeneralPreferencesViewController.h */,
-				DA6E0F92259A592A001316A1 /* DPLGeneralPreferencesViewController.mm */,
-				DA2ECE68259A1800009542DB /* DPLDisplayViewModel.h */,
-				DA2ECE69259A1800009542DB /* DPLDisplayViewModel.mm */,
-				DAD660892597B112007E8969 /* Assets.xcassets */,
+				DA9266A325C6A1C9008D774A /* DPLDisplaysViewController */,
+				DA9266A425C6A1E7008D774A /* DPLDisplayViewController */,
+				DA9266A825C6A1EE008D774A /* DPLGeneralPreferencesViewController */,
 				DAAA87A52597D7D000399006 /* Other… */,
 			);
 			path = DPLPreferences;
@@ -531,7 +555,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = DPL;
-				LastUpgradeCheck = 1230;
+				LastUpgradeCheck = 1240;
 				TargetAttributes = {
 					DAAF0538259789F300ED206F = {
 						CreatedOnToolsVersion = 12.3;
