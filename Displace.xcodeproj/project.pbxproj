@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA01990525D5A63400D0D89E /* DisplaceKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAAF0539259789F300ED206F /* DisplaceKit.framework */; };
+		DA01990625D5A63400D0D89E /* DisplaceKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DAAF0539259789F300ED206F /* DisplaceKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DA09719625AA449500B12CB4 /* DPLNotificationCenter.h in Headers */ = {isa = PBXBuildFile; fileRef = DA09719425AA449500B12CB4 /* DPLNotificationCenter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DA09719725AA449500B12CB4 /* DPLNotificationCenter.mm in Sources */ = {isa = PBXBuildFile; fileRef = DA09719525AA449500B12CB4 /* DPLNotificationCenter.mm */; };
 		DA0DE9FA2597BB6E00FCFE43 /* NSURL+DPLPreferences.h in Headers */ = {isa = PBXBuildFile; fileRef = DA0DE9F82597BB6E00FCFE43 /* NSURL+DPLPreferences.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -29,7 +31,6 @@
 		DAAF0549259789F300ED206F /* DisplaceKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DAAF0548259789F300ED206F /* DisplaceKitTests.m */; };
 		DAAF054B259789F300ED206F /* DisplaceKit.h in Headers */ = {isa = PBXBuildFile; fileRef = DAAF053B259789F300ED206F /* DisplaceKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DAAF054E259789F300ED206F /* DisplaceKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAAF0539259789F300ED206F /* DisplaceKit.framework */; };
-		DAAF054F259789F300ED206F /* DisplaceKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DAAF0539259789F300ED206F /* DisplaceKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DAAF056725978AB000ED206F /* DPLDefaultsProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = DAAF055B25978AB000ED206F /* DPLDefaultsProvider.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DAAF056825978AB000ED206F /* DPLPreferences.h in Headers */ = {isa = PBXBuildFile; fileRef = DAAF055C25978AB000ED206F /* DPLPreferences.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DAAF056925978AB000ED206F /* DPLPreferences.mm in Sources */ = {isa = PBXBuildFile; fileRef = DAAF055D25978AB000ED206F /* DPLPreferences.mm */; };
@@ -49,7 +50,6 @@
 		DAD6608D2597B112007E8969 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAD6608B2597B112007E8969 /* Main.storyboard */; };
 		DAD660902597B112007E8969 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DAD6608F2597B112007E8969 /* main.m */; };
 		DAD660AB2597B1A1007E8969 /* Displace Preferences.app in Embed Preferences */ = {isa = PBXBuildFile; fileRef = DAD660812597B110007E8969 /* Displace Preferences.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		DAD660BB2597B2C3007E8969 /* DisplaceKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAAF0539259789F300ED206F /* DisplaceKit.framework */; };
 		DADDAEF025B2E19000DD1FEF /* NSScreen+DPLDisplay.h in Headers */ = {isa = PBXBuildFile; fileRef = DADDAEEE25B2E19000DD1FEF /* NSScreen+DPLDisplay.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DADDAEF125B2E19000DD1FEF /* NSScreen+DPLDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = DADDAEEF25B2E19000DD1FEF /* NSScreen+DPLDisplay.m */; };
 		DAEED157259DF1FA0011CEFF /* ShortcutRecorder in Frameworks */ = {isa = PBXBuildFile; productRef = DAEED156259DF1FA0011CEFF /* ShortcutRecorder */; };
@@ -95,13 +95,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		DAD046DA258E08EC00AE44E3 /* Embed Frameworks */ = {
+		DA01990725D5A63400D0D89E /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				DAAF054F259789F300ED206F /* DisplaceKit.framework in Embed Frameworks */,
+				DA01990625D5A63400D0D89E /* DisplaceKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -215,7 +215,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DAD660BB2597B2C3007E8969 /* DisplaceKit.framework in Frameworks */,
+				DA01990525D5A63400D0D89E /* DisplaceKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -512,7 +512,6 @@
 				DAC91F522532F6B200A08DE0 /* Sources */,
 				DAC91F532532F6B200A08DE0 /* Frameworks */,
 				DAC91F542532F6B200A08DE0 /* Resources */,
-				DAD046DA258E08EC00AE44E3 /* Embed Frameworks */,
 				DAD660AA2597B18D007E8969 /* Embed Preferences */,
 			);
 			buildRules = (
@@ -535,6 +534,7 @@
 				DAD6607D2597B110007E8969 /* Sources */,
 				DAD6607E2597B110007E8969 /* Frameworks */,
 				DAD6607F2597B110007E8969 /* Resources */,
+				DA01990725D5A63400D0D89E /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -955,6 +955,7 @@
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
+					"\"@executable_path/Displace Preferences.app/Contents/Frameworks\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -975,6 +976,7 @@
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
+					"\"@executable_path/Displace Preferences.app/Contents/Frameworks\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -991,12 +993,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 5KESHV9W85;
-				ENABLE_HARDENED_RUNTIME = NO;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = DPLPreferences/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
-					"@executable_path/../../../../Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "info.marcel-dierkes.Displace.Preferences";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1019,7 +1020,6 @@
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
-					"@executable_path/../../../../Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "info.marcel-dierkes.Displace.Preferences";
 				PRODUCT_NAME = "$(TARGET_NAME)";
