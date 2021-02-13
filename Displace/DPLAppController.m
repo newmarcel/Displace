@@ -11,12 +11,15 @@
 #import "DPLDefines.h"
 #import "DPLMenuController.h"
 #import "DPLShortcutMonitor.h"
+#import "DPLUserNotificationsController.h"
+#import "DPLDisplayModeUserNotification.h"
 
 @interface DPLAppController () <DPLMenuControllerDataSource, DPLMenuControllerDelegate, DPLShortcutMonitorDelegate>
 @property (nonatomic) NSArray<DPLDisplay *> *displays;
 @property (nonatomic, readwrite) NSStatusItem *systemStatusItem;
 @property (nonatomic) DPLMenuController *menuController;
 @property (nonatomic) DPLShortcutMonitor *shortcutMonitor;
+@property (nonatomic) DPLUserNotificationsController *notificationsController;
 @end
 
 @implementation DPLAppController
@@ -31,6 +34,7 @@
         [self configureMenuController];
         [self configureStatusItem];
         [self configureShortcutMonitor];
+        [self configureNotificationsController];
     }
     return self;
 }
@@ -68,6 +72,14 @@
     self.shortcutMonitor = monitor;
     
     [monitor startMonitoring];
+}
+
+- (void)configureNotificationsController
+{
+    Auto controller = [DPLUserNotificationsController new];
+    [controller requestAuthorization];
+    [controller clearAllDeliveredNotifications];
+    self.notificationsController = controller;
 }
 
 #pragma mark - DPLMenuControllerDataSource
@@ -190,6 +202,10 @@
     {
         display.currentDisplayMode = next;
         [display applyCurrentDisplayMode];
+        
+        Auto notification = [[DPLDisplayModeUserNotification alloc] initWithChangeType:DPLDisplayModeChangeTypeIncrease
+                                                                              subtitle:next.localizedName];
+        [self.notificationsController postNotification:notification];
     }
 }
 
@@ -202,6 +218,10 @@
     {
         display.currentDisplayMode = previous;
         [display applyCurrentDisplayMode];
+        
+        Auto notification = [[DPLDisplayModeUserNotification alloc] initWithChangeType:DPLDisplayModeChangeTypeDecrease
+                                                                              subtitle:previous.localizedName];
+        [self.notificationsController postNotification:notification];
     }
 }
 
