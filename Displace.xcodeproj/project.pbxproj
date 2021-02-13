@@ -127,6 +127,7 @@
 		DA2ECE68259A1800009542DB /* DPLDisplayViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DPLDisplayViewModel.h; sourceTree = "<group>"; };
 		DA2ECE69259A1800009542DB /* DPLDisplayViewModel.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = DPLDisplayViewModel.mm; sourceTree = "<group>"; };
 		DA3314ED259BA6B000B208F6 /* Configuration.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Configuration.xcconfig; sourceTree = SOURCE_ROOT; };
+		DA384B5425D8025C0052C1AC /* DPLDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DPLDefines.h; sourceTree = "<group>"; };
 		DA3DC7292598907F00275021 /* NSWorkspace+DPLPreferences.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "NSWorkspace+DPLPreferences.mm"; sourceTree = "<group>"; };
 		DA3DC72A2598907F00275021 /* NSWorkspace+DPLPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSWorkspace+DPLPreferences.h"; sourceTree = "<group>"; };
 		DA3DC733259890DC00275021 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -370,11 +371,13 @@
 		DAAF059825978FBC00ED206F /* Other… */ = {
 			isa = PBXGroup;
 			children = (
-				DAC91F5E2532F6B200A08DE0 /* MainMenu.xib */,
-				DAC91F612532F6B200A08DE0 /* Info.plist */,
-				DAC91F622532F6B200A08DE0 /* main.m */,
+				DAC91F5C2532F6B200A08DE0 /* Assets.xcassets */,
 				DA3314ED259BA6B000B208F6 /* Configuration.xcconfig */,
 				DAC91F642532F6B200A08DE0 /* Displace.entitlements */,
+				DA384B5425D8025C0052C1AC /* DPLDefines.h */,
+				DAC91F612532F6B200A08DE0 /* Info.plist */,
+				DAC91F622532F6B200A08DE0 /* main.m */,
+				DAC91F5E2532F6B200A08DE0 /* MainMenu.xib */,
 			);
 			name = "Other…";
 			sourceTree = "<group>";
@@ -411,7 +414,6 @@
 				DAB11481258E85FB008C2BE8 /* DPLMenuController.mm */,
 				DA87E90B25A076C800784FB5 /* DPLShortcutMonitor.h */,
 				DA87E90C25A076C800784FB5 /* DPLShortcutMonitor.mm */,
-				DAC91F5C2532F6B200A08DE0 /* Assets.xcassets */,
 				DAAF059825978FBC00ED206F /* Other… */,
 			);
 			path = Displace;
