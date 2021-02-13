@@ -1,5 +1,5 @@
 //
-//  DPLShortcutMonitor.mm
+//  DPLShortcutMonitor.m
 //  Displace
 //
 //  Created by Marcel Dierkes on 02.01.21.
@@ -8,6 +8,7 @@
 #import "DPLShortcutMonitor.h"
 #import <DisplaceKit/DisplaceKit.h>
 #import <ShortcutRecorder/ShortcutRecorder.h>
+#import "DPLDefines.h"
 
 @interface DPLShortcutMonitor ()
 @property (weak, nonatomic, nullable) SRShortcutAction *increaseAction;
@@ -33,7 +34,7 @@
 
 - (void)registerNotifications
 {
-    auto center = DPLNotificationCenter.defaultCenter;
+    Auto center = DPLNotificationCenter.defaultCenter;
     [center addObserver:self selector:@selector(keyboardShortcutsDidChange:)
                    name:DPLShortcutDidChangeNotification];
     [center addObserver:self selector:@selector(keyboardShortcutsWillEdit:)
@@ -44,7 +45,7 @@
 
 - (void)unregisterNotifications
 {
-    auto center = DPLNotificationCenter.defaultCenter;
+    Auto center = DPLNotificationCenter.defaultCenter;
     [center removeObserver:self name:DPLShortcutDidChangeNotification];
     [center removeObserver:self name:DPLShortcutWillEditNotification];
     [center removeObserver:self name:DPLShortcutDidEditNotification];
@@ -52,21 +53,21 @@
 
 - (void)keyboardShortcutsDidChange:(nullable NSNotification *)notification
 {
-    NSLog(@"Keyboard shortcuts were changed: %@", notification);
+    DPLLog(@"Keyboard shortcuts were changed: %@", notification);
     
     [self refreshShortcuts];
 }
 
 - (void)keyboardShortcutsWillEdit:(nullable NSNotification *)notification
 {
-    auto monitor = SRGlobalShortcutMonitor.sharedMonitor;
+    Auto monitor = SRGlobalShortcutMonitor.sharedMonitor;
     [monitor pause];
 }
 
 
 - (void)keyboardShortcutsDidEdit:(nullable NSNotification *)notification
 {
-    auto monitor = SRGlobalShortcutMonitor.sharedMonitor;
+    Auto monitor = SRGlobalShortcutMonitor.sharedMonitor;
     [monitor resume];
 }
 
@@ -79,7 +80,7 @@
 
 - (void)stopMonitoring
 {
-    auto monitor = SRGlobalShortcutMonitor.sharedMonitor;
+    Auto monitor = SRGlobalShortcutMonitor.sharedMonitor;
     [monitor removeAllActions];
 }
 
@@ -87,16 +88,16 @@
 
 - (void)refreshShortcuts
 {
-    auto delegate = self.delegate;
+    Auto delegate = self.delegate;
     [self registerIncreaseShortcut:[delegate keyboardShortcutForIncreaseResolution]];
     [self registerDecreaseShortcut:[delegate keyboardShortcutForDecreaseResolution]];
 }
 
 - (void)registerIncreaseShortcut:(nullable SRShortcut *)increaseShortcut
 {
-    auto monitor = SRGlobalShortcutMonitor.sharedMonitor;
-    auto sender = self;
-    auto delegate = sender.delegate;
+    Auto monitor = SRGlobalShortcutMonitor.sharedMonitor;
+    Auto sender = self;
+    Auto delegate = sender.delegate;
     
     // Everything was de-registered
     if(increaseShortcut == nil)
@@ -116,7 +117,7 @@
     }
     
     // Install a new action
-    auto increaseAction = [SRShortcutAction shortcutActionWithShortcut:increaseShortcut actionHandler:^BOOL(SRShortcutAction *action) {
+    Auto increaseAction = [SRShortcutAction shortcutActionWithShortcut:increaseShortcut actionHandler:^BOOL(SRShortcutAction *action) {
         if([delegate respondsToSelector:@selector(shortcutMonitorShouldIncreaseResolution:)])
         {
             [delegate shortcutMonitorShouldIncreaseResolution:sender];
@@ -129,9 +130,9 @@
 
 - (void)registerDecreaseShortcut:(nullable SRShortcut *)decreaseShortcut
 {
-    auto monitor = SRGlobalShortcutMonitor.sharedMonitor;
-    auto sender = self;
-    auto delegate = sender.delegate;
+    Auto monitor = SRGlobalShortcutMonitor.sharedMonitor;
+    Auto sender = self;
+    Auto delegate = sender.delegate;
     
     // Everything was de-registered
     if(decreaseShortcut == nil)
@@ -151,7 +152,7 @@
     }
     
     // Install a new action
-    auto decreaseAction = [SRShortcutAction shortcutActionWithShortcut:decreaseShortcut actionHandler:^BOOL(SRShortcutAction *action) {
+    Auto decreaseAction = [SRShortcutAction shortcutActionWithShortcut:decreaseShortcut actionHandler:^BOOL(SRShortcutAction *action) {
         if([delegate respondsToSelector:@selector(shortcutMonitorShouldDecreaseResolution:)])
         {
             [delegate shortcutMonitorShouldDecreaseResolution:sender];

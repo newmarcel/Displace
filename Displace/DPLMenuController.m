@@ -1,11 +1,12 @@
 //
-//  DPLMenuController.mm
+//  DPLMenuController.m
 //  Displace
 //
 //  Created by Marcel Dierkes on 19.12.20.
 //
 
 #import "DPLMenuController.h"
+#import "DPLDefines.h"
 
 @interface DPLMenuController () <NSMenuDelegate>
 @property (nonatomic, readwrite) NSMenu *menu;
@@ -27,7 +28,7 @@
 
 - (void)configureMenu
 {
-    auto menu = [[NSMenu alloc] initWithTitle:NSLocalizedString(@"Displays", @"Displays")];
+    Auto menu = [[NSMenu alloc] initWithTitle:NSLocalizedString(@"Displays", @"Displays")];
     menu.delegate = self;
     self.menu = menu;
 }
@@ -51,12 +52,12 @@
     
     [menu removeAllItems];
     
-    const auto dataSource = self.dataSource;
-    const auto displayCount = [dataSource numberOfDisplays];
+    Auto dataSource = self.dataSource;
+    Auto displayCount = [dataSource numberOfDisplays];
     for(NSInteger displayIndex = 0; displayIndex < displayCount; displayIndex++)
     {
-        const auto title = [dataSource titleForDisplayAtIndex:displayIndex];
-        auto item = [[NSMenuItem alloc] initWithTitle:title action:nil keyEquivalent:@""];
+        Auto title = [dataSource titleForDisplayAtIndex:displayIndex];
+        Auto item = [[NSMenuItem alloc] initWithTitle:title action:nil keyEquivalent:@""];
         item.image = [NSImage imageWithSystemSymbolName:@"display" accessibilityDescription:nil];
         [self addDisplayModeMenuForDisplayAtIndex:displayIndex toItem:item];
         [menu addItem:item];
@@ -70,18 +71,18 @@
 {
     NSParameterAssert(item);
     
-    const auto dataSource = self.dataSource;
-    const auto menuTitle = [dataSource titleForDisplayAtIndex:displayIndex];
-    auto menu = [[NSMenu alloc] initWithTitle:menuTitle];
+    Auto dataSource = self.dataSource;
+    Auto menuTitle = [dataSource titleForDisplayAtIndex:displayIndex];
+    Auto menu = [[NSMenu alloc] initWithTitle:menuTitle];
     
-    const auto currentDisplayModeIndex = [dataSource currentDisplayModeIndexForDisplayAtIndex:displayIndex];
+    Auto currentDisplayModeIndex = [dataSource currentDisplayModeIndexForDisplayAtIndex:displayIndex];
 
-    const auto displayModeCount = [dataSource numberOfDisplayModesForDisplayAtIndex:displayIndex];
+    Auto displayModeCount = [dataSource numberOfDisplayModesForDisplayAtIndex:displayIndex];
     for(NSInteger index = 0; index < displayModeCount; index++)
     {
-        auto indexPath = [NSIndexPath indexPathForItem:index inSection:displayIndex];
-        const auto title = [dataSource titleForDisplayModeAtIndexPath:indexPath];
-        auto subItem = [[NSMenuItem alloc] initWithTitle:title
+        Auto indexPath = [NSIndexPath indexPathForItem:index inSection:displayIndex];
+        Auto title = [dataSource titleForDisplayModeAtIndexPath:indexPath];
+        Auto subItem = [[NSMenuItem alloc] initWithTitle:title
                                                   action:@selector(selectDisplayMode:)
                                            keyEquivalent:@""];
         subItem.target = self;
@@ -102,7 +103,7 @@
 {
     NSParameterAssert(menu);
     
-    auto dataSource = self.dataSource;
+    Auto dataSource = self.dataSource;
     
     NSString *increaseKeyEquivalent;
     NSEventModifierFlags increaseFlags = 0;
@@ -123,7 +124,7 @@
     // If the data source is satisfied, begin with a separator
     [menu addItem:NSMenuItem.separatorItem];
     
-    auto increaseItem = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"Increase Resolution", @"Increase Resolution")
+    Auto increaseItem = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"Increase Resolution", @"Increase Resolution")
                                                    action:@selector(increaseResolution:)
                                             keyEquivalent:increaseKeyEquivalent ?: @""];
     increaseItem.target = self;
@@ -133,7 +134,7 @@
     }
     [menu addItem:increaseItem];
     
-    auto decreaseItem = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"Decrease Resolution", @"Decrease Resolution")
+    Auto decreaseItem = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"Decrease Resolution", @"Decrease Resolution")
                                                    action:@selector(decreaseResolution:)
                                             keyEquivalent:decreaseKeyEquivalent ?: @""];
     decreaseItem.target = self;
@@ -150,7 +151,7 @@
     
     [menu addItem:NSMenuItem.separatorItem];
     
-    auto prefsItem = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"Preferences…", @"Preferences…")
+    Auto prefsItem = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"Preferences…", @"Preferences…")
                                                 action:@selector(showPreferences:)
                                          keyEquivalent:@","];
     prefsItem.target = self;
@@ -158,7 +159,7 @@
     
     [menu addItem:NSMenuItem.separatorItem];
     
-    auto quitItem = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"Quit Displace", @"Quit Displace")
+    Auto quitItem = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"Quit Displace", @"Quit Displace")
                                                action:@selector(terminate:)
                                         keyEquivalent:@"q"];
     quitItem.target = self;
@@ -169,7 +170,7 @@
 
 - (void)showPreferences:(nullable id)sender
 {
-    auto delegate = self.delegate;
+    Auto delegate = self.delegate;
     if([delegate respondsToSelector:@selector(menuControllerShouldShowPreferences:)])
     {
         [delegate menuControllerShouldShowPreferences:self];
@@ -178,7 +179,7 @@
 
 - (void)terminate:(nullable id)sender
 {
-    auto delegate = self.delegate;
+    Auto delegate = self.delegate;
     if([delegate respondsToSelector:@selector(menuControllerShouldTerminate:)])
     {
         [delegate menuControllerShouldTerminate:self];
@@ -187,17 +188,17 @@
 
 - (void)selectDisplayMode:(nullable NSMenuItem *)sender
 {
-    auto delegate = self.delegate;
+    Auto delegate = self.delegate;
     if([delegate respondsToSelector:@selector(menuController:didSelectDisplayModeAtIndexPath:)])
     {
-        auto indexPath = static_cast<NSIndexPath *>(sender.representedObject);
+        Auto indexPath = (NSIndexPath *)sender.representedObject;
         [delegate menuController:self didSelectDisplayModeAtIndexPath:indexPath];
     }
 }
 
 - (void)increaseResolution:(nullable NSMenuItem *)sender
 {
-    auto delegate = self.delegate;
+    Auto delegate = self.delegate;
     if([delegate respondsToSelector:@selector(menuControllerShouldIncreaseResolution:)])
     {
         [delegate menuControllerShouldIncreaseResolution:self];
@@ -206,7 +207,7 @@
 
 - (void)decreaseResolution:(nullable NSMenuItem *)sender
 {
-    auto delegate = self.delegate;
+    Auto delegate = self.delegate;
     if([delegate respondsToSelector:@selector(menuControllerShouldDecreaseResolution:)])
     {
         [delegate menuControllerShouldDecreaseResolution:self];

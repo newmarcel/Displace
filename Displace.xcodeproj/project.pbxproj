@@ -26,7 +26,7 @@
 		DA6E0F93259A592A001316A1 /* DPLGeneralPreferencesViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = DA6E0F92259A592A001316A1 /* DPLGeneralPreferencesViewController.mm */; };
 		DA7945A32598E17C00368E9A /* DPLPreferencesWindowController.mm in Sources */ = {isa = PBXBuildFile; fileRef = DA7945A22598E17C00368E9A /* DPLPreferencesWindowController.mm */; };
 		DA8784B9259CBE8A00A50897 /* ShortcutRecorder in Frameworks */ = {isa = PBXBuildFile; productRef = DA8784B8259CBE8A00A50897 /* ShortcutRecorder */; };
-		DA87E90D25A076C800784FB5 /* DPLShortcutMonitor.mm in Sources */ = {isa = PBXBuildFile; fileRef = DA87E90C25A076C800784FB5 /* DPLShortcutMonitor.mm */; };
+		DA87E90D25A076C800784FB5 /* DPLShortcutMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = DA87E90C25A076C800784FB5 /* DPLShortcutMonitor.m */; };
 		DAAF0542259789F300ED206F /* DisplaceKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAAF0539259789F300ED206F /* DisplaceKit.framework */; };
 		DAAF0549259789F300ED206F /* DisplaceKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DAAF0548259789F300ED206F /* DisplaceKitTests.m */; };
 		DAAF054B259789F300ED206F /* DisplaceKit.h in Headers */ = {isa = PBXBuildFile; fileRef = DAAF053B259789F300ED206F /* DisplaceKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -41,7 +41,7 @@
 		DAAF056E25978AB000ED206F /* DPLDisplay.mm in Sources */ = {isa = PBXBuildFile; fileRef = DAAF056525978AB000ED206F /* DPLDisplay.mm */; };
 		DAAF056F25978AB000ED206F /* DPLDisplay.h in Headers */ = {isa = PBXBuildFile; fileRef = DAAF056625978AB000ED206F /* DPLDisplay.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DAAF057925978B4600ED206F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAAF057825978B4600ED206F /* CoreGraphics.framework */; };
-		DAB11482258E85FB008C2BE8 /* DPLMenuController.mm in Sources */ = {isa = PBXBuildFile; fileRef = DAB11481258E85FB008C2BE8 /* DPLMenuController.mm */; };
+		DAB11482258E85FB008C2BE8 /* DPLMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAB11481258E85FB008C2BE8 /* DPLMenuController.m */; };
 		DAC91F5D2532F6B200A08DE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAC91F5C2532F6B200A08DE0 /* Assets.xcassets */; };
 		DAC91F602532F6B200A08DE0 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAC91F5E2532F6B200A08DE0 /* MainMenu.xib */; };
 		DAC91F632532F6B200A08DE0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DAC91F622532F6B200A08DE0 /* main.m */; };
@@ -53,7 +53,7 @@
 		DADDAEF025B2E19000DD1FEF /* NSScreen+DPLDisplay.h in Headers */ = {isa = PBXBuildFile; fileRef = DADDAEEE25B2E19000DD1FEF /* NSScreen+DPLDisplay.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DADDAEF125B2E19000DD1FEF /* NSScreen+DPLDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = DADDAEEF25B2E19000DD1FEF /* NSScreen+DPLDisplay.m */; };
 		DAEED157259DF1FA0011CEFF /* ShortcutRecorder in Frameworks */ = {isa = PBXBuildFile; productRef = DAEED156259DF1FA0011CEFF /* ShortcutRecorder */; };
-		DAFD864E258D3712004EB800 /* DPLAppController.mm in Sources */ = {isa = PBXBuildFile; fileRef = DAFD864D258D3712004EB800 /* DPLAppController.mm */; };
+		DAFD864E258D3712004EB800 /* DPLAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAFD864D258D3712004EB800 /* DPLAppController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -144,7 +144,7 @@
 		DA7945A12598E17C00368E9A /* DPLPreferencesWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DPLPreferencesWindowController.h; sourceTree = "<group>"; };
 		DA7945A22598E17C00368E9A /* DPLPreferencesWindowController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = DPLPreferencesWindowController.mm; sourceTree = "<group>"; };
 		DA87E90B25A076C800784FB5 /* DPLShortcutMonitor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DPLShortcutMonitor.h; sourceTree = "<group>"; };
-		DA87E90C25A076C800784FB5 /* DPLShortcutMonitor.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = DPLShortcutMonitor.mm; sourceTree = "<group>"; };
+		DA87E90C25A076C800784FB5 /* DPLShortcutMonitor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DPLShortcutMonitor.m; sourceTree = "<group>"; };
 		DAAF0539259789F300ED206F /* DisplaceKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DisplaceKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAAF053B259789F300ED206F /* DisplaceKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DisplaceKit.h; sourceTree = "<group>"; };
 		DAAF053C259789F300ED206F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -162,7 +162,7 @@
 		DAAF056625978AB000ED206F /* DPLDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPLDisplay.h; sourceTree = "<group>"; };
 		DAAF057825978B4600ED206F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		DAB11480258E85FB008C2BE8 /* DPLMenuController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DPLMenuController.h; sourceTree = "<group>"; };
-		DAB11481258E85FB008C2BE8 /* DPLMenuController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = DPLMenuController.mm; sourceTree = "<group>"; };
+		DAB11481258E85FB008C2BE8 /* DPLMenuController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DPLMenuController.m; sourceTree = "<group>"; };
 		DAC91F562532F6B200A08DE0 /* Displace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Displace.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAC91F5C2532F6B200A08DE0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DAC91F5F2532F6B200A08DE0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -180,7 +180,7 @@
 		DADDAEEE25B2E19000DD1FEF /* NSScreen+DPLDisplay.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSScreen+DPLDisplay.h"; sourceTree = "<group>"; };
 		DADDAEEF25B2E19000DD1FEF /* NSScreen+DPLDisplay.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSScreen+DPLDisplay.m"; sourceTree = "<group>"; };
 		DAFD864C258D3712004EB800 /* DPLAppController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DPLAppController.h; sourceTree = "<group>"; };
-		DAFD864D258D3712004EB800 /* DPLAppController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = DPLAppController.mm; sourceTree = "<group>"; };
+		DAFD864D258D3712004EB800 /* DPLAppController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DPLAppController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -409,11 +409,11 @@
 			isa = PBXGroup;
 			children = (
 				DAFD864C258D3712004EB800 /* DPLAppController.h */,
-				DAFD864D258D3712004EB800 /* DPLAppController.mm */,
+				DAFD864D258D3712004EB800 /* DPLAppController.m */,
 				DAB11480258E85FB008C2BE8 /* DPLMenuController.h */,
-				DAB11481258E85FB008C2BE8 /* DPLMenuController.mm */,
+				DAB11481258E85FB008C2BE8 /* DPLMenuController.m */,
 				DA87E90B25A076C800784FB5 /* DPLShortcutMonitor.h */,
-				DA87E90C25A076C800784FB5 /* DPLShortcutMonitor.mm */,
+				DA87E90C25A076C800784FB5 /* DPLShortcutMonitor.m */,
 				DAAF059825978FBC00ED206F /* Other… */,
 			);
 			path = Displace;
@@ -664,9 +664,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				DAC91F632532F6B200A08DE0 /* main.m in Sources */,
-				DAFD864E258D3712004EB800 /* DPLAppController.mm in Sources */,
-				DAB11482258E85FB008C2BE8 /* DPLMenuController.mm in Sources */,
-				DA87E90D25A076C800784FB5 /* DPLShortcutMonitor.mm in Sources */,
+				DAFD864E258D3712004EB800 /* DPLAppController.m in Sources */,
+				DAB11482258E85FB008C2BE8 /* DPLMenuController.m in Sources */,
+				DA87E90D25A076C800784FB5 /* DPLShortcutMonitor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

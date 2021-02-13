@@ -8,6 +8,7 @@
 #import "DPLAppController.h"
 #import <DisplaceKit/DisplaceKit.h>
 #import <ShortcutRecorder/ShortcutRecorder.h>
+#import "DPLDefines.h"
 #import "DPLMenuController.h"
 #import "DPLShortcutMonitor.h"
 
@@ -36,7 +37,7 @@
 
 - (void)configureMenuController
 {
-    auto controller = [DPLMenuController new];
+    Auto controller = [DPLMenuController new];
     controller.dataSource = self;
     controller.delegate = self;
     self.menuController = controller;
@@ -46,13 +47,13 @@
 
 - (void)configureStatusItem
 {
-    auto statusItem = [NSStatusBar.systemStatusBar statusItemWithLength:NSVariableStatusItemLength];
+    Auto statusItem = [NSStatusBar.systemStatusBar statusItemWithLength:NSVariableStatusItemLength];
     statusItem.behavior = NSStatusItemBehaviorTerminationOnRemoval;
     statusItem.visible = YES;
     
-    auto button = statusItem.button;
-    static_cast<NSButtonCell *>(button.cell).highlightsBy = YES;
-    auto image = [NSImage imageNamed:@"MenuBarIcon"];
+    Auto button = statusItem.button;
+    ((NSButtonCell *)button.cell).highlightsBy = YES;
+    Auto image = [NSImage imageNamed:@"MenuBarIcon"];
     button.image = image;
     
     statusItem.menu = self.menuController.menu;
@@ -62,7 +63,7 @@
 
 - (void)configureShortcutMonitor
 {
-    auto monitor = [DPLShortcutMonitor new];
+    Auto monitor = [DPLShortcutMonitor new];
     monitor.delegate = self;
     self.shortcutMonitor = monitor;
     
@@ -88,8 +89,9 @@
 
 - (NSInteger)currentDisplayModeIndexForDisplayAtIndex:(NSInteger)displayIndex
 {
-    auto display = self.displays[displayIndex];
-    if(auto currentDisplayMode = display.currentDisplayMode)
+    Auto display = self.displays[displayIndex];
+    Auto currentDisplayMode = display.currentDisplayMode;
+    if(currentDisplayMode != nil)
     {
         return [display.displayModes indexOfObject:currentDisplayMode];
     }
@@ -99,17 +101,18 @@
 
 - (NSString *)titleForDisplayModeAtIndexPath:(NSIndexPath *)indexPath
 {
-    auto displayIndex = indexPath.section;
-    auto display = self.displays[displayIndex];
-    auto index = indexPath.item;
-    auto displayMode = display.displayModes[index];
+    Auto displayIndex = indexPath.section;
+    Auto display = self.displays[displayIndex];
+    Auto index = indexPath.item;
+    Auto displayMode = display.displayModes[index];
     return displayMode.localizedName;
 }
 
 - (void)keyEquivalentForIncrease:(NSString **)key modifierFlags:(NSEventModifierFlags *)flags
 {
-    auto preferences = DPLPreferences.sharedPreferences;
-    if(auto shortcut = preferences.increaseResolutionShortcut)
+    Auto preferences = DPLPreferences.sharedPreferences;
+    Auto shortcut = preferences.increaseResolutionShortcut;
+    if(shortcut != nil)
     {
         *key = [SRKeyEquivalentTransformer.sharedTransformer transformedValue:shortcut];
         *flags = shortcut.modifierFlags;
@@ -118,8 +121,9 @@
 
 - (void)keyEquivalentForDecrease:(NSString **)key modifierFlags:(NSEventModifierFlags *)flags
 {
-    auto preferences = DPLPreferences.sharedPreferences;
-    if(auto shortcut = preferences.decreaseResolutionShortcut)
+    Auto preferences = DPLPreferences.sharedPreferences;
+    Auto shortcut = preferences.decreaseResolutionShortcut;
+    if(shortcut != nil)
     {
         *key = [SRKeyEquivalentTransformer.sharedTransformer transformedValue:shortcut];
         *flags = shortcut.modifierFlags;
@@ -140,10 +144,10 @@
 
 - (void)menuController:(DPLMenuController *)controller didSelectDisplayModeAtIndexPath:(NSIndexPath *)indexPath
 {
-    auto displayIndex = indexPath.section;
-    auto display = self.displays[displayIndex];
-    auto index = indexPath.item;
-    auto displayMode = display.displayModes[index];
+    Auto displayIndex = indexPath.section;
+    Auto display = self.displays[displayIndex];
+    Auto index = indexPath.item;
+    Auto displayMode = display.displayModes[index];
     
     display.currentDisplayMode = displayMode;
     [display applyCurrentDisplayMode];
@@ -154,8 +158,9 @@
 - (void)menuControllerShouldIncreaseResolution:(DPLMenuController *)controller
 {
 #warning TODO: Get current display
-    auto display = self.displays.firstObject;
-    if(auto next = display.nextDisplayMode)
+    Auto display = self.displays.firstObject;
+    Auto next = display.nextDisplayMode;
+    if(next != nil)
     {
         display.currentDisplayMode = next;
         [display applyCurrentDisplayMode];
@@ -165,8 +170,9 @@
 - (void)menuControllerShouldDecreaseResolution:(DPLMenuController *)controller
 {
 #warning TODO: Get current display
-    auto display = self.displays.firstObject;
-    if(auto previous = display.previousDisplayMode)
+    Auto display = self.displays.firstObject;
+    Auto previous = display.previousDisplayMode;
+    if(previous != nil)
     {
         display.currentDisplayMode = previous;
         [display applyCurrentDisplayMode];
@@ -178,8 +184,9 @@
 - (void)shortcutMonitorShouldIncreaseResolution:(DPLShortcutMonitor *)monitor
 {
 #warning TODO: Get current display
-    auto display = self.displays.firstObject;
-    if(auto next = display.nextDisplayMode)
+    Auto display = self.displays.firstObject;
+    Auto next = display.nextDisplayMode;
+    if(next != nil)
     {
         display.currentDisplayMode = next;
         [display applyCurrentDisplayMode];
@@ -189,8 +196,9 @@
 - (void)shortcutMonitorShouldDecreaseResolution:(DPLShortcutMonitor *)monitor
 {
 #warning TODO: Get current display
-    auto display = self.displays.firstObject;
-    if(auto previous = display.previousDisplayMode)
+    Auto display = self.displays.firstObject;
+    Auto previous = display.previousDisplayMode;
+    if(previous != nil)
     {
         display.currentDisplayMode = previous;
         [display applyCurrentDisplayMode];
@@ -199,13 +207,13 @@
 
 - (SRShortcut *)keyboardShortcutForIncreaseResolution
 {
-    auto preferences = DPLPreferences.sharedPreferences;
+    Auto preferences = DPLPreferences.sharedPreferences;
     return preferences.increaseResolutionShortcut;
 }
 
 - (SRShortcut *)keyboardShortcutForDecreaseResolution
 {
-    auto preferences = DPLPreferences.sharedPreferences;
+    Auto preferences = DPLPreferences.sharedPreferences;
     return preferences.decreaseResolutionShortcut;
 }
 
