@@ -249,8 +249,22 @@
 
 - (void)shortcutMonitorShouldIncreaseResolution:(DPLShortcutMonitor *)monitor
 {
-#warning TODO: Get current display
-    Auto display = self.displays.firstObject;
+    Auto app = NSApplication.sharedApplication;
+    Auto firstWindow = app.windows.firstObject;
+    Auto screenOfFirstWindow = firstWindow.screen;
+    Auto displayID = screenOfFirstWindow.dpl_displayID;
+    Auto predicate = [NSPredicate predicateWithFormat:@"%K == %@", @"displayID", @(displayID)];
+    Auto filteredDisplays = [self.displays filteredArrayUsingPredicate:predicate];
+    Auto display = filteredDisplays.firstObject;
+    if(display == nil) { return; }
+    
+    NSLog(@"Display: %@", display.localizedName);
+    
+//    return;
+//
+//
+//#warning TODO: Get current display
+//    Auto display = self.displays.firstObject;
     Auto next = display.nextDisplayMode;
     if(next != nil)
     {
