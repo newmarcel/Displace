@@ -216,8 +216,9 @@ NS_INLINE NSString *DPLBoolToString(BOOL value)
     Auto result = CGCompleteDisplayConfiguration(config, option);
     if(result != kCGErrorSuccess)
     {
-        NSLog(@"Failed to apply display mode change. Revert.");
+        DPLLog(@"Failed to apply display mode change. Revert.");
         CGRestorePermanentDisplayConfiguration();
+        return;
     }
 }
 

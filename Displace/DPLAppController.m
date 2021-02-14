@@ -80,6 +80,56 @@
     [center clearAllDeliveredNotifications];
 }
 
+#pragma mark - Notifications
+
+- (void)postNotificationForDisplayMode:(DPLDisplayMode *)displayMode direction:(NSComparisonResult)direction
+{
+    NSParameterAssert(displayMode);
+    
+    Auto center = DPLUserNotificationCenter.sharedCenter;
+    
+    DPLDisplayModeChangeType displayModeChangeType;
+    switch(direction)
+    {
+        case NSOrderedAscending:
+            displayModeChangeType = DPLDisplayModeChangeTypeIncrease;
+            break;
+        case NSOrderedDescending:
+            displayModeChangeType = DPLDisplayModeChangeTypeDecrease;
+            break;
+        case NSOrderedSame:
+            // don't post a notification
+            return;
+    }
+    Auto notification = [[DPLDisplayModeUserNotification alloc] initWithChangeType:displayModeChangeType
+                                                                          subtitle:displayMode.localizedName];
+    [center postNotification:notification];
+}
+
+- (void)postNotificationForDisplay:(DPLDisplay *)display newDisplayMode:(DPLDisplayMode *)newDisplayMode
+{
+    NSParameterAssert(display);
+    NSParameterAssert(newDisplayMode);
+    
+    Auto currentDisplayMode = display.currentDisplayMode;
+    if(currentDisplayMode == nil)
+    {
+        [self postNotificationForDisplayMode:newDisplayMode direction:NSOrderedAscending];
+        return;
+    }
+    
+    NSUInteger currentIndex = [display.displayModes indexOfObject:currentDisplayMode];
+    NSUInteger newIndex = [display.displayModes indexOfObject:newDisplayMode];
+    if(currentIndex > newIndex)
+    {
+        [self postNotificationForDisplayMode:newDisplayMode direction:NSOrderedAscending];
+    }
+    else if(currentIndex < newIndex)
+    {
+        [self postNotificationForDisplayMode:newDisplayMode direction:NSOrderedDescending];
+    }
+}
+
 #pragma mark - DPLMenuControllerDataSource
 
 - (NSInteger)numberOfDisplays
@@ -159,6 +209,8 @@
     Auto index = indexPath.item;
     Auto displayMode = display.displayModes[index];
     
+    [self postNotificationForDisplay:display newDisplayMode:displayMode];
+    
     display.currentDisplayMode = displayMode;
     [display applyCurrentDisplayMode];
     
@@ -174,6 +226,8 @@
     {
         display.currentDisplayMode = next;
         [display applyCurrentDisplayMode];
+        
+        [self postNotificationForDisplayMode:next direction:NSOrderedAscending];
     }
 }
 
@@ -186,6 +240,8 @@
     {
         display.currentDisplayMode = previous;
         [display applyCurrentDisplayMode];
+        
+        [self postNotificationForDisplayMode:previous direction:NSOrderedDescending];
     }
 }
 
@@ -201,10 +257,7 @@
         display.currentDisplayMode = next;
         [display applyCurrentDisplayMode];
         
-        Auto center = DPLUserNotificationCenter.sharedCenter;
-        Auto notification = [[DPLDisplayModeUserNotification alloc] initWithChangeType:DPLDisplayModeChangeTypeIncrease
-                                                                              subtitle:next.localizedName];
-        [center postNotification:notification];
+        [self postNotificationForDisplayMode:next direction:NSOrderedAscending];
     }
 }
 
@@ -218,10 +271,7 @@
         display.currentDisplayMode = previous;
         [display applyCurrentDisplayMode];
         
-        Auto center = DPLUserNotificationCenter.sharedCenter;
-        Auto notification = [[DPLDisplayModeUserNotification alloc] initWithChangeType:DPLDisplayModeChangeTypeDecrease
-                                                                              subtitle:previous.localizedName];
-        [center postNotification:notification];
+        [self postNotificationForDisplayMode:previous direction:NSOrderedDescending];
     }
 }
 
