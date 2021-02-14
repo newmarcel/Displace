@@ -1,16 +1,16 @@
 //
-//  DPLUserNotificationsController.m
+//  DPLUserNotificationCenter.m
 //  Displace
 //
 //  Created by Marcel Dierkes on 13.02.21.
 //
 
-#import "DPLUserNotificationsController.h"
+#import "DPLUserNotificationCenter.h"
 #import <UserNotifications/UserNotifications.h>
 #import "DPLDefines.h"
 
-@interface DPLUserNotificationsController ()
-@property (nonatomic, readwrite) DPLUserNotificationsAuthorizationStatus authorizationStatus;
+@interface DPLUserNotificationCenter ()
+@property (nonatomic, readwrite) DPLUserNotificationAuthorizationStatus authorizationStatus;
 @property (nonatomic) UNUserNotificationCenter *center;
 @end
 
@@ -18,7 +18,17 @@
 - (UNNotificationContent *)createNotificationContent;
 @end
 
-@implementation DPLUserNotificationsController
+@implementation DPLUserNotificationCenter
+
++ (instancetype)sharedCenter
+{
+    static dispatch_once_t once;
+    static DPLUserNotificationCenter *sharedCenter;
+    dispatch_once(&once, ^{
+        sharedCenter = [self new];
+    });
+    return sharedCenter;
+}
 
 - (instancetype)init
 {
@@ -38,28 +48,29 @@
 
 - (void)requestAuthorizationWithCompletion:(DPLUserNotificationsAuthorizationCompletion)completion
 {
-    __weak typeof(self) weakSelf = self;
     UNAuthorizationOptions options = UNAuthorizationOptionAlert | UNAuthorizationOptionProvisional;
     [self.center requestAuthorizationWithOptions:options completionHandler:^(BOOL granted, NSError *error) {
-        DPLUserNotificationsAuthorizationStatus status;
+        DPLUserNotificationAuthorizationStatus status;
         if(error != nil)
         {
             DPLLog(@"Failed to request notification access %@", error.userInfo);
-            status = DPLUserNotificationsAuthorizationStatusDenied;
+            status = DPLUserNotificationAuthorizationStatusDenied;
         }
         else if(granted == YES)
         {
-            status = DPLUserNotificationsAuthorizationStatusGranted;
+            status = DPLUserNotificationAuthorizationStatusGranted;
         }
         else
         {
-            status = DPLUserNotificationsAuthorizationStatusUndetermined;
+            status = DPLUserNotificationAuthorizationStatusUndetermined;
         }
-        weakSelf.authorizationStatus = status;
+        self.authorizationStatus = status;
         
         if(completion != nil)
         {
-            completion(status, error);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completion(status, error);
+            });
         }
     }];
 }
@@ -73,7 +84,7 @@
 {
     NSParameterAssert(notification);
     
-    if(self.authorizationStatus != DPLUserNotificationsAuthorizationStatusGranted)
+    if(self.authorizationStatus != DPLUserNotificationAuthorizationStatusGranted)
     {
         DPLLog(@"Posting notifications has not been granted.");
         return NO;

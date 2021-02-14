@@ -19,6 +19,7 @@ FOUNDATION_EXPORT const unsigned char DisplaceKitVersionString[];
 #import <DisplaceKit/DPLDefaultsProvider.h>
 #import <DisplaceKit/DPLPreferences.h>
 #import <DisplaceKit/DPLNotificationCenter.h>
+#import <DisplaceKit/DPLUserNotificationCenter.h>
 #import <DisplaceKit/DPLAppGroup.h>
 #import <DisplaceKit/NSURL+DPLPreferences.h>
 #import <DisplaceKit/NSWorkspace+DPLPreferences.h>

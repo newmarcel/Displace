@@ -1,5 +1,5 @@
 //
-//  DPLUserNotificationsController.h
+//  DPLUserNotificationCenter.h
 //  Displace
 //
 //  Created by Marcel Dierkes on 13.02.21.
@@ -11,21 +11,20 @@ NS_ASSUME_NONNULL_BEGIN
 
 @class DPLUserNotification;
 
-typedef NS_ENUM(NSUInteger, DPLUserNotificationsAuthorizationStatus) {
-    DPLUserNotificationsAuthorizationStatusUndetermined = 0,
-    DPLUserNotificationsAuthorizationStatusGranted,
-    DPLUserNotificationsAuthorizationStatusDenied,
+typedef NS_ENUM(NSUInteger, DPLUserNotificationAuthorizationStatus) {
+    DPLUserNotificationAuthorizationStatusUndetermined = 0,
+    DPLUserNotificationAuthorizationStatusGranted,
+    DPLUserNotificationAuthorizationStatusDenied,
 };
 
-typedef void(^DPLUserNotificationsAuthorizationCompletion)(DPLUserNotificationsAuthorizationStatus, NSError *_Nullable);
+typedef void(^DPLUserNotificationsAuthorizationCompletion)(DPLUserNotificationAuthorizationStatus, NSError *_Nullable);
 
-@interface DPLUserNotificationsController : NSObject
-@property (nonatomic, readonly) DPLUserNotificationsAuthorizationStatus authorizationStatus;
+@interface DPLUserNotificationCenter : NSObject
+@property (class, nonatomic, readonly) DPLUserNotificationCenter *sharedCenter;
+@property (nonatomic, readonly) DPLUserNotificationAuthorizationStatus authorizationStatus;
 
 - (void)requestAuthorizationWithCompletion:(nullable DPLUserNotificationsAuthorizationCompletion)completion;
-
 - (BOOL)postNotification:(__kindof DPLUserNotification *)notification;
-
 - (void)clearAllDeliveredNotifications;
 
 @end

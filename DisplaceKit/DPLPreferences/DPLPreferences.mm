@@ -29,11 +29,11 @@ using namespace DPL::Preferences;
 + (instancetype)sharedPreferences
 {
     static dispatch_once_t once;
-    static id sharedInstance;
+    static DPLPreferences *sharedPreferences;
     dispatch_once(&once, ^{
-        sharedInstance = [[self alloc] init];
+        sharedPreferences = [self new];
     });
-    return sharedInstance;
+    return sharedPreferences;
 }
 
 - (instancetype)init

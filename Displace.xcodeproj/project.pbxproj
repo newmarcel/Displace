@@ -14,7 +14,6 @@
 		DA0DE9FA2597BB6E00FCFE43 /* NSURL+DPLPreferences.h in Headers */ = {isa = PBXBuildFile; fileRef = DA0DE9F82597BB6E00FCFE43 /* NSURL+DPLPreferences.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DA0DE9FB2597BB6E00FCFE43 /* NSURL+DPLPreferences.mm in Sources */ = {isa = PBXBuildFile; fileRef = DA0DE9F92597BB6E00FCFE43 /* NSURL+DPLPreferences.mm */; };
 		DA2ECE6A259A1800009542DB /* DPLDisplayViewModel.mm in Sources */ = {isa = PBXBuildFile; fileRef = DA2ECE69259A1800009542DB /* DPLDisplayViewModel.mm */; };
-		DA384B8F25D845750052C1AC /* DPLUserNotificationsController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA384B8E25D845750052C1AC /* DPLUserNotificationsController.m */; };
 		DA3DC72B2598907F00275021 /* NSWorkspace+DPLPreferences.mm in Sources */ = {isa = PBXBuildFile; fileRef = DA3DC7292598907F00275021 /* NSWorkspace+DPLPreferences.mm */; };
 		DA3DC72C2598907F00275021 /* NSWorkspace+DPLPreferences.h in Headers */ = {isa = PBXBuildFile; fileRef = DA3DC72A2598907F00275021 /* NSWorkspace+DPLPreferences.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DA3DC734259890DC00275021 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA3DC733259890DC00275021 /* Cocoa.framework */; };
@@ -29,6 +28,9 @@
 		DA8784B9259CBE8A00A50897 /* ShortcutRecorder in Frameworks */ = {isa = PBXBuildFile; productRef = DA8784B8259CBE8A00A50897 /* ShortcutRecorder */; };
 		DA87E90D25A076C800784FB5 /* DPLShortcutMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = DA87E90C25A076C800784FB5 /* DPLShortcutMonitor.m */; };
 		DAAA6B3225D86D89003BF8E7 /* DPLDisplayModeUserNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = DAAA6B3125D86D89003BF8E7 /* DPLDisplayModeUserNotification.m */; };
+		DAAA6B4E25D917F0003BF8E7 /* DPLUserNotificationCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = DAAA6B4C25D917F0003BF8E7 /* DPLUserNotificationCenter.m */; };
+		DAAA6B4F25D917F0003BF8E7 /* DPLUserNotificationCenter.h in Headers */ = {isa = PBXBuildFile; fileRef = DAAA6B4D25D917F0003BF8E7 /* DPLUserNotificationCenter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DAAA6B6025D91A5D003BF8E7 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAAA6B5F25D91A5D003BF8E7 /* UserNotifications.framework */; };
 		DAAF0542259789F300ED206F /* DisplaceKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAAF0539259789F300ED206F /* DisplaceKit.framework */; };
 		DAAF0549259789F300ED206F /* DisplaceKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DAAF0548259789F300ED206F /* DisplaceKitTests.m */; };
 		DAAF054B259789F300ED206F /* DisplaceKit.h in Headers */ = {isa = PBXBuildFile; fileRef = DAAF053B259789F300ED206F /* DisplaceKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -130,8 +132,6 @@
 		DA2ECE69259A1800009542DB /* DPLDisplayViewModel.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = DPLDisplayViewModel.mm; sourceTree = "<group>"; };
 		DA3314ED259BA6B000B208F6 /* Configuration.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Configuration.xcconfig; sourceTree = SOURCE_ROOT; };
 		DA384B5425D8025C0052C1AC /* DPLDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DPLDefines.h; sourceTree = "<group>"; };
-		DA384B8D25D845750052C1AC /* DPLUserNotificationsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DPLUserNotificationsController.h; sourceTree = "<group>"; };
-		DA384B8E25D845750052C1AC /* DPLUserNotificationsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DPLUserNotificationsController.m; sourceTree = "<group>"; };
 		DA3DC7292598907F00275021 /* NSWorkspace+DPLPreferences.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "NSWorkspace+DPLPreferences.mm"; sourceTree = "<group>"; };
 		DA3DC72A2598907F00275021 /* NSWorkspace+DPLPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSWorkspace+DPLPreferences.h"; sourceTree = "<group>"; };
 		DA3DC733259890DC00275021 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -151,6 +151,9 @@
 		DA87E90C25A076C800784FB5 /* DPLShortcutMonitor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DPLShortcutMonitor.m; sourceTree = "<group>"; };
 		DAAA6B3025D86D89003BF8E7 /* DPLDisplayModeUserNotification.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DPLDisplayModeUserNotification.h; sourceTree = "<group>"; };
 		DAAA6B3125D86D89003BF8E7 /* DPLDisplayModeUserNotification.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DPLDisplayModeUserNotification.m; sourceTree = "<group>"; };
+		DAAA6B4C25D917F0003BF8E7 /* DPLUserNotificationCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPLUserNotificationCenter.m; sourceTree = "<group>"; };
+		DAAA6B4D25D917F0003BF8E7 /* DPLUserNotificationCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPLUserNotificationCenter.h; sourceTree = "<group>"; };
+		DAAA6B5F25D91A5D003BF8E7 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		DAAF0539259789F300ED206F /* DisplaceKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DisplaceKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAAF053B259789F300ED206F /* DisplaceKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DisplaceKit.h; sourceTree = "<group>"; };
 		DAAF053C259789F300ED206F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -196,6 +199,7 @@
 			files = (
 				DA3DC734259890DC00275021 /* Cocoa.framework in Frameworks */,
 				DA8784B9259CBE8A00A50897 /* ShortcutRecorder in Frameworks */,
+				DAAA6B6025D91A5D003BF8E7 /* UserNotifications.framework in Frameworks */,
 				DA4F4E0325B3872F00F82E1D /* Metal.framework in Frameworks */,
 				DAEED157259DF1FA0011CEFF /* ShortcutRecorder in Frameworks */,
 				DAAF057925978B4600ED206F /* CoreGraphics.framework in Frameworks */,
@@ -261,6 +265,7 @@
 		DA643AD72532FAE800F0A49A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DAAA6B5F25D91A5D003BF8E7 /* UserNotifications.framework */,
 				DA4F4E0225B3872F00F82E1D /* Metal.framework */,
 				DA3DC733259890DC00275021 /* Cocoa.framework */,
 				DAAF057825978B4600ED206F /* CoreGraphics.framework */,
@@ -299,6 +304,15 @@
 			path = DPLGeneralPreferencesViewController;
 			sourceTree = "<group>";
 		};
+		DAAA6B4B25D917F0003BF8E7 /* DPLUserNotificationCenter */ = {
+			isa = PBXGroup;
+			children = (
+				DAAA6B4D25D917F0003BF8E7 /* DPLUserNotificationCenter.h */,
+				DAAA6B4C25D917F0003BF8E7 /* DPLUserNotificationCenter.m */,
+			);
+			path = DPLUserNotificationCenter;
+			sourceTree = "<group>";
+		};
 		DAAA87A52597D7D000399006 /* Other… */ = {
 			isa = PBXGroup;
 			children = (
@@ -322,6 +336,7 @@
 				DAAF056125978AB000ED206F /* DPLAppGroup */,
 				DAAF055A25978AB000ED206F /* DPLPreferences */,
 				DA0971A425AA472500B12CB4 /* DPLNotificationCenter */,
+				DAAA6B4B25D917F0003BF8E7 /* DPLUserNotificationCenter */,
 			);
 			path = DisplaceKit;
 			sourceTree = "<group>";
@@ -420,8 +435,6 @@
 				DAB11481258E85FB008C2BE8 /* DPLMenuController.m */,
 				DA87E90B25A076C800784FB5 /* DPLShortcutMonitor.h */,
 				DA87E90C25A076C800784FB5 /* DPLShortcutMonitor.m */,
-				DA384B8D25D845750052C1AC /* DPLUserNotificationsController.h */,
-				DA384B8E25D845750052C1AC /* DPLUserNotificationsController.m */,
 				DAAA6B3025D86D89003BF8E7 /* DPLDisplayModeUserNotification.h */,
 				DAAA6B3125D86D89003BF8E7 /* DPLDisplayModeUserNotification.m */,
 				DAAF059825978FBC00ED206F /* Other… */,
@@ -459,6 +472,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAAA6B4F25D917F0003BF8E7 /* DPLUserNotificationCenter.h in Headers */,
 				DADDAEF025B2E19000DD1FEF /* NSScreen+DPLDisplay.h in Headers */,
 				DAAF056725978AB000ED206F /* DPLDefaultsProvider.h in Headers */,
 				DAAF056B25978AB000ED206F /* DPLDisplayMode.h in Headers */,
@@ -656,6 +670,7 @@
 				DAAF056C25978AB000ED206F /* DPLAppGroup.mm in Sources */,
 				DA3DC72B2598907F00275021 /* NSWorkspace+DPLPreferences.mm in Sources */,
 				DAAF056A25978AB000ED206F /* DPLDisplayMode.mm in Sources */,
+				DAAA6B4E25D917F0003BF8E7 /* DPLUserNotificationCenter.m in Sources */,
 				DAAF056925978AB000ED206F /* DPLPreferences.mm in Sources */,
 				DAAF056E25978AB000ED206F /* DPLDisplay.mm in Sources */,
 			);
@@ -676,7 +691,6 @@
 				DAAA6B3225D86D89003BF8E7 /* DPLDisplayModeUserNotification.m in Sources */,
 				DAC91F632532F6B200A08DE0 /* main.m in Sources */,
 				DAFD864E258D3712004EB800 /* DPLAppController.m in Sources */,
-				DA384B8F25D845750052C1AC /* DPLUserNotificationsController.m in Sources */,
 				DAB11482258E85FB008C2BE8 /* DPLMenuController.m in Sources */,
 				DA87E90D25A076C800784FB5 /* DPLShortcutMonitor.m in Sources */,
 			);

@@ -11,7 +11,7 @@
 #import "DPLDefines.h"
 #import "DPLMenuController.h"
 #import "DPLShortcutMonitor.h"
-#import "DPLUserNotificationsController.h"
+#import "DPLUserNotificationCenter.h"
 #import "DPLDisplayModeUserNotification.h"
 
 @interface DPLAppController () <DPLMenuControllerDataSource, DPLMenuControllerDelegate, DPLShortcutMonitorDelegate>
@@ -19,7 +19,6 @@
 @property (nonatomic, readwrite) NSStatusItem *systemStatusItem;
 @property (nonatomic) DPLMenuController *menuController;
 @property (nonatomic) DPLShortcutMonitor *shortcutMonitor;
-@property (nonatomic) DPLUserNotificationsController *notificationsController;
 @end
 
 @implementation DPLAppController
@@ -34,7 +33,7 @@
         [self configureMenuController];
         [self configureStatusItem];
         [self configureShortcutMonitor];
-        [self configureNotificationsController];
+        [self configureUserNotificationCenter];
     }
     return self;
 }
@@ -74,12 +73,11 @@
     [monitor startMonitoring];
 }
 
-- (void)configureNotificationsController
+- (void)configureUserNotificationCenter
 {
-    Auto controller = [DPLUserNotificationsController new];
-    [controller requestAuthorizationWithCompletion:nil];
-    [controller clearAllDeliveredNotifications];
-    self.notificationsController = controller;
+    Auto center = DPLUserNotificationCenter.sharedCenter;
+    [center requestAuthorizationWithCompletion:nil];
+    [center clearAllDeliveredNotifications];
 }
 
 #pragma mark - DPLMenuControllerDataSource
@@ -203,9 +201,10 @@
         display.currentDisplayMode = next;
         [display applyCurrentDisplayMode];
         
+        Auto center = DPLUserNotificationCenter.sharedCenter;
         Auto notification = [[DPLDisplayModeUserNotification alloc] initWithChangeType:DPLDisplayModeChangeTypeIncrease
                                                                               subtitle:next.localizedName];
-        [self.notificationsController postNotification:notification];
+        [center postNotification:notification];
     }
 }
 
@@ -219,9 +218,10 @@
         display.currentDisplayMode = previous;
         [display applyCurrentDisplayMode];
         
+        Auto center = DPLUserNotificationCenter.sharedCenter;
         Auto notification = [[DPLDisplayModeUserNotification alloc] initWithChangeType:DPLDisplayModeChangeTypeDecrease
                                                                               subtitle:previous.localizedName];
-        [self.notificationsController postNotification:notification];
+        [center postNotification:notification];
     }
 }
 
