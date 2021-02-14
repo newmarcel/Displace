@@ -6,6 +6,7 @@
 //
 
 #import "DPLGraphicsDevice.h"
+#import "DPLDefines.h"
 
 NS_INLINE NSString *DPLBoolToString(BOOL value) { return (value == YES) ? @"YES" : @"NO"; }
 
@@ -38,7 +39,7 @@ NS_INLINE NSString *DPLBoolToString(BOOL value) { return (value == YES) ? @"YES"
 
 - (NSString *)description
 {
-    NSMutableString *string = [[NSMutableString alloc] initWithString:super.description];
+    Auto string = [[NSMutableString alloc] initWithString:super.description];
     [string appendFormat:@"\n  ID: %@", @(self.registryID)];
     [string appendFormat:@"\n  Name: %@", self.name];
     [string appendFormat:@"\n  Is Low Power: %@", DPLBoolToString([self isLowPower])];
@@ -59,7 +60,7 @@ NS_INLINE NSString *DPLBoolToString(BOOL value) { return (value == YES) ? @"YES"
 
 - (BOOL)isEqual:(nullable id)object
 {
-    DPLGraphicsDevice *other = (DPLGraphicsDevice *)object;
+    Auto other = (DPLGraphicsDevice *)object;
     if(other == nil) { return NO; }
     if(![other isKindOfClass:[self class]]) { return NO; }
     

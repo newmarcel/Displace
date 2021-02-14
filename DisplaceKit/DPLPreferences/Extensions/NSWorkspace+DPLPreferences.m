@@ -1,19 +1,20 @@
 //
-//  NSWorkspace+DPLPreferences.mm
+//  NSWorkspace+DPLPreferences.m
 //  Displace
 //
 //  Created by Marcel Dierkes on 27.12.20.
 //
 
 #import "NSWorkspace+DPLPreferences.h"
+#import "DPLDefines.h"
 #import "NSURL+DPLPreferences.h"
 
 @implementation NSWorkspace (DPLPreferences)
 
 - (void)dpl_openPreferencesWithCompletionHandler:(void(^)(NSRunningApplication *app, NSError *error))completionHandler
 {
-    auto appURL = NSURL.dpl_preferencesAppURL;
-    auto config = [NSWorkspaceOpenConfiguration configuration];
+    Auto appURL = NSURL.dpl_preferencesAppURL;
+    Auto config = [NSWorkspaceOpenConfiguration configuration];
     config.addsToRecentItems = NO;
     
     [self openApplicationAtURL:appURL

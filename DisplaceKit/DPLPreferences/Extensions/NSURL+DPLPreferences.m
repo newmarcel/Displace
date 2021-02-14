@@ -6,6 +6,7 @@
 //
 
 #import "NSURL+DPLPreferences.h"
+#import "DPLDefines.h"
 
 static NSString * const DPLPreferencesAppBundleName = @"Displace Preferences.app";
 
@@ -13,7 +14,7 @@ static NSString * const DPLPreferencesAppBundleName = @"Displace Preferences.app
 
 + (NSURL *)dpl_preferencesAppURL
 {
-    auto executableBaseURL = NSBundle.mainBundle.executableURL.URLByDeletingLastPathComponent;
+    Auto executableBaseURL = NSBundle.mainBundle.executableURL.URLByDeletingLastPathComponent;
     return [executableBaseURL URLByAppendingPathComponent:DPLPreferencesAppBundleName
                                               isDirectory:NO];
 }

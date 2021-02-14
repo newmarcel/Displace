@@ -1,22 +1,23 @@
 //
-//  DPLDisplay.mm
+//  DPLDisplay.m
 //  Displace
 //
 //  Created by Marcel Dierkes on 26.12.20.
 //
 
 #import "DPLDisplay.h"
+#import <Metal/Metal.h>
+#import "DPLDefines.h"
 #import "DPLDisplayMode.h"
 #import "DPLGraphicsDevice.h"
 #import "DPLPreferences.h"
 #import "NSScreen+DPLDisplay.h"
-#import <Metal/Metal.h>
 
-namespace DPL::Display
+static const NSUInteger DPLDisplayCountMax = 64u;
+
+NS_INLINE NSString *DPLBoolToString(BOOL value)
 {
-constexpr auto CountMax = 64u;
-
-static NSString *BoolToString(BOOL value) { return (value == YES) ? @"YES" : @"NO"; }
+    return (value == YES) ? @"YES" : @"NO";
 }
 
 @interface DPLDisplay ()
@@ -40,11 +41,9 @@ static NSString *BoolToString(BOOL value) { return (value == YES) ? @"YES" : @"N
 
 + (NSArray<DPLDisplay *> *)allDisplaysUsingInformationFromScreens:(NSArray<NSScreen *> *)screens
 {
-    using namespace DPL::Display;
-    
-    CGDirectDisplayID displaysIDs[CountMax];
+    CGDirectDisplayID displaysIDs[DPLDisplayCountMax];
     uint32_t numberOfDisplays = 0;
-    CGError result = CGGetActiveDisplayList(CountMax, displaysIDs, &numberOfDisplays);
+    CGError result = CGGetActiveDisplayList(DPLDisplayCountMax, displaysIDs, &numberOfDisplays);
     if(result != kCGErrorSuccess)
     {
         @throw [NSException exceptionWithName:NSInternalInconsistencyException
@@ -53,8 +52,8 @@ static NSString *BoolToString(BOOL value) { return (value == YES) ? @"YES" : @"N
         return @[];
     }
 
-    auto displays = [NSMutableArray<DPLDisplay *> new];
-    for(uint32_t i = 0; i < CountMax; i++)
+    Auto displays = [NSMutableArray<DPLDisplay *> new];
+    for(NSUInteger i = 0; i < DPLDisplayCountMax; i++)
     {
         CGDirectDisplayID display = displaysIDs[i];
         if(display == kCGNullDirectDisplay || CGDisplayPixelsWide(display) == 0)
@@ -70,17 +69,17 @@ static NSString *BoolToString(BOOL value) { return (value == YES) ? @"YES" : @"N
         size_t height = CGDisplayPixelsHigh(display);
         
         id<MTLDevice> metalDevice = CGDirectDisplayCopyCurrentMetalDevice(displayID);
-        auto graphicsDevice = [[DPLGraphicsDevice alloc] initWithMetalDevice:metalDevice];
+        Auto graphicsDevice = [[DPLGraphicsDevice alloc] initWithMetalDevice:metalDevice];
         
-        auto displayModes = [NSMutableArray<DPLDisplayMode *> new];
-        auto options = @{
+        Auto displayModes = [NSMutableArray<DPLDisplayMode *> new];
+        Auto options = @{
             (__bridge NSString *)kCGDisplayShowDuplicateLowResolutionModes: (__bridge NSNumber *)kCFBooleanTrue
         };
-        auto modeList = CGDisplayCopyAllDisplayModes(display, (__bridge CFDictionaryRef)options);
+        Auto modeList = CGDisplayCopyAllDisplayModes(display, (__bridge CFDictionaryRef)options);
         if(modeList == nil) { continue; }
         CFIndex modeListCount = CFArrayGetCount(modeList);
         
-        auto currentDisplayModeReference = CGDisplayCopyDisplayMode(display);
+        Auto currentDisplayModeReference = CGDisplayCopyDisplayMode(display);
         DPLDisplayMode *currentDisplayMode;
         
         // https://stackoverflow.com/questions/1236498/how-to-get-the-display-name-with-the-display-id-in-mac-os-x
@@ -89,7 +88,7 @@ static NSString *BoolToString(BOOL value) { return (value == YES) ? @"YES" : @"N
             CGDisplayModeRef mode = (CGDisplayModeRef)CFArrayGetValueAtIndex(modeList, index);
             if(CGDisplayModeIsUsableForDesktopGUI(mode) == false) { continue; }
             
-            auto displayMode = [[DPLDisplayMode alloc] initWithDisplayModeReference:mode];
+            Auto displayMode = [[DPLDisplayMode alloc] initWithDisplayModeReference:mode];
             [displayModes addObject:displayMode];
             
             if(mode == currentDisplayModeReference)
@@ -101,10 +100,10 @@ static NSString *BoolToString(BOOL value) { return (value == YES) ? @"YES" : @"N
         CFRelease(currentDisplayModeReference);
         
         // Sort the display modes by width DESC
-        auto sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"width" ascending:NO];
+        Auto sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"width" ascending:NO];
         [displayModes sortUsingDescriptors:@[sortDescriptor]];
         
-        auto displayInstance = [[DPLDisplay alloc] initWithDisplayID:displayID
+        Auto displayInstance = [[DPLDisplay alloc] initWithDisplayID:displayID
                                                                width:(NSInteger)width
                                                               height:(NSInteger)height
                                                                 main:isMain
@@ -161,21 +160,21 @@ static NSString *BoolToString(BOOL value) { return (value == YES) ? @"YES" : @"N
     }
     else
     {
-        auto predicate = [NSPredicate predicateWithFormat:@"%K == YES", @"retinaResolution"];
+        Auto predicate = [NSPredicate predicateWithFormat:@"%K == YES", @"retinaResolution"];
         return [_displayModes filteredArrayUsingPredicate:predicate];
     }
 }
 
 - (DPLDisplayMode *)nextDisplayMode
 {
-    auto currentDisplayMode = self.currentDisplayMode;
+    Auto currentDisplayMode = self.currentDisplayMode;
     if(currentDisplayMode == nil) { return nil; }
     
-    auto displayModes = self.displayModes;
-    auto currentIndex = [displayModes indexOfObject:currentDisplayMode];
+    Auto displayModes = self.displayModes;
+    Auto currentIndex = [displayModes indexOfObject:currentDisplayMode];
     if(currentIndex == NSNotFound) { return nil; }
     
-    auto nextIndex = currentIndex - 1;
+    Auto nextIndex = currentIndex - 1;
     if(nextIndex < 0 || nextIndex >= displayModes.count) { return nil; }
     
     return displayModes[nextIndex];
@@ -183,14 +182,14 @@ static NSString *BoolToString(BOOL value) { return (value == YES) ? @"YES" : @"N
 
 - (DPLDisplayMode *)previousDisplayMode
 {
-    auto currentDisplayMode = self.currentDisplayMode;
+    Auto currentDisplayMode = self.currentDisplayMode;
     if(currentDisplayMode == nil) { return nil; }
     
-    auto displayModes = self.displayModes;
-    auto currentIndex = [displayModes indexOfObject:currentDisplayMode];
+    Auto displayModes = self.displayModes;
+    Auto currentIndex = [displayModes indexOfObject:currentDisplayMode];
     if(currentIndex == NSNotFound) { return nil; }
     
-    auto previousIndex = currentIndex + 1;
+    Auto previousIndex = currentIndex + 1;
     if(previousIndex < 0 || previousIndex >= displayModes.count) { return nil; }
     
     return displayModes[previousIndex];
@@ -200,7 +199,7 @@ static NSString *BoolToString(BOOL value) { return (value == YES) ? @"YES" : @"N
 
 - (void)applyCurrentDisplayMode
 {
-    auto displayMode = self.currentDisplayMode;
+    Auto displayMode = self.currentDisplayMode;
     if(displayMode == nil) { return; }
     
     CGDisplayConfigRef config;
@@ -214,7 +213,7 @@ static NSString *BoolToString(BOOL value) { return (value == YES) ? @"YES" : @"N
     CGConfigureOption option = kCGConfigurePermanently;
 #endif
     
-    auto result = CGCompleteDisplayConfiguration(config, option);
+    Auto result = CGCompleteDisplayConfiguration(config, option);
     if(result != kCGErrorSuccess)
     {
         NSLog(@"Failed to apply display mode change. Revert.");
@@ -242,13 +241,11 @@ static NSString *BoolToString(BOOL value) { return (value == YES) ? @"YES" : @"N
 
 - (NSString *)description
 {
-    using namespace DPL::Display;
-    
-    auto string = [[NSMutableString alloc] initWithString:super.description];
+    Auto string = [[NSMutableString alloc] initWithString:super.description];
     [string appendFormat:@"\n  ID: %@", @(self.displayID)];
-    [string appendFormat:@"\n  Is Main: %@", BoolToString([self isMain])];
-    [string appendFormat:@"\n  Is Online: %@", BoolToString([self isOnline])];
-    [string appendFormat:@"\n  Is Built-In: %@", BoolToString([self isBuiltIn])];
+    [string appendFormat:@"\n  Is Main: %@", DPLBoolToString([self isMain])];
+    [string appendFormat:@"\n  Is Online: %@", DPLBoolToString([self isOnline])];
+    [string appendFormat:@"\n  Is Built-In: %@", DPLBoolToString([self isBuiltIn])];
     [string appendFormat:@"\n  Size: %@ × %@", @(self.width), @(self.height)];
     [string appendFormat:@"\n  Modes:"];
     for(DPLDisplayMode *mode in self.displayModes)
@@ -282,7 +279,7 @@ static NSString *BoolToString(BOOL value) { return (value == YES) ? @"YES" : @"N
 
 - (BOOL)isEqual:(id)object
 {
-    auto other = (DPLDisplay *)object;
+    Auto other = (DPLDisplay *)object;
     if(other == nil) { return NO; }
     if([other isKindOfClass:[self class]] == NO) { return NO; }
     

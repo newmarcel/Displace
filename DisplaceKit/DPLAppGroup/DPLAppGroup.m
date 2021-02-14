@@ -1,11 +1,12 @@
 //
-//  DPLAppGroup.mm
+//  DPLAppGroup.m
 //  Displace
 //
 //  Created by Marcel Dierkes on 23.12.20.
 //
 
 #import "DPLAppGroup.h"
+#import "DPLDefines.h"
 
 NSString * const DPLAppGroupIdentifier = @"group.info.marcel-dierkes.Displace";
 static NSString * const DPLAppGroupDefaultDirectoryName = @"Displace";
@@ -14,11 +15,11 @@ NSURL *DPLAppGroupGetURLWithPathComponent(NSString *pathComponent)
 {
     NSCParameterAssert(pathComponent);
     
-    auto fileManager = NSFileManager.defaultManager;
-    auto identifier = DPLAppGroupIdentifier;
-    auto container = [fileManager containerURLForSecurityApplicationGroupIdentifier:identifier];
+    Auto fileManager = NSFileManager.defaultManager;
+    Auto identifier = DPLAppGroupIdentifier;
+    Auto container = [fileManager containerURLForSecurityApplicationGroupIdentifier:identifier];
     
-    auto URL = [container URLByAppendingPathComponent:pathComponent];
+    Auto URL = [container URLByAppendingPathComponent:pathComponent];
     if(![fileManager fileExistsAtPath:URL.path])
     {
         NSError *error;
@@ -27,7 +28,7 @@ NSURL *DPLAppGroupGetURLWithPathComponent(NSString *pathComponent)
         {
             @throw [NSException exceptionWithName:NSInternalInconsistencyException
                                            reason:@"Could not create app group directory."
-                                         userInfo:@{NSUnderlyingErrorKey: error}];
+                                         userInfo:@{ NSUnderlyingErrorKey: error }];
         }
     }
     return URL;

@@ -6,14 +6,16 @@
 //
 
 #import "NSScreen+DPLDisplay.h"
+#import "DPLDefines.h"
+
 static const NSDeviceDescriptionKey DPLScreenNumberKey = @"NSScreenNumber";
 
 @implementation NSScreen (DPLDisplay)
 
 - (CGDirectDisplayID)dpl_displayID
 {
-    NSDictionary<NSDeviceDescriptionKey, id> *deviceDescription = self.deviceDescription;
-    NSNumber *screenNumber = (NSNumber *)deviceDescription[DPLScreenNumberKey];
+    Auto deviceDescription = self.deviceDescription;
+    Auto screenNumber = (NSNumber *)deviceDescription[DPLScreenNumberKey];
     return (CGDirectDisplayID)screenNumber.integerValue;
 }
 

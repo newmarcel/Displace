@@ -6,6 +6,7 @@
 //
 
 #import "DPLDisplayMode.h"
+#import "DPLDefines.h"
 #import "DPLPreferences.h"
 
 @interface DPLDisplayMode ()
@@ -67,14 +68,14 @@
 
 - (NSString *)localizedName
 {
-    auto string = static_cast<NSMutableString *>([self.localizedNameWithoutAttributes mutableCopy]);
+    Auto string = (NSMutableString *)[self.localizedNameWithoutAttributes mutableCopy];
     if([DPLPreferences.sharedPreferences isNonRetinaDisplayModesEnabled] == YES)
     {
-        auto retinaAttributeTitle = NSLocalizedString(@"(Retina)", @"(Retina)");
+        Auto retinaAttributeTitle = NSLocalizedString(@"(Retina)", @"(Retina)");
         if([self isRetinaResolution]) { [string appendFormat:@" %@", retinaAttributeTitle]; }
     }
     
-    auto nativeAttributeTitle = NSLocalizedString(@"(Native)", @"(Native)");
+    Auto nativeAttributeTitle = NSLocalizedString(@"(Native)", @"(Native)");
     if([self isNativeResolution]) { [string appendFormat:@" %@", nativeAttributeTitle]; }
 
     return [string copy];
@@ -93,7 +94,7 @@
 
 - (NSString *)description
 {
-    auto string = [[NSMutableString alloc] initWithString:super.description];
+    Auto string = [[NSMutableString alloc] initWithString:super.description];
     [string appendFormat:@" %@", @(self.displayModeID)];
     [string appendFormat:@" [%@ × %@]", @(self.width), @(self.height)];
     if([self isRetinaResolution]) { [string appendString:@" @2x"]; }
@@ -114,13 +115,13 @@
     NSParameterAssert(displayMode);
     
     return self.displayModeID == displayMode.displayModeID
-    && self.width == displayMode.width
-    && self.height == displayMode.height;
+        && self.width == displayMode.width
+        && self.height == displayMode.height;
 }
 
 - (BOOL)isEqual:(id)object
 {
-    auto other = (DPLDisplayMode *)object;
+    Auto other = (DPLDisplayMode *)object;
     if(other == nil) { return NO; }
     if([other isKindOfClass:[self class]] == NO) { return NO; }
     

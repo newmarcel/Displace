@@ -6,6 +6,7 @@
 //
 
 #import "DPLNotificationCenter.h"
+#import "DPLDefines.h"
 
 const DPLNotificationName DPLShortcutDidChangeNotification = @"DPLShortcutDidChangeNotification";
 const DPLNotificationName DPLShortcutWillEditNotification = @"DPLShortcutWillEditNotification";

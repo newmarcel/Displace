@@ -9,8 +9,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef void(^DPLOpenPreferencesCompletionHandler)(NSRunningApplication *_Nullable app,
-                                                   NSError *_Nullable error);
+typedef void(^DPLOpenPreferencesCompletionHandler)(NSRunningApplication *_Nullable,
+                                                   NSError *_Nullable);
 
 @interface NSWorkspace (DPLPreferences)
 

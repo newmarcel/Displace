@@ -1,24 +1,19 @@
 //
-//  DPLPreferences.mm
+//  DPLPreferences.m
 //  Displace
 //
 //  Created by Marcel Dierkes on 23.12.20.
 //
 
 #import "DPLPreferences.h"
+#import "DPLDefines.h"
 #import "DPLAppGroup.h"
 #import <ShortcutRecorder/ShortcutRecorder.h>
 
-namespace DPL::Preferences::Key
-{
-constexpr auto LaunchAtLoginEnabled = @"info.marcel-dierkes.Displace.LaunchAtLoginEnabled";
-}
-
+NSString * const DPLLaunchAtLoginEnabledDefaultsKey = @"info.marcel-dierkes.Displace.LaunchAtLoginEnabled";
 NSString * const DPLNonRetinaDisplayModesEnabledDefaultsKey = @"info.marcel-dierkes.Displace.NonRetinaDisplayModesEnabled";
 NSString * const DPLIncreaseResolutionShortcutDefaultsKey = @"info.marcel-dierkes.Displace.IncreaseResolutionShortcut";
 NSString * const DPLDecreaseResolutionShortcutDefaultsKey =  @"info.marcel-dierkes.Displace.DecreaseResolutionShortcut";
-
-using namespace DPL::Preferences;
 
 @interface DPLPreferences ()
 @property (nonatomic, readwrite) id<DPLDefaultsProvider> defaults;
@@ -57,12 +52,12 @@ using namespace DPL::Preferences;
 
 - (BOOL)isLaunchAtLoginEnabled
 {
-    return [self.defaults boolForKey:Key::LaunchAtLoginEnabled];
+    return [self.defaults boolForKey:DPLLaunchAtLoginEnabledDefaultsKey];
 }
 
 - (void)setLaunchAtLoginEnabled:(BOOL)enabled
 {
-    [self.defaults setBool:enabled forKey:Key::LaunchAtLoginEnabled];
+    [self.defaults setBool:enabled forKey:DPLLaunchAtLoginEnabledDefaultsKey];
 }
 
 - (BOOL)isNonRetinaDisplayModesEnabled
@@ -79,7 +74,7 @@ using namespace DPL::Preferences;
 
 - (SRShortcut *)increaseResolutionShortcut
 {
-    auto data = [self.defaults dataForKey:DPLIncreaseResolutionShortcutDefaultsKey];
+    Auto data = [self.defaults dataForKey:DPLIncreaseResolutionShortcutDefaultsKey];
     if(data == nil)
     {
         return nil;
@@ -91,7 +86,7 @@ using namespace DPL::Preferences;
                                                                 error:&error];
     if(error != nil)
     {
-        NSLog(@"Failed to deserialize increase shortcut: %@", error.userInfo);
+        DPLLog(@"Failed to deserialize increase shortcut: %@", error.userInfo);
         return nil;
     }
     return shortcut;
@@ -106,11 +101,11 @@ using namespace DPL::Preferences;
     }
     
     NSError *error;
-    auto data = [NSKeyedArchiver archivedDataWithRootObject:increaseResolutionShortcut
+    Auto data = [NSKeyedArchiver archivedDataWithRootObject:increaseResolutionShortcut
                                       requiringSecureCoding:YES error:&error];
     if(error != nil)
     {
-        NSLog(@"Failed to serialize increase shortcut: %@", error.userInfo);
+        DPLLog(@"Failed to serialize increase shortcut: %@", error.userInfo);
         [self.defaults removeObjectForKey:DPLIncreaseResolutionShortcutDefaultsKey];
         return;
     }
@@ -119,7 +114,7 @@ using namespace DPL::Preferences;
 
 - (SRShortcut *)decreaseResolutionShortcut
 {
-    auto data = [self.defaults dataForKey:DPLDecreaseResolutionShortcutDefaultsKey];
+    Auto data = [self.defaults dataForKey:DPLDecreaseResolutionShortcutDefaultsKey];
     if(data == nil)
     {
         return nil;
@@ -131,7 +126,7 @@ using namespace DPL::Preferences;
                                                                 error:&error];
     if(error != nil)
     {
-        NSLog(@"Failed to deserialize decrease shortcut: %@", error.userInfo);
+        DPLLog(@"Failed to deserialize decrease shortcut: %@", error.userInfo);
         return nil;
     }
     return shortcut;
@@ -146,11 +141,11 @@ using namespace DPL::Preferences;
     }
     
     NSError *error;
-    auto data = [NSKeyedArchiver archivedDataWithRootObject:decreaseResolutionShortcut
+    Auto data = [NSKeyedArchiver archivedDataWithRootObject:decreaseResolutionShortcut
                                       requiringSecureCoding:YES error:&error];
     if(error != nil)
     {
-        NSLog(@"Failed to serialize decrease shortcut: %@", error.userInfo);
+        DPLLog(@"Failed to serialize decrease shortcut: %@", error.userInfo);
         [self.defaults removeObjectForKey:DPLDecreaseResolutionShortcutDefaultsKey];
         return;
     }
