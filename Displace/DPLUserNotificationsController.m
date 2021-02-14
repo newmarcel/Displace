@@ -36,19 +36,30 @@
     return self;
 }
 
-- (void)requestAuthorization
+- (void)requestAuthorizationWithCompletion:(DPLUserNotificationsAuthorizationCompletion)completion
 {
     __weak typeof(self) weakSelf = self;
     UNAuthorizationOptions options = UNAuthorizationOptionAlert | UNAuthorizationOptionProvisional;
     [self.center requestAuthorizationWithOptions:options completionHandler:^(BOOL granted, NSError *error) {
+        DPLUserNotificationsAuthorizationStatus status;
         if(error != nil)
         {
             DPLLog(@"Failed to request notification access %@", error.userInfo);
-            weakSelf.authorizationStatus = DPLUserNotificationsAuthorizationStatusDenied;
+            status = DPLUserNotificationsAuthorizationStatusDenied;
         }
         else if(granted == YES)
         {
-            weakSelf.authorizationStatus = DPLUserNotificationsAuthorizationStatusGranted;
+            status = DPLUserNotificationsAuthorizationStatusGranted;
+        }
+        else
+        {
+            status = DPLUserNotificationsAuthorizationStatusUndetermined;
+        }
+        weakSelf.authorizationStatus = status;
+        
+        if(completion != nil)
+        {
+            completion(status, error);
         }
     }];
 }

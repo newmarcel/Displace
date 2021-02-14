@@ -17,10 +17,12 @@ typedef NS_ENUM(NSUInteger, DPLUserNotificationsAuthorizationStatus) {
     DPLUserNotificationsAuthorizationStatusDenied,
 };
 
+typedef void(^DPLUserNotificationsAuthorizationCompletion)(DPLUserNotificationsAuthorizationStatus, NSError *_Nullable);
+
 @interface DPLUserNotificationsController : NSObject
 @property (nonatomic, readonly) DPLUserNotificationsAuthorizationStatus authorizationStatus;
 
-- (void)requestAuthorization;
+- (void)requestAuthorizationWithCompletion:(nullable DPLUserNotificationsAuthorizationCompletion)completion;
 
 - (BOOL)postNotification:(__kindof DPLUserNotification *)notification;
 

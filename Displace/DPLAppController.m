@@ -77,7 +77,7 @@
 - (void)configureNotificationsController
 {
     Auto controller = [DPLUserNotificationsController new];
-    [controller requestAuthorization];
+    [controller requestAuthorizationWithCompletion:nil];
     [controller clearAllDeliveredNotifications];
     self.notificationsController = controller;
 }
