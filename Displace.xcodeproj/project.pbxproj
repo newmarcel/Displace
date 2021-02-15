@@ -49,6 +49,8 @@
 		DAC91F5D2532F6B200A08DE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAC91F5C2532F6B200A08DE0 /* Assets.xcassets */; };
 		DAC91F602532F6B200A08DE0 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAC91F5E2532F6B200A08DE0 /* MainMenu.xib */; };
 		DAC91F632532F6B200A08DE0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DAC91F622532F6B200A08DE0 /* main.m */; };
+		DAD639F325DAE72600627839 /* NSApplication+DPLDisplay.h in Headers */ = {isa = PBXBuildFile; fileRef = DAD639F125DAE72600627839 /* NSApplication+DPLDisplay.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DAD639F425DAE72600627839 /* NSApplication+DPLDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = DAD639F225DAE72600627839 /* NSApplication+DPLDisplay.m */; };
 		DAD660852597B110007E8969 /* DPLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DAD660842597B110007E8969 /* DPLAppDelegate.m */; };
 		DAD6608A2597B112007E8969 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAD660892597B112007E8969 /* Assets.xcassets */; };
 		DAD6608D2597B112007E8969 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAD6608B2597B112007E8969 /* Main.storyboard */; };
@@ -178,6 +180,8 @@
 		DAC91F612532F6B200A08DE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DAC91F622532F6B200A08DE0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		DAC91F642532F6B200A08DE0 /* Displace.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Displace.entitlements; sourceTree = "<group>"; };
+		DAD639F125DAE72600627839 /* NSApplication+DPLDisplay.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSApplication+DPLDisplay.h"; sourceTree = "<group>"; };
+		DAD639F225DAE72600627839 /* NSApplication+DPLDisplay.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSApplication+DPLDisplay.m"; sourceTree = "<group>"; };
 		DAD660812597B110007E8969 /* Displace Preferences.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Displace Preferences.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAD660832597B110007E8969 /* DPLAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DPLAppDelegate.h; sourceTree = "<group>"; };
 		DAD660842597B110007E8969 /* DPLAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DPLAppDelegate.m; sourceTree = "<group>"; };
@@ -461,6 +465,8 @@
 			children = (
 				DADDAEEE25B2E19000DD1FEF /* NSScreen+DPLDisplay.h */,
 				DADDAEEF25B2E19000DD1FEF /* NSScreen+DPLDisplay.m */,
+				DAD639F125DAE72600627839 /* NSApplication+DPLDisplay.h */,
+				DAD639F225DAE72600627839 /* NSApplication+DPLDisplay.m */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -476,6 +482,7 @@
 				DADDAEF025B2E19000DD1FEF /* NSScreen+DPLDisplay.h in Headers */,
 				DAAF056725978AB000ED206F /* DPLDefaultsProvider.h in Headers */,
 				DAAF056B25978AB000ED206F /* DPLDisplayMode.h in Headers */,
+				DAD639F325DAE72600627839 /* NSApplication+DPLDisplay.h in Headers */,
 				DAAF056D25978AB000ED206F /* DPLAppGroup.h in Headers */,
 				DA0DE9FA2597BB6E00FCFE43 /* NSURL+DPLPreferences.h in Headers */,
 				DAAF056825978AB000ED206F /* DPLPreferences.h in Headers */,
@@ -663,6 +670,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAD639F425DAE72600627839 /* NSApplication+DPLDisplay.m in Sources */,
 				DA58DBEE25B745B000F9434A /* DPLGraphicsDevice.m in Sources */,
 				DA0DE9FB2597BB6E00FCFE43 /* NSURL+DPLPreferences.m in Sources */,
 				DADDAEF125B2E19000DD1FEF /* NSScreen+DPLDisplay.m in Sources */,

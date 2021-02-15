@@ -36,7 +36,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (readonly, copy) NSString *debugDescription;
 
++ (nullable DPLDisplay *)displayWithDisplayID:(CGDirectDisplayID)displayID;
+
 + (NSArray<DPLDisplay *> *)allDisplaysUsingInformationFromScreens:(nullable NSArray<NSScreen *> *)screens;
+
++ (nullable DPLDisplay *)displayWithDisplayID:(CGDirectDisplayID)displayID
+                  usingInformationFromScreens:(nullable NSArray<NSScreen *> *)screens;
 
 + (instancetype)new NS_UNAVAILABLE;
 - (instancetype)init NS_UNAVAILABLE;

@@ -127,6 +127,82 @@ NS_INLINE NSString *DPLBoolToString(BOOL value)
     return [displays copy];
 }
 
++ (DPLDisplay *)displayWithDisplayID:(CGDirectDisplayID)displayID
+{
+    return [self displayWithDisplayID:displayID
+          usingInformationFromScreens:NSScreen.screens];
+}
+
++ (DPLDisplay *)displayWithDisplayID:(CGDirectDisplayID)displayID usingInformationFromScreens:(NSArray<NSScreen *> *)screens
+{
+    if(displayID == kCGNullDirectDisplay || CGDisplayPixelsWide(displayID) == 0)
+    {
+        return nil;
+    }
+    
+    BOOL isMain = CGDisplayIsMain(displayID);
+    BOOL isOnline = CGDisplayIsOnline(displayID);
+    BOOL isBuiltIn = CGDisplayIsBuiltin(displayID);
+    size_t width = CGDisplayPixelsWide(displayID);
+    size_t height = CGDisplayPixelsHigh(displayID);
+    
+    id<MTLDevice> metalDevice = CGDirectDisplayCopyCurrentMetalDevice(displayID);
+    Auto graphicsDevice = [[DPLGraphicsDevice alloc] initWithMetalDevice:metalDevice];
+    
+    Auto displayModes = [NSMutableArray<DPLDisplayMode *> new];
+    Auto options = @{
+        (__bridge NSString *)kCGDisplayShowDuplicateLowResolutionModes: (__bridge NSNumber *)kCFBooleanTrue
+    };
+    Auto modeList = CGDisplayCopyAllDisplayModes(displayID, (__bridge CFDictionaryRef)options);
+    if(modeList == nil) { return nil; }
+    CFIndex modeListCount = CFArrayGetCount(modeList);
+    
+    Auto currentDisplayModeReference = CGDisplayCopyDisplayMode(displayID);
+    DPLDisplayMode *currentDisplayMode;
+    
+    // https://stackoverflow.com/questions/1236498/how-to-get-the-display-name-with-the-display-id-in-mac-os-x
+    for(CFIndex index = 0; index < modeListCount; index++)
+    {
+        CGDisplayModeRef mode = (CGDisplayModeRef)CFArrayGetValueAtIndex(modeList, index);
+        if(CGDisplayModeIsUsableForDesktopGUI(mode) == false) { continue; }
+        
+        Auto displayMode = [[DPLDisplayMode alloc] initWithDisplayModeReference:mode];
+        [displayModes addObject:displayMode];
+        
+        if(mode == currentDisplayModeReference)
+        {
+            currentDisplayMode = displayMode;
+        }
+    }
+    CFRelease(modeList);
+    CFRelease(currentDisplayModeReference);
+    
+    // Sort the display modes by width DESC
+    Auto sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"width" ascending:NO];
+    [displayModes sortUsingDescriptors:@[sortDescriptor]];
+    
+    Auto displayInstance = [[DPLDisplay alloc] initWithDisplayID:displayID
+                                                           width:(NSInteger)width
+                                                          height:(NSInteger)height
+                                                            main:isMain
+                                                          online:isOnline
+                                                         builtIn:isBuiltIn
+                                                    displayModes:[displayModes copy]
+                                              currentDisplayMode:currentDisplayMode
+                                                  graphicsDevice:graphicsDevice];
+    
+    // Enhance the display instance with NSScreen information
+    for(NSScreen *screen in screens)
+    {
+        if(screen.dpl_displayID == displayID)
+        {
+            displayInstance.localizedName = screen.localizedName;
+        }
+    }
+    
+    return displayInstance;
+}
+
 #pragma mark - Life Cycle
 
 - (instancetype)initWithDisplayID:(CGDirectDisplayID)displayID width:(NSInteger)width height:(NSInteger)height main:(BOOL)main online:(BOOL)online builtIn:(BOOL)builtIn displayModes:(NSArray<DPLDisplayMode *> *)displayModes currentDisplayMode:(DPLDisplayMode *)currentDisplayMode graphicsDevice:(DPLGraphicsDevice *)graphicsDevice

@@ -16,6 +16,7 @@
 
 @interface DPLAppController () <DPLMenuControllerDataSource, DPLMenuControllerDelegate, DPLShortcutMonitorDelegate>
 @property (nonatomic) NSArray<DPLDisplay *> *displays;
+@property (nonatomic, readonly) DPLDisplay *activeDisplay;
 @property (nonatomic, readwrite) NSStatusItem *systemStatusItem;
 @property (nonatomic) DPLMenuController *menuController;
 @property (nonatomic) DPLShortcutMonitor *shortcutMonitor;
@@ -78,6 +79,12 @@
     Auto center = DPLUserNotificationCenter.sharedCenter;
     [center requestAuthorizationWithCompletion:nil];
     [center clearAllDeliveredNotifications];
+}
+
+- (DPLDisplay *)activeDisplay
+{
+    Auto app = NSApplication.sharedApplication;
+    return app.dpl_activeDisplay ?: self.displays.firstObject;
 }
 
 #pragma mark - Notifications
@@ -219,8 +226,7 @@
 
 - (void)menuControllerShouldIncreaseResolution:(DPLMenuController *)controller
 {
-#warning TODO: Get current display
-    Auto display = self.displays.firstObject;
+    Auto display = self.activeDisplay;
     Auto next = display.nextDisplayMode;
     if(next != nil)
     {
@@ -233,8 +239,7 @@
 
 - (void)menuControllerShouldDecreaseResolution:(DPLMenuController *)controller
 {
-#warning TODO: Get current display
-    Auto display = self.displays.firstObject;
+    Auto display = self.activeDisplay;
     Auto previous = display.previousDisplayMode;
     if(previous != nil)
     {
@@ -249,36 +254,20 @@
 
 - (void)shortcutMonitorShouldIncreaseResolution:(DPLShortcutMonitor *)monitor
 {
-    Auto app = NSApplication.sharedApplication;
-    Auto firstWindow = app.windows.firstObject;
-    Auto screenOfFirstWindow = firstWindow.screen;
-    Auto displayID = screenOfFirstWindow.dpl_displayID;
-    Auto predicate = [NSPredicate predicateWithFormat:@"%K == %@", @"displayID", @(displayID)];
-    Auto filteredDisplays = [self.displays filteredArrayUsingPredicate:predicate];
-    Auto display = filteredDisplays.firstObject;
-    if(display == nil) { return; }
-    
-    NSLog(@"Display: %@", display.localizedName);
-    
-//    return;
-//
-//
-//#warning TODO: Get current display
-//    Auto display = self.displays.firstObject;
+    Auto display = self.activeDisplay;
     Auto next = display.nextDisplayMode;
     if(next != nil)
     {
         display.currentDisplayMode = next;
         [display applyCurrentDisplayMode];
-        
+
         [self postNotificationForDisplayMode:next direction:NSOrderedAscending];
     }
 }
 
 - (void)shortcutMonitorShouldDecreaseResolution:(DPLShortcutMonitor *)monitor
 {
-#warning TODO: Get current display
-    Auto display = self.displays.firstObject;
+    Auto display = self.activeDisplay;
     Auto previous = display.previousDisplayMode;
     if(previous != nil)
     {
