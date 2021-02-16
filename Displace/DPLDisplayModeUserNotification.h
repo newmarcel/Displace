@@ -12,17 +12,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 FOUNDATION_EXPORT NSString * const DPLDisplayModeUserNotificationIdentifier;
 
-typedef NS_CLOSED_ENUM(NSUInteger, DPLDisplayModeChangeType)
-{
-    DPLDisplayModeChangeTypeIncrease = 0,
-    DPLDisplayModeChangeTypeDecrease
-};
-
 @interface DPLDisplayModeUserNotification : DPLUserNotification
-@property (nonatomic, readonly) DPLDisplayModeChangeType changeType;
+@property (nonatomic, getter=isIncreasing, readonly) BOOL increasing;
 
-- (instancetype)initWithChangeType:(DPLDisplayModeChangeType)changeType
-                          subtitle:(nullable NSString *)subtitle NS_DESIGNATED_INITIALIZER;
++ (instancetype)new NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
+
+- (instancetype)initWithDisplayName:(NSString *)displayName
+                    displayModeName:(NSString *)displayModeName
+                         increasing:(BOOL)increasing NS_DESIGNATED_INITIALIZER;
 
 @end
 

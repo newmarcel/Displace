@@ -105,6 +105,16 @@
 
 @implementation DPLUserNotification
 
+- (void)setLocalizedTitleWithKey:(NSString *)key arguments:(nullable NSArray *)arguments
+{
+    self.title = [NSString localizedUserNotificationStringForKey:key arguments:arguments];
+}
+
+- (void)setLocalizedSubtitleWithKey:(NSString *)key arguments:(nullable NSArray *)arguments
+{
+    self.subtitle = [NSString localizedUserNotificationStringForKey:key arguments:arguments];
+}
+
 - (UNNotificationContent *)createNotificationContent
 {
     Auto content = [UNMutableNotificationContent new];

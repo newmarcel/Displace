@@ -11,35 +11,34 @@
 NSString * const DPLDisplayModeUserNotificationIdentifier = @"DPLDisplayModeChangeIdentifier";
 
 @interface DPLDisplayModeUserNotification ()
-@property (nonatomic, readwrite) DPLDisplayModeChangeType changeType;
+@property (nonatomic, getter=isIncreasing, readwrite) BOOL increasing;
 @end
 
 @implementation DPLDisplayModeUserNotification
 
-- (instancetype)init
+- (instancetype)initWithDisplayName:(NSString *)displayName displayModeName:(NSString *)displayModeName increasing:(BOOL)increasing
 {
-    return [self initWithChangeType:DPLDisplayModeChangeTypeIncrease subtitle:nil];
-}
-
-- (instancetype)initWithChangeType:(DPLDisplayModeChangeType)changeType subtitle:(nullable NSString *)subtitle
-{
+    NSParameterAssert(displayName);
+    NSParameterAssert(displayModeName);
+    
     self = [super init];
     if(self)
     {
         self.identifier = DPLDisplayModeUserNotificationIdentifier;
         
-        self.changeType = changeType;
-        switch(changeType)
+        self.increasing = increasing;
+        NSString *localizedSubtitleKey;
+        if(increasing == YES)
         {
-            case DPLDisplayModeChangeTypeIncrease:
-                self.title = @"Increased Resolution";
-                break;
-            case DPLDisplayModeChangeTypeDecrease:
-                self.title = @"Decreased Resolution";
-                break;
+            localizedSubtitleKey = @"Increased Resolution to %@";
+        }
+        else
+        {
+            localizedSubtitleKey = @"Decreased Resolution to %@";
         }
         
-        self.subtitle = subtitle;
+        self.title = displayName;
+        [self setLocalizedSubtitleWithKey:localizedSubtitleKey arguments:@[displayModeName]];
     }
     return self;
 }

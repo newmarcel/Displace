@@ -31,10 +31,14 @@ typedef void(^DPLUserNotificationsAuthorizationCompletion)(DPLUserNotificationAu
 
 @interface DPLUserNotification : NSObject
 @property (copy, nonatomic) NSString *identifier;
-@property (copy, nonatomic, nullable) NSString *title; // use [NSString localizedUserNotificationStringForKey…]
-@property (copy, nonatomic, nullable) NSString *subtitle; // use [NSString localizedUserNotificationStringForKey…]
+@property (copy, nonatomic, nullable) NSString *title; // use the localized setter instead
+@property (copy, nonatomic, nullable) NSString *subtitle; // use the localized setter instead
 @property (copy, nonatomic, nullable) NSString *bodyText;
 @property (copy, nonatomic, nullable) NSDictionary *userInfo;
+
+- (void)setLocalizedTitleWithKey:(NSString *)key arguments:(nullable NSArray *)arguments;
+- (void)setLocalizedSubtitleWithKey:(NSString *)key arguments:(nullable NSArray *)arguments;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -89,27 +89,28 @@
 
 #pragma mark - Notifications
 
-- (void)postNotificationForDisplayMode:(DPLDisplayMode *)displayMode direction:(NSComparisonResult)direction
+- (void)postNotificationForDisplay:(DPLDisplay *)display displayMode:(DPLDisplayMode *)displayMode direction:(NSComparisonResult)direction
 {
     NSParameterAssert(displayMode);
     
     Auto center = DPLUserNotificationCenter.sharedCenter;
     
-    DPLDisplayModeChangeType displayModeChangeType;
+    BOOL increasing;
     switch(direction)
     {
         case NSOrderedAscending:
-            displayModeChangeType = DPLDisplayModeChangeTypeIncrease;
+            increasing = YES;
             break;
         case NSOrderedDescending:
-            displayModeChangeType = DPLDisplayModeChangeTypeDecrease;
+            increasing = NO;
             break;
         case NSOrderedSame:
             // don't post a notification
             return;
     }
-    Auto notification = [[DPLDisplayModeUserNotification alloc] initWithChangeType:displayModeChangeType
-                                                                          subtitle:displayMode.localizedName];
+    Auto notification = [[DPLDisplayModeUserNotification alloc] initWithDisplayName:display.localizedName
+                                                                    displayModeName:displayMode.localizedName
+                                                                         increasing:increasing];
     [center postNotification:notification];
 }
 
@@ -121,7 +122,7 @@
     Auto currentDisplayMode = display.currentDisplayMode;
     if(currentDisplayMode == nil)
     {
-        [self postNotificationForDisplayMode:newDisplayMode direction:NSOrderedAscending];
+        [self postNotificationForDisplay:display displayMode:newDisplayMode direction:NSOrderedAscending];
         return;
     }
     
@@ -129,11 +130,11 @@
     NSUInteger newIndex = [display.displayModes indexOfObject:newDisplayMode];
     if(currentIndex > newIndex)
     {
-        [self postNotificationForDisplayMode:newDisplayMode direction:NSOrderedAscending];
+        [self postNotificationForDisplay:display displayMode:newDisplayMode direction:NSOrderedAscending];
     }
     else if(currentIndex < newIndex)
     {
-        [self postNotificationForDisplayMode:newDisplayMode direction:NSOrderedDescending];
+        [self postNotificationForDisplay:display displayMode:newDisplayMode direction:NSOrderedDescending];
     }
 }
 
@@ -233,7 +234,7 @@
         display.currentDisplayMode = next;
         [display applyCurrentDisplayMode];
         
-        [self postNotificationForDisplayMode:next direction:NSOrderedAscending];
+        [self postNotificationForDisplay:display displayMode:next direction:NSOrderedAscending];
     }
 }
 
@@ -246,7 +247,7 @@
         display.currentDisplayMode = previous;
         [display applyCurrentDisplayMode];
         
-        [self postNotificationForDisplayMode:previous direction:NSOrderedDescending];
+        [self postNotificationForDisplay:display displayMode:previous direction:NSOrderedDescending];
     }
 }
 
@@ -261,7 +262,7 @@
         display.currentDisplayMode = next;
         [display applyCurrentDisplayMode];
 
-        [self postNotificationForDisplayMode:next direction:NSOrderedAscending];
+        [self postNotificationForDisplay:display displayMode:next direction:NSOrderedAscending];
     }
 }
 
@@ -274,7 +275,7 @@
         display.currentDisplayMode = previous;
         [display applyCurrentDisplayMode];
         
-        [self postNotificationForDisplayMode:previous direction:NSOrderedDescending];
+        [self postNotificationForDisplay:display displayMode:previous direction:NSOrderedDescending];
     }
 }
 
