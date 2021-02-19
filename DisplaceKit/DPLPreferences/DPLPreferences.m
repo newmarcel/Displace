@@ -15,7 +15,6 @@ NSString * const DPLLaunchAtLoginEnabledDefaultsKey = @"info.marcel-dierkes.Disp
 NSString * const DPLNonRetinaDisplayModesEnabledDefaultsKey = @"info.marcel-dierkes.Displace.NonRetinaDisplayModesEnabled";
 NSString * const DPLIncreaseResolutionShortcutDefaultsKey = @"info.marcel-dierkes.Displace.IncreaseResolutionShortcut";
 NSString * const DPLDecreaseResolutionShortcutDefaultsKey =  @"info.marcel-dierkes.Displace.DecreaseResolutionShortcut";
-NSString * const DPLUserNotificationsEnabledDefaultsKey =  @"info.marcel-dierkes.Displace.UserNotificationsEnabled";
 
 @interface DPLPreferences ()
 @property (nonatomic, readwrite) id<DPLDefaultsProvider> defaults;
@@ -70,16 +69,6 @@ NSString * const DPLUserNotificationsEnabledDefaultsKey =  @"info.marcel-dierkes
 - (void)setNonRetinaDisplayModesEnabled:(BOOL)enabled
 {
     [self.defaults setBool:enabled forKey:DPLNonRetinaDisplayModesEnabledDefaultsKey];
-}
-
-- (BOOL)areUserNotificationsEnabled
-{
-    return [self.defaults boolForKey:DPLUserNotificationsEnabledDefaultsKey];
-}
-
-- (void)setUserNotificationsEnabled:(BOOL)userNotificationsEnabled
-{
-    [self.defaults setBool:userNotificationsEnabled forKey:DPLUserNotificationsEnabledDefaultsKey];
 }
 
 #pragma mark - First Launch

@@ -21,10 +21,12 @@ typedef void(^DPLUserNotificationsAuthorizationCompletion)(DPLUserNotificationAu
 
 @interface DPLUserNotificationCenter : NSObject
 @property (class, nonatomic, readonly) DPLUserNotificationCenter *sharedCenter;
-@property (nonatomic, readonly) DPLUserNotificationAuthorizationStatus authorizationStatus;
 
-- (void)requestAuthorizationWithCompletion:(nullable DPLUserNotificationsAuthorizationCompletion)completion;
-- (BOOL)postNotification:(__kindof DPLUserNotification *)notification;
+- (void)getAuthorizationStatusWithCompletion:(void(NS_NOESCAPE ^)(DPLUserNotificationAuthorizationStatus))completion;
+- (void)requestAuthorizationWithCompletion:(nullable NS_NOESCAPE DPLUserNotificationsAuthorizationCompletion)completion;
+- (void)requestAuthorizationIfUndetermined;
+
+- (void)postNotification:(__kindof DPLUserNotification *)notification;
 - (void)clearAllDeliveredNotifications;
 
 @end

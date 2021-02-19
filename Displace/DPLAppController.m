@@ -76,14 +76,7 @@
 - (void)configureUserNotificationCenter
 {
     Auto center = DPLUserNotificationCenter.sharedCenter;
-    Auto preferences = DPLPreferences.sharedPreferences;
-    
-    [preferences performBlockOnFirstLaunch:^{
-        [center requestAuthorizationWithCompletion:^(DPLUserNotificationAuthorizationStatus status, NSError *error) {
-            preferences.userNotificationsEnabled = (status == DPLUserNotificationAuthorizationStatusGranted);
-        }];
-    }];
-    
+    [center requestAuthorizationIfUndetermined];
     [center clearAllDeliveredNotifications];
 }
 

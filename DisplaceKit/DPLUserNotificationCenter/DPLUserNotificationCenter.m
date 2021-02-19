@@ -10,7 +10,6 @@
 #import "DPLDefines.h"
 
 @interface DPLUserNotificationCenter ()
-@property (nonatomic, readwrite) DPLUserNotificationAuthorizationStatus authorizationStatus;
 @property (nonatomic) UNUserNotificationCenter *center;
 @end
 
@@ -46,7 +45,36 @@
     return self;
 }
 
-- (void)requestAuthorizationWithCompletion:(DPLUserNotificationsAuthorizationCompletion)completion
+#pragma mark - Authorization Status
+
+- (void)getAuthorizationStatusWithCompletion:(void(NS_NOESCAPE ^)(DPLUserNotificationAuthorizationStatus))completion
+{
+    NSParameterAssert(completion);
+    
+    [self.center getNotificationSettingsWithCompletionHandler:^(UNNotificationSettings *settings) {
+        DPLUserNotificationAuthorizationStatus authStatus;
+        switch(settings.authorizationStatus)
+        {
+            case UNAuthorizationStatusNotDetermined:
+                authStatus = DPLUserNotificationAuthorizationStatusUndetermined;
+                break;
+            case UNAuthorizationStatusProvisional:
+                // fallthrough
+            case DPLUserNotificationAuthorizationStatusGranted:
+                authStatus = DPLUserNotificationAuthorizationStatusGranted;
+                break;
+            default:
+                authStatus = DPLUserNotificationAuthorizationStatusDenied;
+                break;
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            completion(authStatus);
+        });
+    }];
+}
+
+- (void)requestAuthorizationWithCompletion:(NS_NOESCAPE DPLUserNotificationsAuthorizationCompletion)completion
 {
     UNAuthorizationOptions options = UNAuthorizationOptionAlert | UNAuthorizationOptionProvisional;
     [self.center requestAuthorizationWithOptions:options completionHandler:^(BOOL granted, NSError *error) {
@@ -64,7 +92,6 @@
         {
             status = DPLUserNotificationAuthorizationStatusUndetermined;
         }
-        self.authorizationStatus = status;
         
         if(completion != nil)
         {
@@ -75,30 +102,56 @@
     }];
 }
 
+- (void)requestAuthorizationIfUndetermined
+{
+    [self.center getNotificationSettingsWithCompletionHandler:^(UNNotificationSettings *settings) {
+        if(settings.authorizationStatus == UNAuthorizationStatusNotDetermined)
+        {
+            [self requestAuthorizationWithCompletion:nil];
+        }
+    }];
+}
+
+#pragma mark - Notification Handling
+
 - (void)clearAllDeliveredNotifications
 {
     [self.center removeAllDeliveredNotifications];
 }
 
-- (BOOL)postNotification:(__kindof DPLUserNotification *)notification
+- (void)postNotification:(__kindof DPLUserNotification *)notification
 {
     NSParameterAssert(notification);
     
-    if(self.authorizationStatus != DPLUserNotificationAuthorizationStatusGranted)
-    {
-        DPLLog(@"Posting notifications has not been granted.");
-        return NO;
-    }
+    Auto center = self.center;
+    [center getNotificationSettingsWithCompletionHandler:^(UNNotificationSettings *settings) {
+        if(settings.authorizationStatus != UNAuthorizationStatusAuthorized
+           && settings.authorizationStatus != UNAuthorizationStatusProvisional)
+        {
+            DPLLog(@"Posting notifications has not been authorized.");
+            return;
+        }
+        
+        if(settings.alertSetting == UNNotificationSettingEnabled)
+        {
+            Auto content = [notification createNotificationContent];
+            Auto identifier = notification.identifier;
+            [self scheduleNotificationRequestWithIdentifier:identifier content:content];
+        }
+    }];
+}
+
+- (void)scheduleNotificationRequestWithIdentifier:(NSString *)identifier content:(UNNotificationContent *)content
+{
+    NSParameterAssert(identifier);
+    NSParameterAssert(content);
     
-    Auto content = [notification createNotificationContent];
-    Auto request = [UNNotificationRequest requestWithIdentifier:notification.identifier
+    Auto request = [UNNotificationRequest requestWithIdentifier:identifier
                                                         content:content
                                                         trigger:nil];
     [self.center addNotificationRequest:request withCompletionHandler:^(NSError *error) {
-        DPLLog(@"Added notification. (Error? %@)", error.userInfo);
+        DPLLog(@"Added notification request. (Error? %@)", error.userInfo);
     }];
-    
-    return YES;
 }
 
 @end

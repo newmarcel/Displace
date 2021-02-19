@@ -15,7 +15,6 @@ FOUNDATION_EXPORT NSString * const DPLLaunchAtLoginEnabledDefaultsKey;
 FOUNDATION_EXPORT NSString * const DPLNonRetinaDisplayModesEnabledDefaultsKey;
 FOUNDATION_EXPORT NSString * const DPLIncreaseResolutionShortcutDefaultsKey;
 FOUNDATION_EXPORT NSString * const DPLDecreaseResolutionShortcutDefaultsKey;
-FOUNDATION_EXPORT NSString * const DPLUserNotificationsEnabledDefaultsKey;
 
 @class SRShortcut;
 
@@ -26,7 +25,6 @@ FOUNDATION_EXPORT NSString * const DPLUserNotificationsEnabledDefaultsKey;
 @property (nonatomic, getter=isFirstLaunchFinished) BOOL firstLaunchFinished;
 @property (nonatomic, getter=isLaunchAtLoginEnabled) BOOL launchAtLoginEnabled;
 @property (nonatomic, getter=isNonRetinaDisplayModesEnabled) BOOL nonRetinaDisplayModesEnabled;
-@property (nonatomic, getter=areUserNotificationsEnabled) BOOL userNotificationsEnabled;
 
 @property (nonatomic, nullable) SRShortcut *increaseResolutionShortcut;
 @property (nonatomic, nullable) SRShortcut *decreaseResolutionShortcut;
