@@ -10,6 +10,7 @@
 #import "DPLAppGroup.h"
 #import <ShortcutRecorder/ShortcutRecorder.h>
 
+NSString * const DPLFirstLaunchFinishedKey = @"info.marcel-dierkes.Displace.FirstLaunchFinshed";
 NSString * const DPLLaunchAtLoginEnabledDefaultsKey = @"info.marcel-dierkes.Displace.LaunchAtLoginEnabled";
 NSString * const DPLNonRetinaDisplayModesEnabledDefaultsKey = @"info.marcel-dierkes.Displace.NonRetinaDisplayModesEnabled";
 NSString * const DPLIncreaseResolutionShortcutDefaultsKey = @"info.marcel-dierkes.Displace.IncreaseResolutionShortcut";
@@ -68,6 +69,34 @@ NSString * const DPLDecreaseResolutionShortcutDefaultsKey =  @"info.marcel-dierk
 - (void)setNonRetinaDisplayModesEnabled:(BOOL)enabled
 {
     [self.defaults setBool:enabled forKey:DPLNonRetinaDisplayModesEnabledDefaultsKey];
+}
+
+#pragma mark - First Launch
+
+- (BOOL)isFirstLaunchFinished
+{
+    return [self.defaults boolForKey:DPLFirstLaunchFinishedKey];
+}
+
+- (void)setFirstLaunchFinished:(BOOL)firstLaunchFinished
+{
+    if(firstLaunchFinished == YES)
+    {
+        [self.defaults setBool:firstLaunchFinished forKey:DPLFirstLaunchFinishedKey];
+    }
+    else
+    {
+        [self.defaults removeObjectForKey:DPLFirstLaunchFinishedKey];
+    }
+}
+
+- (void)performBlockOnFirstLaunch:(void(NS_NOESCAPE ^)(void))block
+{
+    if([self isFirstLaunchFinished] == NO)
+    {
+        self.firstLaunchFinished = YES;
+        block();
+    }
 }
 
 #pragma mark - Shortcuts
