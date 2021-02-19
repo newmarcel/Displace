@@ -34,7 +34,6 @@
         [self configureMenuController];
         [self configureStatusItem];
         [self configureShortcutMonitor];
-        [self configureUserNotificationCenter];
     }
     return self;
 }
@@ -77,7 +76,14 @@
 - (void)configureUserNotificationCenter
 {
     Auto center = DPLUserNotificationCenter.sharedCenter;
-    [center requestAuthorizationWithCompletion:nil];
+    Auto preferences = DPLPreferences.sharedPreferences;
+    
+    [preferences performBlockOnFirstLaunch:^{
+        [center requestAuthorizationWithCompletion:^(DPLUserNotificationAuthorizationStatus status, NSError *error) {
+            preferences.userNotificationsEnabled = (status == DPLUserNotificationAuthorizationStatusGranted);
+        }];
+    }];
+    
     [center clearAllDeliveredNotifications];
 }
 
@@ -295,6 +301,7 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
+    [self configureUserNotificationCenter];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification
