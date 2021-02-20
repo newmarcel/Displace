@@ -6,6 +6,7 @@
 //
 
 #import "DPLPreferencesWindowController.h"
+#import "DPLDefines.h"
 
 @implementation DPLPreferencesWindowController
 
@@ -19,6 +20,14 @@
     // Split auto save identifier
     auto splitViewController = (NSSplitViewController *)self.contentViewController;
     splitViewController.splitView.autosaveName = @"DPLPreferencesSplit";
+}
+
+- (IBAction)showAboutPanel:(nullable id)sender
+{
+    Auto appName = NSLocalizedString(@"Displace", @"Displace");
+    [NSApplication.sharedApplication orderFrontStandardAboutPanelWithOptions:@{
+        NSAboutPanelOptionApplicationName: appName
+    }];
 }
 
 @end
