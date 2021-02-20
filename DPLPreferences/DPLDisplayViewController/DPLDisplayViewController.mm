@@ -24,7 +24,6 @@ constexpr NSUserInterfaceItemIdentifier ImageCell = @"imageCell";
 
 @implementation DPLDisplayViewController
 
-
 + (DPLPreferenceItem *)preferenceItem
 {
     @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:@"Unused" userInfo:nil];

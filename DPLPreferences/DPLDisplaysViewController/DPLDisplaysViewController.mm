@@ -103,8 +103,7 @@ constexpr NSUserInterfaceItemIdentifier DataCell = @"DataCell";
         }
         else
         {
-            auto identifier = DPLDisplayViewController.identifier;
-            NSViewController *controller = [self.storyboard instantiateControllerWithIdentifier:identifier];
+            auto controller = [DPLDisplayViewController new];
             controller.representedObject = preferenceItem.representedObject;
             [self setSplitDetailViewController:controller];
         }

@@ -11,6 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DPLDisplayViewController : DPLPreferencesContentViewController <NSTableViewDataSource, NSTableViewDelegate>
+@property (class, nonatomic, readonly) DPLPreferenceItem *preferenceItem NS_UNAVAILABLE;
 @property (weak, nonatomic, nullable) IBOutlet NSTableView *tableView;
 
 - (IBAction)setSelectedAsCurrentDisplayResolution:(nullable id)sender;
