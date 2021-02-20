@@ -50,7 +50,9 @@ constexpr NSUserInterfaceItemIdentifier DataCell = @"DataCell";
     auto displays = [NSMutableArray<DPLPreferenceItem *> new];
     for(DPLDisplay *displayObject in DPLDisplay.allDisplays)
     {
-        [displays addObject:[[DPLPreferenceItem alloc] initWithDisplay:displayObject]];
+        auto item = [[DPLPreferenceItem alloc] initWithDisplay:displayObject];
+        item.viewControllerClass = [DPLDisplayViewController class];
+        [displays addObject:item];
     }
     
     auto displayImage = [NSImage imageWithSystemSymbolName:@"display"
@@ -93,25 +95,26 @@ constexpr NSUserInterfaceItemIdentifier DataCell = @"DataCell";
     auto detailItem = split.splitViewItems.lastObject;
     
     Class viewControllerClass = preferenceItem.viewControllerClass;
-    if([preferenceItem.representedObject isKindOfClass:[DPLDisplay class]])
+    if(viewControllerClass != nil)
     {
-        // Show the display details
-        if([detailItem.viewController isKindOfClass:[DPLDisplayViewController class]])
+        if([detailItem isKindOfClass:viewControllerClass])
         {
             // Update the existing view controller
-            detailItem.viewController.representedObject = preferenceItem.representedObject;
+            if(id representedObject = preferenceItem.representedObject)
+            {
+                detailItem.viewController.representedObject = representedObject;
+            }
         }
         else
         {
-            auto controller = [DPLDisplayViewController new];
-            controller.representedObject = preferenceItem.representedObject;
+            // Load a new view controller
+            auto controller = (__kindof DPLPreferencesContentViewController *)[viewControllerClass new];
+            if(id representedObject = preferenceItem.representedObject)
+            {
+                controller.representedObject = representedObject;
+            }
             [self setSplitDetailViewController:controller];
         }
-    }
-    else if(viewControllerClass != nil && ![detailItem isKindOfClass:viewControllerClass])
-    {
-        auto controller = (__kindof DPLPreferencesContentViewController *)[viewControllerClass new];
-        [self setSplitDetailViewController:controller];
     }
 }
 
