@@ -6,7 +6,7 @@
 //
 
 #import "DPLDisplaysViewController.h"
-#import "DPLDisplayViewModel.h"
+#import "DPLPreferenceItem.h"
 #import "DPLDisplayViewController.h"
 #import "DPLGeneralPreferencesViewController.h"
 
@@ -17,7 +17,7 @@ constexpr NSUserInterfaceItemIdentifier DataCell = @"DataCell";
 }
 
 @interface DPLDisplaysViewController ()
-@property (nonatomic) NSArray<DPLDisplayViewModel *> *displayViewModels;
+@property (nonatomic) NSArray<DPLPreferenceItem *> *preferenceItems;
 @property (nonatomic, readonly) NSSplitViewController *splitViewController;
 @end
 
@@ -32,7 +32,13 @@ constexpr NSUserInterfaceItemIdentifier DataCell = @"DataCell";
     [self.outlineView reloadData];
     
     [self expandDisplaysGroup];
-    [self selectFirstDisplay];
+}
+
+- (void)viewWillAppear
+{
+    [super viewWillAppear];
+    
+    [self selectFirstItem];
 }
 
 - (NSSplitViewController *)splitViewController
@@ -42,27 +48,27 @@ constexpr NSUserInterfaceItemIdentifier DataCell = @"DataCell";
 
 - (void)configureDisplays
 {
-    auto displays = [NSMutableArray<DPLDisplayViewModel *> new];
+    auto displays = [NSMutableArray<DPLPreferenceItem *> new];
     for(DPLDisplay *displayObject in DPLDisplay.allDisplays)
     {
-        [displays addObject:[[DPLDisplayViewModel alloc] initWithDisplay:displayObject]];
+        [displays addObject:[[DPLPreferenceItem alloc] initWithDisplay:displayObject]];
     }
     
     auto displayImage = [NSImage imageWithSystemSymbolName:@"display"
                                   accessibilityDescription:nil];
     
     auto prefsTitle = NSLocalizedString(@"General", @"General");
-    auto prefs = [[DPLDisplayViewModel alloc] initWithIdentifier:3 name:prefsTitle];
+    auto prefs = [[DPLPreferenceItem alloc] initWithIdentifier:3 name:prefsTitle];
     prefs.image = [NSImage imageWithSystemSymbolName:@"gear"
                                 accessibilityDescription:nil];
     prefs.tintColor = NSColor.tertiaryLabelColor;
     
-    self.displayViewModels = @[
-        [[DPLDisplayViewModel alloc] initWithIdentifier:1
+    self.preferenceItems = @[
+        [[DPLPreferenceItem alloc] initWithIdentifier:1
                                              headerName:NSLocalizedString(@"Displays", @"Displays")
                                                   image:displayImage
                                                children:[displays copy]],
-        [[DPLDisplayViewModel alloc] initWithIdentifier:2
+        [[DPLPreferenceItem alloc] initWithIdentifier:2
                                              headerName:NSLocalizedString(@"Preferences", @"Preferences")
                                                   image:nil
                                                children:@[prefs]],
@@ -71,45 +77,45 @@ constexpr NSUserInterfaceItemIdentifier DataCell = @"DataCell";
 
 - (void)expandDisplaysGroup
 {
-    for(DPLDisplayViewModel *header in self.displayViewModels)
+    for(DPLPreferenceItem *header in self.preferenceItems)
     {
         [self.outlineView expandItem:header];
     }
 }
 
-- (void)selectFirstDisplay
+- (void)selectFirstItem
 {
     auto outlineView = self.outlineView;
-    auto firstModel = self.displayViewModels.firstObject.children.firstObject;
-    auto row = [outlineView rowForItem:firstModel];
+    auto firstItem = self.preferenceItems.firstObject.children.firstObject;
+    auto row = [outlineView rowForItem:firstItem];
     [outlineView selectRowIndexes:[NSIndexSet indexSetWithIndex:row]
              byExtendingSelection:NO];
 }
 
-- (void)showDetailsForViewModel:(DPLDisplayViewModel *)model
+- (void)showDetailsForPreferenceItem:(DPLPreferenceItem *)preferenceItem
 {
-    NSParameterAssert(model);
+    NSParameterAssert(preferenceItem);
     
     auto split = self.splitViewController;
     auto detailItem = split.splitViewItems.lastObject;
     
-    if([model.representedObject isKindOfClass:[DPLDisplay class]])
+    if([preferenceItem.representedObject isKindOfClass:[DPLDisplay class]])
     {
         // Show the display details
         if([detailItem.viewController isKindOfClass:[DPLDisplayViewController class]])
         {
             // Update the existing view controller
-            detailItem.viewController.representedObject = model.representedObject;
+            detailItem.viewController.representedObject = preferenceItem.representedObject;
         }
         else
         {
             auto identifier = DPLDisplayViewController.identifier;
             NSViewController *controller = [self.storyboard instantiateControllerWithIdentifier:identifier];
-            controller.representedObject = model.representedObject;
+            controller.representedObject = preferenceItem.representedObject;
             [self setSplitDetailViewController:controller];
         }
     }
-    else if(model.representedObject == nil)
+    else if(preferenceItem.representedObject == nil)
     {
         // Show the settings
         if(![detailItem.viewController isKindOfClass:[DPLGeneralPreferencesViewController class]])
@@ -136,10 +142,10 @@ constexpr NSUserInterfaceItemIdentifier DataCell = @"DataCell";
 - (id)outlineView:(NSOutlineView *)outlineView child:(NSInteger)index ofItem:(id)item
 {
     // Root
-    if(item == nil) { return self.displayViewModels[index]; }
+    if(item == nil) { return self.preferenceItems[index]; }
     
-    auto model = static_cast<DPLDisplayViewModel *>(item);
-    return  model.children[index];
+    auto preferenceItem = static_cast<DPLPreferenceItem *>(item);
+    return  preferenceItem.children[index];
 }
 
 - (BOOL)outlineView:(NSOutlineView *)outlineView isItemExpandable:(id)item
@@ -147,55 +153,55 @@ constexpr NSUserInterfaceItemIdentifier DataCell = @"DataCell";
     // Root
     if(item == nil) { return YES; }
     
-    auto model = static_cast<DPLDisplayViewModel *>(item);
-    return [model isHeader];
+    auto preferenceItem = static_cast<DPLPreferenceItem *>(item);
+    return [preferenceItem isHeader];
 }
 
 - (NSInteger)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id)item
 {
     // Root
-    if(item == nil) { return self.displayViewModels.count; }
+    if(item == nil) { return self.preferenceItems.count; }
     
-    auto model = static_cast<DPLDisplayViewModel *>(item);
-    return model.children.count;
+    auto preferenceItem = static_cast<DPLPreferenceItem *>(item);
+    return preferenceItem.children.count;
 }
 
 #pragma mark - NSOutlineViewDelegate
 
 - (NSView *)outlineView:(NSOutlineView *)outlineView viewForTableColumn:(NSTableColumn *)tableColumn item:(id)item
 {
-    auto model = static_cast<DPLDisplayViewModel *>(item);
-    if([model isHeader])
+    auto preferenceItem = static_cast<DPLPreferenceItem *>(item);
+    if([preferenceItem isHeader])
     {
         auto header = [outlineView makeViewWithIdentifier:DPL::Identifier::HeaderCell owner:self];
-        static_cast<NSTextField *>(header.subviews.firstObject).stringValue = model.name;
+        static_cast<NSTextField *>(header.subviews.firstObject).stringValue = preferenceItem.name;
         return header;
     }
     else
     {
         auto cell = [outlineView makeViewWithIdentifier:DPL::Identifier::DataCell owner:self];
-        static_cast<NSImageView *>(cell.subviews.firstObject).image = model.image;
-        static_cast<NSTextField *>(cell.subviews.lastObject).stringValue = model.name;
+        static_cast<NSImageView *>(cell.subviews.firstObject).image = preferenceItem.image;
+        static_cast<NSTextField *>(cell.subviews.lastObject).stringValue = preferenceItem.name;
         return cell;
     }
 }
 
 - (BOOL)outlineView:(NSOutlineView *)outlineView shouldSelectItem:(id)item
 {
-    auto model = static_cast<DPLDisplayViewModel *>(item);
-    return ![model isHeader];
+    auto preferenceItem = static_cast<DPLPreferenceItem *>(item);
+    return ![preferenceItem isHeader];
 }
 
 - (BOOL)outlineView:(NSOutlineView *)outlineView isGroupItem:(id)item
 {
-    auto model = static_cast<DPLDisplayViewModel *>(item);
-    return [model isHeader];
+    auto preferenceItem = static_cast<DPLPreferenceItem *>(item);
+    return [preferenceItem isHeader];
 }
 
 - (NSTintConfiguration *)outlineView:(NSOutlineView *)outlineView tintConfigurationForItem:(id)item
 {
-    auto model = static_cast<DPLDisplayViewModel *>(item);
-    return model.tintConfiguration;
+    auto preferenceItem = static_cast<DPLPreferenceItem *>(item);
+    return preferenceItem.tintConfiguration;
 }
 
 - (void)outlineViewSelectionDidChange:(NSNotification *)notification
@@ -203,9 +209,9 @@ constexpr NSUserInterfaceItemIdentifier DataCell = @"DataCell";
     auto outlineView = static_cast<NSOutlineView *>(notification.object);
     
     auto row = outlineView.selectedRow;
-    if(auto model = static_cast<DPLDisplayViewModel *>([outlineView itemAtRow:row]))
+    if(auto preferenceItem = static_cast<DPLPreferenceItem *>([outlineView itemAtRow:row]))
     {
-        [self showDetailsForViewModel:model];
+        [self showDetailsForPreferenceItem:preferenceItem];
     }
 }
 

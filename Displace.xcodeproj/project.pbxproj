@@ -13,7 +13,7 @@
 		DA09719725AA449500B12CB4 /* DPLNotificationCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = DA09719525AA449500B12CB4 /* DPLNotificationCenter.m */; };
 		DA0DE9FA2597BB6E00FCFE43 /* NSURL+DPLPreferences.h in Headers */ = {isa = PBXBuildFile; fileRef = DA0DE9F82597BB6E00FCFE43 /* NSURL+DPLPreferences.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DA0DE9FB2597BB6E00FCFE43 /* NSURL+DPLPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = DA0DE9F92597BB6E00FCFE43 /* NSURL+DPLPreferences.m */; };
-		DA2ECE6A259A1800009542DB /* DPLDisplayViewModel.mm in Sources */ = {isa = PBXBuildFile; fileRef = DA2ECE69259A1800009542DB /* DPLDisplayViewModel.mm */; };
+		DA2ECE6A259A1800009542DB /* DPLPreferenceItem.mm in Sources */ = {isa = PBXBuildFile; fileRef = DA2ECE69259A1800009542DB /* DPLPreferenceItem.mm */; };
 		DA3DC72B2598907F00275021 /* NSWorkspace+DPLPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = DA3DC7292598907F00275021 /* NSWorkspace+DPLPreferences.m */; };
 		DA3DC72C2598907F00275021 /* NSWorkspace+DPLPreferences.h in Headers */ = {isa = PBXBuildFile; fileRef = DA3DC72A2598907F00275021 /* NSWorkspace+DPLPreferences.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DA3DC734259890DC00275021 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA3DC733259890DC00275021 /* Cocoa.framework */; };
@@ -130,8 +130,8 @@
 		DA09719525AA449500B12CB4 /* DPLNotificationCenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DPLNotificationCenter.m; sourceTree = "<group>"; };
 		DA0DE9F82597BB6E00FCFE43 /* NSURL+DPLPreferences.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSURL+DPLPreferences.h"; sourceTree = "<group>"; };
 		DA0DE9F92597BB6E00FCFE43 /* NSURL+DPLPreferences.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSURL+DPLPreferences.m"; sourceTree = "<group>"; };
-		DA2ECE68259A1800009542DB /* DPLDisplayViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DPLDisplayViewModel.h; sourceTree = "<group>"; };
-		DA2ECE69259A1800009542DB /* DPLDisplayViewModel.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = DPLDisplayViewModel.mm; sourceTree = "<group>"; };
+		DA2ECE68259A1800009542DB /* DPLPreferenceItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DPLPreferenceItem.h; sourceTree = "<group>"; };
+		DA2ECE69259A1800009542DB /* DPLPreferenceItem.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = DPLPreferenceItem.mm; sourceTree = "<group>"; };
 		DA3314ED259BA6B000B208F6 /* Configuration.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Configuration.xcconfig; sourceTree = SOURCE_ROOT; };
 		DA384B5425D8025C0052C1AC /* DPLDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DPLDefines.h; sourceTree = "<group>"; };
 		DA3DC7292598907F00275021 /* NSWorkspace+DPLPreferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSWorkspace+DPLPreferences.m"; sourceTree = "<group>"; };
@@ -284,8 +284,8 @@
 				DA7945A22598E17C00368E9A /* DPLPreferencesWindowController.mm */,
 				DA5D27612598E6BA000416F4 /* DPLDisplaysViewController.h */,
 				DA5D27622598E6BA000416F4 /* DPLDisplaysViewController.mm */,
-				DA2ECE68259A1800009542DB /* DPLDisplayViewModel.h */,
-				DA2ECE69259A1800009542DB /* DPLDisplayViewModel.mm */,
+				DA2ECE68259A1800009542DB /* DPLPreferenceItem.h */,
+				DA2ECE69259A1800009542DB /* DPLPreferenceItem.mm */,
 			);
 			path = DPLDisplaysViewController;
 			sourceTree = "<group>";
@@ -712,7 +712,7 @@
 				DAD660902597B112007E8969 /* main.m in Sources */,
 				DA7945A32598E17C00368E9A /* DPLPreferencesWindowController.mm in Sources */,
 				DA6E0F93259A592A001316A1 /* DPLGeneralPreferencesViewController.mm in Sources */,
-				DA2ECE6A259A1800009542DB /* DPLDisplayViewModel.mm in Sources */,
+				DA2ECE6A259A1800009542DB /* DPLPreferenceItem.mm in Sources */,
 				DA5D27632598E6BA000416F4 /* DPLDisplaysViewController.mm in Sources */,
 				DAD660852597B110007E8969 /* DPLAppDelegate.m in Sources */,
 			);

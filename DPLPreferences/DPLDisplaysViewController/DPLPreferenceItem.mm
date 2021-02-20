@@ -1,13 +1,13 @@
 //
-//  DPLDisplayViewModel.mm
+//  DPLPreferenceItem.mm
 //  DPLPreferences
 //
 //  Created by Marcel Dierkes on 28.12.20.
 //
 
-#import "DPLDisplayViewModel.h"
+#import "DPLPreferenceItem.h"
 
-@implementation DPLDisplayViewModel
+@implementation DPLPreferenceItem
 
 - (instancetype)initWithIdentifier:(NSInteger)identifier name:(NSString *)name
 {
@@ -17,7 +17,7 @@
     return self;
 }
 
-- (instancetype)initWithIdentifier:(NSInteger)identifier headerName:(NSString *)name image:(NSImage *)image children:(NSArray<DPLDisplayViewModel *> *)children
+- (instancetype)initWithIdentifier:(NSInteger)identifier headerName:(NSString *)name image:(NSImage *)image children:(NSArray<DPLPreferenceItem *> *)children
 {
     NSParameterAssert(name);
     auto viewModel = [self initWithIdentifier:identifier name:name];
@@ -25,7 +25,7 @@
     viewModel.expanded = YES;
     viewModel.children = children;
     viewModel.image = image;
-    for(DPLDisplayViewModel *child in children) { child.parent = self; }
+    for(DPLPreferenceItem *child in children) { child.parent = self; }
     return viewModel;
 }
 

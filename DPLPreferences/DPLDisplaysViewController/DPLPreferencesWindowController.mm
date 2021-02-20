@@ -8,6 +8,9 @@
 #import "DPLPreferencesWindowController.h"
 #import "DPLDefines.h"
 
+@interface DPLPreferencesWindowController ()
+@end
+
 @implementation DPLPreferencesWindowController
 
 - (void)windowDidLoad

@@ -1,5 +1,5 @@
 //
-//  DPLDisplayViewModel.h
+//  DPLPreferenceItem.h
 //  DPLPreferences
 //
 //  Created by Marcel Dierkes on 28.12.20.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DPLDisplayViewModel : NSObject
+@interface DPLPreferenceItem : NSObject
 @property (nonatomic) NSInteger identifier;
 @property (nonatomic) NSString *name;
 
@@ -19,8 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, getter=isHeader) BOOL header;
 @property (nonatomic, getter=isExpanded) BOOL expanded;
 
-@property (nonatomic, nullable) NSArray<DPLDisplayViewModel *> *children;
-@property (weak, nonatomic, nullable) DPLDisplayViewModel *parent;
+@property (nonatomic, nullable) NSArray<DPLPreferenceItem *> *children;
+@property (weak, nonatomic, nullable) DPLPreferenceItem *parent;
 
 @property (nonatomic, nullable) NSImage *image;
 @property (nonatomic, nullable) NSColor *tintColor;
@@ -35,7 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithIdentifier:(NSInteger)identifier
                         headerName:(NSString *)name
                              image:(nullable NSImage *)image
-                          children:(nullable NSArray<DPLDisplayViewModel *> *)children;
+                          children:(nullable NSArray<DPLPreferenceItem *> *)children;
 
 - (instancetype)initWithDisplay:(DPLDisplay *)display;
 
