@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
+        <capability name="NSView safe area layout guides" minToolsVersion="12.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="DPLGeneralPreferencesViewController">
+            <connections>
+                <outlet property="decreaseRecorderControl" destination="dAF-gT-YKs" id="bx7-oC-J2Y"/>
+                <outlet property="increaseRecorderControl" destination="Sjc-oR-y7z" id="Qh0-rl-Nz8"/>
+                <outlet property="showNonRetinaResolutionsCheckbox" destination="bMa-8y-ktg" id="aVO-PB-MBk"/>
+                <outlet property="view" destination="Daq-z8-Htp" id="Y2m-YN-0ga"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <view translatesAutoresizingMaskIntoConstraints="NO" id="Daq-z8-Htp">
+            <rect key="frame" x="0.0" y="0.0" width="450" height="366"/>
+            <subviews>
+                <gridView xPlacement="fill" yPlacement="fill" rowAlignment="firstBaseline" rowSpacing="12" columnSpacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="i53-oP-FEP">
+                    <rect key="frame" x="85" y="172" width="281" height="98"/>
+                    <rows>
+                        <gridRow id="gvt-Mp-5Tf"/>
+                        <gridRow id="Q23-VX-aET"/>
+                    </rows>
+                    <columns>
+                        <gridColumn id="ysz-PN-bsX"/>
+                        <gridColumn width="140" id="hgU-87-bwf"/>
+                    </columns>
+                    <gridCells>
+                        <gridCell row="gvt-Mp-5Tf" column="ysz-PN-bsX" id="VLa-Sn-KFW">
+                            <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TVX-EW-E5h">
+                                <rect key="frame" x="-2" y="82" width="133" height="16"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Increase Resolution:" id="y53-kK-03i">
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </gridCell>
+                        <gridCell row="gvt-Mp-5Tf" column="hgU-87-bwf" id="Ck3-KZ-0WT">
+                            <customView key="contentView" translatesAutoresizingMaskIntoConstraints="NO" id="Sjc-oR-y7z" customClass="SRRecorderControl">
+                                <rect key="frame" x="141" y="55" width="140" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="Gwc-cL-MeO"/>
+                                    <constraint firstAttribute="width" constant="140" id="YRP-kV-GcH"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="allowsEscapeToCancelRecording" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="allowsDeleteToClearShortcutAndEndRecording" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="-2" id="cHP-ag-g8M"/>
+                                </connections>
+                            </customView>
+                        </gridCell>
+                        <gridCell row="Q23-VX-aET" column="ysz-PN-bsX" id="dJ7-Rb-ha6">
+                            <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qBi-qA-J4L">
+                                <rect key="frame" x="-2" y="27" width="133" height="16"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Decrease Resolution:" id="JB2-GY-GsI">
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </gridCell>
+                        <gridCell row="Q23-VX-aET" column="hgU-87-bwf" id="vSh-Zm-PWV">
+                            <customView key="contentView" translatesAutoresizingMaskIntoConstraints="NO" id="dAF-gT-YKs" customClass="SRRecorderControl">
+                                <rect key="frame" x="141" y="0.0" width="140" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="140" id="2ma-iE-ftO"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="egO-3Z-2dt"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="allowsEscapeToCancelRecording" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="allowsDeleteToClearShortcutAndEndRecording" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="-2" id="Vam-O9-y5G"/>
+                                </connections>
+                            </customView>
+                        </gridCell>
+                    </gridCells>
+                </gridView>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="E6N-DG-En9">
+                    <rect key="frame" x="18" y="278" width="133" height="16"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="Keyboard Shortcuts" id="tWO-UC-goz">
+                        <font key="font" textStyle="headline" name=".SFNS-Bold"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="Hvd-ip-01E">
+                    <rect key="frame" x="20" y="149" width="410" height="5"/>
+                </box>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="XJU-MD-fgk">
+                    <rect key="frame" x="18" y="93" width="414" height="14"/>
+                    <textFieldCell key="cell" selectable="YES" title="Filters the list of display resolutions to only contain Retina display resolutions." id="ykW-Rh-h2z">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bMa-8y-ktg">
+                    <rect key="frame" x="18" y="114" width="412" height="18"/>
+                    <buttonCell key="cell" type="check" title="Show Non-Retina Display Resolutions" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="bKn-md-gjk">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                </button>
+                <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="Tzp-VF-MKL">
+                    <rect key="frame" x="20" y="70" width="410" height="5"/>
+                </box>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aeP-5A-RBT">
+                    <rect key="frame" x="190" y="25" width="247" height="32"/>
+                    <buttonCell key="cell" type="push" title="Save Current Display Configuration" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="3qY-QY-aRJ">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="saveConfiguration:" target="-2" id="xgu-Th-D8D"/>
+                    </connections>
+                </button>
+            </subviews>
+            <constraints>
+                <constraint firstItem="bMa-8y-ktg" firstAttribute="top" secondItem="Hvd-ip-01E" secondAttribute="bottom" constant="20" id="1sn-5V-mBv"/>
+                <constraint firstItem="Hvd-ip-01E" firstAttribute="leading" secondItem="Daq-z8-Htp" secondAttribute="leading" constant="20" symbolic="YES" id="4OV-OY-ydw"/>
+                <constraint firstItem="aeP-5A-RBT" firstAttribute="trailing" secondItem="Cix-C3-8mG" secondAttribute="trailing" id="8EL-3X-G0Y"/>
+                <constraint firstItem="bMa-8y-ktg" firstAttribute="leading" secondItem="Cix-C3-8mG" secondAttribute="leading" id="Bh9-rm-bGN"/>
+                <constraint firstItem="XJU-MD-fgk" firstAttribute="leading" secondItem="Cix-C3-8mG" secondAttribute="leading" id="DlJ-fe-C4G"/>
+                <constraint firstItem="i53-oP-FEP" firstAttribute="top" secondItem="E6N-DG-En9" secondAttribute="bottom" constant="8" symbolic="YES" id="EJV-wc-sHc"/>
+                <constraint firstItem="Tzp-VF-MKL" firstAttribute="top" secondItem="XJU-MD-fgk" secondAttribute="bottom" constant="20" id="Khv-vU-eik"/>
+                <constraint firstItem="XJU-MD-fgk" firstAttribute="top" secondItem="bMa-8y-ktg" secondAttribute="bottom" constant="8" symbolic="YES" id="LRf-8p-tcp"/>
+                <constraint firstItem="E6N-DG-En9" firstAttribute="top" secondItem="Cix-C3-8mG" secondAttribute="top" id="MgO-YX-u74"/>
+                <constraint firstItem="i53-oP-FEP" firstAttribute="centerX" secondItem="Daq-z8-Htp" secondAttribute="centerX" id="OWa-Jr-MJa"/>
+                <constraint firstItem="aeP-5A-RBT" firstAttribute="top" secondItem="Tzp-VF-MKL" secondAttribute="bottom" constant="20" id="Owd-8u-oaI"/>
+                <constraint firstItem="Cix-C3-8mG" firstAttribute="leading" relation="lessThanOrEqual" secondItem="aeP-5A-RBT" secondAttribute="leading" id="Q1Y-40-qtS"/>
+                <constraint firstItem="Cix-C3-8mG" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="XJU-MD-fgk" secondAttribute="bottom" id="SDA-20-kZJ"/>
+                <constraint firstItem="Hvd-ip-01E" firstAttribute="top" secondItem="i53-oP-FEP" secondAttribute="bottom" constant="20" id="SSP-SO-qd8"/>
+                <constraint firstItem="Tzp-VF-MKL" firstAttribute="leading" secondItem="Daq-z8-Htp" secondAttribute="leading" constant="20" symbolic="YES" id="VAO-uh-yen"/>
+                <constraint firstItem="Cix-C3-8mG" firstAttribute="trailing" secondItem="bMa-8y-ktg" secondAttribute="trailing" id="Wef-r9-qhB"/>
+                <constraint firstItem="XJU-MD-fgk" firstAttribute="trailing" secondItem="Cix-C3-8mG" secondAttribute="trailing" id="WlV-W0-WDx"/>
+                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="aeP-5A-RBT" secondAttribute="bottom" constant="20" id="XUy-on-Njj"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="E6N-DG-En9" secondAttribute="trailing" constant="20" symbolic="YES" id="bf8-i9-Pre"/>
+                <constraint firstAttribute="trailing" secondItem="Hvd-ip-01E" secondAttribute="trailing" constant="20" symbolic="YES" id="d4a-Jm-gIA"/>
+                <constraint firstAttribute="trailing" secondItem="Tzp-VF-MKL" secondAttribute="trailing" constant="20" symbolic="YES" id="fmo-5W-CX3"/>
+                <constraint firstItem="Cix-C3-8mG" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="i53-oP-FEP" secondAttribute="trailing" id="jcI-B7-BXA"/>
+                <constraint firstItem="Cix-C3-8mG" firstAttribute="leading" relation="lessThanOrEqual" secondItem="i53-oP-FEP" secondAttribute="leading" id="jlW-4s-v6j"/>
+                <constraint firstItem="E6N-DG-En9" firstAttribute="leading" secondItem="Daq-z8-Htp" secondAttribute="leading" constant="20" symbolic="YES" id="saf-Yz-ncc"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="jMq-yQ-GzE"/>
+            <viewLayoutGuide key="layoutMargins" id="Cix-C3-8mG"/>
+            <point key="canvasLocation" x="1" y="144"/>
+        </view>
+    </objects>
+</document>

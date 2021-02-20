@@ -7,6 +7,10 @@
 
 #import "DPLGeneralPreferencesViewController.h"
 #import <ShortcutRecorder/ShortcutRecorder.h>
+#import "DPLPreferenceItem.h"
+
+#define DPL_L10N_GENERAL NSLocalizedString(@"General", @"General")
+#define DPL_L10N_GENERAL_PREFERENCES NSLocalizedString(@"General Preferences", @"General Preferences")
 
 @interface DPLGeneralPreferencesViewController () <SRRecorderControlDelegate>
 @property (nonatomic) NSUserDefaultsController *defaultsController;
@@ -16,9 +20,19 @@
 
 @implementation DPLGeneralPreferencesViewController
 
-+ (NSStoryboardSceneIdentifier)identifier
++ (DPLPreferenceItem *)preferenceItem
 {
-    return @"ShortcutsViewController";
+    auto item = [[DPLPreferenceItem alloc] initWithIdentifier:3 name:DPL_L10N_GENERAL];
+    item.image = [NSImage imageWithSystemSymbolName:@"gear"
+                           accessibilityDescription:nil];
+    item.tintColor = NSColor.tertiaryLabelColor;
+    item.viewControllerClass = [self class];
+    return item;
+}
+
+- (NSString *)preferredTitle
+{
+    return DPL_L10N_GENERAL_PREFERENCES;
 }
 
 - (void)awakeFromNib
@@ -26,14 +40,6 @@
     [super awakeFromNib];
     
     [self configureBindings];
-}
-
-- (void)viewDidAppear
-{
-    [super viewDidAppear];
-    
-    auto window = self.view.window;
-    window.subtitle = NSLocalizedString(@"General Preferences", @"General Preferences");
 }
 
 - (void)configureBindings

@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) NSInteger identifier;
 @property (nonatomic) NSString *name;
 
+@property (nonatomic, nullable) Class viewControllerClass;
 @property (nonatomic, nullable) id representedObject;
 
 @property (nonatomic, getter=isHeader) BOOL header;

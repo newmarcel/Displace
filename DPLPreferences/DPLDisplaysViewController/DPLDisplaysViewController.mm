@@ -56,12 +56,6 @@ constexpr NSUserInterfaceItemIdentifier DataCell = @"DataCell";
     auto displayImage = [NSImage imageWithSystemSymbolName:@"display"
                                   accessibilityDescription:nil];
     
-    auto prefsTitle = NSLocalizedString(@"General", @"General");
-    auto prefs = [[DPLPreferenceItem alloc] initWithIdentifier:3 name:prefsTitle];
-    prefs.image = [NSImage imageWithSystemSymbolName:@"gear"
-                                accessibilityDescription:nil];
-    prefs.tintColor = NSColor.tertiaryLabelColor;
-    
     self.preferenceItems = @[
         [[DPLPreferenceItem alloc] initWithIdentifier:1
                                              headerName:NSLocalizedString(@"Displays", @"Displays")
@@ -70,7 +64,7 @@ constexpr NSUserInterfaceItemIdentifier DataCell = @"DataCell";
         [[DPLPreferenceItem alloc] initWithIdentifier:2
                                              headerName:NSLocalizedString(@"Preferences", @"Preferences")
                                                   image:nil
-                                               children:@[prefs]],
+                                               children:@[DPLGeneralPreferencesViewController.preferenceItem]],
     ];
 }
 
@@ -98,6 +92,7 @@ constexpr NSUserInterfaceItemIdentifier DataCell = @"DataCell";
     auto split = self.splitViewController;
     auto detailItem = split.splitViewItems.lastObject;
     
+    Class viewControllerClass = preferenceItem.viewControllerClass;
     if([preferenceItem.representedObject isKindOfClass:[DPLDisplay class]])
     {
         // Show the display details
@@ -114,20 +109,17 @@ constexpr NSUserInterfaceItemIdentifier DataCell = @"DataCell";
             [self setSplitDetailViewController:controller];
         }
     }
-    else if(preferenceItem.representedObject == nil)
+    else if(viewControllerClass != nil && ![detailItem isKindOfClass:viewControllerClass])
     {
-        // Show the settings
-        if(![detailItem.viewController isKindOfClass:[DPLGeneralPreferencesViewController class]])
-        {
-            auto identifier = DPLGeneralPreferencesViewController.identifier;
-            NSViewController *controller = [self.storyboard instantiateControllerWithIdentifier:identifier];
-            [self setSplitDetailViewController:controller];
-        }
+        auto controller = (__kindof DPLPreferencesContentViewController *)[viewControllerClass new];
+        [self setSplitDetailViewController:controller];
     }
 }
 
 - (void)setSplitDetailViewController:(__kindof NSViewController *)controller
 {
+    NSAssert(self.view.window != nil, @"The view must be attached to a window.");
+    
     auto split = self.splitViewController;
     auto sidebarItem = split.splitViewItems.firstObject;
     auto detailItem = [NSSplitViewItem splitViewItemWithViewController:controller];

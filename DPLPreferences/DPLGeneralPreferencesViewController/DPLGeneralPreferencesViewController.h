@@ -6,14 +6,13 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import <DisplaceKit/DisplaceKit.h>
+#import "DPLPreferencesContentViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @class SRRecorderControl;
 
-@interface DPLGeneralPreferencesViewController : NSViewController
-@property (class, nonatomic, readonly) NSStoryboardSceneIdentifier identifier;
+@interface DPLGeneralPreferencesViewController : DPLPreferencesContentViewController
 @property (nonatomic, nullable) IBOutlet NSButton *showNonRetinaResolutionsCheckbox;
 @property (nonatomic, nullable) IBOutlet SRRecorderControl *increaseRecorderControl;
 @property (nonatomic, nullable) IBOutlet SRRecorderControl *decreaseRecorderControl;

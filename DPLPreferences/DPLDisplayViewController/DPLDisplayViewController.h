@@ -6,12 +6,11 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import <DisplaceKit/DisplaceKit.h>
+#import "DPLPreferencesContentViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DPLDisplayViewController : NSViewController <NSTableViewDataSource, NSTableViewDelegate>
-@property (class, nonatomic, readonly) NSStoryboardSceneIdentifier identifier;
+@interface DPLDisplayViewController : DPLPreferencesContentViewController <NSTableViewDataSource, NSTableViewDelegate>
 @property (weak, nonatomic, nullable) IBOutlet NSTableView *tableView;
 
 - (IBAction)setSelectedAsCurrentDisplayResolution:(nullable id)sender;

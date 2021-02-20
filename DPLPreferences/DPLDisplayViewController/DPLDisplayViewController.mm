@@ -6,6 +6,7 @@
 //
 
 #import "DPLDisplayViewController.h"
+#import "DPLPreferenceItem.h"
 
 namespace DPL::Column
 {
@@ -23,17 +24,15 @@ constexpr NSUserInterfaceItemIdentifier ImageCell = @"imageCell";
 
 @implementation DPLDisplayViewController
 
-+ (NSStoryboardSceneIdentifier)identifier
+
++ (DPLPreferenceItem *)preferenceItem
 {
-    return @"DisplayViewController";
+    @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:@"Unused" userInfo:nil];
 }
 
-- (void)viewDidAppear
+- (NSString *)preferredTitle
 {
-    [super viewDidAppear];
-    
-    auto window = self.view.window;
-    window.subtitle = self.display.localizedName;
+    return self.display.localizedName;
 }
 
 - (DPLDisplay *)display
