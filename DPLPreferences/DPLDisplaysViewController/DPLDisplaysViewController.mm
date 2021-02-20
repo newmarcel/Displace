@@ -7,8 +7,7 @@
 
 #import "DPLDisplaysViewController.h"
 #import "DPLPreferenceItem.h"
-#import "DPLDisplayViewController.h"
-#import "DPLGeneralPreferencesViewController.h"
+#import "DPLPreferencesContentViewControllers.h"
 
 namespace DPL::Identifier
 {

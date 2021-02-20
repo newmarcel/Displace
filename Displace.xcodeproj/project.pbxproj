@@ -18,6 +18,7 @@
 		DA3DC72C2598907F00275021 /* NSWorkspace+DPLPreferences.h in Headers */ = {isa = PBXBuildFile; fileRef = DA3DC72A2598907F00275021 /* NSWorkspace+DPLPreferences.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DA3DC734259890DC00275021 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA3DC733259890DC00275021 /* Cocoa.framework */; };
 		DA3DC73D2598972F00275021 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DA3DC73B2598972F00275021 /* InfoPlist.strings */; };
+		DA425FE825E100BC007A78BD /* DPLPreferencesContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA425FE525E100BC007A78BD /* DPLPreferencesContentViewController.m */; };
 		DA4F4E0325B3872F00F82E1D /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA4F4E0225B3872F00F82E1D /* Metal.framework */; };
 		DA58DBED25B745B000F9434A /* DPLGraphicsDevice.h in Headers */ = {isa = PBXBuildFile; fileRef = DA58DBEB25B745B000F9434A /* DPLGraphicsDevice.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DA58DBEE25B745B000F9434A /* DPLGraphicsDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = DA58DBEC25B745B000F9434A /* DPLGraphicsDevice.m */; };
@@ -138,6 +139,9 @@
 		DA3DC72A2598907F00275021 /* NSWorkspace+DPLPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSWorkspace+DPLPreferences.h"; sourceTree = "<group>"; };
 		DA3DC733259890DC00275021 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		DA3DC73C2598972F00275021 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		DA425FE525E100BC007A78BD /* DPLPreferencesContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPLPreferencesContentViewController.m; sourceTree = "<group>"; };
+		DA425FE625E100BC007A78BD /* DPLPreferencesContentViewControllers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPLPreferencesContentViewControllers.h; sourceTree = "<group>"; };
+		DA425FE725E100BC007A78BD /* DPLPreferencesContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPLPreferencesContentViewController.h; sourceTree = "<group>"; };
 		DA4F4E0225B3872F00F82E1D /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
 		DA58DBEB25B745B000F9434A /* DPLGraphicsDevice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DPLGraphicsDevice.h; sourceTree = "<group>"; };
 		DA58DBEC25B745B000F9434A /* DPLGraphicsDevice.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DPLGraphicsDevice.m; sourceTree = "<group>"; };
@@ -255,6 +259,16 @@
 				DA09719525AA449500B12CB4 /* DPLNotificationCenter.m */,
 			);
 			path = DPLNotificationCenter;
+			sourceTree = "<group>";
+		};
+		DA425FE425E100BC007A78BD /* DPLPreferencesContentViewController */ = {
+			isa = PBXGroup;
+			children = (
+				DA425FE625E100BC007A78BD /* DPLPreferencesContentViewControllers.h */,
+				DA425FE725E100BC007A78BD /* DPLPreferencesContentViewController.h */,
+				DA425FE525E100BC007A78BD /* DPLPreferencesContentViewController.m */,
+			);
+			path = DPLPreferencesContentViewController;
 			sourceTree = "<group>";
 		};
 		DA58DBF225B74B9000F9434A /* DPLGraphicsDevice */ = {
@@ -453,6 +467,7 @@
 				DAD660842597B110007E8969 /* DPLAppDelegate.m */,
 				DAD6608B2597B112007E8969 /* Main.storyboard */,
 				DA9266A325C6A1C9008D774A /* DPLDisplaysViewController */,
+				DA425FE425E100BC007A78BD /* DPLPreferencesContentViewController */,
 				DA9266A425C6A1E7008D774A /* DPLDisplayViewController */,
 				DA9266A825C6A1EE008D774A /* DPLGeneralPreferencesViewController */,
 				DAAA87A52597D7D000399006 /* Other… */,
@@ -713,6 +728,7 @@
 				DA7945A32598E17C00368E9A /* DPLPreferencesWindowController.mm in Sources */,
 				DA6E0F93259A592A001316A1 /* DPLGeneralPreferencesViewController.mm in Sources */,
 				DA2ECE6A259A1800009542DB /* DPLPreferenceItem.mm in Sources */,
+				DA425FE825E100BC007A78BD /* DPLPreferencesContentViewController.m in Sources */,
 				DA5D27632598E6BA000416F4 /* DPLDisplaysViewController.mm in Sources */,
 				DAD660852597B110007E8969 /* DPLAppDelegate.m in Sources */,
 			);
