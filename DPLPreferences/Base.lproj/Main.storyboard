@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="UJb-qp-24m">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
-        <capability name="NSView safe area layout guides" minToolsVersion="12.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -737,7 +736,7 @@
         <scene sceneID="n7z-BU-bMy">
             <objects>
                 <viewController id="KMS-G3-dT3" customClass="DPLDisplaysViewController" sceneMemberID="viewController">
-                    <view key="view" misplaced="YES" id="BhM-bb-jJr">
+                    <view key="view" id="BhM-bb-jJr">
                         <rect key="frame" x="0.0" y="0.0" width="240" height="400"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
@@ -771,7 +770,7 @@
                                                             <rect key="frame" x="11" y="0.0" width="217" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mcx-Rz-s5I">
+                                                                <textField verticalHuggingPriority="750" fixedFrame="YES" id="Mcx-Rz-s5I">
                                                                     <rect key="frame" x="0.0" y="1" width="217" height="14"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="HEADER CELL" id="nEm-9d-NxC">
@@ -789,12 +788,12 @@
                                                             <rect key="frame" x="11" y="17" width="217" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <imageView wantsLayer="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vPL-Q9-I1j">
+                                                                <imageView wantsLayer="YES" fixedFrame="YES" id="vPL-Q9-I1j">
                                                                     <rect key="frame" x="3" y="0.5" width="17.5" height="17"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                     <imageCell key="cell" refusesFirstResponder="YES" imageScaling="proportionallyDown" image="gear" catalog="system" id="O5H-cp-aC3"/>
                                                                 </imageView>
-                                                                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4mP-ro-e4E">
+                                                                <textField verticalHuggingPriority="750" fixedFrame="YES" id="4mP-ro-e4E">
                                                                     <rect key="frame" x="25" y="0.0" width="192" height="17"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="riF-mQ-IMR">
@@ -830,8 +829,6 @@
                                 </scroller>
                             </scrollView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="Aw3-ov-nCv"/>
-                        <viewLayoutGuide key="layoutMargins" id="Ikk-Ne-bo0"/>
                     </view>
                     <connections>
                         <outlet property="outlineView" destination="0pf-d0-qmo" id="pLI-Eu-bda"/>
