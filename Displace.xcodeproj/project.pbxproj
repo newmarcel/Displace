@@ -53,6 +53,9 @@
 		DAAF056F25978AB000ED206F /* DPLDisplay.h in Headers */ = {isa = PBXBuildFile; fileRef = DAAF056625978AB000ED206F /* DPLDisplay.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DAAF057925978B4600ED206F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAAF057825978B4600ED206F /* CoreGraphics.framework */; };
 		DAB11482258E85FB008C2BE8 /* DPLMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAB11481258E85FB008C2BE8 /* DPLMenuController.m */; };
+		DAC5BDE625E19890009DEE3E /* DPLHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = DAC5BDE525E19890009DEE3E /* DPLHelper.m */; };
+		DAC5BDE825E19890009DEE3E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DAC5BDE725E19890009DEE3E /* main.m */; };
+		DAC5BDED25E19890009DEE3E /* DisplaceHelper.xpc in Embed XPC Services */ = {isa = PBXBuildFile; fileRef = DAC5BDE125E19890009DEE3E /* DisplaceHelper.xpc */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		DAC91F5D2532F6B200A08DE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAC91F5C2532F6B200A08DE0 /* Assets.xcassets */; };
 		DAC91F602532F6B200A08DE0 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAC91F5E2532F6B200A08DE0 /* MainMenu.xib */; };
 		DAC91F632532F6B200A08DE0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DAC91F622532F6B200A08DE0 /* main.m */; };
@@ -91,6 +94,13 @@
 			remoteGlobalIDString = DAAF0538259789F300ED206F;
 			remoteInfo = DisplaceKit;
 		};
+		DAC5BDEA25E19890009DEE3E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DAC91F4E2532F6B200A08DE0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DAC5BDE025E19890009DEE3E;
+			remoteInfo = DPLHelper;
+		};
 		DAD660A22597B16F007E8969 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = DAC91F4E2532F6B200A08DE0 /* Project object */;
@@ -117,6 +127,17 @@
 				DA01990625D5A63400D0D89E /* DisplaceKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DAC5BDEC25E19890009DEE3E /* Embed XPC Services */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/XPCServices";
+			dstSubfolderSpec = 16;
+			files = (
+				DAC5BDED25E19890009DEE3E /* DisplaceHelper.xpc in Embed XPC Services */,
+			);
+			name = "Embed XPC Services";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		DAD660AA2597B18D007E8969 /* Embed Preferences */ = {
@@ -190,6 +211,13 @@
 		DAAF057825978B4600ED206F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		DAB11480258E85FB008C2BE8 /* DPLMenuController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DPLMenuController.h; sourceTree = "<group>"; };
 		DAB11481258E85FB008C2BE8 /* DPLMenuController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DPLMenuController.m; sourceTree = "<group>"; };
+		DAC5BDE125E19890009DEE3E /* DisplaceHelper.xpc */ = {isa = PBXFileReference; explicitFileType = "wrapper.xpc-service"; includeInIndex = 0; path = DisplaceHelper.xpc; sourceTree = BUILT_PRODUCTS_DIR; };
+		DAC5BDE325E19890009DEE3E /* DPLHelperProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DPLHelperProtocol.h; sourceTree = "<group>"; };
+		DAC5BDE425E19890009DEE3E /* DPLHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DPLHelper.h; sourceTree = "<group>"; };
+		DAC5BDE525E19890009DEE3E /* DPLHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DPLHelper.m; sourceTree = "<group>"; };
+		DAC5BDE725E19890009DEE3E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		DAC5BDE925E19890009DEE3E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DAC5BE2425E19E8D009DEE3E /* DPLHelper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DPLHelper.entitlements; sourceTree = "<group>"; };
 		DAC91F562532F6B200A08DE0 /* Displace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Displace.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAC91F5C2532F6B200A08DE0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DAC91F5F2532F6B200A08DE0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -231,6 +259,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				DAAF0542259789F300ED206F /* DisplaceKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DAC5BDDE25E19890009DEE3E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -447,11 +482,25 @@
 			name = "Other…";
 			sourceTree = "<group>";
 		};
+		DAC5BDE225E19890009DEE3E /* DPLHelper */ = {
+			isa = PBXGroup;
+			children = (
+				DAC5BDE325E19890009DEE3E /* DPLHelperProtocol.h */,
+				DAC5BDE425E19890009DEE3E /* DPLHelper.h */,
+				DAC5BDE525E19890009DEE3E /* DPLHelper.m */,
+				DAC5BDE725E19890009DEE3E /* main.m */,
+				DAC5BDE925E19890009DEE3E /* Info.plist */,
+				DAC5BE2425E19E8D009DEE3E /* DPLHelper.entitlements */,
+			);
+			path = DPLHelper;
+			sourceTree = "<group>";
+		};
 		DAC91F4D2532F6B200A08DE0 = {
 			isa = PBXGroup;
 			children = (
 				DAC91F582532F6B200A08DE0 /* Displace */,
 				DAD660822597B110007E8969 /* DPLPreferences */,
+				DAC5BDE225E19890009DEE3E /* DPLHelper */,
 				DAAF053A259789F300ED206F /* DisplaceKit */,
 				DAAF0547259789F300ED206F /* DisplaceKitTests */,
 				DA643AD72532FAE800F0A49A /* Frameworks */,
@@ -466,6 +515,7 @@
 				DAAF0539259789F300ED206F /* DisplaceKit.framework */,
 				DAAF0541259789F300ED206F /* DisplaceKitTests.xctest */,
 				DAD660812597B110007E8969 /* Displace Preferences.app */,
+				DAC5BDE125E19890009DEE3E /* DisplaceHelper.xpc */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -581,6 +631,23 @@
 			productReference = DAAF0541259789F300ED206F /* DisplaceKitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		DAC5BDE025E19890009DEE3E /* DisplaceHelper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DAC5BDF025E19890009DEE3E /* Build configuration list for PBXNativeTarget "DisplaceHelper" */;
+			buildPhases = (
+				DAC5BDDD25E19890009DEE3E /* Sources */,
+				DAC5BDDE25E19890009DEE3E /* Frameworks */,
+				DAC5BDDF25E19890009DEE3E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DisplaceHelper;
+			productName = DPLHelper;
+			productReference = DAC5BDE125E19890009DEE3E /* DisplaceHelper.xpc */;
+			productType = "com.apple.product-type.xpc-service";
+		};
 		DAC91F552532F6B200A08DE0 /* Displace */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = DAC91F672532F6B200A08DE0 /* Build configuration list for PBXNativeTarget "Displace" */;
@@ -589,12 +656,14 @@
 				DAC91F532532F6B200A08DE0 /* Frameworks */,
 				DAC91F542532F6B200A08DE0 /* Resources */,
 				DAD660AA2597B18D007E8969 /* Embed Preferences */,
+				DAC5BDEC25E19890009DEE3E /* Embed XPC Services */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				DAAF054D259789F300ED206F /* PBXTargetDependency */,
 				DAD660A32597B16F007E8969 /* PBXTargetDependency */,
+				DAC5BDEB25E19890009DEE3E /* PBXTargetDependency */,
 			);
 			name = Displace;
 			packageProductDependencies = (
@@ -640,6 +709,9 @@
 						CreatedOnToolsVersion = 12.3;
 						TestTargetID = DAC91F552532F6B200A08DE0;
 					};
+					DAC5BDE025E19890009DEE3E = {
+						CreatedOnToolsVersion = 12.4;
+					};
 					DAC91F552532F6B200A08DE0 = {
 						CreatedOnToolsVersion = 12.0.1;
 					};
@@ -666,6 +738,7 @@
 			targets = (
 				DAC91F552532F6B200A08DE0 /* Displace */,
 				DAD660802597B110007E8969 /* Displace Preferences */,
+				DAC5BDE025E19890009DEE3E /* DisplaceHelper */,
 				DAAF0538259789F300ED206F /* DisplaceKit */,
 				DAAF0540259789F300ED206F /* DisplaceKitTests */,
 			);
@@ -681,6 +754,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		DAAF053F259789F300ED206F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DAC5BDDF25E19890009DEE3E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -739,6 +819,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DAC5BDDD25E19890009DEE3E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAC5BDE825E19890009DEE3E /* main.m in Sources */,
+				DAC5BDE625E19890009DEE3E /* DPLHelper.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DAC91F522532F6B200A08DE0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -783,6 +872,11 @@
 			isa = PBXTargetDependency;
 			target = DAAF0538259789F300ED206F /* DisplaceKit */;
 			targetProxy = DAAF054C259789F300ED206F /* PBXContainerItemProxy */;
+		};
+		DAC5BDEB25E19890009DEE3E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DAC5BDE025E19890009DEE3E /* DisplaceHelper */;
+			targetProxy = DAC5BDEA25E19890009DEE3E /* PBXContainerItemProxy */;
 		};
 		DAD660A32597B16F007E8969 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -911,6 +1005,38 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "info.marcel-dierkes.DisplaceKitTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Displace.app/Contents/MacOS/Displace";
+			};
+			name = Release;
+		};
+		DAC5BDEE25E19890009DEE3E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = DPLHelper/DPLHelper.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 5KESHV9W85;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = DPLHelper/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = "info.marcel-dierkes.Displace.Helper";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		DAC5BDEF25E19890009DEE3E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = DPLHelper/DPLHelper.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 5KESHV9W85;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = DPLHelper/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = "info.marcel-dierkes.Displace.Helper";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
@@ -1128,6 +1254,15 @@
 			buildConfigurations = (
 				DAAF0554259789F300ED206F /* Debug */,
 				DAAF0555259789F300ED206F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DAC5BDF025E19890009DEE3E /* Build configuration list for PBXNativeTarget "DisplaceHelper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DAC5BDEE25E19890009DEE3E /* Debug */,
+				DAC5BDEF25E19890009DEE3E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

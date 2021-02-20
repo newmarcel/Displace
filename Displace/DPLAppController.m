@@ -13,6 +13,7 @@
 #import "DPLShortcutMonitor.h"
 #import "DPLUserNotificationCenter.h"
 #import "DPLDisplayModeUserNotification.h"
+#import "DPLHelperProtocol.h"
 
 @interface DPLAppController () <DPLMenuControllerDataSource, DPLMenuControllerDelegate, DPLShortcutMonitorDelegate>
 @property (nonatomic) NSArray<DPLDisplay *> *displays;
@@ -20,6 +21,7 @@
 @property (nonatomic, readwrite) NSStatusItem *systemStatusItem;
 @property (nonatomic) DPLMenuController *menuController;
 @property (nonatomic) DPLShortcutMonitor *shortcutMonitor;
+@property (nonatomic) NSXPCConnection *connection;
 @end
 
 @implementation DPLAppController
@@ -295,6 +297,18 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     [self configureUserNotificationCenter];
+    
+    Auto c = [[NSXPCConnection alloc] initWithServiceName:@"info.marcel-dierkes.Displace.Helper"];
+    c.remoteObjectInterface = [NSXPCInterface interfaceWithProtocol:@protocol(DPLHelperProtocol)];
+    [c resume];
+    self.connection = c;
+    DPLLog(@"Proxy %@", c.remoteObjectProxy);
+    [c.remoteObjectProxy upperCaseString:@"it works" withReply:^(NSString *result) {
+        DPLLog(@"Service result: %@", result);
+        
+        [c invalidate];
+        self.connection = nil;
+    }];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification
