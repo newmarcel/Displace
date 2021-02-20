@@ -62,6 +62,12 @@
                                options:nil];
 }
 
+- (void)openNotificationPreferences:(id)sender
+{
+    auto workspace = NSWorkspace.sharedWorkspace;
+    [workspace dpl_openNotificationPreferencesWithCompletionHandler:nil];
+}
+
 #pragma mark - Save Configuration
 
 - (IBAction)saveConfiguration:(id)sender

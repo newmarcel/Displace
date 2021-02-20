@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, nullable) IBOutlet SRRecorderControl *decreaseRecorderControl;
 
 - (IBAction)saveConfiguration:(nullable id)sender;
+- (IBAction)openNotificationPreferences:(nullable id)sender;
 
 @end
 

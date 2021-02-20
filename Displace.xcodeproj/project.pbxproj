@@ -14,6 +14,10 @@
 		DA0DE9FA2597BB6E00FCFE43 /* NSURL+DPLPreferences.h in Headers */ = {isa = PBXBuildFile; fileRef = DA0DE9F82597BB6E00FCFE43 /* NSURL+DPLPreferences.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DA0DE9FB2597BB6E00FCFE43 /* NSURL+DPLPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = DA0DE9F92597BB6E00FCFE43 /* NSURL+DPLPreferences.m */; };
 		DA2ECE6A259A1800009542DB /* DPLPreferenceItem.mm in Sources */ = {isa = PBXBuildFile; fileRef = DA2ECE69259A1800009542DB /* DPLPreferenceItem.mm */; };
+		DA3BA4FF25E1706100470E67 /* NSWorkspace+DPLUserNotificationCenter.h in Headers */ = {isa = PBXBuildFile; fileRef = DA3BA4FD25E1706100470E67 /* NSWorkspace+DPLUserNotificationCenter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DA3BA50025E1706100470E67 /* NSWorkspace+DPLUserNotificationCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = DA3BA4FE25E1706100470E67 /* NSWorkspace+DPLUserNotificationCenter.m */; };
+		DA3BA50D25E1829300470E67 /* NSURL+DPLUserNotificationCenter.h in Headers */ = {isa = PBXBuildFile; fileRef = DA3BA50B25E1829300470E67 /* NSURL+DPLUserNotificationCenter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DA3BA50E25E1829300470E67 /* NSURL+DPLUserNotificationCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = DA3BA50C25E1829300470E67 /* NSURL+DPLUserNotificationCenter.m */; };
 		DA3DC72B2598907F00275021 /* NSWorkspace+DPLPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = DA3DC7292598907F00275021 /* NSWorkspace+DPLPreferences.m */; };
 		DA3DC72C2598907F00275021 /* NSWorkspace+DPLPreferences.h in Headers */ = {isa = PBXBuildFile; fileRef = DA3DC72A2598907F00275021 /* NSWorkspace+DPLPreferences.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DA3DC734259890DC00275021 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA3DC733259890DC00275021 /* Cocoa.framework */; };
@@ -137,6 +141,10 @@
 		DA2ECE69259A1800009542DB /* DPLPreferenceItem.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = DPLPreferenceItem.mm; sourceTree = "<group>"; };
 		DA3314ED259BA6B000B208F6 /* Configuration.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Configuration.xcconfig; sourceTree = SOURCE_ROOT; };
 		DA384B5425D8025C0052C1AC /* DPLDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DPLDefines.h; sourceTree = "<group>"; };
+		DA3BA4FD25E1706100470E67 /* NSWorkspace+DPLUserNotificationCenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSWorkspace+DPLUserNotificationCenter.h"; sourceTree = "<group>"; };
+		DA3BA4FE25E1706100470E67 /* NSWorkspace+DPLUserNotificationCenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSWorkspace+DPLUserNotificationCenter.m"; sourceTree = "<group>"; };
+		DA3BA50B25E1829300470E67 /* NSURL+DPLUserNotificationCenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSURL+DPLUserNotificationCenter.h"; sourceTree = "<group>"; };
+		DA3BA50C25E1829300470E67 /* NSURL+DPLUserNotificationCenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSURL+DPLUserNotificationCenter.m"; sourceTree = "<group>"; };
 		DA3DC7292598907F00275021 /* NSWorkspace+DPLPreferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSWorkspace+DPLPreferences.m"; sourceTree = "<group>"; };
 		DA3DC72A2598907F00275021 /* NSWorkspace+DPLPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSWorkspace+DPLPreferences.h"; sourceTree = "<group>"; };
 		DA3DC733259890DC00275021 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -265,6 +273,17 @@
 			path = DPLNotificationCenter;
 			sourceTree = "<group>";
 		};
+		DA3BA50425E1706500470E67 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				DA3BA50B25E1829300470E67 /* NSURL+DPLUserNotificationCenter.h */,
+				DA3BA50C25E1829300470E67 /* NSURL+DPLUserNotificationCenter.m */,
+				DA3BA4FD25E1706100470E67 /* NSWorkspace+DPLUserNotificationCenter.h */,
+				DA3BA4FE25E1706100470E67 /* NSWorkspace+DPLUserNotificationCenter.m */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		DA425FE425E100BC007A78BD /* DPLPreferencesContentViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -333,6 +352,7 @@
 			children = (
 				DAAA6B4D25D917F0003BF8E7 /* DPLUserNotificationCenter.h */,
 				DAAA6B4C25D917F0003BF8E7 /* DPLUserNotificationCenter.m */,
+				DA3BA50425E1706500470E67 /* Extensions */,
 			);
 			path = DPLUserNotificationCenter;
 			sourceTree = "<group>";
@@ -512,6 +532,8 @@
 				DAAF054B259789F300ED206F /* DisplaceKit.h in Headers */,
 				DA58DBED25B745B000F9434A /* DPLGraphicsDevice.h in Headers */,
 				DA3DC72C2598907F00275021 /* NSWorkspace+DPLPreferences.h in Headers */,
+				DA3BA50D25E1829300470E67 /* NSURL+DPLUserNotificationCenter.h in Headers */,
+				DA3BA4FF25E1706100470E67 /* NSWorkspace+DPLUserNotificationCenter.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -693,6 +715,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA3BA50E25E1829300470E67 /* NSURL+DPLUserNotificationCenter.m in Sources */,
 				DAD639F425DAE72600627839 /* NSApplication+DPLDisplay.m in Sources */,
 				DA58DBEE25B745B000F9434A /* DPLGraphicsDevice.m in Sources */,
 				DA0DE9FB2597BB6E00FCFE43 /* NSURL+DPLPreferences.m in Sources */,
@@ -701,6 +724,7 @@
 				DAAF056C25978AB000ED206F /* DPLAppGroup.m in Sources */,
 				DA3DC72B2598907F00275021 /* NSWorkspace+DPLPreferences.m in Sources */,
 				DAAF056A25978AB000ED206F /* DPLDisplayMode.m in Sources */,
+				DA3BA50025E1706100470E67 /* NSWorkspace+DPLUserNotificationCenter.m in Sources */,
 				DAAA6B4E25D917F0003BF8E7 /* DPLUserNotificationCenter.m in Sources */,
 				DAAF056925978AB000ED206F /* DPLPreferences.m in Sources */,
 				DAAF056E25978AB000ED206F /* DPLDisplay.m in Sources */,
