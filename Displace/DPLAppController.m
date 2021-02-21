@@ -295,6 +295,11 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     [self configureUserNotificationCenter];
+    
+    [DPLPreferences.sharedPreferences performBlockOnFirstLaunch:^{
+        Auto workspace = NSWorkspace.sharedWorkspace;
+        [workspace dpl_openPreferencesWithCompletionHandler:nil];
+    }];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification
