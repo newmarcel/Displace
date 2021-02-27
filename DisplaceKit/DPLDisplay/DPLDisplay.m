@@ -340,7 +340,20 @@ NS_INLINE NSString *DPLBoolToString(BOOL value)
 
 - (NSString *)debugDescription
 {
-    return self.description;
+    Auto string = [[NSMutableString alloc] initWithString:super.description];
+    [string appendFormat:@"\n  ID: %@", @(self.displayID)];
+    [string appendFormat:@"\n  Is Main: %@", DPLBoolToString([self isMain])];
+    [string appendFormat:@"\n  Is Online: %@", DPLBoolToString([self isOnline])];
+    [string appendFormat:@"\n  Is Built-In: %@", DPLBoolToString([self isBuiltIn])];
+    [string appendFormat:@"\n  Size: %@ × %@", @(self.width), @(self.height)];
+    [string appendFormat:@"\n  Modes:"];
+    for(DPLDisplayMode *mode in self.displayModes)
+    {
+        [string appendFormat:@"\n   - %@", mode.debugDescription];
+    }
+    [string appendFormat:@"\n  Graphics Device:\n%@", self.graphicsDevice];
+    
+    return string;
 }
 
 #pragma mark - Equatable

@@ -105,7 +105,7 @@
 
 - (NSString *)debugDescription
 {
-    return self.description;
+    return ((__bridge_transfer NSString *)CFCopyDescription(self.reference));
 }
 
 #pragma mark - Equatable
