@@ -14,9 +14,8 @@ static NSString * const DPLPreferencesAppBundleName = @"Displace Preferences.app
 
 + (NSURL *)dpl_preferencesAppURL
 {
-    Auto executableBaseURL = NSBundle.mainBundle.executableURL.URLByDeletingLastPathComponent;
-    return [executableBaseURL URLByAppendingPathComponent:DPLPreferencesAppBundleName
-                                              isDirectory:NO];
+    Auto bundle = NSBundle.mainBundle;
+    return [bundle URLForAuxiliaryExecutable:DPLPreferencesAppBundleName];
 }
 
 @end
