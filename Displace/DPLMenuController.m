@@ -159,7 +159,12 @@
     
     [menu addItem:NSMenuItem.separatorItem];
     
-    Auto quitItem = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"Quit Displace", @"Quit Displace")
+    AutoVar quitText = NSLocalizedString(@"Quit Displace", @"Quit Displace");
+#if DEBUG
+    quitText = [quitText stringByAppendingString:@" (Debug Version)"];
+#endif
+    
+    Auto quitItem = [[NSMenuItem alloc] initWithTitle:quitText
                                                action:@selector(terminate:)
                                         keyEquivalent:@"q"];
     quitItem.target = self;
