@@ -6,14 +6,11 @@
 //
 
 #import "DPLDisplay.h"
-#import <Metal/Metal.h>
 #import "DPLDefines.h"
+#import "DPLDisplayManager.h"
 #import "DPLDisplayMode.h"
 #import "DPLGraphicsDevice.h"
 #import "DPLPreferences.h"
-#import "NSScreen+DPLDisplay.h"
-
-static const NSUInteger DPLDisplayCountMax = 64u;
 
 NS_INLINE NSString *DPLBoolToString(BOOL value)
 {
@@ -36,171 +33,14 @@ NS_INLINE NSString *DPLBoolToString(BOOL value)
 
 + (NSArray<DPLDisplay *> *)allDisplays
 {
-    return [self allDisplaysUsingInformationFromScreens:NSScreen.screens];
-}
-
-+ (NSArray<DPLDisplay *> *)allDisplaysUsingInformationFromScreens:(NSArray<NSScreen *> *)screens
-{
-    CGDirectDisplayID displaysIDs[DPLDisplayCountMax];
-    uint32_t numberOfDisplays = 0;
-    CGError result = CGGetActiveDisplayList(DPLDisplayCountMax, displaysIDs, &numberOfDisplays);
-    if(result != kCGErrorSuccess)
-    {
-        @throw [NSException exceptionWithName:NSInternalInconsistencyException
-                                       reason:@"Failed to get active display list."
-                                     userInfo:nil];
-        return @[];
-    }
-
-    Auto displays = [NSMutableArray<DPLDisplay *> new];
-    for(NSUInteger i = 0; i < DPLDisplayCountMax; i++)
-    {
-        CGDirectDisplayID display = displaysIDs[i];
-        if(display == kCGNullDirectDisplay || CGDisplayPixelsWide(display) == 0)
-        {
-            continue;
-        }
-
-        CGDirectDisplayID displayID = display;
-        BOOL isMain = CGDisplayIsMain(display);
-        BOOL isOnline = CGDisplayIsOnline(display);
-        BOOL isBuiltIn = CGDisplayIsBuiltin(display);
-        size_t width = CGDisplayPixelsWide(display);
-        size_t height = CGDisplayPixelsHigh(display);
-        
-        id<MTLDevice> metalDevice = CGDirectDisplayCopyCurrentMetalDevice(displayID);
-        Auto graphicsDevice = [[DPLGraphicsDevice alloc] initWithMetalDevice:metalDevice];
-        
-        Auto displayModes = [NSMutableArray<DPLDisplayMode *> new];
-        Auto options = @{
-            (__bridge NSString *)kCGDisplayShowDuplicateLowResolutionModes: (__bridge NSNumber *)kCFBooleanTrue
-        };
-        Auto modeList = CGDisplayCopyAllDisplayModes(display, (__bridge CFDictionaryRef)options);
-        if(modeList == nil) { continue; }
-        CFIndex modeListCount = CFArrayGetCount(modeList);
-        
-        Auto currentDisplayModeReference = CGDisplayCopyDisplayMode(display);
-        DPLDisplayMode *currentDisplayMode;
-        
-        // https://stackoverflow.com/questions/1236498/how-to-get-the-display-name-with-the-display-id-in-mac-os-x
-        for(CFIndex index = 0; index < modeListCount; index++)
-        {
-            CGDisplayModeRef mode = (CGDisplayModeRef)CFArrayGetValueAtIndex(modeList, index);
-            if(CGDisplayModeIsUsableForDesktopGUI(mode) == false) { continue; }
-            
-            Auto displayMode = [[DPLDisplayMode alloc] initWithDisplayModeReference:mode];
-            [displayModes addObject:displayMode];
-            
-            if(mode == currentDisplayModeReference)
-            {
-                currentDisplayMode = displayMode;
-            }
-        }
-        CFRelease(modeList);
-        CFRelease(currentDisplayModeReference);
-        
-        // Sort the display modes by width DESC
-        Auto sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"width" ascending:NO];
-        [displayModes sortUsingDescriptors:@[sortDescriptor]];
-        
-        Auto displayInstance = [[DPLDisplay alloc] initWithDisplayID:displayID
-                                                               width:(NSInteger)width
-                                                              height:(NSInteger)height
-                                                                main:isMain
-                                                              online:isOnline
-                                                             builtIn:isBuiltIn
-                                                        displayModes:[displayModes copy]
-                                                  currentDisplayMode:currentDisplayMode
-                                                      graphicsDevice:graphicsDevice];
-        [displays addObject:displayInstance];
-        
-        // Enhance the display instance with NSScreen information
-        for(NSScreen *screen in screens)
-        {
-            if(screen.dpl_displayID == displayID)
-            {
-                displayInstance.localizedName = screen.localizedName;
-            }
-        }
-    }
-    
-    return [displays copy];
+    Auto manager = DPLDisplayManager.sharedManager;
+    return manager.allDisplays;
 }
 
 + (DPLDisplay *)displayWithDisplayID:(CGDirectDisplayID)displayID
 {
-    return [self displayWithDisplayID:displayID
-          usingInformationFromScreens:NSScreen.screens];
-}
-
-+ (DPLDisplay *)displayWithDisplayID:(CGDirectDisplayID)displayID usingInformationFromScreens:(NSArray<NSScreen *> *)screens
-{
-    if(displayID == kCGNullDirectDisplay || CGDisplayPixelsWide(displayID) == 0)
-    {
-        return nil;
-    }
-    
-    BOOL isMain = CGDisplayIsMain(displayID);
-    BOOL isOnline = CGDisplayIsOnline(displayID);
-    BOOL isBuiltIn = CGDisplayIsBuiltin(displayID);
-    size_t width = CGDisplayPixelsWide(displayID);
-    size_t height = CGDisplayPixelsHigh(displayID);
-    
-    id<MTLDevice> metalDevice = CGDirectDisplayCopyCurrentMetalDevice(displayID);
-    Auto graphicsDevice = [[DPLGraphicsDevice alloc] initWithMetalDevice:metalDevice];
-    
-    Auto displayModes = [NSMutableArray<DPLDisplayMode *> new];
-    Auto options = @{
-        (__bridge NSString *)kCGDisplayShowDuplicateLowResolutionModes: (__bridge NSNumber *)kCFBooleanTrue
-    };
-    Auto modeList = CGDisplayCopyAllDisplayModes(displayID, (__bridge CFDictionaryRef)options);
-    if(modeList == nil) { return nil; }
-    CFIndex modeListCount = CFArrayGetCount(modeList);
-    
-    Auto currentDisplayModeReference = CGDisplayCopyDisplayMode(displayID);
-    DPLDisplayMode *currentDisplayMode;
-    
-    // https://stackoverflow.com/questions/1236498/how-to-get-the-display-name-with-the-display-id-in-mac-os-x
-    for(CFIndex index = 0; index < modeListCount; index++)
-    {
-        CGDisplayModeRef mode = (CGDisplayModeRef)CFArrayGetValueAtIndex(modeList, index);
-        if(CGDisplayModeIsUsableForDesktopGUI(mode) == false) { continue; }
-        
-        Auto displayMode = [[DPLDisplayMode alloc] initWithDisplayModeReference:mode];
-        [displayModes addObject:displayMode];
-        
-        if(mode == currentDisplayModeReference)
-        {
-            currentDisplayMode = displayMode;
-        }
-    }
-    CFRelease(modeList);
-    CFRelease(currentDisplayModeReference);
-    
-    // Sort the display modes by width DESC
-    Auto sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"width" ascending:NO];
-    [displayModes sortUsingDescriptors:@[sortDescriptor]];
-    
-    Auto displayInstance = [[DPLDisplay alloc] initWithDisplayID:displayID
-                                                           width:(NSInteger)width
-                                                          height:(NSInteger)height
-                                                            main:isMain
-                                                          online:isOnline
-                                                         builtIn:isBuiltIn
-                                                    displayModes:[displayModes copy]
-                                              currentDisplayMode:currentDisplayMode
-                                                  graphicsDevice:graphicsDevice];
-    
-    // Enhance the display instance with NSScreen information
-    for(NSScreen *screen in screens)
-    {
-        if(screen.dpl_displayID == displayID)
-        {
-            displayInstance.localizedName = screen.localizedName;
-        }
-    }
-    
-    return displayInstance;
+    Auto manager = DPLDisplayManager.sharedManager;
+    return [manager displayWithDisplayID:displayID];
 }
 
 #pragma mark - Life Cycle

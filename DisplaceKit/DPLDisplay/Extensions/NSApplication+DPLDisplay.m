@@ -8,6 +8,7 @@
 #import "NSApplication+DPLDisplay.h"
 #import "DPLDefines.h"
 #import "NSScreen+DPLDisplay.h"
+#import "DPLDisplayManager.h"
 
 @implementation NSApplication (DPLDisplay)
 
@@ -16,8 +17,9 @@
     Auto statusWindow = self.windows.firstObject; // most likely NSStatusBarWindow
     Auto screen = statusWindow.screen;
     Auto displayID = screen.dpl_displayID;
-    return [DPLDisplay displayWithDisplayID:displayID
-                usingInformationFromScreens:@[screen]];
+    Auto manager = DPLDisplayManager.sharedManager;
+    return [manager displayWithDisplayID:displayID
+             usingInformationFromScreens:@[screen]];
 }
 
 @end
