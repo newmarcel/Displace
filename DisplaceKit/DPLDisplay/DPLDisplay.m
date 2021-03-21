@@ -70,15 +70,19 @@ NS_INLINE NSString *DPLBoolToString(BOOL value)
 {
     if(_displayModes == nil) { return @[]; }
     
-    if([DPLPreferences.sharedPreferences isNonRetinaDisplayModesEnabled] == YES)
-    {
-        return _displayModes;
-    }
-    else
+    if([DPLPreferences.sharedPreferences isNonRetinaDisplayModesEnabled] == NO)
     {
         Auto predicate = [NSPredicate predicateWithFormat:@"%K == YES", @"retinaResolution"];
-        return [_displayModes filteredArrayUsingPredicate:predicate];
+        Auto retinaDisplayModes = [_displayModes filteredArrayUsingPredicate:predicate];
+        
+        // Return only the Retina display modes if there are any
+        if(retinaDisplayModes.count > 0)
+        {
+            return retinaDisplayModes;
+        }
     }
+    
+    return _displayModes;
 }
 
 - (DPLDisplayMode *)nextDisplayMode
