@@ -86,6 +86,12 @@
     return app.dpl_activeDisplay ?: self.displays.firstObject;
 }
 
+- (void)screenParametersDidChange:(NSNotification *)notification
+{
+    DPLLog(@"Screen parameters did change, reload display list.");
+    self.displays = DPLDisplay.allDisplays;
+}
+
 #pragma mark - Notifications
 
 - (void)postNotificationForDisplay:(DPLDisplay *)display displayMode:(DPLDisplayMode *)displayMode direction:(NSComparisonResult)direction
@@ -300,6 +306,12 @@
         Auto workspace = NSWorkspace.sharedWorkspace;
         [workspace dpl_openPreferencesWithCompletionHandler:nil];
     }];
+    
+    Auto center = NSNotificationCenter.defaultCenter;
+    [center addObserver:self
+               selector:@selector(screenParametersDidChange:)
+                   name:NSApplicationDidChangeScreenParametersNotification
+                 object:nil];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification
