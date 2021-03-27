@@ -115,6 +115,11 @@ NS_INLINE NSString *DPLBoolToString(BOOL value)
     return displayModes[previousIndex];
 }
 
+- (BOOL)isSidecar
+{
+    return [self.localizedName containsString:@"Sidecar"];
+}
+
 #pragma mark - Apply Current Display Mode
 
 - (void)applyCurrentDisplayMode
@@ -167,6 +172,7 @@ NS_INLINE NSString *DPLBoolToString(BOOL value)
     [string appendFormat:@"\n  Is Main: %@", DPLBoolToString([self isMain])];
     [string appendFormat:@"\n  Is Online: %@", DPLBoolToString([self isOnline])];
     [string appendFormat:@"\n  Is Built-In: %@", DPLBoolToString([self isBuiltIn])];
+    [string appendFormat:@"\n  Is Sidecar: %@", DPLBoolToString([self isSidecar])];
     [string appendFormat:@"\n  Size: %@ × %@", @(self.width), @(self.height)];
     [string appendFormat:@"\n  Modes:"];
     for(DPLDisplayMode *mode in self.displayModes)
@@ -189,6 +195,7 @@ NS_INLINE NSString *DPLBoolToString(BOOL value)
     [string appendFormat:@"\n  Is Main: %@", DPLBoolToString([self isMain])];
     [string appendFormat:@"\n  Is Online: %@", DPLBoolToString([self isOnline])];
     [string appendFormat:@"\n  Is Built-In: %@", DPLBoolToString([self isBuiltIn])];
+    [string appendFormat:@"\n  Is Sidecar: %@", DPLBoolToString([self isSidecar])];
     [string appendFormat:@"\n  Size: %@ × %@", @(self.width), @(self.height)];
     [string appendFormat:@"\n  Modes:"];
     for(DPLDisplayMode *mode in self.displayModes)

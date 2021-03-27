@@ -23,6 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, getter=isMain, readonly) BOOL main;
 @property (nonatomic, getter=isOnline, readonly) BOOL online;
 @property (nonatomic, getter=isBuiltIn, readonly) BOOL builtIn;
+@property (nonatomic, getter=isSidecar, readonly) BOOL sidecar;
 
 @property (nonatomic, readonly) NSArray<DPLDisplayMode *> *displayModes;
 @property (nonatomic, nullable) DPLDisplayMode *currentDisplayMode;
