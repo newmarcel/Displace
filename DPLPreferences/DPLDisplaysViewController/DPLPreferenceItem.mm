@@ -42,8 +42,7 @@
 
 - (NSImage *)image
 {
-    if(auto parent = self.parent; parent.image != nil) { return parent.image; }
-    return _image;
+    return _image ?: self.parent.image;
 }
 
 - (NSColor *)tintColor

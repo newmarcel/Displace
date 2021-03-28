@@ -36,6 +36,8 @@
 		DA8756912607519A00E808D9 /* DPLDisplayManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DA87568F2607519A00E808D9 /* DPLDisplayManager.m */; };
 		DA8784B9259CBE8A00A50897 /* ShortcutRecorder in Frameworks */ = {isa = PBXBuildFile; productRef = DA8784B8259CBE8A00A50897 /* ShortcutRecorder */; };
 		DA87E90D25A076C800784FB5 /* DPLShortcutMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = DA87E90C25A076C800784FB5 /* DPLShortcutMonitor.m */; };
+		DA90A77926106E080027545D /* DPLDisplay+NSImage.h in Headers */ = {isa = PBXBuildFile; fileRef = DA90A77726106E080027545D /* DPLDisplay+NSImage.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DA90A77A26106E080027545D /* DPLDisplay+NSImage.m in Sources */ = {isa = PBXBuildFile; fileRef = DA90A77826106E080027545D /* DPLDisplay+NSImage.m */; };
 		DAAA6B3225D86D89003BF8E7 /* DPLDisplayModeUserNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = DAAA6B3125D86D89003BF8E7 /* DPLDisplayModeUserNotification.m */; };
 		DAAA6B4E25D917F0003BF8E7 /* DPLUserNotificationCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = DAAA6B4C25D917F0003BF8E7 /* DPLUserNotificationCenter.m */; };
 		DAAA6B4F25D917F0003BF8E7 /* DPLUserNotificationCenter.h in Headers */ = {isa = PBXBuildFile; fileRef = DAAA6B4D25D917F0003BF8E7 /* DPLUserNotificationCenter.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -171,6 +173,8 @@
 		DA87568F2607519A00E808D9 /* DPLDisplayManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DPLDisplayManager.m; sourceTree = "<group>"; };
 		DA87E90B25A076C800784FB5 /* DPLShortcutMonitor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DPLShortcutMonitor.h; sourceTree = "<group>"; };
 		DA87E90C25A076C800784FB5 /* DPLShortcutMonitor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DPLShortcutMonitor.m; sourceTree = "<group>"; };
+		DA90A77726106E080027545D /* DPLDisplay+NSImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DPLDisplay+NSImage.h"; sourceTree = "<group>"; };
+		DA90A77826106E080027545D /* DPLDisplay+NSImage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "DPLDisplay+NSImage.m"; sourceTree = "<group>"; };
 		DAAA6B3025D86D89003BF8E7 /* DPLDisplayModeUserNotification.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DPLDisplayModeUserNotification.h; sourceTree = "<group>"; };
 		DAAA6B3125D86D89003BF8E7 /* DPLDisplayModeUserNotification.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DPLDisplayModeUserNotification.m; sourceTree = "<group>"; };
 		DAAA6B4C25D917F0003BF8E7 /* DPLUserNotificationCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPLUserNotificationCenter.m; sourceTree = "<group>"; };
@@ -522,6 +526,8 @@
 				DADDAEEF25B2E19000DD1FEF /* NSScreen+DPLDisplay.m */,
 				DAD639F125DAE72600627839 /* NSApplication+DPLDisplay.h */,
 				DAD639F225DAE72600627839 /* NSApplication+DPLDisplay.m */,
+				DA90A77726106E080027545D /* DPLDisplay+NSImage.h */,
+				DA90A77826106E080027545D /* DPLDisplay+NSImage.m */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -541,6 +547,7 @@
 				DAAF056D25978AB000ED206F /* DPLAppGroup.h in Headers */,
 				DA0DE9FA2597BB6E00FCFE43 /* NSURL+DPLPreferences.h in Headers */,
 				DAAF056825978AB000ED206F /* DPLPreferences.h in Headers */,
+				DA90A77926106E080027545D /* DPLDisplay+NSImage.h in Headers */,
 				DAAF056F25978AB000ED206F /* DPLDisplay.h in Headers */,
 				DA09719625AA449500B12CB4 /* DPLNotificationCenter.h in Headers */,
 				DAAF054B259789F300ED206F /* DisplaceKit.h in Headers */,
@@ -733,6 +740,7 @@
 				DA3BA50E25E1829300470E67 /* NSURL+DPLUserNotificationCenter.m in Sources */,
 				DAD639F425DAE72600627839 /* NSApplication+DPLDisplay.m in Sources */,
 				DA58DBEE25B745B000F9434A /* DPLGraphicsDevice.m in Sources */,
+				DA90A77A26106E080027545D /* DPLDisplay+NSImage.m in Sources */,
 				DA0DE9FB2597BB6E00FCFE43 /* NSURL+DPLPreferences.m in Sources */,
 				DADDAEF125B2E19000DD1FEF /* NSScreen+DPLDisplay.m in Sources */,
 				DA09719725AA449500B12CB4 /* DPLNotificationCenter.m in Sources */,

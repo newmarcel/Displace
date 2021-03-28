@@ -160,6 +160,11 @@
     return [self.displays[displayIndex] isSidecar];
 }
 
+- (NSImage *)imageForDisplayAtIndex:(NSInteger)displayIndex
+{
+    return self.displays[displayIndex].image;
+}
+
 - (NSInteger)numberOfDisplayModesForDisplayAtIndex:(NSInteger)displayIndex
 {
     return self.displays[displayIndex].displayModes.count;

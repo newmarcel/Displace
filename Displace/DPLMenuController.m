@@ -58,17 +58,7 @@
     {
         Auto title = [dataSource titleForDisplayAtIndex:displayIndex];
         Auto item = [[NSMenuItem alloc] initWithTitle:title action:nil keyEquivalent:@""];
-        
-        if([dataSource displayAtIndexIsSidecar:displayIndex])
-        {
-            item.image = [NSImage imageWithSystemSymbolName:@"ipad.landscape"
-                                   accessibilityDescription:nil];
-        }
-        else
-        {
-            item.image = [NSImage imageWithSystemSymbolName:@"display"
-                                   accessibilityDescription:nil];
-        }
+        item.image = [dataSource imageForDisplayAtIndex:displayIndex];
         
         [self addDisplayModeMenuForDisplayAtIndex:displayIndex toItem:item];
         [menu addItem:item];

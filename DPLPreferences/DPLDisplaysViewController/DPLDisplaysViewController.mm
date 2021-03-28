@@ -59,6 +59,7 @@ constexpr NSUserInterfaceItemIdentifier DataCell = @"DataCell";
     for(DPLDisplay *displayObject in DPLDisplay.allDisplays)
     {
         auto item = [[DPLPreferenceItem alloc] initWithDisplay:displayObject];
+        item.image = displayObject.image;
         item.viewControllerClass = [DPLDisplayViewController class];
         [displays addObject:item];
     }
@@ -68,13 +69,13 @@ constexpr NSUserInterfaceItemIdentifier DataCell = @"DataCell";
     
     self.preferenceItems = @[
         [[DPLPreferenceItem alloc] initWithIdentifier:1
-                                             headerName:NSLocalizedString(@"Displays", @"Displays")
-                                                  image:displayImage
-                                               children:[displays copy]],
+                                           headerName:NSLocalizedString(@"Displays", @"Displays")
+                                                image:displayImage
+                                             children:[displays copy]],
         [[DPLPreferenceItem alloc] initWithIdentifier:2
-                                             headerName:NSLocalizedString(@"Preferences", @"Preferences")
-                                                  image:nil
-                                               children:@[DPLGeneralPreferencesViewController.preferenceItem]],
+                                           headerName:NSLocalizedString(@"Preferences", @"Preferences")
+                                                image:nil
+                                             children:@[DPLGeneralPreferencesViewController.preferenceItem]],
     ];
 }
 
