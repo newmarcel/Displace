@@ -79,6 +79,8 @@
     Auto currentDisplayModeIndex = [dataSource currentDisplayModeIndexForDisplayAtIndex:displayIndex];
 
     Auto displayModeCount = [dataSource numberOfDisplayModesForDisplayAtIndex:displayIndex];
+    if(displayModeCount == 0) { return; }
+    
     for(NSInteger index = 0; index < displayModeCount; index++)
     {
         Auto indexPath = [NSIndexPath indexPathForItem:index inSection:displayIndex];
