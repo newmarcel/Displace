@@ -7,6 +7,7 @@
 
 #import "DPLPreferencesWindowController.h"
 #import "DPLDefines.h"
+#import "DPLDisplaysViewController.h"
 
 @interface DPLPreferencesWindowController ()
 @end
@@ -23,6 +24,26 @@
     // Split auto save identifier
     auto splitViewController = (NSSplitViewController *)self.contentViewController;
     splitViewController.splitView.autosaveName = @"DPLPreferencesSplit";
+    
+    
+    Auto center = NSNotificationCenter.defaultCenter;
+    [center addObserver:self
+               selector:@selector(screenParametersDidChange:)
+                   name:NSApplicationDidChangeScreenParametersNotification
+                 object:nil];
+}
+
+- (void)screenParametersDidChange:(NSNotification *)notification
+{
+    DPLLog(@"Screen parameters did change, reload display list.");
+    
+    auto splitViewController = (NSSplitViewController *)self.contentViewController;
+    auto splitViewItems = splitViewController.splitViewItems;
+    auto controller = (DPLDisplaysViewController *)splitViewItems.firstObject.viewController;
+    if([controller isKindOfClass:[DPLDisplaysViewController class]])
+    {
+        [controller reloadData];
+    }
 }
 
 - (IBAction)showAboutPanel:(nullable id)sender

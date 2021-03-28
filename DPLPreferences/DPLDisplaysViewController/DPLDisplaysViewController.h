@@ -12,6 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DPLDisplaysViewController : NSViewController <NSOutlineViewDataSource, NSOutlineViewDelegate>
 @property (weak, nonatomic, nullable) IBOutlet NSOutlineView *outlineView;
+
+- (void)reloadData;
+
 @end
 
 NS_ASSUME_NONNULL_END

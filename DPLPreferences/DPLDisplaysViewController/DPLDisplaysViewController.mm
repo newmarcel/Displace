@@ -45,6 +45,14 @@ constexpr NSUserInterfaceItemIdentifier DataCell = @"DataCell";
     return static_cast<NSSplitViewController *>(self.parentViewController);
 }
 
+- (void)reloadData
+{
+    [self configureDisplays];
+    [self.outlineView reloadData];
+    
+    [self expandDisplaysGroup];
+}
+
 - (void)configureDisplays
 {
     auto displays = [NSMutableArray<DPLPreferenceItem *> new];
