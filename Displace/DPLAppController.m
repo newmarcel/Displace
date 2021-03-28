@@ -155,6 +155,11 @@
     return self.displays[displayIndex].localizedName;
 }
 
+- (BOOL)displayAtIndexIsSidecar:(NSInteger)displayIndex
+{
+    return [self.displays[displayIndex] isSidecar];
+}
+
 - (NSInteger)numberOfDisplayModesForDisplayAtIndex:(NSInteger)displayIndex
 {
     return self.displays[displayIndex].displayModes.count;
