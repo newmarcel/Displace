@@ -1,19 +1,17 @@
 //
-//  DPLDisplaysViewController.mm
+//  DPLDisplaysViewController.m
 //  DPLPreferences
 //
 //  Created by Marcel Dierkes on 27.12.20.
 //
 
 #import "DPLDisplaysViewController.h"
+#import "DPLDefines.h"
 #import "DPLPreferenceItem.h"
 #import "DPLPreferencesContentViewControllers.h"
 
-namespace DPL::Identifier
-{
-constexpr NSUserInterfaceItemIdentifier HeaderCell = @"HeaderCell";
-constexpr NSUserInterfaceItemIdentifier DataCell = @"DataCell";
-}
+static const NSUserInterfaceItemIdentifier DPLIdentifierHeaderCell = @"HeaderCell";
+static const NSUserInterfaceItemIdentifier DPLIdentifierDataCell = @"DataCell";
 
 @interface DPLDisplaysViewController ()
 @property (nonatomic) NSArray<DPLPreferenceItem *> *preferenceItems;
@@ -42,7 +40,7 @@ constexpr NSUserInterfaceItemIdentifier DataCell = @"DataCell";
 
 - (NSSplitViewController *)splitViewController
 {
-    return static_cast<NSSplitViewController *>(self.parentViewController);
+    return (NSSplitViewController *)self.parentViewController;
 }
 
 - (void)reloadData
@@ -55,16 +53,16 @@ constexpr NSUserInterfaceItemIdentifier DataCell = @"DataCell";
 
 - (void)configureDisplays
 {
-    auto displays = [NSMutableArray<DPLPreferenceItem *> new];
+    Auto displays = [NSMutableArray<DPLPreferenceItem *> new];
     for(DPLDisplay *displayObject in DPLDisplay.allDisplays)
     {
-        auto item = [[DPLPreferenceItem alloc] initWithDisplay:displayObject];
+        Auto item = [[DPLPreferenceItem alloc] initWithDisplay:displayObject];
         item.image = displayObject.image;
         item.viewControllerClass = [DPLDisplayViewController class];
         [displays addObject:item];
     }
     
-    auto displayImage = [NSImage imageWithSystemSymbolName:@"display"
+    Auto displayImage = [NSImage imageWithSystemSymbolName:@"display"
                                   accessibilityDescription:nil];
     
     self.preferenceItems = @[
@@ -89,9 +87,9 @@ constexpr NSUserInterfaceItemIdentifier DataCell = @"DataCell";
 
 - (void)selectFirstItem
 {
-    auto outlineView = self.outlineView;
-    auto firstItem = self.preferenceItems.firstObject.children.firstObject;
-    auto row = [outlineView rowForItem:firstItem];
+    Auto outlineView = self.outlineView;
+    Auto firstItem = self.preferenceItems.firstObject.children.firstObject;
+    Auto row = [outlineView rowForItem:firstItem];
     [outlineView selectRowIndexes:[NSIndexSet indexSetWithIndex:row]
              byExtendingSelection:NO];
 }
@@ -100,8 +98,8 @@ constexpr NSUserInterfaceItemIdentifier DataCell = @"DataCell";
 {
     NSParameterAssert(preferenceItem);
     
-    auto split = self.splitViewController;
-    auto detailItem = split.splitViewItems.lastObject;
+    Auto split = self.splitViewController;
+    Auto detailItem = split.splitViewItems.lastObject;
     
     Class viewControllerClass = preferenceItem.viewControllerClass;
     if(viewControllerClass != nil)
@@ -109,7 +107,8 @@ constexpr NSUserInterfaceItemIdentifier DataCell = @"DataCell";
         if([detailItem isKindOfClass:viewControllerClass])
         {
             // Update the existing view controller
-            if(id representedObject = preferenceItem.representedObject)
+            id representedObject = preferenceItem.representedObject;
+            if(representedObject != nil)
             {
                 detailItem.viewController.representedObject = representedObject;
             }
@@ -117,8 +116,9 @@ constexpr NSUserInterfaceItemIdentifier DataCell = @"DataCell";
         else
         {
             // Load a new view controller
-            auto controller = (__kindof DPLPreferencesContentViewController *)[viewControllerClass new];
-            if(id representedObject = preferenceItem.representedObject)
+            Auto controller = (__kindof DPLPreferencesContentViewController *)[viewControllerClass new];
+            id representedObject = preferenceItem.representedObject;
+            if(representedObject != nil)
             {
                 controller.representedObject = representedObject;
             }
@@ -131,9 +131,9 @@ constexpr NSUserInterfaceItemIdentifier DataCell = @"DataCell";
 {
     NSAssert(self.view.window != nil, @"The view must be attached to a window.");
     
-    auto split = self.splitViewController;
-    auto sidebarItem = split.splitViewItems.firstObject;
-    auto detailItem = [NSSplitViewItem splitViewItemWithViewController:controller];
+    Auto split = self.splitViewController;
+    Auto sidebarItem = split.splitViewItems.firstObject;
+    Auto detailItem = [NSSplitViewItem splitViewItemWithViewController:controller];
     detailItem.titlebarSeparatorStyle = NSTitlebarSeparatorStyleLine;
     
     split.splitViewItems = @[sidebarItem, detailItem];
@@ -146,7 +146,7 @@ constexpr NSUserInterfaceItemIdentifier DataCell = @"DataCell";
     // Root
     if(item == nil) { return self.preferenceItems[index]; }
     
-    auto preferenceItem = static_cast<DPLPreferenceItem *>(item);
+    Auto preferenceItem = (DPLPreferenceItem *)item;
     return  preferenceItem.children[index];
 }
 
@@ -155,7 +155,7 @@ constexpr NSUserInterfaceItemIdentifier DataCell = @"DataCell";
     // Root
     if(item == nil) { return YES; }
     
-    auto preferenceItem = static_cast<DPLPreferenceItem *>(item);
+    Auto preferenceItem = (DPLPreferenceItem *)item;
     return [preferenceItem isHeader];
 }
 
@@ -164,7 +164,7 @@ constexpr NSUserInterfaceItemIdentifier DataCell = @"DataCell";
     // Root
     if(item == nil) { return self.preferenceItems.count; }
     
-    auto preferenceItem = static_cast<DPLPreferenceItem *>(item);
+    Auto preferenceItem = (DPLPreferenceItem *)item;
     return preferenceItem.children.count;
 }
 
@@ -172,46 +172,50 @@ constexpr NSUserInterfaceItemIdentifier DataCell = @"DataCell";
 
 - (NSView *)outlineView:(NSOutlineView *)outlineView viewForTableColumn:(NSTableColumn *)tableColumn item:(id)item
 {
-    auto preferenceItem = static_cast<DPLPreferenceItem *>(item);
+    Auto preferenceItem = (DPLPreferenceItem *)item;
     if([preferenceItem isHeader])
     {
-        auto header = [outlineView makeViewWithIdentifier:DPL::Identifier::HeaderCell owner:self];
-        static_cast<NSTextField *>(header.subviews.firstObject).stringValue = preferenceItem.name;
+        Auto header = [outlineView makeViewWithIdentifier:DPLIdentifierHeaderCell owner:self];
+        Auto textField = (NSTextField *)header.subviews.firstObject;
+        textField.stringValue = preferenceItem.name;
         return header;
     }
     else
     {
-        auto cell = [outlineView makeViewWithIdentifier:DPL::Identifier::DataCell owner:self];
-        static_cast<NSImageView *>(cell.subviews.firstObject).image = preferenceItem.image;
-        static_cast<NSTextField *>(cell.subviews.lastObject).stringValue = preferenceItem.name;
+        Auto cell = [outlineView makeViewWithIdentifier:DPLIdentifierDataCell owner:self];
+        Auto imageView = (NSImageView *)cell.subviews.firstObject;
+        imageView.image = preferenceItem.image;
+        Auto textField = (NSTextField *)cell.subviews.lastObject;
+        textField.stringValue = preferenceItem.name;
         return cell;
     }
 }
 
 - (BOOL)outlineView:(NSOutlineView *)outlineView shouldSelectItem:(id)item
 {
-    auto preferenceItem = static_cast<DPLPreferenceItem *>(item);
+    Auto preferenceItem = (DPLPreferenceItem *)item;
     return ![preferenceItem isHeader];
 }
 
 - (BOOL)outlineView:(NSOutlineView *)outlineView isGroupItem:(id)item
 {
-    auto preferenceItem = static_cast<DPLPreferenceItem *>(item);
+    Auto preferenceItem = (DPLPreferenceItem *)item;
     return [preferenceItem isHeader];
 }
 
 - (NSTintConfiguration *)outlineView:(NSOutlineView *)outlineView tintConfigurationForItem:(id)item
 {
-    auto preferenceItem = static_cast<DPLPreferenceItem *>(item);
+    Auto preferenceItem = (DPLPreferenceItem *)item;
     return preferenceItem.tintConfiguration;
 }
 
 - (void)outlineViewSelectionDidChange:(NSNotification *)notification
 {
-    auto outlineView = static_cast<NSOutlineView *>(notification.object);
+    Auto outlineView = (NSOutlineView *)notification.object;
     
-    auto row = outlineView.selectedRow;
-    if(auto preferenceItem = static_cast<DPLPreferenceItem *>([outlineView itemAtRow:row]))
+    Auto row = outlineView.selectedRow;
+    Auto preferenceItem = (DPLPreferenceItem *)[outlineView itemAtRow:row];
+    if(preferenceItem != nil)
     {
         [self showDetailsForPreferenceItem:preferenceItem];
     }

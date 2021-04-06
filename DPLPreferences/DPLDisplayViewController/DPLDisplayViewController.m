@@ -1,22 +1,20 @@
 //
-//  DPLDisplayViewController.mm
+//  DPLDisplayViewController.m
 //  DPLPreferences
 //
 //  Created by Marcel Dierkes on 28.12.20.
 //
 
 #import "DPLDisplayViewController.h"
+#import "DPLDefines.h"
 #import "DPLPreferenceItem.h"
 
-namespace DPL::Column
-{
-constexpr NSUserInterfaceItemIdentifier Resolution = @"resolution";
-constexpr NSUserInterfaceItemIdentifier IsRetina = @"isRetina";
-constexpr NSUserInterfaceItemIdentifier IsCurrent = @"isCurrent";
-constexpr NSUserInterfaceItemIdentifier Attributes = @"attributes";
-constexpr NSUserInterfaceItemIdentifier Cell = @"cell";
-constexpr NSUserInterfaceItemIdentifier ImageCell = @"imageCell";
-}
+static const NSUserInterfaceItemIdentifier DPLColumnResolution = @"resolution";
+static const NSUserInterfaceItemIdentifier DPLColumnIsRetina = @"isRetina";
+static const NSUserInterfaceItemIdentifier DPLColumnIsCurrent = @"isCurrent";
+static const NSUserInterfaceItemIdentifier DPLColumnAttributes = @"attributes";
+static const NSUserInterfaceItemIdentifier DPLColumnCell = @"cell";
+static const NSUserInterfaceItemIdentifier DPLColumnImageCell = @"imageCell";
 
 @interface DPLDisplayViewController ()
 @property (nonatomic, readonly, nullable) DPLDisplay *display;
@@ -36,7 +34,7 @@ constexpr NSUserInterfaceItemIdentifier ImageCell = @"imageCell";
 
 - (DPLDisplay *)display
 {
-    return static_cast<DPLDisplay *>(self.representedObject);
+    return (DPLDisplay *)self.representedObject;
 }
 
 - (void)setRepresentedObject:(id)representedObject
@@ -55,8 +53,8 @@ constexpr NSUserInterfaceItemIdentifier ImageCell = @"imageCell";
     
     if(selectedRow < 0) { return; }
     
-    auto display = self.display;
-    auto displayMode = display.displayModes[selectedRow];
+    Auto display = self.display;
+    Auto displayMode = display.displayModes[selectedRow];
     display.currentDisplayMode = displayMode;
     [display applyCurrentDisplayMode];
     
@@ -79,22 +77,22 @@ constexpr NSUserInterfaceItemIdentifier ImageCell = @"imageCell";
 
 - (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
 {
-    auto displayMode = self.display.displayModes[row];
+    Auto displayMode = self.display.displayModes[row];
     
-    if([tableColumn.identifier isEqualToString:DPL::Column::Resolution])
+    if([tableColumn.identifier isEqualToString:DPLColumnResolution])
     {
-        auto cell = [tableView makeViewWithIdentifier:DPL::Column::Cell owner:self];
-        auto textField = static_cast<NSTextField *>(cell.subviews.firstObject);
+        Auto cell = [tableView makeViewWithIdentifier:DPLColumnCell owner:self];
+        Auto textField = (NSTextField *)cell.subviews.firstObject;
         textField.stringValue = displayMode.localizedNameWithoutAttributes;
         textField.font = [NSFont monospacedDigitSystemFontOfSize:textField.font.pointSize
                                                           weight:NSFontWeightRegular];
         return cell;
     }
-    else if([tableColumn.identifier isEqualToString:DPL::Column::IsCurrent])
+    else if([tableColumn.identifier isEqualToString:DPLColumnIsCurrent])
     {
-        auto cell = [tableView makeViewWithIdentifier:DPL::Column::ImageCell owner:self];
-        auto imageView = static_cast<NSImageView *>(cell.subviews.firstObject);
-        auto checkImage = [NSImage imageWithSystemSymbolName:@"checkmark.circle"
+        Auto cell = [tableView makeViewWithIdentifier:DPLColumnImageCell owner:self];
+        Auto imageView = (NSImageView *)cell.subviews.firstObject;
+        Auto checkImage = [NSImage imageWithSystemSymbolName:@"checkmark.circle"
                                     accessibilityDescription:nil];
         imageView.image = self.display.currentDisplayMode == displayMode ? checkImage : nil;
         
@@ -103,11 +101,11 @@ constexpr NSUserInterfaceItemIdentifier ImageCell = @"imageCell";
         
         return cell;
     }
-    else if([tableColumn.identifier isEqualToString:DPL::Column::IsRetina])
+    else if([tableColumn.identifier isEqualToString:DPLColumnIsRetina])
     {
-        auto cell = [tableView makeViewWithIdentifier:DPL::Column::ImageCell owner:self];
-        auto imageView = static_cast<NSImageView *>(cell.subviews.firstObject);
-        auto retinaImage = [NSImage imageWithSystemSymbolName:@"eye"
+        Auto cell = [tableView makeViewWithIdentifier:DPLColumnImageCell owner:self];
+        Auto imageView = (NSImageView *)cell.subviews.firstObject;
+        Auto retinaImage = [NSImage imageWithSystemSymbolName:@"eye"
                                      accessibilityDescription:nil];
         imageView.image = [displayMode isRetinaResolution] ? retinaImage : nil;
         

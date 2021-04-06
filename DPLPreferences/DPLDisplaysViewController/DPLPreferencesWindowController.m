@@ -1,5 +1,5 @@
 //
-//  DPLPreferencesWindowController.mm
+//  DPLPreferencesWindowController.m
 //  DPLPreferences
 //
 //  Created by Marcel Dierkes on 27.12.20.
@@ -22,7 +22,7 @@
     self.windowFrameAutosaveName = @"DPLPreferencesWindow";
     
     // Split auto save identifier
-    auto splitViewController = (NSSplitViewController *)self.contentViewController;
+    Auto splitViewController = (NSSplitViewController *)self.contentViewController;
     splitViewController.splitView.autosaveName = @"DPLPreferencesSplit";
     
     
@@ -37,9 +37,9 @@
 {
     DPLLog(@"Screen parameters did change, reload display list.");
     
-    auto splitViewController = (NSSplitViewController *)self.contentViewController;
-    auto splitViewItems = splitViewController.splitViewItems;
-    auto controller = (DPLDisplaysViewController *)splitViewItems.firstObject.viewController;
+    Auto splitViewController = (NSSplitViewController *)self.contentViewController;
+    Auto splitViewItems = splitViewController.splitViewItems;
+    Auto controller = (DPLDisplaysViewController *)splitViewItems.firstObject.viewController;
     if([controller isKindOfClass:[DPLDisplaysViewController class]])
     {
         [controller reloadData];

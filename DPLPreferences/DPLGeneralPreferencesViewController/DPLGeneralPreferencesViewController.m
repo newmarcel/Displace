@@ -1,5 +1,5 @@
 //
-//  DPLGeneralPreferencesViewController.mm
+//  DPLGeneralPreferencesViewController.m
 //  DPLPreferences
 //
 //  Created by Marcel Dierkes on 28.12.20.
@@ -7,6 +7,7 @@
 
 #import "DPLGeneralPreferencesViewController.h"
 #import <ShortcutRecorder/ShortcutRecorder.h>
+#import "DPLDefines.h"
 #import "DPLPreferenceItem.h"
 
 #define DPL_L10N_GENERAL NSLocalizedString(@"General", @"General")
@@ -22,7 +23,7 @@
 
 + (DPLPreferenceItem *)preferenceItem
 {
-    auto item = [[DPLPreferenceItem alloc] initWithIdentifier:3 name:DPL_L10N_GENERAL];
+    Auto item = [[DPLPreferenceItem alloc] initWithIdentifier:3 name:DPL_L10N_GENERAL];
     item.image = [NSImage imageWithSystemSymbolName:@"gear"
                            accessibilityDescription:nil];
     item.tintColor = NSColor.tertiaryLabelColor;
@@ -46,7 +47,7 @@
 {
     self.defaultsController = [[NSUserDefaultsController alloc] initWithDefaults:DPLAppGroupGetUserDefaults() initialValues:nil];
     
-    auto keyPath = [NSString stringWithFormat:@"values.%@", DPLNonRetinaDisplayModesEnabledDefaultsKey];
+    Auto keyPath = [NSString stringWithFormat:@"values.%@", DPLNonRetinaDisplayModesEnabledDefaultsKey];
     [self.showNonRetinaResolutionsCheckbox bind:NSValueBinding
                                        toObject:self.defaultsController
                                     withKeyPath:keyPath
@@ -64,7 +65,7 @@
 
 - (void)openNotificationPreferences:(id)sender
 {
-    auto workspace = NSWorkspace.sharedWorkspace;
+    Auto workspace = NSWorkspace.sharedWorkspace;
     [workspace dpl_openNotificationPreferencesWithCompletionHandler:nil];
 }
 
@@ -72,26 +73,26 @@
 
 - (IBAction)saveConfiguration:(id)sender
 {
-    auto window = self.view.window;
-    auto savePanel = NSSavePanel.savePanel;
+    Auto window = self.view.window;
+    Auto savePanel = NSSavePanel.savePanel;
     savePanel.nameFieldStringValue = [self proposedFileName];
     savePanel.extensionHidden = NO;
     
-    auto strings = static_cast<NSArray<NSString *> *>([DPLDisplay.allDisplays valueForKeyPath:@"debugDescription"]);
-    auto outputString = [strings componentsJoinedByString:@"\n"];
-    auto data = [outputString dataUsingEncoding:NSUTF8StringEncoding];
+    Auto strings = (NSArray<NSString *> *)[DPLDisplay.allDisplays valueForKeyPath:@"debugDescription"];
+    Auto outputString = [strings componentsJoinedByString:@"\n"];
+    Auto data = [outputString dataUsingEncoding:NSUTF8StringEncoding];
     
     [savePanel beginSheetModalForWindow:window completionHandler:^(NSModalResponse result) {
-        auto fileURL = savePanel.URL;
+        Auto fileURL = savePanel.URL;
         if(result == NSModalResponseOK)
         {
-            NSLog(@"Saving to %@", fileURL);
+            DPLLog(@"Saving to %@", fileURL);
             
             NSError *error;
             [data writeToURL:fileURL options:NSDataWritingAtomic error:&error];
             if(error != nil)
             {
-                NSLog(@"Failed to write file %@", error.userInfo);
+                DPLLog(@"Failed to write file %@", error.userInfo);
             }
         }
     }];
@@ -99,8 +100,8 @@
 
 - (NSString *)proposedFileName
 {
-    auto now = [NSDate date];
-    auto dateString = [NSDateFormatter localizedStringFromDate:now
+    Auto now = [NSDate date];
+    Auto dateString = [NSDateFormatter localizedStringFromDate:now
                                                      dateStyle:NSDateFormatterShortStyle
                                                      timeStyle:NSDateFormatterNoStyle];
     return [NSString stringWithFormat:@"Display Configuration %@.txt", dateString];
@@ -115,13 +116,13 @@
 
 - (void)setIncreaseShortcut:(SRShortcut *)increaseShortcut
 {
-    auto preferences = DPLPreferences.sharedPreferences;
+    Auto preferences = DPLPreferences.sharedPreferences;
     
     [self willChangeValueForKey:@"increaseShortcut"];
     preferences.increaseResolutionShortcut = increaseShortcut;
     [self didChangeValueForKey:@"increaseShortcut"];
     
-    auto center = DPLNotificationCenter.defaultCenter;
+    Auto center = DPLNotificationCenter.defaultCenter;
     [center postNotification:DPLShortcutDidChangeNotification];
     
     
@@ -133,19 +134,19 @@
 
 - (SRShortcut *)decreaseShortcut
 {
-    auto preferences = DPLPreferences.sharedPreferences;
+    Auto preferences = DPLPreferences.sharedPreferences;
     return preferences.decreaseResolutionShortcut;
 }
 
 - (void)setDecreaseShortcut:(SRShortcut *)decreaseShortcut
 {
-    auto preferences = DPLPreferences.sharedPreferences;
+    Auto preferences = DPLPreferences.sharedPreferences;
     
     [self willChangeValueForKey:@"decreaseShortcut"];
     preferences.decreaseResolutionShortcut = decreaseShortcut;
     [self didChangeValueForKey:@"decreaseShortcut"];
     
-    auto center = DPLNotificationCenter.defaultCenter;
+    Auto center = DPLNotificationCenter.defaultCenter;
     [center postNotification:DPLShortcutDidChangeNotification];
     
     if(decreaseShortcut && [decreaseShortcut isEqualToShortcut:self.increaseShortcut])
@@ -158,14 +159,14 @@
 
 - (BOOL)recorderControlShouldBeginRecording:(SRRecorderControl *)aControl
 {
-    auto center = DPLNotificationCenter.defaultCenter;
+    Auto center = DPLNotificationCenter.defaultCenter;
     [center postNotification:DPLShortcutWillEditNotification];
     return YES;
 }
 
 - (void)recorderControlDidEndRecording:(SRRecorderControl *)aControl
 {
-    auto center = DPLNotificationCenter.defaultCenter;
+    Auto center = DPLNotificationCenter.defaultCenter;
     [center postNotification:DPLShortcutDidEditNotification];
 }
 
