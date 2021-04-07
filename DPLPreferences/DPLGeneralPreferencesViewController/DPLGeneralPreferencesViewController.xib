@@ -17,7 +17,7 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <view translatesAutoresizingMaskIntoConstraints="NO" id="Daq-z8-Htp">
-            <rect key="frame" x="0.0" y="0.0" width="450" height="403"/>
+            <rect key="frame" x="0.0" y="0.0" width="450" height="406"/>
             <subviews>
                 <gridView xPlacement="fill" yPlacement="fill" rowAlignment="firstBaseline" rowSpacing="12" columnSpacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="i53-oP-FEP">
                     <rect key="frame" x="85" y="212" width="281" height="98"/>
@@ -124,8 +124,8 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8dc-Nc-NBF">
-                    <rect key="frame" x="13" y="65" width="217" height="32"/>
-                    <buttonCell key="cell" type="push" title="Open Notification Preferences" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="tny-eB-qCw">
+                    <rect key="frame" x="13" y="65" width="191" height="32"/>
+                    <buttonCell key="cell" type="push" title="Notification Preferences…" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="tny-eB-qCw">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
