@@ -13,6 +13,7 @@
 @property (nonatomic, readwrite) int32_t displayModeID;
 @property (nonatomic, readwrite) NSInteger width;
 @property (nonatomic, readwrite) NSInteger height;
+@property (nonatomic, readwrite) double refreshRate;
 @property (nonatomic, getter=isNativeResolution, readwrite) BOOL nativeResolution;
 @property (nonatomic, getter=isRetinaResolution, readwrite) BOOL retinaResolution;
 @property (nonatomic, readwrite) CGDisplayModeRef reference;
@@ -20,9 +21,10 @@
 
 @implementation DPLDisplayMode
 
-- (instancetype)initWithDisplayModeID:(int32_t)displayModeID width:(NSInteger)width height:(NSInteger)height nativeResolution:(BOOL)nativeResolution retinaResolution:(BOOL)retinaResolution reference:(CGDisplayModeRef)reference
+- (instancetype)initWithDisplayModeID:(int32_t)displayModeID width:(NSInteger)width height:(NSInteger)height refreshRate:(double)refreshRate nativeResolution:(BOOL)nativeResolution retinaResolution:(BOOL)retinaResolution reference:(CGDisplayModeRef)reference
 {
     NSParameterAssert(reference);
+    NSParameterAssert(refreshRate);
     
     self = [super init];
     if(self)
@@ -30,6 +32,7 @@
         self.displayModeID = displayModeID;
         self.width = width;
         self.height = height;
+        self.refreshRate = refreshRate;
         self.nativeResolution = nativeResolution;
         self.retinaResolution = retinaResolution;
         self.reference = reference;
@@ -51,6 +54,7 @@
     int32_t displayModeID = CGDisplayModeGetIODisplayModeID(reference);
     size_t width = CGDisplayModeGetWidth(reference);
     size_t height = CGDisplayModeGetHeight(reference);
+    double refreshRate = CGDisplayModeGetRefreshRate(reference);
     
     uint32_t IOFlags = CGDisplayModeGetIOFlags(reference);
     BOOL isNativeResolution = (IOFlags & kDisplayModeNativeFlag);
@@ -59,9 +63,15 @@
     return [self initWithDisplayModeID:displayModeID 
                                  width:(NSInteger)width
                                 height:(NSInteger)height
+                           refreshRate:refreshRate
                       nativeResolution:isNativeResolution
                       retinaResolution:isRetinaResolution
                              reference:reference];
+}
+
+- (BOOL)isProMotionRefreshRate
+{
+    return round(self.refreshRate) == 120.0f;
 }
 
 #pragma mark - Localized Name
@@ -77,6 +87,17 @@
     
     Auto nativeAttributeTitle = NSLocalizedString(@"(Native)", @"(Native)");
     if([self isNativeResolution]) { [string appendFormat:@" %@", nativeAttributeTitle]; }
+    
+    NSString *refreshRateTitle;
+    if([self isProMotionRefreshRate])
+    {
+        refreshRateTitle = NSLocalizedString(@"(ProMotion)", @"(ProMotion)");
+    }
+    else
+    {
+        refreshRateTitle = [NSString stringWithFormat:NSLocalizedString(@"(%.2lf Hertz)", @"(%.2lf Hertz)"), self.refreshRate];
+    }
+    [string appendFormat:@" %@", refreshRateTitle];
 
     return [string copy];
 }
@@ -116,7 +137,8 @@
     
     return self.displayModeID == displayMode.displayModeID
         && self.width == displayMode.width
-        && self.height == displayMode.height;
+        && self.height == displayMode.height
+        && self.refreshRate == displayMode.refreshRate;
 }
 
 - (BOOL)isEqual:(id)object

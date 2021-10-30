@@ -14,8 +14,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) int32_t displayModeID;
 @property (nonatomic, readonly) NSInteger width;
 @property (nonatomic, readonly) NSInteger height;
+@property (nonatomic, readonly) double refreshRate;
 @property (nonatomic, getter=isNativeResolution, readonly) BOOL nativeResolution;
 @property (nonatomic, getter=isRetinaResolution, readonly) BOOL retinaResolution;
+@property (nonatomic, getter=isProMotionRefreshRate, readonly) BOOL proMotionRefreshRate;
 
 @property (nonatomic, readonly) CGDisplayModeRef reference;
 
@@ -30,6 +32,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithDisplayModeID:(int32_t)displayModeID
                                 width:(NSInteger)width
                                height:(NSInteger)height
+                          refreshRate:(double)refreshRate
                      nativeResolution:(BOOL)nativeResolution
                      retinaResolution:(BOOL)retinaResolution
                             reference:(CGDisplayModeRef)reference NS_DESIGNATED_INITIALIZER;
