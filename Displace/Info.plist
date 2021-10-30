@@ -30,7 +30,5 @@
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
-	<key>NSHumanReadableCopyright</key>
-	<string>$(DPL_COPYRIGHT_TEXT)</string>
 </dict>
 </plist>
