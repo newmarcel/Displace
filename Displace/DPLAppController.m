@@ -155,6 +155,23 @@
     return self.displays[displayIndex].localizedName;
 }
 
+- (NSArray<NSString *> *)titlesForCurrentDisplayMode
+{
+    Auto displayModes = [NSMutableArray<NSString *> new];
+    
+    Auto displays = self.displays;
+    for(DPLDisplay *display in displays)
+    {
+        Auto currentDisplayMode = display.currentDisplayMode;
+        if(currentDisplayMode != nil)
+        {
+            [displayModes addObject:currentDisplayMode.localizedName];
+        }
+    }
+    
+    return [displayModes copy];
+}
+
 - (BOOL)displayAtIndexIsSidecar:(NSInteger)displayIndex
 {
     return [self.displays[displayIndex] isSidecar];

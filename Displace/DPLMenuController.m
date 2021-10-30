@@ -52,6 +52,8 @@
     
     [menu removeAllItems];
     
+    [self addCurrentDisplayModesToMenu:menu];
+    
     Auto dataSource = self.dataSource;
     Auto displayCount = [dataSource numberOfDisplays];
     for(NSInteger displayIndex = 0; displayIndex < displayCount; displayIndex++)
@@ -172,6 +174,22 @@
                                         keyEquivalent:@"q"];
     quitItem.target = self;
     [menu addItem:quitItem];
+}
+
+- (void)addCurrentDisplayModesToMenu:(NSMenu *)menu
+{
+    Auto dataSource = self.dataSource;
+    Auto displayModeTitles = [dataSource titlesForCurrentDisplayMode];
+    if(displayModeTitles.count == 0) { return; }
+    
+    for(NSString *displayModeTitle in displayModeTitles)
+    {
+        Auto item = [[NSMenuItem alloc] initWithTitle:displayModeTitle action:nil keyEquivalent:@""];
+        item.enabled = NO;
+        [menu addItem:item];
+    }
+    
+    [menu addItem:NSMenuItem.separatorItem];
 }
 
 #pragma mark - Actions

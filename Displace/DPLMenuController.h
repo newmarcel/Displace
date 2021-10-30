@@ -24,6 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol DPLMenuControllerDataSource <NSObject>
 - (NSInteger)numberOfDisplays;
 - (NSString *)titleForDisplayAtIndex:(NSInteger)displayIndex;
+- (NSArray<NSString *> *)titlesForCurrentDisplayMode;
 - (nullable NSImage *)imageForDisplayAtIndex:(NSInteger)displayIndex;
 - (NSInteger)numberOfDisplayModesForDisplayAtIndex:(NSInteger)displayIndex;
 - (NSInteger)currentDisplayModeIndexForDisplayAtIndex:(NSInteger)displayIndex; // or -1 if that fails
