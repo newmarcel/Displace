@@ -73,6 +73,13 @@ static const NSUInteger DPLDisplayCountMax = 64u;
             continue;
         }
         
+        Auto duplicatePredicate = [NSPredicate predicateWithFormat:@"displayID == %@", @(display)];
+        Auto duplicates = [displays filteredArrayUsingPredicate:duplicatePredicate];
+        if(duplicates.count > 0)
+        {
+            continue;
+        }
+        
         CGDirectDisplayID displayID = display;
         BOOL isMain = CGDisplayIsMain(display);
         BOOL isOnline = CGDisplayIsOnline(display);
