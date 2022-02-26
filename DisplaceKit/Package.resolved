@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "ShortcutRecorder",
+        "repositoryURL": "https://github.com/Kentzo/ShortcutRecorder",
+        "state": {
+          "branch": null,
+          "revision": "07b065085e172d85b7b5a0f3cc05f6ed47ad5af1",
+          "version": "3.3.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

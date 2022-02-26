@@ -11,7 +11,6 @@
 #import "DPLDefines.h"
 #import "DPLMenuController.h"
 #import "DPLShortcutMonitor.h"
-#import "DPLUserNotificationCenter.h"
 #import "DPLDisplayModeUserNotification.h"
 
 @interface DPLAppController () <DPLMenuControllerDataSource, DPLMenuControllerDelegate, DPLShortcutMonitorDelegate>
