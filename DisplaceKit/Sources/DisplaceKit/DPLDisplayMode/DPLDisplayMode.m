@@ -24,7 +24,6 @@
 - (instancetype)initWithDisplayModeID:(int32_t)displayModeID width:(NSInteger)width height:(NSInteger)height refreshRate:(double)refreshRate nativeResolution:(BOOL)nativeResolution retinaResolution:(BOOL)retinaResolution reference:(CGDisplayModeRef)reference
 {
     NSParameterAssert(reference);
-    NSParameterAssert(refreshRate);
     
     self = [super init];
     if(self)
@@ -93,11 +92,15 @@
     {
         refreshRateTitle = NSLocalizedString(@"(ProMotion)", @"(ProMotion)");
     }
-    else
+    else if(self.refreshRate > 0.0f)
     {
         refreshRateTitle = [NSString stringWithFormat:NSLocalizedString(@"(%.2lf Hertz)", @"(%.2lf Hertz)"), self.refreshRate];
     }
-    [string appendFormat:@" %@", refreshRateTitle];
+    
+    if(refreshRateTitle != nil)
+    {
+        [string appendFormat:@" %@", refreshRateTitle];
+    }
 
     return [string copy];
 }
