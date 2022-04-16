@@ -11,6 +11,7 @@
 #import <DisplaceApplicationSupport/DPLPreferences.h>
 #import "DPLDefines.h"
 #import "DPLDisplayManager/DPLDisplayManager.h"
+#import "DPLDisplayModeFilter/DPLDisplayModeFilter.h"
 
 NS_INLINE NSString *DPLBoolToString(BOOL value)
 {
@@ -87,32 +88,12 @@ NS_INLINE NSString *DPLBoolToString(BOOL value)
 
 - (DPLDisplayMode *)nextDisplayMode
 {
-    Auto currentDisplayMode = self.currentDisplayMode;
-    if(currentDisplayMode == nil) { return nil; }
-    
-    Auto displayModes = self.displayModes;
-    Auto currentIndex = [displayModes indexOfObject:currentDisplayMode];
-    if(currentIndex == NSNotFound) { return nil; }
-    
-    Auto nextIndex = currentIndex - 1;
-    if(nextIndex < 0 || nextIndex >= displayModes.count) { return nil; }
-    
-    return displayModes[nextIndex];
+    return DPLDisplayModeGetHigherDisplayMode(self.displayModes, self.currentDisplayMode);
 }
 
 - (DPLDisplayMode *)previousDisplayMode
 {
-    Auto currentDisplayMode = self.currentDisplayMode;
-    if(currentDisplayMode == nil) { return nil; }
-    
-    Auto displayModes = self.displayModes;
-    Auto currentIndex = [displayModes indexOfObject:currentDisplayMode];
-    if(currentIndex == NSNotFound) { return nil; }
-    
-    Auto previousIndex = currentIndex + 1;
-    if(previousIndex < 0 || previousIndex >= displayModes.count) { return nil; }
-    
-    return displayModes[previousIndex];
+    return DPLDisplayModeGetLowerDisplayMode(self.displayModes, self.currentDisplayMode);
 }
 
 - (BOOL)isSidecar
