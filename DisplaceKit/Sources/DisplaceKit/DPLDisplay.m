@@ -72,19 +72,38 @@ NS_INLINE NSString *DPLBoolToString(BOOL value)
 {
     if(_displayModes == nil) { return @[]; }
     
-    if([DPLPreferences.sharedPreferences isNonRetinaDisplayModesEnabled] == NO)
+    AutoVar filteredModes = (NSMutableArray<DPLDisplayMode *> *)[_displayModes mutableCopy];
+    
+    Auto preferences = DPLPreferences.sharedPreferences;
+    if([preferences isNonRetinaDisplayModesEnabled] == NO)
     {
-        Auto predicate = [NSPredicate predicateWithFormat:@"%K == YES", @"retinaResolution"];
-        Auto retinaDisplayModes = [_displayModes filteredArrayUsingPredicate:predicate];
+        Auto backup = (NSMutableArray<DPLDisplayMode *> *)[filteredModes mutableCopy];
         
-        // Return only the Retina display modes if there are any
-        if(retinaDisplayModes.count > 0)
+        Auto predicate = [NSPredicate predicateWithFormat:@"%K == YES", @"retinaResolution"];
+        [filteredModes filterUsingPredicate:predicate];
+
+        // Reset if no display modes are left
+        if(filteredModes.count == 0)
         {
-            return retinaDisplayModes;
+            filteredModes = backup; // reset!
         }
     }
     
-    return _displayModes;
+    if([preferences isHideNonProMotionRefreshRatesEnabled] == YES)
+    {
+        Auto backup = (NSMutableArray<DPLDisplayMode *> *)[filteredModes mutableCopy];
+        
+        Auto predicate = [NSPredicate predicateWithFormat:@"%K == YES", @"proMotionRefreshRate"];
+        [filteredModes filterUsingPredicate:predicate];
+
+        // Reset if no display modes are left
+        if(filteredModes.count == 0)
+        {
+            filteredModes = backup; // reset!
+        }
+    }
+    
+    return [filteredModes copy];
 }
 
 - (DPLDisplayMode *)nextDisplayMode
