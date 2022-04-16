@@ -25,6 +25,7 @@ NS_INLINE NSString *DPLBoolToString(BOOL value)
 @property (nonatomic, getter=isMain, readwrite) BOOL main;
 @property (nonatomic, getter=isOnline, readwrite) BOOL online;
 @property (nonatomic, getter=isBuiltIn, readwrite) BOOL builtIn;
+@property (nonatomic, readwrite) BOOL hasSafeArea;
 @property (nonatomic, readwrite) NSArray<DPLDisplayMode *> *displayModes;
 @property (nonatomic, readwrite) DPLGraphicsDevice *graphicsDevice;
 @property (copy, nonatomic, readwrite) NSString *localizedName;
@@ -154,6 +155,7 @@ NS_INLINE NSString *DPLBoolToString(BOOL value)
     [string appendFormat:@"\n  Is Online: %@", DPLBoolToString([self isOnline])];
     [string appendFormat:@"\n  Is Built-In: %@", DPLBoolToString([self isBuiltIn])];
     [string appendFormat:@"\n  Is Sidecar: %@", DPLBoolToString([self isSidecar])];
+    [string appendFormat:@"\n  Has Safe Area: %@", DPLBoolToString([self hasSafeArea])];
     [string appendFormat:@"\n  Size: %@ × %@", @(self.width), @(self.height)];
     [string appendFormat:@"\n  Modes:"];
     for(DPLDisplayMode *mode in self.displayModes)
@@ -177,6 +179,7 @@ NS_INLINE NSString *DPLBoolToString(BOOL value)
     [string appendFormat:@"\n  Is Online: %@", DPLBoolToString([self isOnline])];
     [string appendFormat:@"\n  Is Built-In: %@", DPLBoolToString([self isBuiltIn])];
     [string appendFormat:@"\n  Is Sidecar: %@", DPLBoolToString([self isSidecar])];
+    [string appendFormat:@"\n  Has Safe Area: %@", DPLBoolToString([self hasSafeArea])];
     [string appendFormat:@"\n  Size: %@ × %@", @(self.width), @(self.height)];
     [string appendFormat:@"\n  Modes:"];
     for(DPLDisplayMode *mode in self.displayModes)

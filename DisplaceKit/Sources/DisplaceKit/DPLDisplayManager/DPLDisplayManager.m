@@ -16,6 +16,7 @@ static const NSUInteger DPLDisplayCountMax = 64u;
 
 @interface DPLDisplay ()
 @property (copy, nonatomic, readwrite) NSString *localizedName;
+@property (nonatomic, readwrite) BOOL hasSafeArea;
 @end
 
 @interface DPLDisplayManager ()
@@ -139,6 +140,11 @@ static const NSUInteger DPLDisplayCountMax = 64u;
             if(screen.dpl_displayID == displayID)
             {
                 displayInstance.localizedName = screen.localizedName;
+                
+                if(@available(macOS 12.0, *))
+                {
+                    displayInstance.hasSafeArea = screen.safeAreaInsets.top > 0.0f;
+                }
             }
         }
     }

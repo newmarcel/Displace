@@ -17,6 +17,11 @@
         return [NSImage imageWithSystemSymbolName:@"ipad.landscape"
                          accessibilityDescription:nil];
     }
+    else if([self hasSafeArea])
+    {
+        return [NSImage imageWithSystemSymbolName:@"laptopcomputer"
+                         accessibilityDescription:nil];
+    }
     
     return [NSImage imageWithSystemSymbolName:@"display"
                      accessibilityDescription:nil];
