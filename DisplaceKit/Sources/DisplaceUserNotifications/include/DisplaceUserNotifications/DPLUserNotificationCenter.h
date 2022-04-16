@@ -1,6 +1,6 @@
 //
 //  DPLUserNotificationCenter.h
-//  Displace
+//  DisplaceUserNotifications
 //
 //  Created by Marcel Dierkes on 13.02.21.
 //

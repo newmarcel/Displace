@@ -1,13 +1,13 @@
 //
 //  DPLUserNotificationCenter.m
-//  Displace
+//  DisplaceUserNotifications
 //
 //  Created by Marcel Dierkes on 13.02.21.
 //
 
-#import <DisplaceKit/DPLUserNotificationCenter.h>
+#import <DisplaceUserNotifications/DPLUserNotificationCenter.h>
 #import <UserNotifications/UserNotifications.h>
-#import "../DPLDefines.h"
+#import "DPLDefines.h"
 
 @interface DPLUserNotificationCenter ()
 @property (nonatomic) UNUserNotificationCenter *center;

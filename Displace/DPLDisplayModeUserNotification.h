@@ -6,7 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <DisplaceKit/DisplaceKit.h>
+#import <DisplaceUserNotifications/DisplaceUserNotifications.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

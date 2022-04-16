@@ -7,6 +7,7 @@
 
 #import "DPLGeneralPreferencesViewController.h"
 #import <ShortcutRecorder/ShortcutRecorder.h>
+#import <DisplaceUserNotifications/DisplaceUserNotifications.h>
 #import "DPLDefines.h"
 #import "DPLPreferenceItem.h"
 

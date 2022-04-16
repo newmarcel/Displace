@@ -1,13 +1,13 @@
 //
 //  NSWorkspace+DPLUserNotificationCenter.m
-//  DisplaceKit
+//  DisplaceUserNotifications
 //
 //  Created by Marcel Dierkes on 20.02.21.
 //
 
-#import <DisplaceKit/NSURL+DPLUserNotificationCenter.h>
-#import <DisplaceKit/NSWorkspace+DPLUserNotificationCenter.h>
-#import "../DPLDefines.h"
+#import <DisplaceUserNotifications/NSWorkspace+DPLUserNotificationCenter.h>
+#import <DisplaceUserNotifications/NSURL+DPLUserNotificationCenter.h>
+#import "DPLDefines.h"
 
 @implementation NSWorkspace (DPLUserNotificationCenter)
 

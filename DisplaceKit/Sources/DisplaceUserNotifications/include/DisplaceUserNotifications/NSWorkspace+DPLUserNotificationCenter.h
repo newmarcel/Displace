@@ -1,6 +1,6 @@
 //
 //  NSWorkspace+DPLUserNotificationCenter.h
-//  DisplaceKit
+//  DisplaceUserNotifications
 //
 //  Created by Marcel Dierkes on 20.02.21.
 //
