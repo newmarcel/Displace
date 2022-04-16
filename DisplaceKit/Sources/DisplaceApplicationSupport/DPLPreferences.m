@@ -15,6 +15,7 @@ NSString * const DPLLaunchAtLoginEnabledDefaultsKey = @"info.marcel-dierkes.Disp
 NSString * const DPLNonRetinaDisplayModesEnabledDefaultsKey = @"info.marcel-dierkes.Displace.NonRetinaDisplayModesEnabled";
 NSString * const DPLIncreaseResolutionShortcutDefaultsKey = @"info.marcel-dierkes.Displace.IncreaseResolutionShortcut";
 NSString * const DPLDecreaseResolutionShortcutDefaultsKey =  @"info.marcel-dierkes.Displace.DecreaseResolutionShortcut";
+NSString * const DPLHideNonProMotionRefreshRatesEnabledDefaultsKey =  @"info.marcel-dierkes.Displace.HideNonProMotionRefreshRatesEnabled";
 
 @interface DPLPreferences ()
 @property (nonatomic, readwrite) id<DPLDefaultsProvider> defaults;
@@ -61,6 +62,8 @@ NSString * const DPLDecreaseResolutionShortcutDefaultsKey =  @"info.marcel-dierk
     [self.defaults setBool:enabled forKey:DPLLaunchAtLoginEnabledDefaultsKey];
 }
 
+#pragma mark - Retina, ProMotion
+
 - (BOOL)isNonRetinaDisplayModesEnabled
 {
     return [self.defaults boolForKey:DPLNonRetinaDisplayModesEnabledDefaultsKey];
@@ -69,6 +72,16 @@ NSString * const DPLDecreaseResolutionShortcutDefaultsKey =  @"info.marcel-dierk
 - (void)setNonRetinaDisplayModesEnabled:(BOOL)enabled
 {
     [self.defaults setBool:enabled forKey:DPLNonRetinaDisplayModesEnabledDefaultsKey];
+}
+
+- (BOOL)isHideNonProMotionRefreshRatesEnabled
+{
+    return [self.defaults boolForKey:DPLHideNonProMotionRefreshRatesEnabledDefaultsKey];
+}
+
+- (void)setHideNonProMotionRefreshRatesEnabled:(BOOL)enabled
+{
+    [self.defaults setBool:enabled forKey:DPLHideNonProMotionRefreshRatesEnabledDefaultsKey];
 }
 
 #pragma mark - First Launch
