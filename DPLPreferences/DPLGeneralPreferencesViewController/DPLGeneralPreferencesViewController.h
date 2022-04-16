@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DPLGeneralPreferencesViewController : DPLPreferencesContentViewController
 @property (nonatomic, nullable) IBOutlet NSButton *showNonRetinaResolutionsCheckbox;
+@property (nonatomic, nullable) IBOutlet NSButton *hideNonProMotionRefreshRatesCheckbox;
 @property (nonatomic, nullable) IBOutlet SRRecorderControl *increaseRecorderControl;
 @property (nonatomic, nullable) IBOutlet SRRecorderControl *decreaseRecorderControl;
 

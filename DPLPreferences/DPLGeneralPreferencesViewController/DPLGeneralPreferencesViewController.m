@@ -48,11 +48,16 @@
 {
     self.defaultsController = [[NSUserDefaultsController alloc] initWithDefaults:DPLAppGroupGetUserDefaults() initialValues:nil];
     
-    Auto keyPath = [NSString stringWithFormat:@"values.%@", DPLNonRetinaDisplayModesEnabledDefaultsKey];
+    Auto retinaKeyPath = [NSString stringWithFormat:@"values.%@", DPLNonRetinaDisplayModesEnabledDefaultsKey];
     [self.showNonRetinaResolutionsCheckbox bind:NSValueBinding
                                        toObject:self.defaultsController
-                                    withKeyPath:keyPath
+                                    withKeyPath:retinaKeyPath
                                         options:nil];
+    Auto proMotionKeyPath = [NSString stringWithFormat:@"values.%@", DPLHideNonProMotionRefreshRatesEnabledDefaultsKey];
+    [self.hideNonProMotionRefreshRatesCheckbox bind:NSValueBinding
+                                           toObject:self.defaultsController
+                                        withKeyPath:proMotionKeyPath
+                                            options:nil];
     
     [self.increaseRecorderControl bind:NSValueBinding
                               toObject:self
