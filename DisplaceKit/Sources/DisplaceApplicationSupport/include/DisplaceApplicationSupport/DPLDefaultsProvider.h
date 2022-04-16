@@ -1,6 +1,6 @@
 //
 //  DPLDefaultsProvider.h
-//  Displace
+//  DisplaceApplicationSupport
 //
 //  Created by Marcel Dierkes on 23.12.20.
 //

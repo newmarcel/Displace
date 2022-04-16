@@ -6,7 +6,7 @@
 //
 
 #import "DPLShortcutMonitor.h"
-#import <DisplaceKit/DisplaceKit.h>
+#import <DisplaceApplicationSupport/DisplaceApplicationSupport.h>
 #import <ShortcutRecorder/ShortcutRecorder.h>
 #import "DPLDefines.h"
 

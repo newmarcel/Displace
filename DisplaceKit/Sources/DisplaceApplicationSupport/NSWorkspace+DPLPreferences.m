@@ -1,13 +1,13 @@
 //
 //  NSWorkspace+DPLPreferences.m
-//  Displace
+//  DisplaceApplicationSupport
 //
 //  Created by Marcel Dierkes on 27.12.20.
 //
 
-#import <DisplaceKit/NSURL+DPLPreferences.h>
-#import <DisplaceKit/NSWorkspace+DPLPreferences.h>
-#import "../DPLDefines.h"
+#import <DisplaceApplicationSupport/NSWorkspace+DPLPreferences.h>
+#import <DisplaceApplicationSupport/NSURL+DPLPreferences.h>
+#import "DPLDefines.h"
 
 @implementation NSWorkspace (DPLPreferences)
 

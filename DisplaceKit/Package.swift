@@ -9,6 +9,7 @@ let package = Package(
     ],
     products: [
         .library(name: "DisplaceKit", type: .dynamic, targets: ["DisplaceKit"]),
+        .library(name: "DisplaceApplicationSupport", targets: ["DisplaceApplicationSupport"]),
     ],
     dependencies: [
         .package(
@@ -18,6 +19,17 @@ let package = Package(
         )
     ],
     targets: [
-        .target(name: "DisplaceKit", dependencies: ["ShortcutRecorder"]),
+        .target(
+            name: "DisplaceKit",
+            dependencies: [
+                "DisplaceApplicationSupport"
+            ]
+        ),
+        .target(
+            name: "DisplaceApplicationSupport",
+            dependencies: [
+                "ShortcutRecorder"
+            ]
+        ),
     ]
 )

@@ -1,14 +1,14 @@
 //
 //  DPLPreferences.m
-//  Displace
+//  DisplaceApplicationSupport
 //
 //  Created by Marcel Dierkes on 23.12.20.
 //
 
-#import <DisplaceKit/DPLPreferences.h>
-#import <DisplaceKit/DPLAppGroup.h>
+#import <DisplaceApplicationSupport/DPLPreferences.h>
+#import <DisplaceApplicationSupport/DPLAppGroup.h>
 #import <ShortcutRecorder/ShortcutRecorder.h>
-#import "../DPLDefines.h"
+#import "DPLDefines.h"
 
 NSString * const DPLFirstLaunchFinishedKey = @"info.marcel-dierkes.Displace.FirstLaunchFinshed";
 NSString * const DPLLaunchAtLoginEnabledDefaultsKey = @"info.marcel-dierkes.Displace.LaunchAtLoginEnabled";

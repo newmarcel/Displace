@@ -8,7 +8,7 @@
 #import <DisplaceKit/DPLDisplay.h>
 #import <DisplaceKit/DPLDisplayMode.h>
 #import <DisplaceKit/DPLGraphicsDevice.h>
-#import <DisplaceKit/DPLPreferences.h>
+#import <DisplaceApplicationSupport/DPLPreferences.h>
 #import "../DPLDefines.h"
 #import "DPLDisplayManager/DPLDisplayManager.h"
 

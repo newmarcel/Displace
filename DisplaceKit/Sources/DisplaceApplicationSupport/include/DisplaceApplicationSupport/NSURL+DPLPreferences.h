@@ -1,6 +1,6 @@
 //
 //  NSURL+DPLPreferences.h
-//  DisplaceKit
+//  DisplaceApplicationSupport
 //
 //  Created by Marcel Dierkes on 26.12.20.
 //

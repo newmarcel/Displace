@@ -1,12 +1,12 @@
 //
 //  DPLAppGroup.m
-//  Displace
+//  DisplaceApplicationSupport
 //
 //  Created by Marcel Dierkes on 23.12.20.
 //
 
-#import <DisplaceKit/DPLAppGroup.h>
-#import "../DPLDefines.h"
+#import <DisplaceApplicationSupport/DPLAppGroup.h>
+#import "DPLDefines.h"
 
 NSString * const DPLAppGroupIdentifier = @"group.info.marcel-dierkes.Displace";
 static NSString * const DPLAppGroupDefaultDirectoryName = @"Displace";

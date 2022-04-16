@@ -1,12 +1,12 @@
 //
 //  NSURL+DPLPreferences.m
-//  DisplaceKit
+//  DisplaceApplicationSupport
 //
 //  Created by Marcel Dierkes on 26.12.20.
 //
 
-#import <DisplaceKit/NSURL+DPLPreferences.h>
-#import "../DPLDefines.h"
+#import <DisplaceApplicationSupport/NSURL+DPLPreferences.h>
+#import "DPLDefines.h"
 
 static NSString * const DPLPreferencesAppBundleName = @"Displace Preferences.app";
 

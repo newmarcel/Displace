@@ -1,6 +1,6 @@
 //
 //  DPLNotificationCenter.h
-//  DisplaceKit
+//  DisplaceApplicationSupport
 //
 //  Created by Marcel Dierkes on 09.01.21.
 //

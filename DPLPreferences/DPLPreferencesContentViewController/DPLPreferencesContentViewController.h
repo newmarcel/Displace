@@ -7,6 +7,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import <DisplaceKit/DisplaceKit.h>
+#import <DisplaceApplicationSupport/DisplaceApplicationSupport.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

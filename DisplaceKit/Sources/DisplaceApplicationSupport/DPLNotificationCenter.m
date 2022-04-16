@@ -1,12 +1,12 @@
 //
 //  DPLNotificationCenter.m
-//  DisplaceKit
+//  DisplaceApplicationSupport
 //
 //  Created by Marcel Dierkes on 09.01.21.
 //
 
-#import <DisplaceKit/DPLNotificationCenter.h>
-#import "../DPLDefines.h"
+#import <DisplaceApplicationSupport/DPLNotificationCenter.h>
+#import "DPLDefines.h"
 
 const DPLNotificationName DPLShortcutDidChangeNotification = @"DPLShortcutDidChangeNotification";
 const DPLNotificationName DPLShortcutWillEditNotification = @"DPLShortcutWillEditNotification";

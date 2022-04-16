@@ -1,12 +1,12 @@
 //
 //  DPLPreferences.h
-//  Displace
+//  DisplaceApplicationSupport
 //
 //  Created by Marcel Dierkes on 23.12.20.
 //
 
 #import <Foundation/Foundation.h>
-#import <DisplaceKit/DPLDefaultsProvider.h>
+#import <DisplaceApplicationSupport/DPLDefaultsProvider.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

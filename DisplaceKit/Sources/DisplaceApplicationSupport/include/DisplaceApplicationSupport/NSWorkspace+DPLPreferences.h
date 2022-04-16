@@ -1,6 +1,6 @@
 //
 //  NSWorkspace+DPLPreferences.h
-//  Displace
+//  DisplaceApplicationSupport
 //
 //  Created by Marcel Dierkes on 27.12.20.
 //
