@@ -1,13 +1,13 @@
 //
 //  DPLDisplayMode.mm
-//  Displace
+//  DisplaceKit
 //
 //  Created by Marcel Dierkes on 26.12.20.
 //
 
 #import <DisplaceKit/DPLDisplayMode.h>
 #import <DisplaceApplicationSupport/DPLPreferences.h>
-#import "../DPLDefines.h"
+#import "DPLDefines.h"
 
 @interface DPLDisplayMode ()
 @property (nonatomic, readwrite) int32_t displayModeID;

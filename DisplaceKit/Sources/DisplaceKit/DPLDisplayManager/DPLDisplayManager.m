@@ -10,7 +10,7 @@
 #import <DisplaceKit/DPLDisplayMode.h>
 #import <DisplaceKit/NSScreen+DPLDisplay.h>
 #import <DisplaceKit/DPLGraphicsDevice.h>
-#import "../../DPLDefines.h"
+#import "../DPLDefines.h"
 
 static const NSUInteger DPLDisplayCountMax = 64u;
 

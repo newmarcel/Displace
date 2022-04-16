@@ -1,6 +1,6 @@
 //
 //  DPLDisplay.m
-//  Displace
+//  DisplaceKit
 //
 //  Created by Marcel Dierkes on 26.12.20.
 //
@@ -9,7 +9,7 @@
 #import <DisplaceKit/DPLDisplayMode.h>
 #import <DisplaceKit/DPLGraphicsDevice.h>
 #import <DisplaceApplicationSupport/DPLPreferences.h>
-#import "../DPLDefines.h"
+#import "DPLDefines.h"
 #import "DPLDisplayManager/DPLDisplayManager.h"
 
 NS_INLINE NSString *DPLBoolToString(BOOL value)

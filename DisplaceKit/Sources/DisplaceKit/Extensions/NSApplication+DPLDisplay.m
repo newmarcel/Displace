@@ -7,7 +7,7 @@
 
 #import <DisplaceKit/NSApplication+DPLDisplay.h>
 #import <DisplaceKit/NSScreen+DPLDisplay.h>
-#import "../../DPLDefines.h"
+#import "../DPLDefines.h"
 #import "../DPLDisplayManager/DPLDisplayManager.h"
 
 @implementation NSApplication (DPLDisplay)

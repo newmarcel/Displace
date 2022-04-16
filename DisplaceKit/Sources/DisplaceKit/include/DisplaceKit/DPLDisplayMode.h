@@ -1,6 +1,6 @@
 //
 //  DPLDisplayMode.h
-//  Displace
+//  DisplaceKit
 //
 //  Created by Marcel Dierkes on 26.12.20.
 //
