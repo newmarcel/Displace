@@ -8,6 +8,7 @@
 #import <DisplaceKit/DPLDisplayMode.h>
 #import <DisplaceApplicationSupport/DPLPreferences.h>
 #import "DPLDefines.h"
+#import "DisplaceKitLocalizedStrings.h"
 
 @interface DPLDisplayMode ()
 @property (nonatomic, readwrite) int32_t displayModeID;
@@ -82,11 +83,11 @@
     Auto string = (NSMutableString *)[self.localizedNameWithoutAttributes mutableCopy];
     if([preferences isNonRetinaDisplayModesEnabled] == YES)
     {
-        Auto retinaAttributeTitle = NSLocalizedString(@"(Retina)", @"(Retina)");
+        Auto retinaAttributeTitle = DPL_L10N_RETINA_IN_PARENS;
         if([self isRetinaResolution]) { [string appendFormat:@" %@", retinaAttributeTitle]; }
     }
     
-    Auto nativeAttributeTitle = NSLocalizedString(@"(Native)", @"(Native)");
+    Auto nativeAttributeTitle = DPL_L10N_NATIVE_IN_PARENS;
     if([self isNativeResolution]) { [string appendFormat:@" %@", nativeAttributeTitle]; }
     
     NSString *refreshRateTitle;
@@ -94,12 +95,12 @@
     {
         if([preferences isHideNonProMotionRefreshRatesEnabled] == NO)
         {
-            refreshRateTitle = NSLocalizedString(@"(ProMotion)", @"(ProMotion)");
+            refreshRateTitle = DPL_L10N_PROMOTION_IN_PARENS;
         }
     }
     else if(self.refreshRate > 0.0f)
     {
-        refreshRateTitle = [NSString stringWithFormat:NSLocalizedString(@"(%.2lf Hertz)", @"(%.2lf Hertz)"), self.refreshRate];
+        refreshRateTitle = DPLLocalizedRefreshRate(self.refreshRate);
     }
     
     if(refreshRateTitle != nil)
@@ -112,11 +113,7 @@
 
 - (NSString *)localizedNameWithoutAttributes
 {
-    return [NSString localizedStringWithFormat:
-            NSLocalizedString(@"%@ × %@", @"%@ × %@"),
-            @(self.width),
-            @(self.height)
-            ];
+    return DPLLocalizedResolution(self.width, self.height);
 }
 
 #pragma mark - Description

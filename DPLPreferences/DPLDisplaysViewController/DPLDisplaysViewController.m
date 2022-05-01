@@ -7,6 +7,7 @@
 
 #import "DPLDisplaysViewController.h"
 #import "DPLDefines.h"
+#import "DPLPreferencesLocalizedStrings.h"
 #import "DPLPreferenceItem.h"
 #import "DPLPreferencesContentViewControllers.h"
 
@@ -67,11 +68,11 @@ static const NSUserInterfaceItemIdentifier DPLIdentifierDataCell = @"DataCell";
     
     self.preferenceItems = @[
         [[DPLPreferenceItem alloc] initWithIdentifier:1
-                                           headerName:NSLocalizedString(@"Displays", @"Displays")
+                                           headerName:DPL_L10N_DISPLAYS
                                                 image:displayImage
                                              children:[displays copy]],
         [[DPLPreferenceItem alloc] initWithIdentifier:2
-                                           headerName:NSLocalizedString(@"Preferences", @"Preferences")
+                                           headerName:DPL_L10N_PREFERENCES
                                                 image:nil
                                              children:@[DPLGeneralPreferencesViewController.preferenceItem]],
     ];

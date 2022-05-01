@@ -7,6 +7,7 @@
 
 #import "DPLPreferencesWindowController.h"
 #import "DPLDefines.h"
+#import "DPLPreferencesLocalizedStrings.h"
 #import "DPLDisplaysViewController.h"
 
 @interface DPLPreferencesWindowController ()
@@ -48,7 +49,7 @@
 
 - (IBAction)showAboutPanel:(nullable id)sender
 {
-    Auto appName = NSLocalizedString(@"Displace", @"Displace");
+    Auto appName = DPL_L10N_DISPLACE_APP_NAME;
     [NSApplication.sharedApplication orderFrontStandardAboutPanelWithOptions:@{
         NSAboutPanelOptionApplicationName: appName
     }];

@@ -9,10 +9,8 @@
 #import <ShortcutRecorder/ShortcutRecorder.h>
 #import <DisplaceUserNotifications/DisplaceUserNotifications.h>
 #import "DPLDefines.h"
+#import "DPLPreferencesLocalizedStrings.h"
 #import "DPLPreferenceItem.h"
-
-#define DPL_L10N_GENERAL NSLocalizedString(@"General", @"General")
-#define DPL_L10N_GENERAL_PREFERENCES NSLocalizedString(@"General Preferences", @"General Preferences")
 
 @interface DPLGeneralPreferencesViewController () <SRRecorderControlDelegate>
 @property (nonatomic) NSUserDefaultsController *defaultsController;

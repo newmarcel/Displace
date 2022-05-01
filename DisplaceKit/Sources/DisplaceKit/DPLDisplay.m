@@ -10,6 +10,7 @@
 #import <DisplaceKit/DPLGraphicsDevice.h>
 #import <DisplaceApplicationSupport/DPLPreferences.h>
 #import "DPLDefines.h"
+#import "DisplaceKitLocalizedStrings.h"
 #import "DPLDisplayManager/DPLDisplayManager.h"
 #import "DPLDisplayModeFilter/DPLDisplayModeFilter.h"
 
@@ -156,11 +157,11 @@ NS_INLINE NSString *DPLBoolToString(BOOL value)
     
     if([self isBuiltIn])
     {
-        return NSLocalizedString(@"Internal Display", @"Internal Display");
+        return DPL_L10N_INTERNAL_DISPLAY;
     }
     else
     {
-        return NSLocalizedString(@"External Display", @"External Display");
+        return DPL_L10N_EXTERNAL_DISPLAY;
     }
 }
 

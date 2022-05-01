@@ -7,6 +7,7 @@
 
 #import "DPLDisplayViewController.h"
 #import "DPLDefines.h"
+#import "DPLPreferencesLocalizedStrings.h"
 #import "DPLPreferenceItem.h"
 
 static const NSUserInterfaceItemIdentifier DPLColumnResolution = @"resolution";
@@ -96,7 +97,7 @@ static const NSUserInterfaceItemIdentifier DPLColumnImageCell = @"imageCell";
                                     accessibilityDescription:nil];
         imageView.image = self.display.currentDisplayMode == displayMode ? checkImage : nil;
         
-        imageView.toolTip = NSLocalizedString(@"The current display resolution", @"The current display resolution");
+        imageView.toolTip = DPL_L10N_CURRENT_DISPLAY_RESOLUTION_TOOLTIP;
         tableColumn.headerToolTip = imageView.toolTip;
         
         return cell;
@@ -109,7 +110,7 @@ static const NSUserInterfaceItemIdentifier DPLColumnImageCell = @"imageCell";
                                      accessibilityDescription:nil];
         imageView.image = [displayMode isRetinaResolution] ? retinaImage : nil;
         
-        imageView.toolTip = NSLocalizedString(@"High resolution", @"High resolution");
+        imageView.toolTip = DPL_L10N_HIGH_RESOLUTION_TOOLTIP;
         tableColumn.headerToolTip = imageView.toolTip;
         
         return cell;

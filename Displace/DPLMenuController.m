@@ -7,6 +7,7 @@
 
 #import "DPLMenuController.h"
 #import "DPLDefines.h"
+#import "DPLLocalizedStrings.h"
 
 @interface DPLMenuController () <NSMenuDelegate>
 @property (nonatomic, readwrite) NSMenu *menu;
@@ -28,7 +29,7 @@
 
 - (void)configureMenu
 {
-    Auto menu = [[NSMenu alloc] initWithTitle:NSLocalizedString(@"Displays", @"Displays")];
+    Auto menu = [[NSMenu alloc] initWithTitle:DPL_L10N_DISPLAYS];
     menu.delegate = self;
     self.menu = menu;
 }
@@ -129,7 +130,7 @@
     // If the data source is satisfied, begin with a separator
     [menu addItem:NSMenuItem.separatorItem];
     
-    Auto increaseItem = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"Increase Resolution", @"Increase Resolution")
+    Auto increaseItem = [[NSMenuItem alloc] initWithTitle:DPL_L10N_INCREASE_RESOLUTION
                                                    action:@selector(increaseResolution:)
                                             keyEquivalent:increaseKeyEquivalent ?: @""];
     increaseItem.target = self;
@@ -139,7 +140,7 @@
     }
     [menu addItem:increaseItem];
     
-    Auto decreaseItem = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"Decrease Resolution", @"Decrease Resolution")
+    Auto decreaseItem = [[NSMenuItem alloc] initWithTitle:DPL_L10N_DECREASE_RESOLUTION
                                                    action:@selector(decreaseResolution:)
                                             keyEquivalent:decreaseKeyEquivalent ?: @""];
     decreaseItem.target = self;
@@ -156,7 +157,7 @@
     
     [menu addItem:NSMenuItem.separatorItem];
     
-    Auto prefsItem = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"Preferences…", @"Preferences…")
+    Auto prefsItem = [[NSMenuItem alloc] initWithTitle:DPL_L10N_PREFERENCES
                                                 action:@selector(showPreferences:)
                                          keyEquivalent:@","];
     prefsItem.target = self;
@@ -164,7 +165,7 @@
     
     [menu addItem:NSMenuItem.separatorItem];
     
-    AutoVar quitText = NSLocalizedString(@"Quit Displace", @"Quit Displace");
+    AutoVar quitText = DPL_L10N_QUIT
 #if DEBUG
     quitText = [quitText stringByAppendingString:@" (Debug Version)"];
 #endif
