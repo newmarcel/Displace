@@ -12,5 +12,5 @@
 #define DPL_L10N_INCREASE_RESOLUTION NSLocalizedString(@"Increase Resolution", @"Increase Resolution")
 #define DPL_L10N_DECREASE_RESOLUTION NSLocalizedString(@"Decrease Resolution", @"Decrease Resolution")
 
-#define DPL_L10N_PREFERENCES NSLocalizedString(@"Preferences…", @"Preferences…")
+#define DPL_L10N_SETTINGS NSLocalizedString(@"Settings…", @"Settings…")
 #define DPL_L10N_QUIT NSLocalizedString(@"Quit Displace", @"Quit Displace");

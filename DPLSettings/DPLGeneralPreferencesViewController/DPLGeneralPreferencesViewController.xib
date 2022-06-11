@@ -22,7 +22,7 @@
             <rect key="frame" x="0.0" y="0.0" width="450" height="496"/>
             <subviews>
                 <gridView xPlacement="fill" yPlacement="fill" rowAlignment="firstBaseline" rowSpacing="12" columnSpacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="i53-oP-FEP">
-                    <rect key="frame" x="85" y="322" width="281" height="98"/>
+                    <rect key="frame" x="85" y="302" width="281" height="98"/>
                     <rows>
                         <gridRow id="gvt-Mp-5Tf"/>
                         <gridRow id="Q23-VX-aET"/>
@@ -87,7 +87,7 @@
                     </gridCells>
                 </gridView>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="E6N-DG-En9">
-                    <rect key="frame" x="18" y="428" width="133" height="16"/>
+                    <rect key="frame" x="18" y="408" width="133" height="16"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="Keyboard Shortcuts" id="tWO-UC-goz">
                         <font key="font" textStyle="headline" name=".SFNS-Bold"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -95,10 +95,10 @@
                     </textFieldCell>
                 </textField>
                 <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="Hvd-ip-01E">
-                    <rect key="frame" x="20" y="299" width="410" height="5"/>
+                    <rect key="frame" x="20" y="279" width="410" height="5"/>
                 </box>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="XJU-MD-fgk">
-                    <rect key="frame" x="18" y="243" width="414" height="14"/>
+                    <rect key="frame" x="18" y="223" width="414" height="14"/>
                     <textFieldCell key="cell" selectable="YES" title="Filters the list of display resolutions to only contain Retina display resolutions." id="ykW-Rh-h2z">
                         <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
@@ -106,17 +106,17 @@
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bMa-8y-ktg">
-                    <rect key="frame" x="18" y="264" width="412" height="18"/>
+                    <rect key="frame" x="18" y="244" width="412" height="18"/>
                     <buttonCell key="cell" type="check" title="Show Non-Retina Display Resolutions" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="bKn-md-gjk">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                 </button>
                 <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="Tzp-VF-MKL">
-                    <rect key="frame" x="20" y="220" width="410" height="5"/>
+                    <rect key="frame" x="20" y="200" width="410" height="5"/>
                 </box>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aeP-5A-RBT">
-                    <rect key="frame" x="190" y="33" width="247" height="32"/>
+                    <rect key="frame" x="190" y="13" width="247" height="32"/>
                     <buttonCell key="cell" type="push" title="Save Current Display Configuration" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="3qY-QY-aRJ">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -126,8 +126,8 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8dc-Nc-NBF">
-                    <rect key="frame" x="13" y="96" width="191" height="32"/>
-                    <buttonCell key="cell" type="push" title="Notification Preferences…" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="tny-eB-qCw">
+                    <rect key="frame" x="13" y="76" width="168" height="32"/>
+                    <buttonCell key="cell" type="push" title="Notification Settings…" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="tny-eB-qCw">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -136,7 +136,7 @@
                     </connections>
                 </button>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="lHd-kI-rlq">
-                    <rect key="frame" x="18" y="164" width="414" height="14"/>
+                    <rect key="frame" x="18" y="144" width="414" height="14"/>
                     <textFieldCell key="cell" selectable="YES" title="Filters the list of display resolutions to only show ProMotion refresh rates." id="lu8-R3-wBv">
                         <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
@@ -144,14 +144,14 @@
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sbt-xc-rcg">
-                    <rect key="frame" x="18" y="185" width="412" height="18"/>
+                    <rect key="frame" x="18" y="165" width="412" height="18"/>
                     <buttonCell key="cell" type="check" title="Hide Non-ProMotion Refresh Rates" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Kfs-o0-b2Q">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                 </button>
                 <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="rFA-CU-qfa">
-                    <rect key="frame" x="20" y="141" width="410" height="5"/>
+                    <rect key="frame" x="20" y="121" width="410" height="5"/>
                 </box>
             </subviews>
             <constraints>

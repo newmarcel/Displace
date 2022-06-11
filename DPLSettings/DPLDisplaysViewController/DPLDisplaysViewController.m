@@ -72,7 +72,7 @@ static const NSUserInterfaceItemIdentifier DPLIdentifierDataCell = @"DataCell";
                                                 image:displayImage
                                              children:[displays copy]],
         [[DPLPreferenceItem alloc] initWithIdentifier:2
-                                           headerName:DPL_L10N_PREFERENCES
+                                           headerName:DPL_L10N_SETTINGS
                                                 image:nil
                                              children:@[DPLGeneralPreferencesViewController.preferenceItem]],
     ];

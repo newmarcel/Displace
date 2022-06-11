@@ -157,7 +157,7 @@
     
     [menu addItem:NSMenuItem.separatorItem];
     
-    Auto prefsItem = [[NSMenuItem alloc] initWithTitle:DPL_L10N_PREFERENCES
+    Auto prefsItem = [[NSMenuItem alloc] initWithTitle:DPL_L10N_SETTINGS
                                                 action:@selector(showPreferences:)
                                          keyEquivalent:@","];
     prefsItem.target = self;
