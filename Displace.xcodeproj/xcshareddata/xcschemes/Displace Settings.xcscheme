@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "DAD660802597B110007E8969"
-               BuildableName = "Displace Preferences.app"
-               BlueprintName = "Displace Preferences"
+               BuildableName = "Displace Settings.app"
+               BlueprintName = "Displace Settings"
                ReferencedContainer = "container:Displace.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,8 +45,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "DAD660802597B110007E8969"
-            BuildableName = "Displace Preferences.app"
-            BlueprintName = "Displace Preferences"
+            BuildableName = "Displace Settings.app"
+            BlueprintName = "Displace Settings"
             ReferencedContainer = "container:Displace.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -62,8 +62,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "DAD660802597B110007E8969"
-            BuildableName = "Displace Preferences.app"
-            BlueprintName = "Displace Preferences"
+            BuildableName = "Displace Settings.app"
+            BlueprintName = "Displace Settings"
             ReferencedContainer = "container:Displace.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

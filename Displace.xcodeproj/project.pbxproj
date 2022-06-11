@@ -28,7 +28,7 @@
 		DAD6608A2597B112007E8969 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAD660892597B112007E8969 /* Assets.xcassets */; };
 		DAD6608D2597B112007E8969 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAD6608B2597B112007E8969 /* Main.storyboard */; };
 		DAD660902597B112007E8969 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DAD6608F2597B112007E8969 /* main.m */; };
-		DAD660AB2597B1A1007E8969 /* Displace Preferences.app in Embed Preferences */ = {isa = PBXBuildFile; fileRef = DAD660812597B110007E8969 /* Displace Preferences.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		DAD660AB2597B1A1007E8969 /* Displace Settings.app in Embed Preferences */ = {isa = PBXBuildFile; fileRef = DAD660812597B110007E8969 /* Displace Settings.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		DAEAF1C527CAB84900EFF33F /* DisplaceKit in Frameworks */ = {isa = PBXBuildFile; productRef = DAEAF1C427CAB84900EFF33F /* DisplaceKit */; };
 		DAEAF1C927CAB84E00EFF33F /* DisplaceKit in Frameworks */ = {isa = PBXBuildFile; productRef = DAEAF1C827CAB84E00EFF33F /* DisplaceKit */; };
 		DAEAF1CA27CAB84E00EFF33F /* DisplaceKit in Embed Frameworks */ = {isa = PBXBuildFile; productRef = DAEAF1C827CAB84E00EFF33F /* DisplaceKit */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
@@ -52,7 +52,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 6;
 			files = (
-				DAD660AB2597B1A1007E8969 /* Displace Preferences.app in Embed Preferences */,
+				DAD660AB2597B1A1007E8969 /* Displace Settings.app in Embed Preferences */,
 			);
 			name = "Embed Preferences";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -119,14 +119,14 @@
 		DAC91F612532F6B200A08DE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DAC91F622532F6B200A08DE0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		DAC91F642532F6B200A08DE0 /* Displace.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Displace.entitlements; sourceTree = "<group>"; };
-		DAD660812597B110007E8969 /* Displace Preferences.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Displace Preferences.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DAD660812597B110007E8969 /* Displace Settings.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Displace Settings.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAD660832597B110007E8969 /* DPLAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DPLAppDelegate.h; sourceTree = "<group>"; };
 		DAD660842597B110007E8969 /* DPLAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DPLAppDelegate.m; sourceTree = "<group>"; };
 		DAD660892597B112007E8969 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DAD6608C2597B112007E8969 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DAD6608E2597B112007E8969 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DAD6608F2597B112007E8969 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		DAD660912597B112007E8969 /* DPLPreferences.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DPLPreferences.entitlements; sourceTree = "<group>"; };
+		DAD660912597B112007E8969 /* DPLSettings.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DPLSettings.entitlements; sourceTree = "<group>"; };
 		DAFD864C258D3712004EB800 /* DPLAppController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DPLAppController.h; sourceTree = "<group>"; };
 		DAFD864D258D3712004EB800 /* DPLAppController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DPLAppController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -212,7 +212,7 @@
 				DAD6608E2597B112007E8969 /* Info.plist */,
 				DA3DC73B2598972F00275021 /* InfoPlist.strings */,
 				DAD6608F2597B112007E8969 /* main.m */,
-				DAD660912597B112007E8969 /* DPLPreferences.entitlements */,
+				DAD660912597B112007E8969 /* DPLSettings.entitlements */,
 			);
 			name = "Other…";
 			sourceTree = "<group>";
@@ -235,7 +235,7 @@
 			isa = PBXGroup;
 			children = (
 				DAC91F582532F6B200A08DE0 /* Displace */,
-				DAD660822597B110007E8969 /* DPLPreferences */,
+				DAD660822597B110007E8969 /* DPLSettings */,
 				DA643AD72532FAE800F0A49A /* Frameworks */,
 				DAC91F572532F6B200A08DE0 /* Products */,
 			);
@@ -245,7 +245,7 @@
 			isa = PBXGroup;
 			children = (
 				DAC91F562532F6B200A08DE0 /* Displace.app */,
-				DAD660812597B110007E8969 /* Displace Preferences.app */,
+				DAD660812597B110007E8969 /* Displace Settings.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -268,7 +268,7 @@
 			path = Displace;
 			sourceTree = "<group>";
 		};
-		DAD660822597B110007E8969 /* DPLPreferences */ = {
+		DAD660822597B110007E8969 /* DPLSettings */ = {
 			isa = PBXGroup;
 			children = (
 				DAD660832597B110007E8969 /* DPLAppDelegate.h */,
@@ -282,7 +282,7 @@
 				DA9266A825C6A1EE008D774A /* DPLGeneralPreferencesViewController */,
 				DAAA87A52597D7D000399006 /* Other… */,
 			);
-			path = DPLPreferences;
+			path = DPLSettings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -311,9 +311,9 @@
 			productReference = DAC91F562532F6B200A08DE0 /* Displace.app */;
 			productType = "com.apple.product-type.application";
 		};
-		DAD660802597B110007E8969 /* Displace Preferences */ = {
+		DAD660802597B110007E8969 /* Displace Settings */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DAD660942597B112007E8969 /* Build configuration list for PBXNativeTarget "Displace Preferences" */;
+			buildConfigurationList = DAD660942597B112007E8969 /* Build configuration list for PBXNativeTarget "Displace Settings" */;
 			buildPhases = (
 				DAD6607D2597B110007E8969 /* Sources */,
 				DAD6607E2597B110007E8969 /* Frameworks */,
@@ -324,12 +324,12 @@
 			);
 			dependencies = (
 			);
-			name = "Displace Preferences";
+			name = "Displace Settings";
 			packageProductDependencies = (
 				DAEAF1C827CAB84E00EFF33F /* DisplaceKit */,
 			);
 			productName = DPLPreferences;
-			productReference = DAD660812597B110007E8969 /* Displace Preferences.app */;
+			productReference = DAD660812597B110007E8969 /* Displace Settings.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -365,7 +365,7 @@
 			projectRoot = "";
 			targets = (
 				DAC91F552532F6B200A08DE0 /* Displace */,
-				DAD660802597B110007E8969 /* Displace Preferences */,
+				DAD660802597B110007E8969 /* Displace Settings */,
 			);
 		};
 /* End PBXProject section */
@@ -429,7 +429,7 @@
 /* Begin PBXTargetDependency section */
 		DAD660A32597B16F007E8969 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = DAD660802597B110007E8969 /* Displace Preferences */;
+			target = DAD660802597B110007E8969 /* Displace Settings */;
 			targetProxy = DAD660A22597B16F007E8969 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -589,7 +589,7 @@
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
-					"\"@executable_path/Displace Preferences.app/Contents/Frameworks\"",
+					"\"@executable_path/Displace Settings.app/Contents/Frameworks\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -610,7 +610,7 @@
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
-					"\"@executable_path/Displace Preferences.app/Contents/Frameworks\"",
+					"\"@executable_path/Displace Settings.app/Contents/Frameworks\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -622,13 +622,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = DPLPreferences/DPLPreferences.entitlements;
+				CODE_SIGN_ENTITLEMENTS = DPLSettings/DPLSettings.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 5KESHV9W85;
 				ENABLE_HARDENED_RUNTIME = YES;
-				INFOPLIST_FILE = DPLPreferences/Info.plist;
+				INFOPLIST_FILE = DPLSettings/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -644,13 +644,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = DPLPreferences/DPLPreferences.entitlements;
+				CODE_SIGN_ENTITLEMENTS = DPLSettings/DPLSettings.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 5KESHV9W85;
 				ENABLE_HARDENED_RUNTIME = YES;
-				INFOPLIST_FILE = DPLPreferences/Info.plist;
+				INFOPLIST_FILE = DPLSettings/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -682,7 +682,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		DAD660942597B112007E8969 /* Build configuration list for PBXNativeTarget "Displace Preferences" */ = {
+		DAD660942597B112007E8969 /* Build configuration list for PBXNativeTarget "Displace Settings" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DAD660922597B112007E8969 /* Debug */,

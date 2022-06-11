@@ -8,7 +8,7 @@
 #import <DisplaceApplicationSupport/NSURL+DPLPreferences.h>
 #import "DPLDefines.h"
 
-static NSString * const DPLPreferencesAppBundleName = @"Displace Preferences.app";
+static NSString * const DPLPreferencesAppBundleName = @"Displace Settings.app";
 
 @implementation NSURL (DPLPreferences)
 
