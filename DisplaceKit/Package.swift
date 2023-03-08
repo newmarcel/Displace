@@ -5,7 +5,7 @@ import PackageDescription
 let package = Package(
     name: "DisplaceKit",
     platforms: [
-        .macOS(.v11)
+        .macOS(.v12)
     ],
     products: [
         .library(name: "DisplaceKit", type: .dynamic, targets: ["DisplaceKit"]),
