@@ -8,7 +8,7 @@
 #import <DisplaceApplicationSupport/DPLAppGroup.h>
 #import "DPLDefines.h"
 
-NSString * const DPLAppGroupIdentifier = @"group.info.marcel-dierkes.Displace";
+NSString * const DPLAppGroupIdentifier = @"5KESHV9W85.info.marcel-dierkes.Displace";
 static NSString * const DPLAppGroupDefaultDirectoryName = @"Displace";
 
 NSURL *DPLAppGroupGetURLWithPathComponent(NSString *pathComponent)

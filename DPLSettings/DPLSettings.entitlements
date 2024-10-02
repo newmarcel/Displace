@@ -6,7 +6,7 @@
 	<true/>
 	<key>com.apple.security.application-groups</key>
 	<array>
-		<string>group.info.marcel-dierkes.Displace</string>
+		<string>$(TeamIdentifierPrefix)info.marcel-dierkes.Displace</string>
 	</array>
 	<key>com.apple.security.files.user-selected.read-write</key>
 	<true/>
