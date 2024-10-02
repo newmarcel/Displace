@@ -13,6 +13,7 @@
 #import "DPLMenuController.h"
 #import "DPLShortcutMonitor.h"
 #import "DPLDisplayModeUserNotification.h"
+#import "GeneratedAssetSymbols.h"
 
 @interface DPLAppController () <DPLMenuControllerDataSource, DPLMenuControllerDelegate, DPLShortcutMonitorDelegate>
 @property (nonatomic) NSArray<DPLDisplay *> *displays;
@@ -56,7 +57,7 @@
     
     Auto button = statusItem.button;
     ((NSButtonCell *)button.cell).highlightsBy = YES;
-    Auto image = [NSImage imageNamed:@"MenuBarIcon"];
+    Auto image = [NSImage imageNamed:ACImageNameMenuBarIcon];
     button.image = image;
     
     statusItem.menu = self.menuController.menu;
