@@ -1,4 +1,4 @@
-// swift-tools-version:5.5
+// swift-tools-version:5.10
 
 import PackageDescription
 
@@ -13,11 +13,7 @@ let package = Package(
         .library(name: "DisplaceUserNotifications", targets: ["DisplaceUserNotifications"]),
     ],
     dependencies: [
-        .package(
-            name: "ShortcutRecorder",
-            url: "https://github.com/Kentzo/ShortcutRecorder",
-            .upToNextMajor(from: "3.3.0")
-        )
+        .package(url: "https://github.com/Kentzo/ShortcutRecorder", .upToNextMajor(from: "3.3.0"))
     ],
     targets: [
         .target(
@@ -30,7 +26,7 @@ let package = Package(
         .target(
             name: "DisplaceApplicationSupport",
             dependencies: [
-                "ShortcutRecorder",
+                .product(name: "ShortcutRecorder", package: "ShortcutRecorder"),
             ]
         ),
         .target(
