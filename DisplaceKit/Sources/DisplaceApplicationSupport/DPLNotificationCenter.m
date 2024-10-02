@@ -6,7 +6,7 @@
 //
 
 #import <DisplaceApplicationSupport/DPLNotificationCenter.h>
-#import "DPLDefines.h"
+#import <DisplaceCommon/DisplaceCommon.h>
 
 const DPLNotificationName DPLShortcutDidChangeNotification = @"DPLShortcutDidChangeNotification";
 const DPLNotificationName DPLShortcutWillEditNotification = @"DPLShortcutWillEditNotification";

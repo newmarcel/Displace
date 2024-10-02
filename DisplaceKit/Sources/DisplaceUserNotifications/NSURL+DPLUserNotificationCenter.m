@@ -6,7 +6,7 @@
 //
 
 #import <DisplaceUserNotifications/NSURL+DPLUserNotificationCenter.h>
-#import "DPLDefines.h"
+#import <DisplaceCommon/DisplaceCommon.h>
 
 @implementation NSURL (DPLUserNotificationCenter)
 

@@ -8,7 +8,7 @@
 #import <DisplaceApplicationSupport/DPLPreferences.h>
 #import <DisplaceApplicationSupport/DPLAppGroup.h>
 #import <ShortcutRecorder/ShortcutRecorder.h>
-#import "DPLDefines.h"
+#import <DisplaceCommon/DisplaceCommon.h>
 
 NSString * const DPLFirstLaunchFinishedKey = @"info.marcel-dierkes.Displace.FirstLaunchFinshed";
 NSString * const DPLLaunchAtLoginEnabledDefaultsKey = @"info.marcel-dierkes.Displace.LaunchAtLoginEnabled";

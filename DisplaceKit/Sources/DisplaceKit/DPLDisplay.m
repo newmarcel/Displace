@@ -9,7 +9,7 @@
 #import <DisplaceKit/DPLDisplayMode.h>
 #import <DisplaceKit/DPLGraphicsDevice.h>
 #import <DisplaceApplicationSupport/DPLPreferences.h>
-#import "DPLDefines.h"
+#import <DisplaceCommon/DisplaceCommon.h>
 #import "DisplaceKitLocalizedStrings.h"
 #import "DPLDisplayManager/DPLDisplayManager.h"
 #import "DPLDisplayModeFilter/DPLDisplayModeFilter.h"

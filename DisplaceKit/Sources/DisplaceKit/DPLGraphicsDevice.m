@@ -6,7 +6,7 @@
 //
 
 #import <DisplaceKit/DPLGraphicsDevice.h>
-#import "DPLDefines.h"
+#import <DisplaceCommon/DisplaceCommon.h>
 
 NS_INLINE NSString *DPLBoolToString(BOOL value) { return (value == YES) ? @"YES" : @"NO"; }
 

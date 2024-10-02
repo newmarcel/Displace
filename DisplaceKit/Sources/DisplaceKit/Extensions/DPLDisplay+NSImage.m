@@ -6,7 +6,7 @@
 //
 
 #import <DisplaceKit/DPLDisplay+NSImage.h>
-#import "../DPLDefines.h"
+#import <DisplaceCommon/DisplaceCommon.h>
 
 @implementation DPLDisplay (NSImage)
 

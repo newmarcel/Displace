@@ -6,7 +6,7 @@
 //
 
 #import <DisplaceApplicationSupport/DPLAppGroup.h>
-#import "DPLDefines.h"
+#import <DisplaceCommon/DisplaceCommon.h>
 
 NSString * const DPLAppGroupIdentifier = @"5KESHV9W85.info.marcel-dierkes.Displace";
 static NSString * const DPLAppGroupDefaultDirectoryName = @"Displace";

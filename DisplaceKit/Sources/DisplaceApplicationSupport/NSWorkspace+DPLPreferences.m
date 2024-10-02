@@ -7,7 +7,7 @@
 
 #import <DisplaceApplicationSupport/NSWorkspace+DPLPreferences.h>
 #import <DisplaceApplicationSupport/NSURL+DPLPreferences.h>
-#import "DPLDefines.h"
+#import <DisplaceCommon/DisplaceCommon.h>
 
 @implementation NSWorkspace (DPLPreferences)
 

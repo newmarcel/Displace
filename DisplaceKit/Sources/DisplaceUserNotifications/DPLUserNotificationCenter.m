@@ -7,7 +7,7 @@
 
 #import <DisplaceUserNotifications/DPLUserNotificationCenter.h>
 #import <UserNotifications/UserNotifications.h>
-#import "DPLDefines.h"
+#import <DisplaceCommon/DisplaceCommon.h>
 
 @interface DPLUserNotificationCenter ()
 @property (nonatomic) UNUserNotificationCenter *center;

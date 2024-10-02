@@ -7,7 +7,7 @@
 
 #import <DisplaceKit/DPLDisplayMode.h>
 #import <DisplaceApplicationSupport/DPLPreferences.h>
-#import "DPLDefines.h"
+#import <DisplaceCommon/DisplaceCommon.h>
 #import "DisplaceKitLocalizedStrings.h"
 
 @interface DPLDisplayMode ()

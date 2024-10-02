@@ -6,7 +6,7 @@
 //
 
 #import <DisplaceKit/NSScreen+DPLDisplay.h>
-#import "../DPLDefines.h"
+#import <DisplaceCommon/DisplaceCommon.h>
 
 static const NSDeviceDescriptionKey DPLScreenNumberKey = @"NSScreenNumber";
 

@@ -6,7 +6,7 @@
 //
 
 #import "DPLDisplayModeFilter.h"
-#import "../DPLDefines.h"
+#import <DisplaceCommon/DisplaceCommon.h>
 
 NS_INLINE NSArray<DPLDisplayMode *> *DPLDisplayModesGetWithRefreshRate(NSArray<DPLDisplayMode *> *displayModes, double refreshRate)
 {

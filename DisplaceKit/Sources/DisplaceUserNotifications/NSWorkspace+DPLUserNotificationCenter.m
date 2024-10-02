@@ -7,7 +7,7 @@
 
 #import <DisplaceUserNotifications/NSWorkspace+DPLUserNotificationCenter.h>
 #import <DisplaceUserNotifications/NSURL+DPLUserNotificationCenter.h>
-#import "DPLDefines.h"
+#import <DisplaceCommon/DisplaceCommon.h>
 
 @implementation NSWorkspace (DPLUserNotificationCenter)
 
