@@ -6,9 +6,9 @@
 //
 
 #import "DPLShortcutMonitor.h"
+#import <DisplaceCommon/DisplaceCommon.h>
 #import <DisplaceApplicationSupport/DisplaceApplicationSupport.h>
 #import <ShortcutRecorder/ShortcutRecorder.h>
-#import "DPLDefines.h"
 
 @interface DPLShortcutMonitor ()
 @property (weak, nonatomic, nullable) SRShortcutAction *increaseAction;

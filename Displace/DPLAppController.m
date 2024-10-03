@@ -6,10 +6,10 @@
 //
 
 #import "DPLAppController.h"
+#import <DisplaceCommon/DisplaceCommon.h>
 #import <DisplaceKit/DisplaceKit.h>
 #import <DisplaceApplicationSupport/DisplaceApplicationSupport.h>
 #import <ShortcutRecorder/ShortcutRecorder.h>
-#import "DPLDefines.h"
 #import "DPLMenuController.h"
 #import "DPLShortcutMonitor.h"
 #import "DPLDisplayModeUserNotification.h"
@@ -211,7 +211,7 @@
 
 - (void)keyEquivalentForIncrease:(NSString **)key modifierFlags:(NSEventModifierFlags *)flags
 {
-    Auto settings = DPLPreferences.sharedPreferences;
+    Auto settings = DPLSettings.sharedPreferences;
     Auto shortcut = settings.increaseResolutionShortcut;
     if(shortcut != nil)
     {
@@ -222,7 +222,7 @@
 
 - (void)keyEquivalentForDecrease:(NSString **)key modifierFlags:(NSEventModifierFlags *)flags
 {
-    Auto settings = DPLPreferences.sharedPreferences;
+    Auto settings = DPLSettings.sharedPreferences;
     Auto shortcut = settings.decreaseResolutionShortcut;
     if(shortcut != nil)
     {
@@ -314,13 +314,13 @@
 
 - (SRShortcut *)keyboardShortcutForIncreaseResolution
 {
-    Auto settings = DPLPreferences.sharedPreferences;
+    Auto settings = DPLSettings.sharedPreferences;
     return settings.increaseResolutionShortcut;
 }
 
 - (SRShortcut *)keyboardShortcutForDecreaseResolution
 {
-    Auto settings = DPLPreferences.sharedPreferences;
+    Auto settings = DPLSettings.sharedPreferences;
     return settings.decreaseResolutionShortcut;
 }
 
@@ -330,7 +330,7 @@
 {
     [self configureUserNotificationCenter];
     
-    [DPLPreferences.sharedPreferences performBlockOnFirstLaunch:^{
+    [DPLSettings.sharedPreferences performBlockOnFirstLaunch:^{
         Auto workspace = NSWorkspace.sharedWorkspace;
         [workspace dpl_openPreferencesWithCompletionHandler:nil];
     }];

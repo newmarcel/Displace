@@ -6,7 +6,7 @@
 //
 
 #import "DPLMenuController.h"
-#import "DPLDefines.h"
+#import <DisplaceCommon/DisplaceCommon.h>
 #import "DPLLocalizedStrings.h"
 
 @interface DPLMenuController () <NSMenuDelegate>

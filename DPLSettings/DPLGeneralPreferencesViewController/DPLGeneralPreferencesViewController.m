@@ -6,9 +6,9 @@
 //
 
 #import "DPLGeneralPreferencesViewController.h"
+#import <DisplaceCommon/DisplaceCommon.h>
 #import <ShortcutRecorder/ShortcutRecorder.h>
 #import <DisplaceUserNotifications/DisplaceUserNotifications.h>
-#import "DPLDefines.h"
 #import "DPLPreferencesLocalizedStrings.h"
 #import "DPLPreferenceItem.h"
 
@@ -115,12 +115,12 @@
 
 - (SRShortcut *)increaseShortcut
 {
-    return DPLPreferences.sharedPreferences.increaseResolutionShortcut;
+    return DPLSettings.sharedPreferences.increaseResolutionShortcut;
 }
 
 - (void)setIncreaseShortcut:(SRShortcut *)increaseShortcut
 {
-    Auto settings = DPLPreferences.sharedPreferences;
+    Auto settings = DPLSettings.sharedPreferences;
     
     [self willChangeValueForKey:@"increaseShortcut"];
     settings.increaseResolutionShortcut = increaseShortcut;
@@ -138,13 +138,13 @@
 
 - (SRShortcut *)decreaseShortcut
 {
-    Auto settings = DPLPreferences.sharedPreferences;
+    Auto settings = DPLSettings.sharedPreferences;
     return settings.decreaseResolutionShortcut;
 }
 
 - (void)setDecreaseShortcut:(SRShortcut *)decreaseShortcut
 {
-    Auto settings = DPLPreferences.sharedPreferences;
+    Auto settings = DPLSettings.sharedPreferences;
     
     [self willChangeValueForKey:@"decreaseShortcut"];
     settings.decreaseResolutionShortcut = decreaseShortcut;

@@ -6,7 +6,7 @@
 //
 
 #import "DPLDisplayModeUserNotification.h"
-#import "DPLDefines.h"
+#import <DisplaceCommon/DisplaceCommon.h>
 
 NSString * const DPLDisplayModeUserNotificationIdentifier = @"DPLDisplayModeChangeIdentifier";
 

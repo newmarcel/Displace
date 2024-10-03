@@ -6,7 +6,7 @@
 //
 
 #import "DPLPreferencesWindowController.h"
-#import "DPLDefines.h"
+#import <DisplaceCommon/DisplaceCommon.h>
 #import "DPLPreferencesLocalizedStrings.h"
 #import "DPLDisplaysViewController.h"
 

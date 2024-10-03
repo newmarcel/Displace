@@ -6,7 +6,7 @@
 //
 
 #import "DPLPreferencesContentViewController.h"
-#import "DPLDefines.h"
+#import <DisplaceCommon/DisplaceCommon.h>
 #import "DPLPreferenceItem.h"
 
 @interface DPLPreferencesContentViewController ()
