@@ -75,8 +75,8 @@ NS_INLINE NSString *DPLBoolToString(BOOL value)
     
     AutoVar filteredModes = (NSMutableArray<DPLDisplayMode *> *)[_displayModes mutableCopy];
     
-    Auto preferences = DPLPreferences.sharedPreferences;
-    if([preferences isNonRetinaDisplayModesEnabled] == NO)
+    Auto settings = DPLPreferences.sharedPreferences;
+    if([settings isNonRetinaDisplayModesEnabled] == NO)
     {
         Auto backup = (NSMutableArray<DPLDisplayMode *> *)[filteredModes mutableCopy];
         
@@ -90,7 +90,7 @@ NS_INLINE NSString *DPLBoolToString(BOOL value)
         }
     }
     
-    if([preferences isHideNonProMotionRefreshRatesEnabled] == YES)
+    if([settings isHideNonProMotionRefreshRatesEnabled] == YES)
     {
         Auto backup = (NSMutableArray<DPLDisplayMode *> *)[filteredModes mutableCopy];
         

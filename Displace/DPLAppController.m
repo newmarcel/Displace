@@ -211,8 +211,8 @@
 
 - (void)keyEquivalentForIncrease:(NSString **)key modifierFlags:(NSEventModifierFlags *)flags
 {
-    Auto preferences = DPLPreferences.sharedPreferences;
-    Auto shortcut = preferences.increaseResolutionShortcut;
+    Auto settings = DPLPreferences.sharedPreferences;
+    Auto shortcut = settings.increaseResolutionShortcut;
     if(shortcut != nil)
     {
         *key = [SRKeyEquivalentTransformer.sharedTransformer transformedValue:shortcut];
@@ -222,8 +222,8 @@
 
 - (void)keyEquivalentForDecrease:(NSString **)key modifierFlags:(NSEventModifierFlags *)flags
 {
-    Auto preferences = DPLPreferences.sharedPreferences;
-    Auto shortcut = preferences.decreaseResolutionShortcut;
+    Auto settings = DPLPreferences.sharedPreferences;
+    Auto shortcut = settings.decreaseResolutionShortcut;
     if(shortcut != nil)
     {
         *key = [SRKeyEquivalentTransformer.sharedTransformer transformedValue:shortcut];
@@ -314,14 +314,14 @@
 
 - (SRShortcut *)keyboardShortcutForIncreaseResolution
 {
-    Auto preferences = DPLPreferences.sharedPreferences;
-    return preferences.increaseResolutionShortcut;
+    Auto settings = DPLPreferences.sharedPreferences;
+    return settings.increaseResolutionShortcut;
 }
 
 - (SRShortcut *)keyboardShortcutForDecreaseResolution
 {
-    Auto preferences = DPLPreferences.sharedPreferences;
-    return preferences.decreaseResolutionShortcut;
+    Auto settings = DPLPreferences.sharedPreferences;
+    return settings.decreaseResolutionShortcut;
 }
 
 #pragma mark - NSApplicationDelegate

@@ -78,10 +78,10 @@
 
 - (NSString *)localizedName
 {
-    Auto preferences = DPLPreferences.sharedPreferences;
+    Auto settings = DPLPreferences.sharedPreferences;
     
     Auto string = (NSMutableString *)[self.localizedNameWithoutAttributes mutableCopy];
-    if([preferences isNonRetinaDisplayModesEnabled] == YES)
+    if([settings isNonRetinaDisplayModesEnabled] == YES)
     {
         Auto retinaAttributeTitle = DPL_L10N_RETINA_IN_PARENS;
         if([self isRetinaResolution]) { [string appendFormat:@" %@", retinaAttributeTitle]; }
@@ -93,7 +93,7 @@
     NSString *refreshRateTitle;
     if([self isProMotionRefreshRate])
     {
-        if([preferences isHideNonProMotionRefreshRatesEnabled] == NO)
+        if([settings isHideNonProMotionRefreshRatesEnabled] == NO)
         {
             refreshRateTitle = DPL_L10N_PROMOTION_IN_PARENS;
         }

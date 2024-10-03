@@ -120,10 +120,10 @@
 
 - (void)setIncreaseShortcut:(SRShortcut *)increaseShortcut
 {
-    Auto preferences = DPLPreferences.sharedPreferences;
+    Auto settings = DPLPreferences.sharedPreferences;
     
     [self willChangeValueForKey:@"increaseShortcut"];
-    preferences.increaseResolutionShortcut = increaseShortcut;
+    settings.increaseResolutionShortcut = increaseShortcut;
     [self didChangeValueForKey:@"increaseShortcut"];
     
     Auto center = DPLNotificationCenter.defaultCenter;
@@ -138,16 +138,16 @@
 
 - (SRShortcut *)decreaseShortcut
 {
-    Auto preferences = DPLPreferences.sharedPreferences;
-    return preferences.decreaseResolutionShortcut;
+    Auto settings = DPLPreferences.sharedPreferences;
+    return settings.decreaseResolutionShortcut;
 }
 
 - (void)setDecreaseShortcut:(SRShortcut *)decreaseShortcut
 {
-    Auto preferences = DPLPreferences.sharedPreferences;
+    Auto settings = DPLPreferences.sharedPreferences;
     
     [self willChangeValueForKey:@"decreaseShortcut"];
-    preferences.decreaseResolutionShortcut = decreaseShortcut;
+    settings.decreaseResolutionShortcut = decreaseShortcut;
     [self didChangeValueForKey:@"decreaseShortcut"];
     
     Auto center = DPLNotificationCenter.defaultCenter;
