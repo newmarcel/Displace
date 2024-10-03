@@ -6,7 +6,7 @@
 //
 
 #import <DisplaceKit/DPLDisplayMode.h>
-#import <DisplaceApplicationSupport/DPLPreferences.h>
+#import <DisplaceApplicationSupport/DPLSettings.h>
 #import <DisplaceCommon/DisplaceCommon.h>
 #import "DisplaceKitLocalizedStrings.h"
 
@@ -78,7 +78,7 @@
 
 - (NSString *)localizedName
 {
-    Auto settings = DPLPreferences.sharedPreferences;
+    Auto settings = DPLSettings.sharedSettings;
     
     Auto string = (NSMutableString *)[self.localizedNameWithoutAttributes mutableCopy];
     if([settings isNonRetinaDisplayModesEnabled] == YES)

@@ -115,12 +115,12 @@
 
 - (SRShortcut *)increaseShortcut
 {
-    return DPLSettings.sharedPreferences.increaseResolutionShortcut;
+    return DPLSettings.sharedSettings.increaseResolutionShortcut;
 }
 
 - (void)setIncreaseShortcut:(SRShortcut *)increaseShortcut
 {
-    Auto settings = DPLSettings.sharedPreferences;
+    Auto settings = DPLSettings.sharedSettings;
     
     [self willChangeValueForKey:@"increaseShortcut"];
     settings.increaseResolutionShortcut = increaseShortcut;
@@ -138,13 +138,13 @@
 
 - (SRShortcut *)decreaseShortcut
 {
-    Auto settings = DPLSettings.sharedPreferences;
+    Auto settings = DPLSettings.sharedSettings;
     return settings.decreaseResolutionShortcut;
 }
 
 - (void)setDecreaseShortcut:(SRShortcut *)decreaseShortcut
 {
-    Auto settings = DPLSettings.sharedPreferences;
+    Auto settings = DPLSettings.sharedSettings;
     
     [self willChangeValueForKey:@"decreaseShortcut"];
     settings.decreaseResolutionShortcut = decreaseShortcut;

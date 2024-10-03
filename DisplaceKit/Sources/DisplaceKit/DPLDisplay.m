@@ -8,7 +8,7 @@
 #import <DisplaceKit/DPLDisplay.h>
 #import <DisplaceKit/DPLDisplayMode.h>
 #import <DisplaceKit/DPLGraphicsDevice.h>
-#import <DisplaceApplicationSupport/DPLPreferences.h>
+#import <DisplaceApplicationSupport/DPLSettings.h>
 #import <DisplaceCommon/DisplaceCommon.h>
 #import "DisplaceKitLocalizedStrings.h"
 #import "DPLDisplayManager/DPLDisplayManager.h"
@@ -75,7 +75,7 @@ NS_INLINE NSString *DPLBoolToString(BOOL value)
     
     AutoVar filteredModes = (NSMutableArray<DPLDisplayMode *> *)[_displayModes mutableCopy];
     
-    Auto settings = DPLPreferences.sharedPreferences;
+    Auto settings = DPLSettings.sharedSettings;
     if([settings isNonRetinaDisplayModesEnabled] == NO)
     {
         Auto backup = (NSMutableArray<DPLDisplayMode *> *)[filteredModes mutableCopy];

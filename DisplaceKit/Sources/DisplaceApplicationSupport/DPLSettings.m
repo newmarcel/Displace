@@ -1,11 +1,11 @@
 //
-//  DPLPreferences.m
+//  DPLSettings.m
 //  DisplaceApplicationSupport
 //
 //  Created by Marcel Dierkes on 23.12.20.
 //
 
-#import <DisplaceApplicationSupport/DPLPreferences.h>
+#import <DisplaceApplicationSupport/DPLSettings.h>
 #import <DisplaceApplicationSupport/DPLAppGroup.h>
 #import <ShortcutRecorder/ShortcutRecorder.h>
 #import <DisplaceCommon/DisplaceCommon.h>
@@ -17,20 +17,20 @@ NSString * const DPLIncreaseResolutionShortcutDefaultsKey = @"info.marcel-dierke
 NSString * const DPLDecreaseResolutionShortcutDefaultsKey =  @"info.marcel-dierkes.Displace.DecreaseResolutionShortcut";
 NSString * const DPLHideNonProMotionRefreshRatesEnabledDefaultsKey =  @"info.marcel-dierkes.Displace.HideNonProMotionRefreshRatesEnabled";
 
-@interface DPLPreferences ()
+@interface DPLSettings ()
 @property (nonatomic, readwrite) id<DPLDefaultsProvider> defaults;
 @end
 
-@implementation DPLPreferences
+@implementation DPLSettings
 
-+ (instancetype)sharedPreferences
++ (instancetype)sharedSettings
 {
     static dispatch_once_t once;
-    static DPLPreferences *sharedPreferences;
+    static DPLSettings *sharedSettings;
     dispatch_once(&once, ^{
-        sharedPreferences = [self new];
+        sharedSettings = [self new];
     });
-    return sharedPreferences;
+    return sharedSettings;
 }
 
 - (instancetype)init

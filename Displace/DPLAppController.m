@@ -211,7 +211,7 @@
 
 - (void)keyEquivalentForIncrease:(NSString **)key modifierFlags:(NSEventModifierFlags *)flags
 {
-    Auto settings = DPLSettings.sharedPreferences;
+    Auto settings = DPLSettings.sharedSettings;
     Auto shortcut = settings.increaseResolutionShortcut;
     if(shortcut != nil)
     {
@@ -222,7 +222,7 @@
 
 - (void)keyEquivalentForDecrease:(NSString **)key modifierFlags:(NSEventModifierFlags *)flags
 {
-    Auto settings = DPLSettings.sharedPreferences;
+    Auto settings = DPLSettings.sharedSettings;
     Auto shortcut = settings.decreaseResolutionShortcut;
     if(shortcut != nil)
     {
@@ -314,13 +314,13 @@
 
 - (SRShortcut *)keyboardShortcutForIncreaseResolution
 {
-    Auto settings = DPLSettings.sharedPreferences;
+    Auto settings = DPLSettings.sharedSettings;
     return settings.increaseResolutionShortcut;
 }
 
 - (SRShortcut *)keyboardShortcutForDecreaseResolution
 {
-    Auto settings = DPLSettings.sharedPreferences;
+    Auto settings = DPLSettings.sharedSettings;
     return settings.decreaseResolutionShortcut;
 }
 
@@ -330,7 +330,7 @@
 {
     [self configureUserNotificationCenter];
     
-    [DPLSettings.sharedPreferences performBlockOnFirstLaunch:^{
+    [DPLSettings.sharedSettings performBlockOnFirstLaunch:^{
         Auto workspace = NSWorkspace.sharedWorkspace;
         [workspace dpl_openPreferencesWithCompletionHandler:nil];
     }];

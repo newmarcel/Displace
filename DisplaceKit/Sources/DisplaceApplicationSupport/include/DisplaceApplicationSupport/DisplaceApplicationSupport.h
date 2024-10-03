@@ -10,6 +10,6 @@
 #import <DisplaceApplicationSupport/DPLAppGroup.h>
 #import <DisplaceApplicationSupport/DPLNotificationCenter.h>
 #import <DisplaceApplicationSupport/DPLDefaultsProvider.h>
-#import <DisplaceApplicationSupport/DPLPreferences.h>
+#import <DisplaceApplicationSupport/DPLSettings.h>
 #import <DisplaceApplicationSupport/NSURL+DPLPreferences.h>
 #import <DisplaceApplicationSupport/NSWorkspace+DPLPreferences.h>

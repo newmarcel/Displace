@@ -84,7 +84,6 @@
 		DA2ECE68259A1800009542DB /* DPLPreferenceItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DPLPreferenceItem.h; sourceTree = "<group>"; };
 		DA2ECE69259A1800009542DB /* DPLPreferenceItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DPLPreferenceItem.m; sourceTree = "<group>"; };
 		DA3314ED259BA6B000B208F6 /* Configuration.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Configuration.xcconfig; sourceTree = SOURCE_ROOT; };
-		DA384B5425D8025C0052C1AC /* DPLDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DPLDefines.h; sourceTree = "<group>"; };
 		DA3DC733259890DC00275021 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		DA3DC73C2598972F00275021 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		DA425FE525E100BC007A78BD /* DPLPreferencesContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPLPreferencesContentViewController.m; sourceTree = "<group>"; };
@@ -223,7 +222,6 @@
 				DAC91F5C2532F6B200A08DE0 /* Assets.xcassets */,
 				DA3314ED259BA6B000B208F6 /* Configuration.xcconfig */,
 				DAC91F642532F6B200A08DE0 /* Displace.entitlements */,
-				DA384B5425D8025C0052C1AC /* DPLDefines.h */,
 				DAC91F612532F6B200A08DE0 /* Info.plist */,
 				DAC91F622532F6B200A08DE0 /* main.m */,
 				DAC91F5E2532F6B200A08DE0 /* MainMenu.xib */,
