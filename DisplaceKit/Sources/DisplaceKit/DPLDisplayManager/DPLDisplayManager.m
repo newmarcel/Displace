@@ -69,7 +69,7 @@ static const NSUInteger DPLDisplayCountMax = 64u;
     for(NSUInteger i = 0; i < DPLDisplayCountMax; i++)
     {
         CGDirectDisplayID display = displaysIDs[i];
-        if(display == kCGNullDirectDisplay || CGDisplayPixelsWide(display) == 0)
+        if(display == kCGNullDirectDisplay || CGDisplayPixelsWide(display) == 0 || CGDisplayPixelsWide(display) == 1)
         {
             continue;
         }
