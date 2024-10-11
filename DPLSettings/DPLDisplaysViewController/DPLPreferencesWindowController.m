@@ -7,6 +7,7 @@
 
 #import "DPLPreferencesWindowController.h"
 #import <DisplaceCommon/DisplaceCommon.h>
+#import <DisplaceApplicationSupport/DisplaceApplicationSupport.h>
 #import "DPLPreferencesLocalizedStrings.h"
 #import "DPLDisplaysViewController.h"
 
@@ -45,6 +46,13 @@
     {
         [controller reloadData];
     }
+}
+
+- (IBAction)completelyTerminate:(id)sender
+{
+    Auto center = DPLNotificationCenter.defaultCenter;
+    [center postNotification:DPLAppShouldTerminateNotification];
+    [NSApplication.sharedApplication terminate:sender];
 }
 
 - (IBAction)showAboutPanel:(nullable id)sender

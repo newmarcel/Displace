@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="UJb-qp-24m">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="23094" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="UJb-qp-24m">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="20037"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="23094"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -46,6 +46,12 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="kCx-OE-vgT"/>
+                                        <menuItem title="Completely Quit Displace" keyEquivalent="q" id="T3s-FY-UcD">
+                                            <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                                            <connections>
+                                                <action selector="completelyTerminate:" target="Ady-hI-5gd" id="L5j-Fp-0nQ"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem title="Quit Displace Settings" keyEquivalent="q" id="4sb-4s-VLi">
                                             <connections>
                                                 <action selector="terminate:" target="Ady-hI-5gd" id="Te7-pn-YzF"/>
@@ -693,7 +699,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="615" height="390"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </view>
-                        <toolbar key="toolbar" implicitIdentifier="09D11707-F4A3-4FD5-970E-AC5832E91C2B" autosavesConfiguration="NO" allowsUserCustomization="NO" displayMode="iconOnly" sizeMode="regular" id="Rhw-6f-61q">
+                        <toolbar key="toolbar" implicitIdentifier="09D11707-F4A3-4FD5-970E-AC5832E91C2B" autosavesConfiguration="NO" allowsUserCustomization="NO" showsBaselineSeparator="NO" displayMode="iconOnly" sizeMode="regular" id="Rhw-6f-61q">
                             <allowedToolbarItems>
                                 <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="Dgu-eU-odd"/>
                                 <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="bjs-S4-msh"/>
@@ -771,7 +777,7 @@
                                                             <rect key="frame" x="11" y="0.0" width="217" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <textField verticalHuggingPriority="750" id="Mcx-Rz-s5I">
+                                                                <textField focusRingType="none" verticalHuggingPriority="750" id="Mcx-Rz-s5I">
                                                                     <rect key="frame" x="0.0" y="1" width="217" height="14"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="HEADER CELL" id="nEm-9d-NxC">
@@ -794,7 +800,7 @@
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                     <imageCell key="cell" refusesFirstResponder="YES" imageScaling="proportionallyDown" image="gear" catalog="system" id="O5H-cp-aC3"/>
                                                                 </imageView>
-                                                                <textField verticalHuggingPriority="750" id="4mP-ro-e4E">
+                                                                <textField focusRingType="none" verticalHuggingPriority="750" id="4mP-ro-e4E">
                                                                     <rect key="frame" x="25" y="0.0" width="192" height="17"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="riF-mQ-IMR">
@@ -854,6 +860,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="gear" catalog="system" width="17" height="17"/>
+        <image name="gear" catalog="system" width="17" height="16"/>
     </resources>
 </document>

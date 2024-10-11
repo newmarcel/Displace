@@ -11,6 +11,7 @@
 const DPLNotificationName DPLShortcutDidChangeNotification = @"DPLShortcutDidChangeNotification";
 const DPLNotificationName DPLShortcutWillEditNotification = @"DPLShortcutWillEditNotification";
 const DPLNotificationName DPLShortcutDidEditNotification = @"DPLShortcutDidEditNotification";
+const DPLNotificationName DPLAppShouldTerminateNotification = @"DPLAppShouldTerminateNotification";
 
 @interface DPLNotificationCenter ()
 @property (nonatomic) NSDistributedNotificationCenter *distributedCenter;

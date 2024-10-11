@@ -35,6 +35,10 @@
         [self configureMenuController];
         [self configureStatusItem];
         [self configureShortcutMonitor];
+        
+        [DPLNotificationCenter.defaultCenter addObserver:NSApplication.sharedApplication
+                                                selector:@selector(terminate:)
+                                                    name:DPLAppShouldTerminateNotification];
     }
     return self;
 }

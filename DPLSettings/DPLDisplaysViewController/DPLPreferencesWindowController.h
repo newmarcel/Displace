@@ -11,6 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DPLPreferencesWindowController : NSWindowController
 
+- (IBAction)completelyTerminate:(id)sender;
 - (IBAction)showAboutPanel:(nullable id)sender;
 
 @end
