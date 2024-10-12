@@ -6,15 +6,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <DisplaceCommon/DPLExport.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-FOUNDATION_EXPORT NSString * const DPLAppGroupIdentifier;
+DPL_EXPORT NSString * const DPLAppGroupIdentifier;
 
-FOUNDATION_EXPORT NSURL *DPLAppGroupGetURLWithPathComponent(NSString *);
+DPL_EXPORT NSURL *DPLAppGroupGetURLWithPathComponent(NSString *);
 
-FOUNDATION_EXPORT NSURL *DPLAppGroupGetDefaultDirectoryURL(void);
+DPL_EXPORT NSURL *DPLAppGroupGetDefaultDirectoryURL(void);
 
-FOUNDATION_EXPORT NSUserDefaults *DPLAppGroupGetUserDefaults(void);
+DPL_EXPORT NSUserDefaults *DPLAppGroupGetUserDefaults(void);
 
 NS_ASSUME_NONNULL_END

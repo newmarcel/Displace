@@ -6,11 +6,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <DisplaceCommon/DPLExport.h>
 #import <DisplaceUserNotifications/DisplaceUserNotifications.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-FOUNDATION_EXPORT NSString * const DPLDisplayModeUserNotificationIdentifier;
+DPL_EXPORT NSString * const DPLDisplayModeUserNotificationIdentifier;
 
 @interface DPLDisplayModeUserNotification : DPLUserNotification
 @property (nonatomic, getter=isIncreasing, readonly) BOOL increasing;
