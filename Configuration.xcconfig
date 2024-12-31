@@ -12,4 +12,4 @@ PRODUCT_BUNDLE_IDENTIFIER = info.marcel-dierkes.Displace
 MARKETING_VERSION = 0.9.1
 CURRENT_PROJECT_VERSION = 90100
 
-INFOPLIST_KEY_NSHumanReadableCopyright = Copyright © 2024 Marcel Dierkes. All rights reserved.
+INFOPLIST_KEY_NSHumanReadableCopyright = Copyright © 2025 Marcel Dierkes. All rights reserved.
